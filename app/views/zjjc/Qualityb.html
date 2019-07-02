@@ -1,0 +1,56 @@
+<h3 id="topBar">
+    质量分析
+</h3>
+<div class="table-grid table-grid-desktop" ng-controller="QualitybJsController">
+    <!-- 列表信息-->
+    <div class="mr">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-lg-2">
+                    <select name="packtype" ng-model="housecode" id="packtype" class="form-control" required>
+                        <option value="">请选择仓房...</option>
+                        <option ng-repeat="x in house" value="{{x.housecode}}">{{x.housename}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <p class="input-group">
+                        <input type="text" datepicker-popup="yyyy-MM-dd" close-text="关闭"  clear-text="清空" current-text="今天" ng-model="startDate" is-open="startimeIsOpen" class="form-control" />
+                        <span class="input-group-btn">
+                           <button type="button" ng-click="startimeOpen($event)" class="btn btn-default">
+                               <em class="fa fa-calendar"></em>
+                           </button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <button type="button" title="搜索" ng-click="toSearch()" class="btn btn-primary pull-left mb">
+                        <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <!-- 质量检验饼图-->
+                <div class="col-md-2 pr0">
+                </div>
+                <div class="col-md-4 pr0">
+                    <rzhecharts id="tempOneCharts" rid="tempOneCharts" option="temp_one_option" height="300"></rzhecharts>
+                </div>
+                <div class="col-md-4 pr0">
+                    <rzhecharts id="tempTwoCharts" rid="tempTwoCharts" option="temp_two_option" height="300"></rzhecharts>
+                </div>
+                <div class="col-md-2 pr0">
+                </div>
+                <div class="col-md-4 pr0 mt">
+                    <rzhecharts id="tempThreeCharts" rid="tempThreeCharts" option="temp_three_option" height="300"></rzhecharts>
+                </div>
+                <div class="col-md-4 pr0 mt">
+                    <rzhecharts id="tempFourCharts" rid="tempFourCharts" option="temp_four_option" height="300"></rzhecharts>
+                </div>
+                <div class="col-md-4 pr0 mt">
+                    <rzhecharts id="tempFiveCharts" rid="tempFiveCharts" option="temp_Five_option" height="300"></rzhecharts>
+                </div>
+                <!-- 质量检验饼图end-->
+            </div>
+        </div>
+    </div>
+</div>

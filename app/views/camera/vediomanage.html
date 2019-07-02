@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>硬盘录像机管理页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App + jQuery">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="../../vendor/animate.css/animate.min.css">
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="../../vendor/whirl/dist/whirl.css">
+    <!-- =============== PAGE VENDOR STYLES ===============-->
+    <!-- DATATABLES-->
+    <link rel="stylesheet" href="../../vendor/datatables-colvis/css/dataTables.colVis.css">
+    <link rel="stylesheet" href="../vendor/datatable-bootstrap/css/dataTables.bootstrap.css">
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="../../app/css/bootstrap.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="../../app/css/app.css" id="maincss">
+</head>
+<body>
+<h3>硬盘录像机编辑页面
+</h3>
+<ol class="breadcrumb">
+    <li><a href="#/app/vediolist">硬盘录像机列表</a>
+    </li>
+    <li class="active">硬盘录像机编辑页面</li>
+</ol>
+  <div class="row">
+            <div class="col-lg-10">
+                <div class="well">
+                    <div class="row">
+                        <form     method="get">
+                        <div class="col-lg-6">
+                            <div class="well">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备序号：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="txtDrvCode" id="txtDrvNo"  required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备编码：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="txtDrvCode" id="txtDrvCode"  required placeholder="必填字段" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备名称：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvName" required placeholder="必填字段" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备别名：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvAliasName"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备类型：</label>
+                                        <div class="col-lg-6">
+                                            <select name="account" id="selectDrvType" class="form-control">
+
+                                            </select>
+                                            <!--<input type="text" id="txtDrvType"  value="1" placeholder="设备类型" class="form-control" />-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备厂商：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="selectFacName"  required placeholder="必填字段" class="form-control" />
+                                            <!--<input type="text" id="txtFacName"  value="1" placeholder="设备厂商" class="form-control" />-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备型号：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvModel" required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备序列号：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvSer"  required placeholder="必填字段" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<a id="aedit" ng-href="#/app/videomonitoring?commandName="+selectCommand title="命令配置" class="ng-scope">-->
+                        <div class="col-lg-6"  >
+                            <div class="well">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备IP：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvIP"  required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备端口号：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvPort"  required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">子网掩码：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvMask"  required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">网关地址：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvGateway" required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">登录代码：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvLoginCode" required placeholder="必填字段"  class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">登录密码：</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" id="txtDrvLoginPwd" required placeholder="必填字段"     class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-5 control-label">设备详情：</label>
+                                        <div class="col-lg-6">
+                                            <textarea type="text" id="txtDrvInfo" style="height: 88px"   class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div  style="text-align: center">
+                            <button   class="btn btn-success" onclick="Edit()">提交</button>
+                            <button type="reset" class="btn btn-primary">重置</button>
+                        </div>
+                       </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<!-- =============== VENDOR SCRIPTS ===============-->
+<!-- MODERNIZR-->
+<script src="../../vendor/modernizr/modernizr.js"></script>
+<!-- JQUERY-->
+<script src="../../vendor/jquery/dist/jquery.js"></script>
+<!-- BOOTSTRAP-->
+<script src="../../vendor/bootstrap/dist/js/bootstrap.js"></script>
+<!-- STORAGE API-->
+<script src="../../vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+<!-- JQUERY EASING-->
+<script src="../../vendor/jquery.easing/js/jquery.easing.js"></script>
+<!-- ANIMO-->
+<script src="../../vendor/animo.js/animo.js"></script>
+<!-- SLIMSCROLL-->
+<script src="../vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- SCREENFULL-->
+<script src="../../vendor/screenfull/dist/screenfull.js"></script>
+<!-- LOCALIZE-->
+<script src="../../vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>
+<!-- RTL demo-->
+<script src="../../app/js/demo/demo-rtl.js"></script>
+
+<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+
+
+<script>
+    var id=0;
+    $(function () {
+        id=UrlSearch("id");
+        GetDvrTypeList();
+        if(id!=0)
+        {//编辑
+            $("#txtDrvNo").attr("disabled","disabled");
+            GetOneDrv();
+        }
+    });
+    function GetOneDrv() {
+        $.ajax({
+            type: "get",
+            url: 'dvrController/GetOneDvrById.do',
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            data: {id: id},
+            success: function (msg) {
+
+                if (msg.success) {
+                    var data = msg.dataObj;
+                    $("#txtDrvNo").val(data.no);
+                    $("#txtDrvCode").val(data.dvrcode);
+                    $("#txtDrvName").val(data.dvrname);
+                    $("#txtDrvAliasName").val(data.dvraliasname);
+
+                    var drvtypecode = data.dvrtypecode;
+                    var drvtypename = data.dvrtypename;
+                    $("#selectDrvType").val(drvtypecode);
+                    var facname = data.dvrmanufacturer;
+                    $("#selectFacName").val(facname);
+                    $("#txtDrvModel").val(data.dvrmodel);
+                    $("#txtDrvSer").val(data.dvrserial);
+                    $("#txtDrvIP").val(data.dvrip);
+                    $("#txtDrvPort").val(data.dvrport);
+                    $("#txtDrvMask").val(data.subnetmask);
+                    $("#txtDrvGateway").val(data.gateway);
+                    $("#txtDrvLoginCode").val(data.dvrlogincode);
+                    $("#txtDrvLoginPwd").val(data.dvrloginpassword);
+                    $("#txtDrvInfo").val(data.dvrinfo);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+    function Edit() {
+        var txtDrvNo=$("#txtDrvNo").val();
+        var txtDrvCode=$("#txtDrvCode").val();
+        var txtDrvName=$("#txtDrvName").val();
+        var txtDrvAliasName=$("#txtDrvAliasName").val();
+        var selectDrvTypeCode=$("#selectDrvType").val();
+        var selectDrvTypeName=$("#selectDrvType option:selected").text();
+        var selectFacName=$("#selectFacName").val();
+        var txtDrvModel=$("#txtDrvModel").val();
+        var txtDrvSer=$("#txtDrvSer").val();
+        var txtDrvIP=$("#txtDrvIP").val();
+        var txtDrvPort=$("#txtDrvPort").val();
+        var txtDrvMask=$("#txtDrvMask").val();
+        var txtDrvGateway=$("#txtDrvGateway").val();
+        var txtDrvLoginCode=$("#txtDrvLoginCode").val();
+        var txtDrvLoginPwd=$("#txtDrvLoginPwd").val();
+        var txtDrvInfo=$("#txtDrvInfo").val();
+
+        if(txtDrvNo==""||txtDrvCode==""||txtDrvName==""||selectFacName==""||txtDrvModel==""||txtDrvSer==""||txtDrvIP==""||txtDrvPort==""||txtDrvMask==""||txtDrvGateway==""||txtDrvLoginCode==""||txtDrvLoginPwd=="")
+        {
+            return;
+        }
+        var jsonPar={id:id,txtDrvNo:txtDrvNo,txtDrvCode: txtDrvCode,txtDrvName:txtDrvName,txtDrvAliasName:txtDrvAliasName,selectDrvTypeCode:selectDrvTypeCode,
+            selectDrvTypeName:selectDrvTypeName,selectFacName:selectFacName,
+            txtDrvModel:txtDrvModel,txtDrvSer:txtDrvSer,txtDrvIP:txtDrvIP,txtDrvPort:txtDrvPort,txtDrvMask:txtDrvMask,txtDrvGateway:txtDrvGateway,
+            txtDrvLoginCode:txtDrvLoginCode,txtDrvLoginPwd:txtDrvLoginPwd,txtDrvInfo:txtDrvInfo};
+
+        $.ajax({
+            type: "post",
+            url: 'dvrController/EditDvr.do',
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            data: jsonPar,
+            success: function (msg) {
+               if (msg.success ==true) {
+                    alert("编辑成功");
+                }else {
+                   alert(msg.msg);
+               }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function GetDvrTypeList() {
+        $.ajax({
+            type: "get",
+            url: 'dvrController/GetDvrTypeList.do',
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (msg) {
+                if (msg.success ==true) {
+                    var data=msg.dataObj;
+                    for(var i=0;i<data.length;i++)
+                    {
+                        $("#selectDrvType").append("<option value='"+data[i].dvrtypecode+"'>"+data[i].dvrtypename+"</option>");
+                    }
+
+                }else {
+                    alert(msg.msg);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function UrlSearch(searchName) {
+        var name, value;
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+
+        var arr = str.split("&"); //各个参数放到数组里
+        for (var i = 0; i < arr.length; i++) {
+            num = arr[i].indexOf("=");
+            if (num > 0) {
+                name = arr[i].substring(0, num);
+                value = arr[i].substr(num + 1);
+                this[name] = value;
+                if(name==searchName)
+                {
+                   return value;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#fumDeviceIndexLeft").insertAfter($("#fumDeviceIndexRight"));
+        }
+    });
+</script>
+<h3>
+    熏蒸设备 <span id="houseName"></span>
+    <div class="float-right" ng-controller="fumDeviceBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="fumDeviceController">
+    <div class="row mb-lg">
+        <div id="fumDeviceIndexLeft" class="col-lg-9">
+            <div class="bg-white mt p">
+                <h4><em class="fa fa-newspaper-o"></em> 熏蒸设备</h4>
+                <hr mt mb/>
+                <div class="panel-body" ng-controller="fumDeviceViewController" ng-if="device!=null">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal p-20">
+                                <div class="form-group">
+                                    <div class="col-sm-2 control-label">设备名称：</div>
+                                    <div class="col-sm-4 mt">
+                                       {{device.name}}
+                                    </div>
+                                    <div class="col-sm-2 control-label">出厂编码：</div>
+                                    <div class="col-sm-4 mt">
+                                        {{device.code}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2 control-label">设备厂商：</div>
+                                    <div class="col-sm-4 mt">
+                                        {{device.manufacturer}}
+                                    </div>
+                                    <div class="col-sm-2 control-label">安装位置：</div>
+                                    <div class="col-sm-4 mt">
+                                        {{device.location}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-2 control-label">设备状态：</div>
+                                    <div class="col-sm-4 mt">
+                                        {{device.statusname}}
+                                    </div>
+                                    <div class="col-sm-2 control-label">工作模式：</div>
+                                    <div class="col-sm-4 mt">
+                                        {{device.workmodel}}
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- 列表信息-->
+            <div class="bg-white mt p">
+                <h4><em class="fa fa-newspaper-o"></em> 设备节点</h4>
+                <hr mt mb/>
+                <div ng-controller="fumDeviceGridController" ng-if="device!=null">
+                    <table id="fumDeviceTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="fumDeviceIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems"
+                            ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23">
+                        <!--<em class="icon-home fa-fw"></em> -->{{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+        </div>
+    </div>
+</div>
+

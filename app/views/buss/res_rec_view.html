@@ -1,0 +1,86 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 详情查看页面-->
+<div class="panel panel-default ng-scope" ng-controller="viewresRecController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">详情查看</p>
+                <form class="form-horizontal p-20">
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">名称</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{medname}}</strong>
+                        </div>
+                        <div class=" col-sm-2 control-label">设备厂商：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.manufacturer}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class=" col-sm-2 control-label">库存数量：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.storenum}}</strong>
+                        </div>
+                        <div class=" col-sm-2 control-label">价格：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.price}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class=" col-sm-2 control-label">收入数量：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.innum}}</strong>
+                        </div>
+                        <div class=" col-sm-2 control-label">支出数量：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.outnum}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class=" col-sm-2 control-label">保管员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.keeper}}</strong>
+                        </div>
+                        <div class=" col-sm-2 control-label">日期：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{resRec.reportdate}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class=" col-sm-2 control-label">来源或去向：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{resRec.grainsd}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="col-sm-10 mt">
+                            <script type="text/ng-template" id="ng-wig/views/ng-wig.html"><div class="ng-wig"><div class="nw-editor"><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div></script>
+                            <textarea ng-wig="resRec.memo" ng-maxlength="5000"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END 详情查看页面-->
+

@@ -1,0 +1,105 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#fumHistoryIndexLeft").insertAfter($("#fumHistoryIndexRight"));
+        }
+    });
+</script>
+<h3>
+    熏蒸历史 <span id="houseName"></span>
+    <div class="float-right" ng-controller="fumHistoryBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="fumHistoryController">
+    <div class="row mb-lg">
+        <div id="fumHistoryIndexLeft" class="col-lg-9">
+            <!--搜索条件 begin-->
+            <div class="panel panel-default b0">
+                <button type="button" title="打印报表" ng-click="toBuild()" class="btn btn-default m float-right">
+                    <em class="icon-cloud-download fa-fw mr-sm"></em>打印报表
+                </button>
+                <button type="button" title="搜索" ng-click="toSearch()" class="btn btn-primary m float-right">
+                    <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                </button>
+                <div class="list-group panel-heading col-lg-2 float-right">
+                    <p class="input-group">
+                        <input type="text" datepicker-popup="yyyy-MM-dd" close-text="关闭" clear-text="清空"
+                               current-text="今天" ng-model="endDate" is-open="endtimeIsOpen" class="form-control"/>
+                            <span class="input-group-btn">
+                               <button type="button" ng-click="endtimeOpen($event)" class="btn btn-default">
+                                   <em class="fa fa-calendar"></em>
+                               </button>
+                            </span>
+                    </p>
+                </div>
+                <div class="list-group panel-heading float-right mt"> 至 </div>
+                <div class="list-group panel-heading col-lg-2 float-right">
+                    <p class="input-group">
+                        <input type="text" datepicker-popup="yyyy-MM-dd" close-text="关闭" clear-text="清空"
+                               current-text="今天" ng-model="startDate" is-open="startimeIsOpen" class="form-control"/>
+                            <span class="input-group-btn">
+                               <button type="button" ng-click="startimeOpen($event)" class="btn btn-default">
+                                   <em class="fa fa-calendar"></em>
+                               </button>
+                            </span>
+                    </p>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <!--搜索条件 end-->
+            <!-- 列表信息-->
+            <div class="bg-white mt p">
+                <h4><em class="fa fa-newspaper-o"></em> 熏蒸历史</h4>
+                <hr mt mb/>
+                <div ng-controller="fumHistoryGridController">
+                    <table id="fumHistoryTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="fumHistoryIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems"
+                            ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23">
+                        <!--<em class="icon-home fa-fw"></em> -->{{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+        </div>
+    </div>
+</div>
+

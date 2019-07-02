@@ -1,0 +1,3390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20151125" releaseVersion="8.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="endtime"/>
+<O t="I">
+<![CDATA[0]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="starttime"/>
+<O t="I">
+<![CDATA[0]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[zhls]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT SUM(innum) AS innum ,varietycode,grainsdcode FROM la_custody_account  GROUP BY grainsdcode,varietycode  ORDER BY varietycode ,grainsdcode ]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[zhls]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select * from la_storage where id=1]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<ColumnPrivilegeControl/>
+<RowPrivilegeControl/>
+<RowHeight defaultValue="723900">
+<![CDATA[2857500,723900,723900,3238500,1485900,1905000,723900,723900,723900,723900,723900,723900,723900,1181100,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3390900,1943100,1943100,1943100,1676400,1752600,1943100,1943100,1943100,1943100,1943100,1943100,1943100,1943100,1943100,1943100,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="16" s="0">
+<O>
+<![CDATA[粮食收购进度五日报表]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="0" r="2">
+<O>
+<![CDATA[填报单位：]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="2" cs="7">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="orgname"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="8" r="2" cs="3" s="1">
+<O>
+<![CDATA[年  月  日]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="11" r="2">
+<O>
+<![CDATA[]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="12" r="2">
+<O>
+<![CDATA[]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="13" r="2">
+<O>
+<![CDATA[]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="14" r="2">
+<O>
+<![CDATA[]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="15" r="2">
+<O>
+<![CDATA[单位：吨]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="0" r="3" rs="3" s="2">
+<O>
+<![CDATA[地市]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="3" rs="3" s="3">
+<O>
+<![CDATA[总计]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="2" r="3" rs="3" s="4">
+<O>
+<![CDATA[非国有粮食经营企业从生产者购进]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="3" r="3" rs="3" s="4">
+<O>
+<![CDATA[国有粮食经营企业从生产者购进]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="4" r="3" cs="10" s="3">
+<O>
+<![CDATA[其中：国有粮食购销企业]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="14" r="3" rs="3" s="4">
+<O>
+<![CDATA[转化企业从生产者购进]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="15" r="3" rs="3" s="5">
+<O>
+<![CDATA[外省全额委托收购]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="4" r="4" rs="2" s="4">
+<O>
+<![CDATA[总计]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="4" cs="3" s="3">
+<O>
+<![CDATA[企业自营]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="8" r="4" rs="2" s="4">
+<O>
+<![CDATA[其他企业委托收购（农发行贷款）]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="9" r="4" rs="2" s="4">
+<O>
+<![CDATA[地方储备粮轮换收购]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="10" r="4" rs="2" s="4">
+<O>
+<![CDATA[中央储备粮直属企业全额委托收购(提供增值税发票)]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="11" r="4" rs="2" s="4">
+<O>
+<![CDATA[中央储备粮直属企业全额委托收购(不提供增值税发票)]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="12" r="4" rs="2" s="4">
+<O>
+<![CDATA[省内全额委托收购]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="13" r="4" rs="2" s="4">
+<O>
+<![CDATA[外省全额委托收购]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="5" s="4">
+<O>
+<![CDATA[小计]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="5" s="4">
+<O>
+<![CDATA[农发行  贷款]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="7" r="5" s="4">
+<O>
+<![CDATA[企业自筹资金]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="0" r="6" s="2">
+<O>
+<![CDATA[甲]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="6" s="3">
+<O t="I">
+<![CDATA[1]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="2" r="6" s="3">
+<O t="I">
+<![CDATA[2]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="3" r="6" s="3">
+<O t="I">
+<![CDATA[3]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="4" r="6" s="3">
+<O t="I">
+<![CDATA[4]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="6" s="3">
+<O t="I">
+<![CDATA[5]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="6" s="3">
+<O t="I">
+<![CDATA[6]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="7" r="6" s="3">
+<O t="I">
+<![CDATA[7]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="8" r="6" s="3">
+<O t="I">
+<![CDATA[8]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="9" r="6" s="3">
+<O t="I">
+<![CDATA[9]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="10" r="6" s="3">
+<O t="I">
+<![CDATA[10]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="11" r="6" s="3">
+<O t="I">
+<![CDATA[11]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="12" r="6" s="3">
+<O t="I">
+<![CDATA[12]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="13" r="6" s="3">
+<O t="I">
+<![CDATA[13]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="14" r="6" s="3">
+<O t="I">
+<![CDATA[14]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="15" r="6" s="2">
+<O t="I">
+<![CDATA[15]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="0" r="7" s="2">
+<O>
+<![CDATA[合计]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B9+B10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C9+C10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=D9+D10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G8:N8)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G8+H8]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G9+G10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=H9+H10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=I9+I10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=J9+J10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=K9+K10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=L9+L10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=M9+M10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=N9+N10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="7" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=O9+O10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="7" s="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=P9+P10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="8" s="2">
+<O>
+<![CDATA[小麦]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[101]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[102]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="8" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G9:N9)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="8" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G9+H9]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[201]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[202]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[211]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[212]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[213]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[214]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[215]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[216]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="8" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[301]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="8" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[302]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[001]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="9" s="2">
+<O>
+<![CDATA[水稻]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[101]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[102]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="9" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G10:N10)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="9" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G10+H10]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[201]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[202]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[211]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[212]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[213]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[214]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[215]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[216]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="9" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[301]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="9" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[302]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[002]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="10" s="2">
+<O>
+<![CDATA[玉米]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[innum]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[101]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[102]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="10" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G11:N11)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="10" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G11+H11]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[201]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[202]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[211]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[212]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[213]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[214]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[215]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[216]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="10" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[301]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="10" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[302]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[003]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="11" s="2">
+<O>
+<![CDATA[大豆]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[innum]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[101]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[102]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="11" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G12:N12)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="11" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G12+H12]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[201]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[202]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[211]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[212]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[213]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[214]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[215]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[216]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="11" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[301]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="11" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[302]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[004]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="12" s="2">
+<O>
+<![CDATA[杂粮]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="1" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[innum]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="2" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[101]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="3" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[102]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="4" r="12" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(G13:N13)]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="5" r="12" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=G13+H13]]></Attributes>
+</O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="6" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[201]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[202]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="8" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[211]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="9" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[212]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="10" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[213]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="11" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[214]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="12" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[215]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="13" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[216]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="14" r="12" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[301]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="15" r="12" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="innum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[grainsdcode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[302]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[varietycode]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="13" cs="2" s="6">
+<O>
+<![CDATA[单位负责人:]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="2" r="13" cs="11">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="legalrepresentative"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="13" r="13">
+<O>
+<![CDATA[填报人:]]></O>
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="14" r="13" cs="2">
+<PrivilegeControl/>
+<Expand dir="1"/>
+</C>
+<C c="0" r="14" cs="16" s="7">
+<O>
+<![CDATA[  注：1栏=2栏+3栏+14栏+15栏；4栏=5栏+8栏+9栏+10栏+11栏+12栏+13栏；5栏=6栏+7栏；3栏≥4栏。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="15" cs="16">
+<O>
+<![CDATA[　　　填表说明：]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="16">
+<O>
+<![CDATA[　　　  　1、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="16" cs="15">
+<O>
+<![CDATA[统计范围：辖区内具有粮食收购资格的粮食经营企业和转化用粮企业。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="17">
+<O>
+<![CDATA[　　　  　2、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="17" cs="15">
+<O>
+<![CDATA[企业自营：指企业自筹资金或拿部分保证金向农发行贷款收购的粮食。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="18">
+<O>
+<![CDATA[　　　  　3、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="18" cs="15">
+<O>
+<![CDATA[其他企业委托收购（农发行贷款）：指其他企业拿部分保证金利用粮食购销企业贷款资格向农发行贷款收购的粮食。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="19">
+<O>
+<![CDATA[　　　  　4、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="19" cs="15">
+<O>
+<![CDATA[全额委托收购：指粮款全部由委托企业支付，粮权属委托企业，不计入粮食购销企业库存。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="20">
+<O>
+<![CDATA[　　　  　5、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="20" cs="15">
+<O>
+<![CDATA[中央储备粮直属企业全额委托收购（提供增值税发票）：指受中储粮直属企业全额委托收购，且提供增值税发票的粮源。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="21">
+<O>
+<![CDATA[　　　  　6、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="21" cs="15">
+<O>
+<![CDATA[中央储备粮直属企业全额委托收购（不提供增值税发票）：指受中储粮直属企业全额委托收购，且不提供增值税发票的粮源。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="22">
+<O>
+<![CDATA[　　　  　7、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="22" cs="15">
+<O>
+<![CDATA[省内企业跨县（市）收购的在企业注册地反映。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="23">
+<O>
+<![CDATA[　　　  　8、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="23" cs="15">
+<O>
+<![CDATA[如有成品粮收购，折成原粮后上报。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="24">
+<O>
+<![CDATA[　　　  　9、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="24" cs="15">
+<O>
+<![CDATA[11、12、13栏的粮食单独体现，不计入总计。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="25">
+<O>
+<![CDATA[　　　   10、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="25" cs="15">
+<O>
+<![CDATA[此表初始上报时间为：逢1、6、11、16、21、26日中午前。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="0" r="26">
+<O>
+<![CDATA[　　　 　11、]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="26" cs="15">
+<O>
+<![CDATA[如没有收购进度，要上报与上期一致的数据。]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting orientation="1">
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+<PrivilegeControl/>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="true" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="160"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+</StyleList>
+<DesignerVersion DesignerVersion="IAA"/>
+<PreviewType PreviewType="1"/>
+</WorkBook>

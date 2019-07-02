@@ -1,0 +1,25 @@
+<h3 id="topBar">
+    <span id="houseName"></span>
+</h3>
+<div ng-controller="aerateCaseController">
+
+
+    <div class="panel b case-width-24" ng-repeat="item in caseList">
+        <div class="panel-body">
+            <div class="row row-table">
+                <div class="col-xs-5 text-center">
+                    <img src="app/img/aerate/aerate.jpg" alt="Image" class="img-thumbnail img-circle img-responsive thumb96" />
+                </div>
+                <div class="col-xs-7">
+                    <div class="pull-right">
+                        <a ng-click="aerateApply()" class="btn btn-success">申请</a>
+                    </div>
+                    <h3 class="mt0">{{item.name}}</h3>
+                    <p class="text-muted">条件：{{item.descs}}</p>
+                    <p class="text-muted">时长：{{item.worktime}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

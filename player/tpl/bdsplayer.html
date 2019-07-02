@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="../css/demo.css" rel="stylesheet">
+</head>
+<body>
+<div id="content" class="row" >
+	<div class="col-lg-12">
+		<div class="row">
+			<input type="hidden" id="HAS_IPC_AX" value='1'/>
+			<input type="hidden" id="Hi3516A" value='0'/>
+			<div align="center" id="mpg4Ocx" style="display: none;">
+				<object id="Player" type="application/x-itst-activex" width="800" height="500" border="0" clsid="{BF55C34E-FB1B-4FAF-8C1D-82C5265D87D9}" progid="../video/IPC_PlayerAX.cab#version=2,0,0,7" standby="Waiting..." viewastext="">
+					<param name="_Version" value="65536">
+					<param name="_ExtentX" value="19050">
+					<param name="_ExtentY" value="12700">
+					<param name="_StockProps" value="0">
+				</object>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="../js/jquery-1.7.1.min.js"></script>
+<script>
+    var player = document.getElementById("Player");
+    var Language = 0;
+    var isPlay = 0;
+    var ip = "192.0.0.160";
+    var port = "90";
+    var logincode = "admin";
+    var loginpassword = "admin";
+    var result;
+    var IPC_AX_exist = 0;
+    // 贝德斯 -------------begin---------------
+    //判断是否有插件
+    function HankPBds() {
+        try {
+            if (parent.parent.topFrame.lanSelect.value == '0') {
+                Language = 0;
+            } else {
+                Language = 1;
+            }
+        } catch (e) {
+            var lang = navigator.language || navigator.systemLanguage;
+            if (lang.toLowerCase() == "zh-cn")
+                Language = 1;
+            else
+                Language = 0;
+        }
+        if (Language == 1) {
+            console.log("未安装插件");
+        }
+    }
+    <!--初始化加载-->
+    function initBds() {
+        if (isPlay == 1) {
+            player.StopPlay();
+            isPlay = 0;
+        }
+    }
+    //登录摄像机
+	function loginBds() {
+        if (!(navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1)) {
+            try {
+                $("#mpg4Ocx").show();
+
+                var intvl=setInterval(function () {
+                    result = player.RunPlayEx(ip, 0, "0.0.0.0", 2, port, 1, logincode, loginpassword);
+                    if(result){
+                        // $scope.isPlay = 1;
+                        window.clearInterval(intvl);
+                    }
+                },100);
+                IPC_AX_exist = 1;
+            }
+            catch (e) {
+                $("#mpg4Ocx").hide();
+            }
+        }
+        else {
+            $("#mpg4Ocx").show();
+        }
+
+    }
+
+    <!--开始播放-->
+    function startBds() {
+
+        if (isPlay == 1) {
+            player.StopPlay();
+        } else {
+            result = player.RunPlayEx(ip, 0, "0.0.0.0", 2, port, 1, logincode, loginpassword);
+            if(result){
+                isPlay = 1;
+            }
+        }
+    }
+
+    function playBds(){
+        player = document.getElementById("Player");
+        //1，先判断是否有插件
+        HankPBds();
+        //2,初始化插件
+        initBds();
+        //    3,登录摄像机
+        loginBds();
+        /* //    4,播放视频
+             $scope.startBds();*/
+
+    }
+    setTimeout(function () {
+        initBds();
+        $("#mpg4Ocx").show();
+        playBds();
+    },1000);
+    // 贝德斯 -------------end---------------
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="updateStoreControlController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <!--
+            <div class="form-group">
+                <label class="col-lg-2 control-label">机构编码<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="orgcode"  ng-model="store.orgcode" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.orgcode.$dirty && form.orgcode.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">机构名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="orgname"  ng-model="store.orgname" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.orgname.$dirty && form.orgname.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            -->
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓房<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select id="housecode" name="housecode" ng-model="store.housecode"
+                            ng-options="item.housecode as item.housename for item in allHouse" class="form-control">
+                        <option value="">请选择...</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">控制器<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select id="controlcode" name="controlcode" ng-model="store.controlcode"
+                            ng-options="item.controlcode as item.controlname for item in allControl" class="form-control">
+                        <option value="">请选择...</option>
+                    </select>
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <label class="col-lg-2 control-label">控制器类型<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="controltype"  ng-model="store.controltype" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.controltype.$dirty && form.controltype.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            -->
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

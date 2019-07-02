@@ -1,0 +1,366 @@
+<h3 id="topBar">
+    <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="panel panel-default" ng-controller="fumViewController">
+    <div class="panel-heading">熏蒸信息详情</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="15">
+                                <h3 style="text-align: center">河南省粮油仓房使用化学药剂熏蒸报告单</h3>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align: center">
+                            <td colspan="15">
+                                {{instime}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                仓号：
+                            </td>
+                            <td>
+                                {{ihouseName}}
+                            </td>
+                            <td>
+                                仓型：
+                            </td>
+                            <td>
+                                房式仓
+                            </td>
+                            <td>
+                                密闭性能：
+                            </td>
+                            <td>
+                                一类
+                            </td>
+                            <td>
+                                容量：
+                            </td>
+                            <td>
+                                2700
+                            </td>
+                            <td>
+                                品种：
+                            </td>
+                            <td>
+                                {{cangdata.varietyname}}
+                            </td>
+                            <td>
+                                实存数量：
+                            </td>
+                            <td>
+                                {{cangdata.grainnum}}吨
+                            </td>
+                            <td>
+                                存储方式：
+                            </td>
+                            <td colspan="2">
+                                {{cangdata.grainproperty}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td colspan="15">
+                                熏  蒸  前  的  准  备  工  作  情  况
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td colspan="2" rowspan="2">
+                                粮质情况
+                            </td>
+                            <td colspan="4" rowspan="2">
+                                仓内情况
+                            </td>
+                            <td colspan="4">
+                                害虫情况 头/公斤
+                            </td>
+                            <td colspan="3">
+                                用药情况
+                            </td>
+                            <td colspan="2" rowspan="2">
+                                力量组织
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                                虫种
+                            </td>
+                            <td>
+                                虫态
+                            </td>
+                            <td>
+                                部位
+                            </td>
+                            <td>
+                                头数
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                计划数
+                            </td>
+                            <td>
+                                实用数
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td rowspan="2">
+                                等级：
+                            </td>
+                            <td rowspan="2">
+                                {{cangdata.gradename}}
+                            </td>
+                            <td rowspan="2">
+                                仓房
+                            </td>
+                            <td>
+                                长
+                            </td>
+                            <td>
+                                宽
+                            </td>
+                            <td>
+                                高
+                            </td>
+                            <td rowspan="2">
+                                {{cangdata.pestkind}}
+                            </td>
+                            <td rowspan="2">
+                                成
+                            </td>
+                            <td rowspan="2">
+                                全仓
+                            </td>
+                            <td rowspan="2">
+                                {{cangdata.pestdensity}}头/kg
+                            </td>
+                            <td rowspan="2">
+                                药名：
+                            </td>
+                            <td rowspan="2">
+                                {{cangdata.drugway}}
+                            </td>
+                            <td rowspan="2">
+                            </td>
+                            <td rowspan="2">
+                                参加人数：
+                            </td>
+                            <td rowspan="2">
+                                6人
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                                44.00m
+                            </td>
+                            <td>
+                                18.00m
+                            </td>
+                            <td>
+                                7.80m
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td rowspan="2">
+                                水分
+                            </td>
+                            <td rowspan="2">
+                                12.2%
+                            </td>
+                            <td rowspan="2">
+                                粮堆
+                            </td>
+                            <td>
+                                长
+                            </td>
+                            <td>
+                                宽
+                            </td>
+                            <td>
+                                高
+                            </td>
+                            <td rowspan="2" colspan="4">
+                                粮仓温湿情况
+                            </td>
+                            <td rowspan="2">
+                                空间
+                            </td>
+                            <td rowspan="2">
+                                3
+                            </td>
+                            <td rowspan="2">
+                                克
+                            </td>
+                            <td rowspan="2">
+                                所负责人：
+                            </td>
+                            <td rowspan="2">
+                                牛爱利
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                                43.46m
+                            </td>
+                            <td>
+                                17.23m
+                            </td>
+                            <td>
+                                4.58m
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                                是否熏蒸过
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td colspan="2">
+                                粮堆体积
+                            </td>
+                            <td colspan="2">
+                                3404.00m³
+                            </td>
+                            <td>
+                                外温（℃）
+                            </td>
+                            <td>
+                                24
+                            </td>
+                            <td>
+                                外湿（%）
+                            </td>
+                            <td>
+                                50
+                            </td>
+                            <td>
+                                粮堆
+                            </td>
+                            <td>
+                                7
+                            </td>
+                            <td>
+                                克
+                            </td>
+                            <td>
+                                所技术员
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                                发芽率
+                            </td>
+                            <td>
+                                %
+                            </td>
+                            <td colspan="2">
+                                空间体积
+                            </td>
+                            <td colspan="2">
+                                2755.28m³
+                            </td>
+                            <td>
+                                仓温（℃）
+                            </td>
+                            <td>
+                                28
+                            </td>
+                            <td>
+                                仓湿（%）
+                            </td>
+                            <td>
+                                55
+                            </td>
+                            <td>
+                                合计用药
+                            </td>
+                            <td>
+                                35
+                            </td>
+                            <td>
+                                公斤
+                            </td>
+                            <td>
+                                局技术负责
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td colspan="2">
+                                密闭情况
+                            </td>
+                            <td colspan="2">
+                                良好
+                            </td>
+                            <td>
+                                粮温（℃）
+                            </td>
+                            <td>
+                                上30.6
+                            </td>
+                            <td>
+                                中27.6
+                            </td>
+                            <td>
+                                下19.3
+                            </td>
+                            <td>
+                                密闭天数
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                天
+                            </td>
+                            <td>
+                                审核人
+                            </td>
+                            <td>
+                                钱晓卫
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td rowspan="2">
+                                施药单位意见
+                            </td>
+                            <td colspan="5">
+                            </td>
+                            <td rowspan="2">
+                                审批单位意见
+                            </td>
+                            <td colspan="3">
+                            </td>
+                            <td rowspan="2">
+                                记事
+                            </td>
+                            <td colspan="4" rowspan="2">
+                            </td>
+                        </tr>
+                        <tr style="text-align: center">
+                            <td colspan="5">
+                                年&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;日
+                            </td>
+                            <td colspan="3">
+                                年&nbsp;&nbsp;&nbsp;&nbsp;月&nbsp;&nbsp;&nbsp;&nbsp;日
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

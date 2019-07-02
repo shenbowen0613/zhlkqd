@@ -1,0 +1,89 @@
+<style>
+    .button-video {
+        width: 45%;
+        border: 0;
+        height: 50px;
+        font-size: 18px;
+    }
+    .button-cilck{
+        color:#fcfcfc;
+        background: #5990ec;
+    }
+</style>
+<div id="content" class="row" ng-controller="monitoringController">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-2 well">
+                <h4 class="page-header mt0">监控摄像头</h4>
+                <div ng-repeat="camera in cameras" class="video-div">
+                    <span ng-click="changeVideo(camera.cameraip,camera.cameraport,camera.logincode,camera.loginpassword,camera.houseid,camera.ishourse,camera.cameracode);" id="{{camera.cameracode}}"
+                          class="houseOption">{{camera.cameraname}}</span>
+                </div>
+            </div>
+            <input type="hidden" id="HAS_IPC_AX" value='1'/>
+            <input type="hidden" id="Hi3516A" value='0'/>
+            <iframe id="hideframe" name="hideframe" style="display: none;"></iframe>
+
+            <div id="down_exe" style="display:none;">
+                <div id="firefox_text"></div>
+                <div id="chrome_text"></div>
+                <div id="text_lan" style="color:red;"></div>
+            </div>
+            <!--<div class="col-lg-8">-->
+                <!--<div style="text-align:center;padding-bottom: 10px;">-->
+                    <!--<button id="button0" ng-click="cangneiHK(0);" class="button-video button-cilck">仓外</button>-->
+                    <!--<button id="button1" ng-click="cangneiHK(1);" class="button-video">仓内</button>-->
+                <!--</div>-->
+                <!--<div id="camera_no"-->
+                     <!--style="position: relative;display:none;text-align:center;font-size: 20px;margin-top: 15px;color: red;">-->
+                    <!--{{curAdr}}没有摄像头-->
+                <!--</div>-->
+            <!--</div>-->
+            <div id="videoDiv" class="col-lg-8" style="position: relative;display: none;">
+                <div ng-if="laGrainInspection.hh!=null" style="top: 30px; width: 87%;font-size: 20px; margin-left: 10%; position: absolute; z-index: 9999;">
+                    {{laGrainInspection.hh}}&nbsp;&nbsp;&nbsp;&nbsp;{{laGrainInspection.lh}}&nbsp;&nbsp;&nbsp;&nbsp;{{laGrainInspection.nh}}
+                </div>
+                <iframe id="videoIframe" allowtransparency="true" ng-if="laGrainInspection.hh!=null"
+                        style="top: 15px; width: 87%; height: 58px; text-align: center; margin-left: 5%; position: absolute; z-index: 1; opacity: 0;"
+                >
+                </iframe>
+
+                <!--仓内-->
+                <div align="center" id="mpg4Ocx" style="display: none;">
+                    <OBJECT ID="Player" WIDTH={{divWidth}} HEIGHT={{divHeight}} CLASSID="CLSID:BF55C34E-FB1B-4FAF-8C1D-82C5265D87D9" name="Player">
+                        <PARAM NAME="_Version" VALUE="65536">
+                        <PARAM NAME="_ExtentX" VALUE="6703">
+                        <PARAM NAME="_ExtentY" VALUE="4092">
+                        <PARAM NAME="_StockProps" VALUE="0">
+                    </OBJECT>
+                </div>
+                <!--仓外-->
+                <div id="divPlugin" align="center" style="display: none;"></div>
+                <table id="cloud_terrace" cellpadding="0" cellspacing="3" border="0" style="display: none;width: 1200px;text-align: center; margin-top: 30px">
+                    <tr>
+                        <td>
+                            <input type="button"  value="左上" ng-mousedown="mouseDownPTZControl(5);" ng-mouseup="mouseUpPTZControl();" />
+                            <input type="button"  value="上" ng-mousedown="mouseDownPTZControl(1);" ng-mouseup="mouseUpPTZControl();" />
+                            <input type="button"  value="右上" ng-mousedown="mouseDownPTZControl(7);" ng-mouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button"  value="左" ng-mousedown="mouseDownPTZControl(3);" ng-mouseup="mouseUpPTZControl();" />
+                            <input type="button"  value="自动" ng-mousedown="mouseDownPTZControl(9);" />
+                            <input type="button"  value="右" ng-mousedown="mouseDownPTZControl(4);" ng-mouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button"  value="左下" ng-mousedown="mouseDownPTZControl(6);" ng-mouseup="mouseUpPTZControl();" />
+                            <input type="button"  value="下" ng-mousedown="mouseDownPTZControl(2);" ng-mouseup="mouseUpPTZControl();" />
+                            <input type="button"  value="右下" ng-mousedown="mouseDownPTZControl(8);" ng-mouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

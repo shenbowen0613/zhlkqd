@@ -1,0 +1,30 @@
+<h3 id="topBar">
+    熏蒸数据展示&nbsp;&nbsp;<span id="houseName"></span>&nbsp;&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="table-grid table-grid-desktop" ng-controller="FumigationJsController">
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <!-- 列表信息-->
+    <div class="mr">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div ng-repeat="x in house" class="col-lg-2 col-sm-6">
+                    <!-- START widget-->
+                    <div class="panel widget bg-purple">
+                        <div class="row row-table" ng-click="buttontoview(x)">
+                            <div class="col-xs-5 text-center bg-purple-dark pv-lg">
+                                <em class="fa fa-database fa-3x"></em>
+                            </div>
+                            <div class="col-xs-7 pv-lg">
+                                <div class="h2 mt0">
+                                    <small>{{x.housename}}</small>
+                                </div>
+                                <div class="text-uppercase">{{x.typename}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

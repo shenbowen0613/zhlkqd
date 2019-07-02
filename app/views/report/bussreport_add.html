@@ -1,0 +1,82 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="addbussreportController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <!--<div class="form-group">-->
+                <!--<label class="col-lg-2 control-label">报表模板<font color="red">*</font></label>-->
+                <!--<div class="col-lg-10">-->
+                    <!--<select name="tplcode" ng-model="bussreport.tplcode" id="tplcode" class="form-control" required>-->
+                        <!--<option value="">请选择...</option>-->
+                        <!--<option ng-repeat="item in tplcodetreeInfos" value="{{item.code}}">{{item.label}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label class="col-lg-2 control-label">生成格式<font color="red">*</font></label>
+                <!--<div class="col-lg-2">-->
+                    <!--<div class="radio c-radio">-->
+                        <!--<label>-->
+                            <!--<input type="radio" name="type"  ng-model="type" value="pdf" />-->
+                            <!--<span class="fa fa-circle"></span>-->
+                        <!--</label>pdf-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="col-lg-2">
+                    <div class="radio c-radio">
+                        <label>
+                            <input type="radio" name="type"  ng-model="type" value="xls" ng-checked="true"/>
+                            <span class="fa fa-circle"></span>
+                        </label>xls
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="{{reporttime_show}}">
+                <label class="col-lg-2 control-label">统计时间<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="reporttime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="reporttime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="{{starttime_show}}">
+                <label class="col-lg-2 control-label">开始时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="starttime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="starttime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-show="{{endtime_show}}">
+                <label class="col-lg-2 control-label">结束时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="endtime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="col-lg-2 control-label">摘要<font color="red">*</font></label>-->
+                <!--<div class="col-lg-10">-->
+                    <!--<input type="text" name="summary"  ng-model="bussreport.summary" class="form-control" required ng-maxlength="500" />-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

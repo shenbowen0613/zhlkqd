@@ -1,0 +1,212 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#grainIndexLeft").insertAfter($("#grainIndexRight"));
+        }
+    });
+</script>
+<h3>
+    粮情检测
+    <span id="houseName"></span>
+    <div class="float-right" ng-controller="grainBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="grainController">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <!--<label class="col-lg-1 control-label">开始时间</label>-->
+            <div class="col-lg-2">
+                <div class="input-group date" id="starttime" data-date-format="yyyy-MM-dd">
+                    <input class="form-control" placeholder="开始时间" type="text" ng-model="starttime">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+            <!--<label class="col-lg-1 control-label">结束时间</label>-->
+            <div class="col-lg-2">
+                <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd">
+                    <input class="form-control" placeholder="结束时间" type="text" ng-model="endtime">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" title="搜索" ng-click="toDateSerach()" class="btn btn-primary pull-left mb">
+                    <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="row mb-lg">
+        <div id="grainIndexLeft" class="col-lg-9">
+            <!--&lt;!&ndash;转换检测 begin&ndash;&gt;-->
+            <!--<form form-wizard="" steps="4" novalidate="">-->
+                <!--<div class="form-wizard wizard-horizontal">-->
+                    <!--<ol id="active_bar" class="row">-->
+                        <!--<li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);toInspection('temp');" class="col-md-3 border-r-e6 bg-white">-->
+                            <!--<h4><em class="fa fa-tasks mr"></em>温度检测</h4>-->
+                            <!--<small class="text-muted">仓内温、仓外温、粮堆温等</small>-->
+                        <!--</li>-->
+                        <!--<li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);toInspection('humrity');" class="col-md-3 border-r-e6 bg-white">-->
+                            <!--<h4><em class="icon-drop mr"></em>湿度检测</h4>-->
+                            <!--<small class="text-muted">仓内湿、仓外湿、粮堆湿等</small>-->
+                        <!--</li>-->
+                        <!--<li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);toInspection('gas');" class="col-md-3 border-r-e6 bg-white">-->
+                            <!--<h4><em class="icon-equalizer mr"></em>气体浓度检测</h4>-->
+                            <!--<small class="text-muted">氮气、氧气、硫化氢、二氧化碳等</small>-->
+                        <!--</li>-->
+                        <!--<li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);toInspection('pest');" class="col-md-3 bg-white">-->
+                            <!--<h4><em class="fa fa-bug mr"></em>虫害检测</h4>-->
+                            <!--<small class="text-muted">多种粮食常见虫害</small>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--&lt;!&ndash;转换检测 begin&ndash;&gt;-->
+
+            <!--温度图表信息-高度必填 begin-->
+            <div class="col-lg-6 pl0 mb" ng-controller="tempController">
+                <rzhecharts id="tempCharts" rid="tempCharts" option="temp_option" height="320"></rzhecharts>
+            </div>
+            <!--温度图表信息 end-->
+            <!--湿度图表信息-高度必填 begin-->
+            <div class="col-lg-6 pr0 mb" ng-controller="humrityController">
+                <rzhecharts id="humrityCharts" rid="humrityCharts" option="humrity_option" height="320"></rzhecharts>
+            </div>
+            <!--湿度图表信息 end-->
+            <!--&lt;!&ndash;气体浓度图表信息-高度必填 begin&ndash;&gt;-->
+            <!--<div class="col-lg-6 pl0" ng-controller="gasController">-->
+                <!--<rzhecharts id="gasCharts" rid="gasCharts" option="gas_option" height="320"></rzhecharts>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;气体浓度图表信息 end&ndash;&gt;-->
+            <!--&lt;!&ndash;虫害图表信息-高度必填 begin&ndash;&gt;-->
+            <!--<div class="col-lg-6 pr0" ng-controller="pestController">-->
+                <!--<rzhecharts id="pestCharts" rid="pestCharts" option="pest_option" height="320"></rzhecharts>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;虫害图表信息 end&ndash;&gt;-->
+            <div class="clear"></div>
+            <!-- 列表信息-->
+            <div class="bg-white mt p">
+                <h4><em class="fa fa-newspaper-o"></em> 今日粮情</h4>
+                <hr mt mb/>
+                <div ng-controller="grainGridController">
+                    <table id="grainTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="grainIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems" ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23 {{item.stl}}">
+                        {{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+
+            <!--检测与采集 begin-->
+            <!--<div class="panel widget">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row row-table">-->
+                        <!--<div class="col-xs-4 text-center pr0 pl0"><em class="fa fa-arrows-v fa-2x"></em><span class="fa-2x">温度</span></div>-->
+                        <!--<div class="col-xs-4 text-center">-->
+                            <!--<a ng-click="inspectionInfo('temp')" class="btn btn-primary"><em class="fa fa-hand-o-right"></em><span>检测</span></a>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<a ng-click="collectionInfo('temp')" class="btn btn-purple"><em class="fa fa-hand-o-right"></em><span>采集</span></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="panel widget">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row row-table">-->
+                        <!--<div class="col-xs-4 text-center pr0 pl0"><em class="fa fa-sliders fa-2x"></em><span class="fa-2x">湿度</span></div>-->
+                        <!--<div class="col-xs-4 text-center">-->
+                            <!--<a ng-click="inspectionInfo('humrity')" class="btn btn-primary"><em class="fa fa-hand-o-right"></em><span>检测</span></a>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<a ng-click="collectionInfo('humrity')" class="btn btn-purple"><em class="fa fa-hand-o-right"></em><span>采集</span></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="panel widget">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row row-table">-->
+                        <!--<div class="col-xs-4 text-center pr0 pl0"><em class="fa fa-retweet fa-2x"></em><span class="fa-2x">气体</span></div>-->
+                        <!--<div class="col-xs-4 text-center">-->
+                            <!--<a ng-click="inspectionInfo('gas')" class="btn btn-primary"><em class="fa fa-hand-o-right"></em><span>检测</span></a>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<a ng-click="collectionInfo('gas')" class="btn btn-purple"><em class="fa fa-hand-o-right"></em><span>采集</span></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="panel widget">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="row row-table">-->
+                        <!--<div class="col-xs-4 text-center pr0 pl0"><em class="fa fa-bug fa-2x"></em><span class="fa-2x">虫害</span></div>-->
+                        <!--<div class="col-xs-4 text-center">-->
+                            <!--<a ng-click="inspectionInfo('pest')" class="btn btn-primary"><em class="fa fa-hand-o-right"></em><span>检测</span></a>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4">-->
+                            <!--<a ng-click="collectionInfo('pest')" class="btn btn-purple"><em class="fa fa-hand-o-right"></em><span>采集</span></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--检测与采集 begin-->
+            <!--一键检测 begin-->
+            <div class="panel widget">
+                <a ng-click="inspectionInfo('all')">
+                <!--<a href="zq://">-->
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-green pv-lg">
+                            <em class="fa fa-eyedropper fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                            <now format="EEEE" class="text-uppercase text-muted">温、湿、气、虫</now>
+                            <br>
+                            <now format="h:mm" class="h2 mt0">  粮情检测</now>
+                            <now format="a" class="text-muted text-sm">（点击）</now>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--一键检测 begin-->
+        </div>
+    </div>
+</div>
+

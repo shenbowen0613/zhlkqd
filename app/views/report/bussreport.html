@@ -1,0 +1,67 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<h3 id="topBar">
+    数据统计报表
+</h3>
+<!-- START panel-->
+<!--<div class="panel panel-default">-->
+    <!--&lt;!&ndash;<div class="panel-heading">Form Wizard Horizontal (no validation)</div>&ndash;&gt;-->
+    <!--<div class="panel-body">-->
+        <!---->
+    <!--</div>-->
+<!--</div>-->
+<div ng-controller="bussreportController">
+    <form form-wizard="" steps="5" novalidate="" >
+        <div class="form-wizard wizard-horizontal">
+            <!-- START wizard steps indicator-->
+            <ol id="active_bar" class="row mr_-5">
+                <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);tolistByType('day');" class="col-md-2-3">
+                    <h4><em class="fa fa-bar-chart mr"></em>日报表</h4>
+                    <small class="text-muted">按日汇总的所有统计报表记录</small>
+                </li>
+                <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);tolistByType('week');" class="col-md-2-3">
+                    <h4><em class="fa fa-bar-chart mr"></em>周报表</h4>
+                    <small class="text-muted">按周汇总的所有统计报表记录</small>
+                </li>
+                <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);tolistByType('month');" class="col-md-2-3">
+                    <h4><em class="fa fa-bar-chart mr"></em>月报表</h4>
+                    <small class="text-muted">按月汇总的所有统计报表记录</small>
+                </li>
+                <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);tolistByType('year');" class="col-md-2-3">
+                    <h4><em class="fa fa-bar-chart mr"></em>年报表</h4>
+                    <small class="text-muted">按年汇总的所有统计报表记录</small>
+                </li>
+                <li ng-class="{'active':wizard.active(5)}" ng-click="wizard.go(5);tolistByType('all');" class="col-md-2-3">
+                    <h4><em class="fa fa-bar-chart mr"></em>区间报表</h4>
+                    <small class="text-muted">按时间段汇总的所有统计报表记录</small>
+                </li>
+            </ol>
+            <!-- END wizard steps indicator-->
+        </div>
+    </form>
+    <!-- END panel -->
+
+    <!-- END widget-->
+    <div class="table-grid table-grid-desktop">
+        <!--类型树-->
+        <div class="col col-md pr"  ng-controller="bussreportTypeController" id="bussreportTypePanel"
+             ng-include="'app/views/base/tree.html'"  ng-show="{{bussreport_treeshow}}"></div>
+        <!--操作区域-->
+        <div ui-view="" class="mr ng-scope"></div>
+        <!-- 列表信息-->
+        <div class="mr">
+            <div ng-controller="bussreportGridController" class="panel panel-default">
+                <div class="panel-body">
+                    <table id="bussreportTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

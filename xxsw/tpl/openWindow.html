@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>xiangqing.html</title>
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link href="../css/bootstrap.min.css" rel="stylesheet" />
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script src="../js/angular1.5.min.js" type="text/javascript"></script>
+</head>
+<body ng-app="app" ng-controller="xiangqingCtrl">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="col-md-6">
+					<label>模式</label>
+					<select  class="form-control" ng-model="moshi" ng-change="mosc()">
+						<option value="1" selected>开窗</option>
+						<option value="2">风机开窗</option>
+						<option value="3">通风</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>仓房</label>
+					<select  class="form-control" ng-model="houseip">
+						<option value="192.0.0.198" selected>15号仓</option>
+						<option value="192.0.0.197">17号仓</option>
+						<option value="192.0.0.196">19号仓</option>
+						<option value="192.0.0.195">21号仓</option>
+						<option value="192.0.0.194">23号仓</option>
+						<option value="192.0.0.193">25号仓</option>
+						<option value="192.0.0.192">27号仓</option>
+						<option value="192.0.0.191">28号仓</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 column">
+				<table style="width: 100%;" ng-show="moshi1">
+					<tr>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗1</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('22')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('24')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗2</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('26')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('3f')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗3</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('42')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('44')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗4</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('46')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('48')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗5</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('4a')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('4c')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗6</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('4e')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('50')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗7</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('52')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('54')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 20px;text-align: center;">
+							<div>
+								<label>自然窗8</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('56')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('58')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="padding: 20px;text-align: center;">
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('72')">全开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('74')">全关</button>
+						</td>
+					</tr>
+				</table>
+				<table style="width: 100%;" ng-show="moshi2">
+					<tr>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机窗1</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('5a')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('62')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机窗2</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('64')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('66')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机窗3</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('68')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('6a')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机窗4</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('6c')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('6e')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="padding: 15px;text-align: center;">
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,36')">全开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,73,73,73,36')">全关</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风口1</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('31')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('33')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风口2</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('35')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('37')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风口3</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('39')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,31')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风口4</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,33')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,35')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="padding: 15px;text-align: center;">
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,30')">全开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,32')">全关</button>
+						</td>
+					</tr>
+				</table>
+				<table style="width: 100%;" ng-show="moshi3">
+					<tr>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机1</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,37')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,38')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机2</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,39')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,73,31')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机3</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,73,32')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,73,33')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>轴流风机4</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,73,34')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,73,35')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风机1</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,36')">送风</button>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,38')">抽风</button>
+							<button type="button" class="btn btn-default btn-warning btn-sm" ng-click="onoffwindow('73,73,37')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风机2</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,30')">送风</button>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,33')">抽风</button>
+							<button type="button" class="btn btn-default btn-warning btn-sm" ng-click="onoffwindow('73,73,73,34')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风机3</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,30')">送风</button>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,37')">抽风</button>
+							<button type="button" class="btn btn-default btn-warning btn-sm" ng-click="onoffwindow('73,73,73,38')">关闭</button>
+						</td>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>底部风机4</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,73,30')">送风</button>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,73,32')">抽风</button>
+							<button type="button" class="btn btn-default btn-warning btn-sm" ng-click="onoffwindow('73,73,73,73,33')">关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" style="padding: 15px;text-align: center;">
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,73,37')">全部送风</button>
+							<button type="button" class="btn btn-default btn-success btn-sm" ng-click="onoffwindow('73,73,73,73,38')">全部抽风</button>
+							<button type="button" class="btn btn-default btn-warning btn-sm" ng-click="onoffwindow('73,73,73,73,39')">全部关闭</button>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 25%;padding: 15px;text-align: center;">
+							<div>
+								<label>环流风机</label>
+							</div>
+							<button type="button" class="btn btn-default btn-success" ng-click="onoffwindow('73,73,73,73,34')">打开</button>
+							<button type="button" class="btn btn-default btn-warning" ng-click="onoffwindow('73,73,73,73,35')">关闭</button>
+						</td>
+						<td colspan="3" style="width: 75%;padding: 15px;text-align: center;">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	var app = angular.module('app', []);
+	app.controller('xiangqingCtrl', function($scope, $http) {
+	    $scope.houseip = "192.0.0.198";
+	    $scope.moshi = "1";
+        $scope.moshi1 = true;
+        $scope.moshi2 = false;
+        $scope.moshi3 = false;
+		$scope.mosc = function(){
+		    if($scope.moshi=="1"){
+                $scope.moshi1 = true;
+                $scope.moshi2 = false;
+                $scope.moshi3 = false;
+			}
+            if($scope.moshi=="2"){
+                $scope.moshi1 = false;
+                $scope.moshi2 = true;
+                $scope.moshi3 = false;
+            }
+            if($scope.moshi=="3"){
+                $scope.moshi1 = false;
+                $scope.moshi2 = false;
+                $scope.moshi3 = true;
+            }
+		};
+		$scope.onoffwindow = function(minl){
+		    var pData = {
+                hostIp:$scope.houseip,
+                instructions:minl
+			};
+            $http({
+                url: 'http://127.0.0.1:18082/window/control/windowsControl.shtml',
+                method: 'POST',
+                params: pData
+            }).success(function (data) {
+                alert(data.info);
+            }).error(function (result) { //提交失败
+				alert("发送失败！");
+			});
+		};
+	});
+</script>

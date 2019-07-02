@@ -1,0 +1,171 @@
+﻿<h3>称重详情</h3>
+<div class="container-fluid" ng-controller="viewweightController">
+    <div class="col-lg-12">
+        <p class="lead bb">基本信息</p>
+        <div class="form-group">
+            <a href="{{outinEnty.outinCarrier.identityimage}}" target="_blank">
+                <img src="{{outinEnty.outinCarrier.identityimage}}" style="height: 200px;width: 200px;"/>
+            </a>
+        </div>
+        <form class="form-horizontal p-20">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">出入库类型：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.iotypename}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">业务日期：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.crtime}}</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">承运人：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.carrier}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">身份证：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.indentitycard}}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">车牌号：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.vehicleno}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">品种名称：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.varietyname}}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">产地：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.prodplace}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">年份：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.grainyear}}</strong>
+                </div>
+            </div>
+        </form>
+
+        <p class="lead bb">毛重信息</p>
+        <form class="form-horizontal p-20">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinGross.clzp}}" target="_blank">
+                        <img src="{{outinEnty.outinGross.clzp}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinGross.zp1}}" target="_blank">
+                        <img src="{{outinEnty.outinGross.zp1}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinGross.zp2}}" target="_blank">
+                        <img src="{{outinEnty.outinGross.zp2}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinGross.zp3}}" target="_blank">
+                        <img src="{{outinEnty.outinGross.zp3}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">毛重称重时间：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinGross.grosstime}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">毛重称重员：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinGross.grossoperatorname}}</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">毛重监磅员：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinGross.grosslooker}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">毛重(千克)：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinGross.grossweight}}</strong>
+                </div>
+            </div>
+
+
+        </form>
+        <p class="lead bb">皮重信息</p>
+        <form class="form-horizontal p-20">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinTare.clzp}}" target="_blank">
+                        <img src="{{outinEnty.outinTare.clzp}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinTare.zp1}}" target="_blank">
+                        <img src="{{outinEnty.outinTare.zp1}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinTare.zp2}}" target="_blank">
+                        <img src="{{outinEnty.outinTare.zp2}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{outinEnty.outinTare.zp3}}" target="_blank">
+                        <img src="{{outinEnty.outinTare.zp3}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">皮重监磅员：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.tarelooker}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">皮重(千克)：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.tareweight}}</strong>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">皮重称重员：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.dtoperator}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">现场扣量：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.cutweight}}</strong>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">皮重称重时间：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.taretime}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">净重(千克)：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.outinTare.netweight}}</strong>
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <span ng-include="'app/views/base/to_remove.html'"></span>
+        </div>
+    </div>
+</div>

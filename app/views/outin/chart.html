@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="app/chart/echarts-all.js"></script>
+
+
+
+<h3>出入库统计</h3>
+<div  class="container-fluid">
+    <div class="row mb-lg">
+        <div class="col-lg-12">
+            <div>
+                <!--<canvas barchart="" options="barOptions" data="barData" height="120" responsive="true"></canvas>-->
+                <div class="panel-body" style="height:320px" echarts="searchCostOption" id="searchCost"></div>
+                <!--<eChart eChart option="myoptions" style="height: 400px;width: 100%;"></eChart>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ECharts单文件引入 -->
+<!--Step:1 Prepare a dom for ECharts which (must) has size (width & hight)-->
+<!--Step:1 为ECharts准备一个具备大小（宽高）的Dom-->
+
+
+<!-- =============== APP SCRIPTS ===============-->
+<script>
+
+
+    //echarts基本参数
+    App.factory('$echartsConfig', function () {
+        return {
+
+            title : {
+                text: '某地区蒸发量和降水量',
+                subtext: '纯属虚构'
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['蒸发量','降水量']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {show: true, type: ['line', 'bar']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'蒸发量',
+                    type:'bar',
+                    data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                            {type : 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    },
+                    itemStyle : {
+
+                    }
+                },
+                {
+                    name:'降水量',
+                    type:'bar',
+                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                    markPoint : {
+                        data : [
+                            {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                            {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name : '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+    })
+    //echarts directive
+    App.directive('echarts', ['$echartsConfig','$window', function ($echartsConfig,$window) {
+            return {
+                restrict: 'A',
+                link: function (scope, element, attrs) {
+
+                    if (!scope.$echartsInstance)
+                        scope.$echartsInstance = {};
+                    scope.$watch(attrs.echarts, function () {
+                        var option=angular.extend({},$echartsConfig,scope.$eval(attrs.echarts));
+                        if (option.id) {
+                            scope.$echartsInstance[option.id] = echarts.init(element[0]);
+                            scope.$echartsInstance[option.id].setOption(option);
+                        } else {
+                            scope.$echartsInstance = echarts.init(element[0]);
+                            scope.$echartsInstance.setOption(option);
+                        }
+                    });
+                    $window.onresize = function() {
+                        if(scope.$echartsInstance.searchTimeOption)
+                            scope.$echartsInstance.searchTimeOption.resize();
+                        if(scope.$echartsInstance.searchCostOption)
+                            scope.$echartsInstance.searchCostOption.resize();
+                        if(scope.$echartsInstance.searchNumOption)
+                            scope.$echartsInstance.searchNumOption.resize();
+
+                    };
+
+                }
+            };
+        }])
+
+
+</script>
+<script type="text/javascript">
+
+/*    App.controller('myChartJSController', ["$scope", "colors", function($scope, colors) {
+
+        // random values for demo
+        var rFactor = function(){ return Math.round(Math.random()*100); };
+// Bar chart
+// -----------------------------------
+
+        $scope.barData = {
+            labels : ['1号仓','2号仓','3号仓','4号仓','5号仓','6号仓','7号仓',"8号仓","9号仓","10号仓","11号仓",'12号仓','13号仓','14号仓','15号仓','16号仓',"17号仓","18号仓"],
+            datasets : [
+                {
+                    fillColor : colors.byName('info'),
+                    strokeColor : colors.byName('info'),
+                    highlightFill: colors.byName('info'),
+                    highlightStroke: colors.byName('info'),
+                    data : [rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor()]
+                },
+                {
+                    fillColor : colors.byName('primary'),
+                    strokeColor : colors.byName('primary'),
+                    highlightFill : colors.byName('primary'),
+                    highlightStroke : colors.byName('primary'),
+                    data : [rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor(),rFactor()]
+                }
+            ]
+        };
+
+        $scope.barOptions = {
+            scaleBeginAtZero : true,
+            scaleShowGridLines : true,
+            scaleGridLineColor : 'rgba(0,0,0,.05)',
+            scaleGridLineWidth : 1,
+            barShowStroke : true,
+            barStrokeWidth : 2,
+            barValueSpacing : 5,
+            barDatasetSpacing : 1,
+        };
+
+    }]);*/
+
+//    App.controller('myController', ['$scope', function ($scope) {
+//
+//        function initData() {
+//            var arr = [];
+//            for (var i = 0; i < 6; i++) {
+//                arr.push(parseInt(Math.random() * 100));
+//            }
+//            return arr;
+//        }
+//
+//        var data = initData();
+//        console.log(data);
+//        $scope.data = data;
+//
+//        $scope.myoptions = {
+//
+//        tooltip: {show: true},
+//
+//        legend: {
+//            data: ['销量']
+//        },
+//        xAxis: [
+//            {
+//                type: 'category',
+//                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+//            }
+//        ],
+//        yAxis: [
+//            {
+//                type: 'value'
+//            }
+//        ],
+//        series: [
+//            {
+//            'name': '销量',
+//                'type': 'bar',
+//                'data': data
+//            }
+//        ]};
+//
+//        $scope.changData = function () {
+//            var data = initData();
+//            console.log(data);
+//            $scope.data = data;
+//        }
+//
+//    }]);
+//    App.directive('eChart', [function () {
+//
+//        function link($scope, element, attrs) {
+//
+//            // 基于准备好的dom，初始化echarts图表
+//            var myChart = echarts.init(element[0]);
+//
+//            //监听options变化
+//            if (attrs.uiOptions) {
+//                attrs.$observe('uiOptions', function () {
+//                    var options = $scope.$eval(attrs.uiOptions);
+//                    if (angular.isObject(options)) {
+//                        myChart.setOption(options);
+//                    }
+//                }, true);
+//            }
+//
+//        }
+//
+//        return {
+//            restrict: 'A',
+//        link: link
+//        };
+//    }]);
+
+</script>
+</body>
+</html>

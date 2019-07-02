@@ -1,0 +1,40 @@
+<style>
+    .button-video {
+        width: 45%;
+        border: 0;
+        height: 50px;
+        font-size: 18px;
+    }
+    .button-cilck{
+        color:#fcfcfc;
+        background: #5990ec;
+    }
+    .plugin
+    {
+        width:800px;
+        height:600px;
+    }
+</style>
+<div id="content" class="row" ng-controller="monitoringController">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-1 well">
+                <h4 class="page-header mt0">硬盘录像机</h4>
+                <div ng-repeat="x in dvrname" class="video-div">
+                    <span ng-click="yingpanluxiangji(x.dvrip,x.dvrport,x.dvrlogincode,x.dvrloginpassword)"
+                          class="houseOption">{{x.dvraliasname}}</span>
+                </div>
+            </div>
+            <div class="col-lg-2 well">
+                <h4 class="page-header mt0">监控点</h4>
+                <div ng-repeat="x in oSelname" class="video-div">
+                    <span ng-click="clickStartRealPlay(x.id)" id="{{x.id}}"
+                          class="houseOption">{{x.name}}</span>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div id="divPlugin" class="plugin"></div>
+            </div>
+        </div>
+    </div>
+</div>

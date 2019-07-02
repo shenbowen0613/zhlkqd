@@ -1,0 +1,200 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 添加数据字典类型信息-->
+<div class="panel panel-default ng-scope" ng-controller="viewhouseController">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <p class="lead bb">详情查看</p>
+            <form class="form-horizontal p-20">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓房名称：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.housename}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓房编号：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.houseno}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓房类型：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.typename}}
+                    </div>
+                    <label class="col-sm-2 control-label">交付日期：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.submitdate}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">墙体结构：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.wall}}
+                    </div>
+                    <label class="col-sm-2 control-label">房顶结构：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.roof}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">房架结构：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.structure}}
+                    </div>
+                    <label class="col-sm-2 control-label">地面结构：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.ground}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">设计仓容（T）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.designcapacity}}
+                    </div>
+                    <label class="col-sm-2 control-label">实际仓容（T）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.confirmcapacity}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓外长（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outlength}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓外宽（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outwidth}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓外檐高（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outeavesheight}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓外顶高（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outroofheight}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓外筒仓外径（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outdiameter}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓外墙面积（平方）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.outwallarea}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓内长（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.inlength}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓内宽（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.inwidth}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓内檐高（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.ineavesheight}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓内装粮线高（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.instoreheight}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">实际装粮线高（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.instoreheightdesign}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓内筒仓内径（米）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.indiameter}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓内体积（立方）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.involume}}
+                    </div>
+                    <label class="col-sm-2 control-label">粮堆体积（立方）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.grainvolume}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓门数量（个）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.doornumber}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓门位置：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.doorposition}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">仓门宽度（个）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.doorwidth}}
+                    </div>
+                    <label class="col-sm-2 control-label">仓门高度（个）：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.doorheight}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">通风方式：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.ventilationtype}}
+                    </div>
+                    <label class="col-sm-2 control-label">隔热方式：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.heatinsulationtype}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">保管员：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.keeper}}
+                    </div>
+                    <label class="col-sm-2 control-label">保管员电话：</label>
+                    <div class="col-sm-4 mt">
+                        {{house.keeperphone}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">是否储备粮<font color="red">*</font></label>
+                    <div class="col-sm-10 mt">
+                        {{house.isrs}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">内容详情：</label>
+                    <div class="col-sm-10 mt">
+                        <script type="text/ng-template" id="ng-wig/views/ng-wig.html"><div class="ng-wig"><div class="nw-editor"><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div></script>
+                        <textarea ng-wig="house.memo" ng-maxlength="5000"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mt" >
+                        <span ng-include="'app/views/base/to_remove.html'"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END 添加数据字典类型信息-->
+

@@ -1,0 +1,114 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<div class="panel panel-default ng-scope" ng-controller="updatestorageController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <input type="hidden" name="id"  ng-model="storage.id" class="form-control" required/>
+            <input type="hidden" name="orgcode"  ng-model="storage.orgcode" class="form-control" required/>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">粮库名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="orgname"  ng-model="storage.orgname" class="form-control" required  ng-maxlength="20"/>
+                    <span ng-show="form.orgname.$dirty && form.orgname.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">粮库简称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="orgabbreviation"  ng-model="storage.orgabbreviation" class="form-control" required ng-maxlength="10"/>
+                    <span ng-show="form.orgabbreviation.$dirty && form.orgabbreviation.$invalid" class="text-danger">不可为空，且最多输入10个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">企业性质<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="enterprisenature"  ng-model="storage.enterprisenature" class="form-control" required ng-maxlength="10"/>
+                    <span ng-show="form.enterprisenature.$dirty && form.enterprisenature.$invalid" class="text-danger">不可为空，且最多输入10个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">粮库类别<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select id="orgtype" name="orgtype" ng-model="storage.orgtype" id="typecode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in storagetreeInfos" value="{{item.label}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">法人代表<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="legalrepresentative"  ng-model="storage.legalrepresentative" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.legalrepresentative.$dirty && form.legalrepresentative.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">建成日期<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="builddate"  ng-model="storage.builddate" class="form-control" required ng-maxlength="12"/>
+                    <span ng-show="form.builddate.$dirty && form.builddate.$invalid" class="text-danger">不可为空，且最多输入12个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设计仓容（T）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="designcapacity"  ng-model="storage.designcapacity" class="form-control"  required ng-maxlength="6"/>
+                    <span ng-show="form.designcapacity.$dirty && form.designcapacity.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">粮库人数（人）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="orgstaffnumber"  ng-model="storage.orgstaffnumber" class="form-control" required ng-maxlength="6"/>
+                    <span ng-show="form.orgstaffnumber.$dirty && form.orgstaffnumber.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">粮库面积（平方）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text"  name="orgarea"  ng-model="storage.orgarea" class="form-control" required ng-maxlength="6"/>
+                    <span ng-show="form.orgarea.$dirty && form.orgarea.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">联系电话<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="telephone" ng-model="storage.telephone" class="form-control" required />
+                    <span ng-show="form.telephone.$dirty && form.telephone.$invalid" class="text-danger">请输入正确的联系电话</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">传真号码<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="fax" ng-model="storage.fax" class="form-control" required />
+                    <span ng-show="form.fax.$dirty && form.fax.$invalid" class="text-danger">请输入正确的传真号码</span>
+                </div>
+                <label class="col-lg-2 control-label">邮政编码<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="postcode" ng-model="storage.postcode" class="form-control" required />
+                    <span ng-show="form.postcode.$dirty && form.postcode.$invalid" class="text-danger">请输入正确的邮政编码</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">粮库地址<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="orgaddress" ng-model="storage.orgaddress" class="form-control" required ng-maxlength="100"/>
+                    <span ng-show="form.orgaddress.$dirty && form.orgaddress.$invalid" class="text-danger">不可为空，且最多输入100个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">备注</label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"> </textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="storage.memo"  name="memo"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.memo.$dirty && form.memo.$invalid" class="text-danger">且最多输入5000个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

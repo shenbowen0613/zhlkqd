@@ -1,0 +1,48 @@
+<h3 id="topBar">
+    温度详情
+    <!--<span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>-->
+</h3>
+<div class="container-fluid" ng-controller="tempViewController">
+    <div class="col-lg-12">
+        <!--转换检测 begin-->
+        <form form-wizard="" steps="4" novalidate="">
+            <div class="form-wizard wizard-horizontal">
+                <ol id="active_bar" class="row">
+                    <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);getTempData(1)" class="col-md-3 border-r-e6">
+                        <h4><em class="fa fa-tasks mr"></em>第一层</h4>
+                    </li>
+                    <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);getTempData(2)" class="col-md-3 border-r-e6">
+                        <h4><em class="fa fa-tasks mr"></em>第二层</h4>
+                    </li>
+                    <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);getTempData(3)" class="col-md-3 border-r-e6">
+                        <h4><em class="fa fa-tasks mr"></em>第三层</h4>
+                    </li>
+                    <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);getTempData(4)" class="col-md-3">
+                        <h4><em class="fa fa-tasks mr"></em>第四层</h4>
+                    </li>
+                </ol>
+            </div>
+
+        </form>
+
+        <div id="showData" style="font-size: 24px;margin-left:25%;margin-top: 20px">
+        </div>
+
+        <!--转换检测 begin-->
+        <!--图表信息-高度必填 begin-->
+        <!--<rzhecharts id="tempViewCharts" rid="tempViewCharts" option="temp_view_option" height="500"></rzhecharts>-->
+        <!--图表信息 end-->
+        <!-- 列表信息 begin-->
+        <!--<div class="bg-fcfcfc mt p">-->
+            <!--<h4>坐标及数据</h4>-->
+            <!--<hr mt mb/>-->
+            <!--<div id="gridDiv">-->
+
+                <!--<table id="tempViewTableGrids" class="row-border hover">-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+         <!--列表信息 end-->
+    </div>
+</div>
+

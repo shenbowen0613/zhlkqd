@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<h3 id="topBar">
+    粮食保管账管理
+</h3>
+<!-- START panel-->
+<!--<div class="panel panel-default">-->
+<!--&lt;!&ndash;<div class="panel-heading">Form Wizard Horizontal (no validation)</div>&ndash;&gt;-->
+<!--<div class="panel-body">-->
+<!---->
+<!--</div>-->
+<!--</div>-->
+<div ng-controller="custodyController">
+    <form form-wizard="" steps="2" novalidate="" >
+        <div class="form-wizard wizard-horizontal">
+            <!-- START wizard steps indicator-->
+            <ol id="active_bar" class="row mr_-5">
+                <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);tolistByType(1);" class="col-md-6">
+                    <h4><em class="icon-notebook mr"></em>入库账</h4>
+                    <small class="text-muted">包含入库的所有保管账记录</small>
+                </li>
+                <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);tolistByType(0);" class="col-md-6">
+                    <h4><em class="icon-notebook mr"></em>出库账</h4>
+                    <small class="text-muted">包含出库的所有保管账记录</small>
+                </li>
+            </ol>
+            <!-- END wizard steps indicator-->
+        </div>
+    </form>
+    <!-- END panel -->
+
+    <!-- END widget-->
+    <div class="table-grid table-grid-desktop">
+        <!--类型树-->
+        <div class="col col-md pr"  ng-controller="custodyTypeController" id="custodyTypePanel"
+             ng-include="'app/views/base/tree.html'"></div>
+        <!--操作区域-->
+        <div ui-view="" class="mr ng-scope"></div>
+        <!-- 列表信息-->
+        <div class="mr">
+            <div ng-controller="custodyGridController" class="panel panel-default">
+                <div class="panel-body">
+                    <table id="custodyTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,181 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#fumIndexLeft").insertAfter($("#fumIndexRight"));
+        }
+    });
+</script>
+<h3>
+    智能熏蒸中心 <span id="houseName"></span>
+    <div class="float-right" ng-controller="fumBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="fumController">
+    <div class="row mb-lg">
+        <div id="fumIndexLeft" class="col-lg-9">
+            <!--图表信息-高度必填 begin-->
+            <div class="col-md-6 pr0 pl0">
+                <rzhecharts id="fumCharts" rid="fumCharts" option="charts_option" height="450"></rzhecharts>
+            </div>
+            <div class="col-md-3 pr0">
+                <rzhecharts id="tempOneCharts" rid="tempOneCharts" option="temp_one_option" height="220"></rzhecharts>
+            </div>
+            <div class="col-md-3 pr0">
+                <rzhecharts id="tempTwoCharts" rid="tempTwoCharts" option="temp_two_option" height="220"></rzhecharts>
+            </div>
+            <div class="col-md-3 pr0 mt">
+                <rzhecharts id="tempThreeCharts" rid="tempThreeCharts" option="temp_three_option" height="220"></rzhecharts>
+            </div>
+            <div class="col-md-3 pr0 mt">
+                <rzhecharts id="tempFourCharts" rid="tempFourCharts" option="temp_four_option" height="220"></rzhecharts>
+            </div>
+            <div class="clear"></div>
+            <!--图表信息 end-->
+            <!--检测信息 begin-->
+
+            <!--<div class="panel panel-default mt b0">-->
+                <!--<div class="panel-heading">-->
+                    <!--<div class="panel-title"><em class="fa fa-newspaper-o"></em> 检测信息</div>-->
+                <!--</div>-->
+                <!--<div class="list-group panel-heading ml mr" style="clear: both">-->
+                    <!--<form class="form-horizontal p-20 ng-pristine ng-valid">-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"> </div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>虫害总数</strong></div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>标准数值</strong></div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>对比结果</strong></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"><strong>虫害信息</strong></div>-->
+                            <!--<div class="col-sm-3 lh40">66头</div>-->
+                            <!--<div class="col-sm-3 lh40">0头 ~ 100头</div>-->
+                            <!--<div class="col-sm-3 lh40"><em class="fa fa-check text-success"/></div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--检测信息 end-->
+        </div>
+        <div id="fumIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems" ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23">
+                        {{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+            <!--智能检测判断 begin-->
+            <!--<div class="panel panel-default b0">-->
+                <!--<div class="panel-heading">-->
+                    <!--<div class="panel-title"><em class="fa fa-newspaper-o"></em> 智能检测结果</div>-->
+                    <!--<hr class="mt mb0"/>-->
+                <!--</div>-->
+                <!--<div class="list-group panel-heading" style="clear: both">-->
+                    <!--<form class="form-horizontal p-20">-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-3 pr0">当前库：</div>-->
+                            <!--<div class="col-sm-3 pr0">-->
+                                <!--{{houseInfo.housename}}-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-3 pr0">库容量：</div>-->
+                            <!--<div class="col-sm-3 pr0">-->
+                                <!--{{houseInfo.confirmcapacity}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-3 pr0">仓类型：</div>-->
+                            <!--<div class="col-sm-3 pr0">-->
+                                <!--{{houseInfo.typename}}-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-3 pr0">负责人：</div>-->
+                            <!--<div class="col-sm-3 pr0">-->
+                                <!--{{houseInfo.keeper}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-3 pr0">结果：</div>-->
+                            <!--<div class="col-sm-9 pr0">-->
+                                <!--温度过高，建议熏蒸-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-12 pr0">智能推荐：</div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                    <!--&lt;!&ndash; 推荐熏蒸模型 begin&ndash;&gt;-->
+                    <!--<div class="panel b">-->
+                        <!--<div class="panel-body">-->
+                            <!--<div class="row row-table">-->
+                                <!--<div class="col-xs-5 text-center">-->
+                                    <!--<img src="app/img/fum/fum.jpg" alt="Image" class="img-thumbnail img-circle img-responsive thumb96" />-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-7">-->
+                                    <!--<div class="pull-right">-->
+                                        <!--<a ng-click="fumApply()" class="btn btn-success">申请</a>-->
+                                    <!--</div>-->
+                                    <!--<h3 class="mt0">底部熏蒸</h3>-->
+                                    <!--<p class="text-muted">条件：玉米虫 > 5头/公斤</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; 推荐熏蒸模型 end&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--智能检测判断 begin-->
+            <!--更多方式 begin-->
+            <div class="panel widget">
+                <div class="panel-body">
+                    <div class="row row-table">
+                        <div class="col-xs-3 text-center pr0 pl0">
+                            <em class="fa fa-file-text-o fa-2x"></em>
+                        </div>
+                        <div class="col-xs-5 text-center">
+                            更多方式
+                        </div>
+                        <div class="col-xs-4">
+                            <a ng-click="morefumType()" class="btn btn-purple">
+                                <em class="fa fa-hand-o-right"></em>
+                                <span>选择</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--更多方式 end-->
+        </div>
+    </div>
+</div>
+

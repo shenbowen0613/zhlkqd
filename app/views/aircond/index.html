@@ -1,0 +1,217 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#aircondIndexLeft").insertAfter($("#aircondIndexRight"));
+        }
+    });
+</script>
+<h3>
+    智能气调中心 <span id="houseName"></span>
+    <div class="float-right" ng-controller="aircondBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="aircondController">
+    <div class="row mb-lg">
+        <div id="aircondIndexLeft" class="col-lg-9">
+            <!--图表信息-高度必填 begin-->
+            <rzhecharts id="aircondCharts" rid="aircondCharts" option="charts_option" height="500"></rzhecharts>
+            <!--图表信息 end-->
+            <!--检测信息 begin-->
+            <!--<div class="panel panel-default mt b0">-->
+                <!--<div class="panel-heading">-->
+                    <!--<div class="panel-title"><em class="fa fa-newspaper-o"></em> 检测信息</div>-->
+                <!--</div>-->
+                <!--<div class="list-group panel-heading ml mr" style="clear: both">-->
+                    <!--<form class="form-horizontal p-20 ng-pristine ng-valid">-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"> </div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>当前数值</strong></div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>标准数值</strong></div>-->
+                            <!--<div class="col-sm-3 lh40"><strong>对比结果</strong></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"><strong>磷化氢</strong></div>-->
+                            <!--<div class="col-sm-3 lh40">166PPM</div>-->
+                            <!--<div class="col-sm-3 lh40">90PPM ~ 230PPM</div>-->
+                            <!--<div class="col-sm-3 lh40"><em class="fa fa-check text-danger"/></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"><strong>氮气</strong></div>-->
+                            <!--<div class="col-sm-3 lh40">144PPM</div>-->
+                            <!--<div class="col-sm-3 lh40">80PPM ~ 110PPM</div>-->
+                            <!--<div class="col-sm-3 lh40"><em class="fa fa-long-arrow-up text-success"/></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"><strong>氧气</strong></div>-->
+                            <!--<div class="col-sm-3 lh40">255PPM</div>-->
+                            <!--<div class="col-sm-3 lh40">180PPM ~ 300PPM</div>-->
+                            <!--<div class="col-sm-3 lh40"><em class="fa fa-check text-success"/></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-3 lh40"><strong>二氧化碳</strong></div>-->
+                            <!--<div class="col-sm-3 lh40">722PPM</div>-->
+                            <!--<div class="col-sm-3 lh40">660PPM ~ 800PPM</div>-->
+                            <!--<div class="col-sm-3 lh40"><em class="fa fa-check text-success"/></div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--检测信息 end-->
+            <!--气调后数据 begin-->
+            <!--<div class="panel panel-default mt b0">-->
+                <!--<div class="panel-heading">-->
+                    <!--<div class="panel-title float-left"><em class="fa fa-newspaper-o"></em> 气调后</div>-->
+                    <!--<div class="float-right">-->
+                        <!--<a ng-click="getaircondOverInfo()" class="btn btn-success"><em class="fa fa-download"></em> 获取数据</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="list-group panel-heading ml mr" style="clear: both">-->
+                    <!--<form class="form-horizontal p-20 ng-pristine ng-valid">-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-1 lh40"> </div>-->
+                            <!--<div class="col-sm-2 lh40"><strong>磷化氢</strong></div>-->
+                            <!--<div class="col-sm-1 lh40"><strong>氮气</strong></div>-->
+                            <!--<div class="col-sm-2 lh40"><strong>氧气</strong></div>-->
+                            <!--<div class="col-sm-2 lh40"><strong>二氧化碳</strong></div>-->
+                            <!--<div class="col-sm-2 lh40"><strong>气调方式</strong></div>-->
+                            <!--<div class="col-sm-1 lh40"><strong>时长</strong></div>-->
+                            <!--<div class="col-sm-1 lh40"><strong>经费</strong></div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group bb ml0 mr0 mb0">-->
+                            <!--<div class="col-sm-1 lh40"><strong>结果</strong></div>-->
+                            <!--<div class="col-sm-2 lh40">122</div>-->
+                            <!--<div class="col-sm-1 lh40">99</div>-->
+                            <!--<div class="col-sm-2 lh40">233</div>-->
+                            <!--<div class="col-sm-2 lh40">726</div>-->
+                            <!--<div class="col-sm-2 lh40">单侧气调</div>-->
+                            <!--<div class="col-sm-1 lh40">2H</div>-->
+                            <!--<div class="col-sm-1 lh40">￥199</div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--气调后数据 end-->
+        </div>
+        <div id="aircondIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems" ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23">
+                        {{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+            <!--智能检测判断 begin-->
+            <!--<div class="panel panel-default b0">-->
+                <!--<div class="panel-heading">-->
+                    <!--<div class="panel-title"><em class="fa fa-newspaper-o"></em> 智能检测结果</div>-->
+                    <!--<hr class="mt mb0"/>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="list-group panel-heading" style="clear: both">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<form class="form-horizontal p-20">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">当前库：</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">&ndash;&gt;-->
+                                <!--&lt;!&ndash;{{houseInfo.housename}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">库容量：</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">&ndash;&gt;-->
+                                <!--&lt;!&ndash;{{houseInfo.confirmcapacity}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">仓类型：</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">&ndash;&gt;-->
+                                <!--&lt;!&ndash;{{houseInfo.typename}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">负责人：</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">&ndash;&gt;-->
+                                <!--&lt;!&ndash;{{houseInfo.keeper}}&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-3 pr0">结果：</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-9 pr0">&ndash;&gt;-->
+                                <!--&lt;!&ndash;温度过高，建议气调&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-sm-12 pr0">智能推荐：</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</form>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash; 推荐气调模型 begin&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="panel b">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="panel-body">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="row row-table">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-xs-5 text-center">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<img src="app/img/aircond/aircond.jpg" alt="Image" class="img-thumbnail img-circle img-responsive thumb96" />&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="col-xs-7">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="pull-right">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<a ng-click="aircondApply()" class="btn btn-success">申请</a>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<h3 class="mt0">底部气调</h3>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<p class="text-muted">条件：氮气含量 > 110ppm</p>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash; 推荐气调模型 end&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--智能检测判断 begin-->
+            <!--更多方式 begin-->
+            <div class="panel widget">
+                <div class="panel-body">
+                    <div class="row row-table">
+                        <div class="col-xs-3 text-center pr0 pl0">
+                            <em class="fa fa-file-text-o fa-2x"></em>
+                        </div>
+                        <div class="col-xs-5 text-center">
+                            更多方式
+                        </div>
+                        <div class="col-xs-4">
+                            <a ng-click="moreaircondType()" class="btn btn-purple">
+                                <em class="fa fa-hand-o-right"></em>
+                                <span>选择</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--更多方式 end-->
+        </div>
+    </div>
+</div>
+

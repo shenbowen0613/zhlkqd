@@ -1,0 +1,115 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#grainRealtimeIndexLeft").insertAfter($("#grainRealtimeIndexRight"));
+        }
+    });
+</script>
+<h3>
+    实时粮情 <span id="houseName"></span>
+    <div class="float-right" ng-controller="grainRealtimeBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="grainRealtimeController">
+    <div class="row mb-lg">
+        <div id="grainRealtimeIndexLeft" class="col-lg-9">
+            <!--转换检测 begin-->
+            <form form-wizard="" steps="4" novalidate="">
+                <div class="form-wizard wizard-horizontal">
+                    <ol id="active_bar" class="row">
+                        <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);toInspection('temp');" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="fa fa-tasks mr"></em>温度检测</h4>
+                            <small class="text-muted">仓内温、仓外温、粮堆温等</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);toInspection('humrity');" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="icon-drop mr"></em>湿度检测</h4>
+                            <small class="text-muted">仓内湿、仓外湿、粮堆湿等</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);toInspection('gas');" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="icon-equalizer mr"></em>气体浓度检测</h4>
+                            <small class="text-muted">氮气、氧气、硫化氢、二氧化碳等</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);toInspection('pest');" class="col-md-3 bg-white">
+                            <h4><em class="fa fa-bug mr"></em>虫害检测</h4>
+                            <small class="text-muted">多种粮食常见虫害</small>
+                        </li>
+                    </ol>
+                </div>
+            </form>
+            <!--转换检测 begin-->
+            <!--&lt;!&ndash;图表信息-高度必填 begin&ndash;&gt;-->
+            <!--<rzhecharts id="grainRealtimeCharts" rid="grainRealtimeCharts" option="charts_option" height="500"></rzhecharts>-->
+            <!--&lt;!&ndash;图表信息 end&ndash;&gt;-->
+            <!-- 列表信息-->
+            <div class="bg-white mt p">
+                <h4><em class="fa fa-newspaper-o"></em> 今日粮情 - {{opt_title}}</h4>
+                <hr mt mb/>
+                <div ng-controller="grainRealtimeGridController">
+                    <table id="grainRealtimeTableGrids" class="row-border hover">
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="grainRealtimeIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems" ng-click="houseInspectionInfo(item.code,item.label,$event)" class="btn btn-default grain-c-w23">
+                        <!--<em class="icon-home fa-fw"></em> -->{{item.label}}
+                    </button>
+                </div>
+                <div style="clear: both"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+            <!--仓房信息 end-->
+
+
+            <!--一键检测 begin-->
+            <!--<div class="panel widget">-->
+                <!--<a ng-click="inspectionInfo('all')">-->
+                    <!--<div class="row row-table">-->
+                        <!--<div class="col-xs-4 text-center bg-green pv-lg">-->
+                            <!--<em class="fa fa-eyedropper fa-3x"></em>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-8 pv-lg">-->
+                            <!--<now format="EEEE" class="text-uppercase text-muted">温、湿、气、虫</now>-->
+                            <!--<br>-->
+                            <!--<now format="h:mm" class="h2 mt0">  一键检测</now>-->
+                            <!--<now format="a" class="text-muted text-sm">（点击）</now>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--一键检测 begin-->
+        </div>
+    </div>
+</div>
+

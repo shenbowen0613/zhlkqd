@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript">
+    addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+}, false);
+function hideURLbar() {
+    window.scrollTo(0, 1);
+} </script>
+<link href="app/img/login/style.css" rel='stylesheet' type='text/css'/>
+<h1><p class="text-center font-color-orangered" id="authMsg"></p></h1>
+<div class="login-form" ng-controller="LoginFormController">
+    <!--<div class="close"></div>-->
+    <div class="head-info">
+         <img src="app/img/logo.png"/>
+        <!-- <label class="lbl-1"> </label> -->
+        <!-- <label class="lbl-2"> </label> -->
+        <!-- <label class="lbl-3"> </label> -->
+    </div>
+    <div class="clear"></div>
+    <!--<div class="avtar">-->
+        <!--<img src="app/img/logo.png"/>-->
+    <!--</div>-->
+    <form role="form" ng-submit="login()" name="loginForm" novalidate="" >
+        <input type="text" class="text" name="username" placeholder="请输入用户名" autocomplete="off" ng-model="user.username" required>
+        <div class="key">
+            <input type="password"  name="account_password" placeholder="请输入密码"  autocomplete="off"  ng-model="user.password" required>
+        </div>
+        <div class="signin">
+            <input type="submit" value="点击登录">
+        </div>
+    </form>
+
+</div>
+<div class="copy-rights">
+    <p><span ng-bind="app.description"></span></p>
+    <p>Copyright &copy;  <span ng-bind="app.name"></span></p>
+</div>

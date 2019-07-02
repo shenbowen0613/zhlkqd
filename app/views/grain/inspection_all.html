@@ -1,0 +1,187 @@
+<h3 id="topBar">
+    实时温度检测 <span id="houseName"></span>
+</h3>
+<div class="container-fluid"  ng-controller="grainInspectionAllController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">检测信息</div>
+            <hr class="mt mb0"/>
+        </div>
+        <div class="list-group panel-heading m-xl" style="clear: both">
+            <form class="form-horizontal p-20 ng-pristine ng-valid">
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"> </div>
+                    <div class="col-sm-2 lh45"><strong>仓外温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>仓内温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最高温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最低温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>平均温</strong></div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>当前数值</strong></div>
+                    <div class="col-sm-2 lh45">269</div>
+                    <div class="col-sm-2 lh45">25</div>
+                    <div class="col-sm-2 lh45">3</div>
+                    <div class="col-sm-2 lh45">25</div>
+                    <div class="col-sm-2 lh45">25</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>标准数值</strong></div>
+                    <div class="col-sm-2 lh45">-30 ~ 50</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>对比结果</strong></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-up text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-down text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"></div>
+                </div>
+            </form>
+        </div>
+        <div style="clear: both"></div>
+        <div class="panel-footer clearfix text-danger">
+            <small>检测结果：仓外温过高；仓内最高温过低</small>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">检测信息</div>
+            <hr class="mt mb0"/>
+        </div>
+        <div class="list-group panel-heading m-xl" style="clear: both">
+            <form class="form-horizontal p-20 ng-pristine ng-valid">
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"> </div>
+                    <div class="col-sm-2 lh45"><strong>仓外湿</strong></div>
+                    <div class="col-sm-2 lh45"><strong>仓内湿</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最高湿</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最低湿</strong></div>
+                    <div class="col-sm-2 lh45"><strong>平均湿</strong></div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>当前数值</strong></div>
+                    <div class="col-sm-2 lh45">85%</div>
+                    <div class="col-sm-2 lh45">25%</div>
+                    <div class="col-sm-2 lh45">0%</div>
+                    <div class="col-sm-2 lh45">25%</div>
+                    <div class="col-sm-2 lh45">25%</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>标准数值</strong></div>
+                    <div class="col-sm-2 lh45">0 ~ 50%</div>
+                    <div class="col-sm-2 lh45">0 ~ 45%</div>
+                    <div class="col-sm-2 lh45">0 ~ 45%</div>
+                    <div class="col-sm-2 lh45">0 ~ 45%</div>
+                    <div class="col-sm-2 lh45">0 ~ 45%</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>对比结果</strong></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-up text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-down text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"></div>
+                </div>
+            </form>
+        </div>
+        <div style="clear: both"></div>
+        <div class="panel-footer clearfix text-danger">
+            <small>检测结果：仓外湿度过高；仓内最高湿度过低</small>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">检测信息</div>
+            <hr class="mt mb0"/>
+        </div>
+        <div class="list-group panel-heading m-xl" style="clear: both">
+            <form class="form-horizontal p-20 ng-pristine ng-valid">
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"> </div>
+                    <div class="col-sm-2 lh45"><strong>磷化氢</strong></div>
+                    <div class="col-sm-2 lh45"><strong>氮气</strong></div>
+                    <div class="col-sm-2 lh45"><strong>氧气</strong></div>
+                    <div class="col-sm-2 lh45"><strong>二氧化碳</strong></div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>当前数值</strong></div>
+                    <div class="col-sm-2 lh45">119ppm</div>
+                    <div class="col-sm-2 lh45">89ppm</div>
+                    <div class="col-sm-2 lh45">225ppm</div>
+                    <div class="col-sm-2 lh45">658ppm</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>标准数值</strong></div>
+                    <div class="col-sm-2 lh45">80ppm ~ 130ppm</div>
+                    <div class="col-sm-2 lh45">30ppm ~ 75ppm</div>
+                    <div class="col-sm-2 lh45">180ppm ~ 250ppm</div>
+                    <div class="col-sm-2 lh45">600ppm ~ 800ppm</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>对比结果</strong></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-up text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"></div>
+                </div>
+            </form>
+        </div>
+        <div style="clear: both"></div>
+        <div class="panel-footer clearfix text-danger">
+            <small>检测结果：氮气含量过高</small>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">检测信息</div>
+            <hr class="mt mb0"/>
+        </div>
+        <div class="list-group panel-heading m-xl" style="clear: both">
+            <form class="form-horizontal p-20 ng-pristine ng-valid">
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"> </div>
+                    <div class="col-sm-2 lh45"><strong>仓外温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>仓内温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最高温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>最低温</strong></div>
+                    <div class="col-sm-2 lh45"><strong>平均温</strong></div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>当前数值</strong></div>
+                    <div class="col-sm-2 lh45">269</div>
+                    <div class="col-sm-2 lh45">25</div>
+                    <div class="col-sm-2 lh45">3</div>
+                    <div class="col-sm-2 lh45">25</div>
+                    <div class="col-sm-2 lh45">25</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>标准数值</strong></div>
+                    <div class="col-sm-2 lh45">-30 ~ 50</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                    <div class="col-sm-2 lh45">5 ~ 45</div>
+                </div>
+                <div class="form-group bb ml0 mr0 mb0">
+                    <div class="col-sm-2 lh45"><strong>对比结果</strong></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-up text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"><em class="fa fa-long-arrow-down text-danger"/></div>
+                    <div class="col-sm-2 lh45"></div>
+                    <div class="col-sm-2 lh45"></div>
+                </div>
+            </form>
+        </div>
+        <div style="clear: both"></div>
+        <div class="panel-footer clearfix text-danger">
+            <small>检测结果：仓外温过高；仓内最高温过低</small>
+        </div>
+    </div>
+</div>
+

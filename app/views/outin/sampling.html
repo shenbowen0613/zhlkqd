@@ -1,0 +1,92 @@
+<form class="form-horizontal" ng-controller="samplingController">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">卡号:</label>
+                    <div class="col-lg-5">
+                        <input type="text" id="smart_card" name="cardno" ng-click="readSmartCard()" required
+                               placeholder="智能卡号" class="form-control" ng-blur="samplingGetByCardno()">
+                    </div>
+                    <object id="mcard" classid="CLSID:856964B5-F42F-447B-A37D-ED07E8973ED2"
+                            style="display: none"></object>
+                </div>
+                <div class="form-group ">
+                    <label class="col-lg-3  control-label">产地:</label>
+                    <div class="col-lg-2" >
+                        <input name="prodplace" readonly="readonly" value='{{outinEntry.prodplace}}' class="form-control"/>
+                    </div>
+                    <label class="col-lg-1  control-label">供应商:</label>
+                    <div class="col-lg-2">
+                        <input name="customername" readonly="readonly" value='{{outinEntry.customername}}' class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3  control-label">车牌号:</label>
+                    <div class="col-lg-5">
+                        <input name="vehicleno"readonly="readonly" value='{{outinEntry.vehicleno}}' class="form-control"/>
+                    </div>
+                </div>
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-lg-3  control-label">开户行:</label>-->
+                    <!--<div class="col-lg-5">-->
+                        <!--<label class="control-label">{{outinEntry.outinCarrier.bankname}}</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-lg-3  control-label">银行卡:</label>-->
+                    <!--<div class="col-lg-5">-->
+                        <!--<label class="control-label">{{outinEntry.outinCarrier.bankcard}}</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" >扦样名称:</label>
+                        <div class="col-lg-5">
+                            <input name="name" ng-model="name" id="name" required type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">扦样类型:</label>
+                        <div class="col-lg-5">
+                            <select name="typecode" ng-model="typecode" id="typecode" class="form-control">
+                                <option value="自动">自动</option>
+                                <option value="人工">人工</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">扦样人员:</label>
+                        <div class="col-lg-5">
+                            <select name="qyoperator" ng-model="qyoperator" id="qyoperator"  class="form-control">
+                                <option ng-repeat="x in samplingList" value="{{x.code}}">{{x.label}}</option>
+                                <!--<option value="邱金光">邱金光</option>-->
+                                <!--<option value="扬平">扬平</option>-->
+                                <!--<option value="刘全义">刘全义</option>-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">扦样备注:</label>
+                        <div class="col-lg-5">
+                            <input name="memo" ng-model="memo" id="memo" required type="text"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5">
+                            <button id="reset" type="reset" id="btnReset" class="btn btn-info  btn-lg">重 置</button>
+                            <button type="button" ng-click="save()" class="btn btn-primary btn-lg">提 交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

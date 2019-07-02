@@ -1,0 +1,130 @@
+<div class="panel panel-default ng-scope" ng-controller="viewCameraController">
+    <div class="panel-body">
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机设备序号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.no}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机设备编码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.cameracode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机设备名称：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.cameraname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">硬盘录像机序号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.dvrmanufacturer}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">是否仓内：</label>
+                        <div class="col-lg-6">
+                            <label class="radio-inline c-radio">
+                                <strong ng-if="camera.ishourse==1">是</strong>
+                                <strong ng-if="camera.ishourse==0">否</strong>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓房编码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.houseid}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">是否安装补光灯：</label>
+                        <div class="col-lg-6">
+                            <label class="radio-inline c-radio">
+                                <strong ng-if="camera.ishourse==1">是</strong>
+                                <strong ng-if="camera.ishourse==0">否</strong>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">通道编号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.channelno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">通道别名：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.channelname}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">安装位置：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.location}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">照射区域：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.jurisdiction}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机类型</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.cameraname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机设备IP：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.cameraip}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">摄像机设备端口号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.cameraport}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">子网掩码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.subnetmask}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">网关地址：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.gateway}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">登录账号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.logincode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">登录密码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{camera.loginpassword}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

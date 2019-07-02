@@ -1,0 +1,192 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 添加数据字典类型信息-->
+<div class="panel panel-default ng-scope" ng-controller="addCustController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="name"  ng-model="cust.name" class="form-control" required ng-maxlength="30"/>
+                    <span ng-show="form.name.$dirty && form.name.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">客户简称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="shortname"  ng-model="cust.shortname" class="form-control" required ng-maxlength="20">
+                    <span ng-show="form.shortname.$dirty && form.shortname.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">摘要<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="summary"  ng-model="cust.summary" class="form-control" required ng-maxlength="200"/>
+                    <span ng-show="form.summary.$dirty && form.summary.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">经营范围<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="scopes"  ng-model="cust.scopes" class="form-control" required ng-maxlength="200"/>
+                    <span ng-show="form.scopes.$dirty && form.scopes.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">主营产品<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="products"  ng-model="cust.products" class="form-control" required ng-maxlength="200"/>
+                    <span ng-show="form.products.$dirty && form.products.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">合作开始时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="startime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="cust.startime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+                <label class="col-lg-2 control-label">合作结束时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="cust.endtime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户网址<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="url"  ng-model="cust.url" class="form-control" required>
+                    <span ng-show="form.url.$dirty&& form.url.$invalid" class="text-danger">请输入正确的网址</span>
+                </div>
+
+                <label class="col-lg-2 control-label">客户地址<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="address"  ng-model="cust.address" class="form-control" required ng-maxlength="200"/>
+                    <span ng-show="form.address.$dirty && form.address.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户代表<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="legalperson"  ng-model="cust.legalperson" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.legalperson.$dirty && form.legalperson.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+
+                <label class="col-lg-2 control-label">客户手机<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="mobile"  ng-model="cust.mobile" class="form-control" required />
+                    <span ng-show="form.mobile.$dirty && form.mobile.$invalid" class="text-danger">请输入正确的手机号码</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户座机<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="phone"  ng-model="cust.phone" class="form-control" required />
+                    <span ng-show="form.phone.$dirty && form.phone.$invalid" class="text-danger">请输入正确的座机号码</span>
+                </div>
+
+                <label class="col-lg-2 control-label">客户传真<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="fax"  ng-model="cust.fax" class="form-control" required />
+                    <span ng-show="form.fax.$dirty && form.fax.$invalid" class="text-danger">请输入正确的传真号码</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户邮箱<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="email" name="email"  ng-model="cust.email" type="text" class="form-control" required/>
+                    <span ng-show="form.email.$dirty && form.email.$invalid" class="text-danger">请输入正确的邮箱</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">紧急联系人<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="linkperson"  ng-model="cust.linkperson" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.linkperson.$dirty && form.linkperson.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">紧急联系电话<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="linkphone"  ng-model="cust.linkphone" class="form-control" required />
+                    <span ng-show="form.linkphone.$dirty && form.linkphone.$invalid" class="text-danger">请输入正确的号码</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">紧急联系地址<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="linkaddress"  ng-model="cust.linkaddress" class="form-control" required ng-maxlength="100"/>
+                    <span ng-show="form.linkaddress.$dirty && form.linkaddress.$invalid" class="text-danger">不可为空，且最多输入100个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户营业执照<font color="red">*</font></label>
+                <!--TODO 此处要上传的-->
+                <div class="col-lg-4">
+                    <input type="test" name="license"  ng-model="cust.license" class="form-control" required/>
+                </div>
+                <label class="col-lg-2 control-label">纳税人识别号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="taxno"  ng-model="cust.taxno" class="form-control" required />
+                    <span ng-show="form.taxno.$dirty && form.taxno.$invalid" class="text-danger">请输入正确的纳税人识别号</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户银行开户行<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="bankname"  ng-model="cust.bankname" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.bankname.$dirty && form.bankname.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+
+                <label class="col-lg-2 control-label">客户银行户主名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="bankperson"  ng-model="cust.bankperson" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.bankperson.$dirty && form.bankperson.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">客户银行卡号<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="bankcard"  ng-model="cust.bankcard" class="form-control" required/>
+                    <span ng-show="form.bankcard.$dirty && form.bankcard.$invalid" class="text-danger">请输入正确的银行卡号</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">备注</label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"> </textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="cust.memo"  name="memo"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.memo.$dirty && form.memo.$invalid" class="text-danger">最多输入5000个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

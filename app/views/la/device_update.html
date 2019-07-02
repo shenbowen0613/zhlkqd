@@ -1,0 +1,122 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<div class="panel panel-default ng-scope" ng-controller="updatedeviceController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <input type="hidden" name="id"  ng-model="device.id" class="form-control" required/>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设备名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="name" ng-model="device.name"   class="form-control" required  ng-maxlength="30" />
+                    <span ng-show="form.name.$dirty && form.name.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+
+                <label class="col-lg-2 control-label">类型<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="typecode" ng-model="device.typecode" id="typecode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in devicetreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设备厂商<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="manufacturercode" ng-model="device.manufacturercode" id="manufacturercode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in custtreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">设备状态<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="statuscode" ng-model="device.statuscode" id="statuscode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in devicestatusInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">出厂编码<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="code" ng-model="device.code"   class="form-control" required  ng-maxlength="30" />
+                    <span ng-show="form.code.$dirty && form.code.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">设备型号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="model"  ng-model="device.model" class="form-control" required ng-maxlength="30" />
+                    <span ng-show="form.model.$dirty && form.model.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">功率大小<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="power"  ng-model="device.power" class="form-control" required ng-maxlength="30" />
+                    <span ng-show="form.power.$dirty && form.power.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">工作模式<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="workmodel"  ng-model="device.workmodel" class="form-control" required ng-maxlength="30" />
+                    <span ng-show="form.workmodel.$dirty && form.workmodel.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">安装位置<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="location"  ng-model="device.location"  class="form-control" required ng-maxlength="30" />
+                    <span ng-show="form.location.$dirty && form.location.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">运行<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <label class="switch switch-lg">
+                        <input name="runstate" ng-model="device.runstate" type="checkbox"/>
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设备参数<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <div ng-repeat="detail in device.paras" class="mb">
+                        <span class="col-lg-2 pl0 pl0">{{detail.name}}</span>
+                        <span class="col-lg-2 pl0 pr0">
+                            <input name='detailKey' type='hidden' value='{{detail.key}}'/>
+                            <input id='detail-{{detail.key}}' class="form-control" value="{{detail.value}}"/>
+                        </span>
+                        <span class="col-lg-2 pl0 pr0">
+                            {{detail.unit}}
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">备注</label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"> </textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="device.memo"  name="memo"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.memo.$dirty && form.memo.$invalid" class="text-danger">最多输入5000个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

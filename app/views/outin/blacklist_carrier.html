@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>承运人信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App + jQuery">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="../vendor/animate.css/animate.min.css">
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="../vendor/whirl/dist/whirl.css">
+    <!-- =============== PAGE VENDOR STYLES ===============-->
+    <!-- DATATABLES-->
+    <link rel="stylesheet" href="../vendor/datatables-colvis/css/dataTables.colVis.css">
+    <link rel="stylesheet" href="vendor/datatable-bootstrap/css/dataTables.bootstrap.css">
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="../app/css/bootstrap.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="../app/css/app.css" id="maincss">
+</head>
+<body>
+
+
+<h3>出入库
+    <small>承运人信息</small>
+</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">添加到黑名单</div>
+                <div class="panel-body">
+                    <form id="myform" method="post" role="form">
+                        <div class="form-group">
+                            <label>身份证号</label>
+                            <input id="idcard" name="idcard" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>原因</label>
+                            <textarea id="reson" name="reson" class="form-control" rows="6"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>备注</label>
+                            <textarea id="memo" name="memo" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="button" onclick="submit_click();" class="btn btn-primary">提交</button>
+                    </form>
+                </div>
+            </div>
+            <!-- END panel-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- =============== VENDOR SCRIPTS ===============-->
+<!-- MODERNIZR-->
+<script src="../vendor/modernizr/modernizr.js"></script>
+<!-- JQUERY-->
+<script src="../vendor/jquery/dist/jquery.js"></script>
+<!-- BOOTSTRAP-->
+<script src="../vendor/bootstrap/dist/js/bootstrap.js"></script>
+<!-- STORAGE API-->
+<script src="../vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+<!-- JQUERY EASING-->
+<script src="../vendor/jquery.easing/js/jquery.easing.js"></script>
+<!-- ANIMO-->
+<script src="../vendor/animo.js/animo.js"></script>
+<!-- SLIMSCROLL-->
+<script src="../vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- SCREENFULL-->
+<script src="../vendor/screenfull/dist/screenfull.js"></script>
+<!-- LOCALIZE-->
+<script src="../vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>
+<!-- RTL demo-->
+<script src="../app/js/demo/demo-rtl.js"></script>
+<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+<!-- DATATABLES-->
+<script src="../vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables-colvis/js/dataTables.colVis.js"></script>
+<script src="../app/javascript/dataTables.bootstrap.js"></script>
+<script src="vendor/datatable-bootstrap/js/dataTables.bootstrapPagination.js"></script>
+<script src="../app/js/demo/demo-datatable.js"></script>
+<script src="../app/javascript/CreateDataTable.js"></script>
+<!-- =============== APP SCRIPTS ===============-->
+<script>
+    $(document).ready(function () {
+        $("#idcard").val(UrlSearch('idcard'));
+    });
+
+    function submit_click() {
+        if(isNull()){
+            $.ajax({
+                url: "carrier/addToBlackList.do",
+                type: "post",
+                dataType: 'json',
+                data: $('#myform').serialize(),// 你的formid 注：后台req.body由控件name获取数据
+                async: false,
+                cache: false,
+                success: function (result) {
+                    if(result == 1){
+                        alert("编辑成功");
+                    }else{
+                        alert("编辑失败");
+                    }
+                    location.href="outin.html#/app/outIn_carrier";
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+    }
+    
+    function isNull() {
+        if($('#idcard').val() == ""){
+            alert("身份证号不能为空");
+            return false;
+        }
+        if($('#reson').val() == ""){
+            alert("原因不能为空");
+            return false;
+        }
+        return true;
+    }
+    //获取url中的参数
+    function UrlSearch(searchName) {
+        var name, value;
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?")
+        str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+
+        var arr = str.split("&"); //各个参数放到数组里
+        for (var i = 0; i < arr.length; i++) {
+            num = arr[i].indexOf("=");
+            if (num > 0) {
+                name = arr[i].substring(0, num);
+                value = arr[i].substr(num + 1);
+                this[name] = value;
+                if(name==searchName)
+                {
+                    return value;
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

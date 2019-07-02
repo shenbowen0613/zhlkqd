@@ -1,0 +1,24 @@
+<h3>
+    远程监管系统
+</h3>
+<div class="row" ng-controller="remoteController">
+    <div class="col-lg-6">
+        <div class="well">
+            <div class="mb">命令列表</div>
+            <div ng-click="getDetail(file)" class="mb-sm" ng-repeat="file in files" >
+                {{file}}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="well well-lg">
+            <div>
+            <button ng-click="toEdit()" class="mb-sm btn btn-primary">添加命令</button>
+            <button ng-click="toEdit(curFile)" class="mb-sm btn btn-primary">编辑命令</button>
+            <button ng-click="delete(curFile)" class="mb-sm btn btn-primary">删除命令</button>
+            </div>
+            <textarea  disabled style="resize: none;width: 400px;height: 550px">{{commandDetail}}</textarea>
+        </div>
+    </div>
+</div>
+

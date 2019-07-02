@@ -1,0 +1,185 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 详情查看页面-->
+<div class="panel panel-default ng-scope" ng-controller="viewCustController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">详情查看</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户名称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.name}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">客户简称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.shortname}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">摘要：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.summary}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">经营范围：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.scopes}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">主营产品：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.products}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">合作开始时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.startime}}</strong>
+                        </div>
+
+                        <div class="col-sm-2 control-label">合作结束时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.endtime}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户网址：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.url}}</strong>
+                        </div>
+
+                        <div class="col-sm-2 control-label">客户地址：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.address}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户代表：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.legalperson}}</strong>
+                        </div>
+
+                        <div class="col-sm-2 control-label">客户手机：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.mobile}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户座机：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.phone}}</strong>
+                        </div>
+
+                        <div class="col-sm-2 control-label">客户传真：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.fax}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户邮箱：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.email}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">紧急联系人：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.linkperson}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">紧急联系电话：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.linkphone}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">紧急联系地址：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.linkaddress}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户营业执照：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.license}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">纳税人识别号：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.taxno}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户银行开户行：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.bankname}}</strong>
+                        </div>
+
+                        <div class="col-sm-2 control-label">客户银行户主名称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{cust.bankperson}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">客户银行卡号：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.bankcard}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">图片：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.images}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">附件：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{cust.attach}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">备注：</div>
+                        <div class="col-sm-10 mt">
+                            <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                                <div class="ng-wig">
+                                    <div class="nw-editor">
+                                        <iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe>
+                                    </div>
+                                </div>
+                            </script>
+                            <textarea ng-wig="cust.memo" ng-maxlength="5000"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END 详情查看页面-->
+

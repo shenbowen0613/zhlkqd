@@ -1,0 +1,238 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<div class="panel panel-default ng-scope" ng-controller="updatehouseController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <input type="hidden" name="id"  ng-model="house.id" class="form-control" required/>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓房名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="housename"  ng-model="house.housename" class="form-control" required ng-maxlength="6"/>
+                    <span ng-show="form.housename.$dirty && form.housename.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓房编号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="number" name="houseno"  ng-model="house.houseno" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.houseno.$dirty && form.houseno.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓房类型<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select id="typecode" name="typecode" ng-model="house.typecode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in treeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">交付日期<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="submitdate"  ng-model="house.submitdate" class="form-control" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">墙体结构<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="wall"  ng-model="house.wall" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.wall.$dirty && form.wall.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">房顶结构<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="roof"  ng-model="house.roof" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.roof.$dirty && form.roof.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">房架结构<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="structure"  ng-model="house.structure" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.structure.$dirty && form.structure.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">地面结构<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="ground"  ng-model="house.ground" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.ground.$dirty && form.ground.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设计仓容（T）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="designcapacity" ng-model="house.designcapacity" class="form-control"required  ng-maxlength="6"/>
+                    <span ng-show="form.designcapacity.$dirty && form.designcapacity.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">实际仓容（T）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="confirmcapacity" ng-model="house.confirmcapacity" class="form-control"required  ng-maxlength="6"/>
+                    <span ng-show="form.confirmcapacity.$dirty && form.confirmcapacity.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓外长（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outlength" ng-model="house.outlength" class="form-control"required  ng-maxlength="6"/>
+                    <span ng-show="form.outlength.$dirty && form.outlength.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓外宽（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outwidth" ng-model="house.outwidth" class="form-control"required  ng-maxlength="6"/>
+                    <span ng-show="form.outwidth.$dirty && form.outwidth.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓外檐高（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outeavesheight" ng-model="house.outeavesheight" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.outeavesheight.$dirty && form.outeavesheight.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓外顶高（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outroofheight" ng-model="house.outroofheight" class="form-control"required  ng-maxlength="6"/>
+                    <span ng-show="form.outroofheight.$dirty && form.outroofheight.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓外筒仓外径（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outdiameter" ng-model="house.outdiameter" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.outdiameter.$dirty && form.outdiameter.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓外墙面积（平方）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="outwallarea" ng-model="house.outwallarea" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.outwallarea.$dirty && form.outwallarea.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓内长（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="inlength" ng-model="house.inlength" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.inlength.$dirty && form.inlength.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓内宽（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="inwidth" ng-model="house.inwidth" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.inwidth.$dirty && form.inwidth.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓内檐高（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="ineavesheight" ng-model="house.ineavesheight" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.ineavesheight.$dirty && form.ineavesheight.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓内装粮线高（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="instoreheight" ng-model="house.instoreheight" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.instoreheight.$dirty && form.instoreheight.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">实际装粮线高（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="instoreheightdesign" ng-model="house.instoreheightdesign" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.instoreheightdesign.$dirty && form.instoreheightdesign.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓内筒仓内径（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="indiameter" ng-model="house.indiameter" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.indiameter.$dirty && form.indiameter.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓内体积（立方）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="involume" ng-model="house.involume" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.involume.$dirty && form.involume.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">粮堆体积（立方）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="grainvolume" ng-model="house.grainvolume" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.grainvolume.$dirty && form.grainvolume.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓门位置<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="doorposition" ng-model="house.doorposition" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.doorposition.$dirty && form.doorposition.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">仓门数量（个）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="number" name="doornumber" ng-model="house.doornumber" class="form-control" required ng-maxlength="2"/>
+                    <span ng-show="form.doornumber.$dirty && form.doornumber.$invalid" class="text-danger">不可为空，且最多输入2位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓门宽度（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="doorwidth" ng-model="house.doorwidth" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.doorwidth.$dirty && form.doorwidth.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+                <label class="col-lg-2 control-label">仓门高度（米）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="doorheight" ng-model="house.doorheight" class="form-control"required ng-maxlength="6"/>
+                    <span ng-show="form.doorheight.$dirty && form.doorheight.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">通风方式<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="ventilationtype" ng-model="house.ventilationtype" class="form-control"required ng-maxlength="20"/>
+                    <span ng-show="form.ventilationtype.$dirty && form.ventilationtype.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">隔热方式<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="heatinsulationtype" ng-model="house.heatinsulationtype" class="form-control"required ng-maxlength="20"/>
+                    <span ng-show="form.heatinsulationtype.$dirty && form.heatinsulationtype.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">保管员<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="keeper" ng-model="house.keeper" class="form-control"required ng-maxlength="20"/>
+                    <span ng-show="form.keeper.$dirty && form.keeper.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">保管员电话<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="keeperphone" ng-model="house.keeperphone" class="form-control"required />
+                    <span ng-show="form.keeperphone.$dirty && form.keeperphone.$invalid" class="text-danger">请输入正确的手机号码</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">储粮类型<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <label class="switch switch-lg">
+                        <select id="isrs" name="isrs" ng-model="house.isrs" class="form-control" required>
+                            <option value="">请选择...</option>
+                            <option ng-repeat="item in isrstreeInfos" value="{{item.code}}">{{item.label}}</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">备注</label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"> </textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="house.memo"  name="memo"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.memo.$dirty && form.memo.$invalid" class="text-danger">最多输入5000个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="updateRelayController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">控制器编号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select id="controlcode" name="controlcode" ng-model="relay.controlcode"
+                            ng-options="item.controlcode as item.controlname for item in allControl" class="form-control">
+                        <option value="">请选择...</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">继电器编号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="relayno"  ng-model="relay.relayno" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.relayno.$dirty && form.relayno.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">控制对象<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="controlobj"  ng-model="relay.controlobj" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.controlobj.$dirty && form.controlobj.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">对象位置<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="objposition"  ng-model="relay.objposition" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.objposition.$dirty && form.objposition.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,51 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 添加数据字典类型信息-->
+<div class="panel panel-default ng-scope" ng-controller="viewControlInfoController">
+    <div class="panel-body">
+        <div class="col-md-12">
+            <p class="lead bb">详情查看</p>
+            <form class="form-horizontal p-20">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">控制器编码：</label>
+                    <div class="col-sm-4 mt">
+                        {{controlinfo.controlcode}}
+                    </div>
+                    <label class="col-sm-2 control-label">控制器名称：</label>
+                    <div class="col-sm-4 mt">
+                        {{controlinfo.controlname}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">ip地址：</label>
+                    <div class="col-sm-4 mt">
+                        {{controlinfo.ip}}
+                    </div>
+                    <label class="col-sm-2 control-label">端口：</label>
+                    <div class="col-sm-4 mt">
+                        {{controlinfo.port}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">厂家编码：</label>
+                    <div class="col-sm-4 mt">
+                        {{controlinfo.firmcode}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 mt" >
+                        <span ng-include="'app/views/base/to_remove.html'"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END 添加数据字典类型信息-->
+

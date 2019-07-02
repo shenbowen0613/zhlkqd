@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>xiangqing.html</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="/app/css/bootstrap.css" rel="stylesheet"/>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script src="/app/js/layer/angular1.5.min.js" type="text/javascript"></script>
+</head>
+
+<body ng-app="app" ng-controller="xiangqingCtrl">
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="col-md-6">
+                <label>模式</label>
+                <select class="form-control" ng-model="moshi" ng-change="mosc()">
+                    <option value="1" selected>开窗</option>
+                    <option value="2">风机开窗</option>
+                    <option value="3">通风</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label>仓房</label>
+                <select class="form-control" ng-model="house" ng-change="changeHouse()">
+                    <option value="{'houseno':'17','houseip':'192.0.0.192'}" selected="selected">17号仓</option>
+                    <option value="{'houseno':'19','houseip':'192.0.0.193'}">19号仓</option>
+                    <option value="{'houseno':'21','houseip':'192.0.0.194'}">21号仓</option>
+                    <option value="{'houseno':'23','houseip':'192.0.0.195'}">23号仓</option>
+                    <option value="{'houseno':'25','houseip':'192.0.0.196'}">25号仓</option>
+                    <option value="{'houseno':'27','houseip':'192.0.0.197'}">27号仓</option>
+                    <option value="{'houseno':'28','houseip':'192.0.0.198'}">28号仓</option>
+                    <option value="{'houseno':'31','houseip':'192.0.0.191'}">31号仓</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 column">
+            <table style="width: 100%;" ng-show="moshi1" class="moshi1">
+                <tr>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang1">
+                        <div>
+                            <label>自然窗1:</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang1.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang1.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id22" ng-if="ziranchuang1.state == 0"
+                                ng-click="onoffwindow('22','ziranchuang','ziranchuang1',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" ng-if="ziranchuang1.state == 1"
+                                ng-click="onoffwindow('24','ziranchuang','ziranchuang1',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang2">
+                        <div>
+                            <label>自然窗2</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang2.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang2.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id26" ng-if="ziranchuang2.state == 0"
+                                ng-click="onoffwindow('26','ziranchuang','ziranchuang2',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id3f" ng-if="ziranchuang2.state == 1"
+                                ng-click="onoffwindow('3f','ziranchuang','ziranchuang2',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang3">
+                        <div>
+                            <label>自然窗3</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang3.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang3.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id42" ng-if="ziranchuang3.state == 0"
+                                ng-click="onoffwindow('42','ziranchuang','ziranchuang3',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id44" ng-if="ziranchuang3.state == 1"
+                                ng-click="onoffwindow('44','ziranchuang','ziranchuang3',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang4">
+                        <div>
+                            <label>自然窗4</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang4.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang4.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id46" ng-if="ziranchuang4.state == 0"
+                                ng-click="onoffwindow('46','ziranchuang','ziranchuang4',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id48" ng-if="ziranchuang4.state == 1"
+                                ng-click="onoffwindow('48','ziranchuang','ziranchuang4',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang5">
+                        <div>
+                            <label>自然窗5</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang5.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang5.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id4a" ng-if="ziranchuang5.state == 0"
+                                ng-click="onoffwindow('4a','ziranchuang','ziranchuang5',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id4c" ng-if="ziranchuang5.state == 1"
+                                ng-click="onoffwindow('4c','ziranchuang','ziranchuang5',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang6">
+                        <div>
+                            <label>自然窗6</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang6.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang6.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id4e" ng-if="ziranchuang6.state == 0"
+                                ng-click="onoffwindow('4e','ziranchuang','ziranchuang6',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id50" ng-if="ziranchuang6.state == 1"
+                                ng-click="onoffwindow('50','ziranchuang','ziranchuang6',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang7">
+                        <div>
+                            <label>自然窗7</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang7.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang7.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id52" ng-if="ziranchuang7.state == 0"
+                                ng-click="onoffwindow('52','ziranchuang','ziranchuang7',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id54" ng-if="ziranchuang7.state == 1"
+                                ng-click="onoffwindow('54','ziranchuang','ziranchuang7',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 20px;text-align: center;" ng-if="ziranchuang8">
+                        <div>
+                            <label>自然窗8</label>
+                            <span style="color: #1e7e34;" ng-if="ziranchuang8.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="ziranchuang8.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id56" ng-if="ziranchuang8.state == 0"
+                                ng-click="onoffwindow('56','ziranchuang','ziranchuang8',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id58" ng-if="ziranchuang8.state == 1"
+                                ng-click="onoffwindow('58','ziranchuang','ziranchuang8',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 20px;text-align: center;">
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id72"
+                                ng-click="onoffwindow('72','ziranchuang','',1)">全开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id74"
+                                ng-click="onoffwindow('74','ziranchuang','',0)">全关
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%;" ng-show="moshi2" class="moshi2">
+                <tr>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengjichuang1">
+                        <div>
+                            <label>轴流风机窗1</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengjichuang1.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengjichuang1.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id5a" ng-if="zhouliufengjichuang1.state == 0"
+                                ng-click="onoffwindow('5a','zhouliufengjichuang','zhouliufengjichuang1',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id62" ng-if="zhouliufengjichuang1.state == 1"
+                                ng-click="onoffwindow('62','zhouliufengjichuang','zhouliufengjichuang1',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengjichuang2">
+                        <div>
+                            <label>轴流风机窗2</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengjichuang2.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengjichuang2.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id64" ng-if="zhouliufengjichuang2.state == 0"
+                                ng-click="onoffwindow('64','zhouliufengjichuang','zhouliufengjichuang2',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id66" ng-if="zhouliufengjichuang2.state == 1"
+                                ng-click="onoffwindow('66','zhouliufengjichuang','zhouliufengjichuang2',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengjichuang3">
+                        <div>
+                            <label>轴流风机窗3</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengjichuang3.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengjichuang3.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id68" ng-if="zhouliufengjichuang3.state == 0"
+                                ng-click="onoffwindow('68','zhouliufengjichuang','zhouliufengjichuang3',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id6a" ng-if="zhouliufengjichuang3.state == 1"
+                                ng-click="onoffwindow('6a','zhouliufengjichuang','zhouliufengjichuang3',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengjichuang4">
+                        <div>
+                            <label>轴流风机窗4</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengjichuang4.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengjichuang4.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id6c" ng-if="zhouliufengjichuang4.state == 0"
+                                ng-click="onoffwindow('6c','zhouliufengjichuang','zhouliufengjichuang4',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id6e" ng-if="zhouliufengjichuang4.state == 1"
+                                ng-click="onoffwindow('6e','zhouliufengjichuang','zhouliufengjichuang4',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 15px;text-align: center;">
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7336"
+                                ng-click="onoffwindow('73,36','zhouliufengjichuang','',1)">全开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7373737336"
+                                ng-click="onoffwindow('73,73,73,73,36','zhouliufengjichuang','',0)">全关
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengkou1">
+                        <div>
+                            <label>底部风口1</label>
+                            <span style="color: #1e7e34;" ng-if="dibufengkou1.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="dibufengkou1.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id31" ng-if="dibufengkou1.state == 0"
+                                ng-click="onoffwindow('31','dibufengkou','dibufengkou1',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id33" ng-if="dibufengkou1.state == 1"
+                                ng-click="onoffwindow('33','dibufengkou','dibufengkou1',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengkou2">
+                        <div>
+                            <label>底部风口2</label>
+                            <span style="color: #1e7e34;" ng-if="dibufengkou2.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="dibufengkou2.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id35" ng-if="dibufengkou2.state == 0"
+                                ng-click="onoffwindow('35','dibufengkou','dibufengkou2',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id37" ng-if="dibufengkou2.state == 1"
+                                ng-click="onoffwindow('37','dibufengkou','dibufengkou2',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengkou3">
+                        <div>
+                            <label>底部风口3</label>
+                            <span style="color: #1e7e34;" ng-if="dibufengkou3.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="dibufengkou3.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id39" ng-if="dibufengkou3.state == 0"
+                                ng-click="onoffwindow('39','dibufengkou','dibufengkou3',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7331" ng-if="dibufengkou3.state == 1"
+                                ng-click="onoffwindow('73,31','dibufengkou','dibufengkou3',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengkou4">
+                        <div>
+                            <label>底部风口4</label>
+                            <span style="color: #1e7e34;" ng-if="dibufengkou4.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="dibufengkou4.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7333" ng-if="dibufengkou4.state == 0"
+                                ng-click="onoffwindow('73,33','dibufengkou','dibufengkou4',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7335" ng-if="dibufengkou4.state == 1"
+                                ng-click="onoffwindow('73,35','dibufengkou','dibufengkou4',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 15px;text-align: center;">
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7330"
+                                ng-click="onoffwindow('73,30','dibufengkou','',1)">全开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7332"
+                                ng-click="onoffwindow('73,32','dibufengkou','',0)">全关
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%;" ng-show="moshi3" class="moshi3">
+                <tr>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengji1">
+                        <div>
+                            <label>轴流风机1</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengji1.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengji1.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7337"  ng-if="zhouliufengji1.state == 0"
+                                ng-click="onoffwindow('73,37','zhouliufengji','zhouliufengji1',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7338"  ng-if="zhouliufengji1.state == 1"
+                                ng-click="onoffwindow('73,38','zhouliufengji','zhouliufengji1',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengji2">
+                        <div>
+                            <label>轴流风机2</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengji2.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengji2.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7339" ng-if="zhouliufengji2.state == 0"
+                                ng-click="onoffwindow('73,39','zhouliufengji','zhouliufengji2',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id737331" ng-if="zhouliufengji2.state == 1"
+                                ng-click="onoffwindow('73,73,31','zhouliufengji','zhouliufengji2',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengji3">
+                        <div>
+                            <label>轴流风机3</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengji3.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengji3.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id737332" ng-if="zhouliufengji3.state == 0"
+                                ng-click="onoffwindow('73,73,32','zhouliufengji','zhouliufengji3',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id737333" ng-if="zhouliufengji3.state == 1"
+                                ng-click="onoffwindow('73,73,33','zhouliufengji','zhouliufengji3',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="zhouliufengji4">
+                        <div>
+                            <label>轴流风机4</label>
+                            <span style="color: #1e7e34;" ng-if="zhouliufengji4.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="zhouliufengji4.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id737334" ng-if="zhouliufengji4.state == 0"
+                                ng-click="onoffwindow('73,73,34','zhouliufengji','zhouliufengji4',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id737335" ng-if="zhouliufengji4.state == 1"
+                                ng-click="onoffwindow('73,73,35','zhouliufengji','zhouliufengji4',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengji1">
+                        <div>
+                            <label>底部风机1</label>
+                            <span style="color: #1b72e2;" ng-if="dibufengji1.state == 1">送风</span>
+                            <span style="color: #1e7e34;" ng-if="dibufengji1.state == 2">抽风</span>
+                            <span style="color: #ff4c20" ng-if="dibufengji1.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id737336" ng-if="dibufengji1.state != 1"
+                                ng-click="onoffwindow('73,73,36','dibufengji','dibufengji1',1)">送风
+                        </button>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id737338" ng-if="dibufengji1.state != 2"
+                                ng-click="onoffwindow('73,73,38','dibufengji','dibufengji1',2)">抽风
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning btn-sm" name="oprText" id="id737337" ng-if="dibufengji1.state != 0"
+                                ng-click="onoffwindow('73,73,37','dibufengji','dibufengji1',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengji2">
+                        <div>
+                            <label>底部风机2</label>
+                            <span style="color: #1b72e2;" ng-if="dibufengji2.state == 1">送风</span>
+                            <span style="color: #1e7e34;" ng-if="dibufengji2.state == 2">抽风</span>
+                            <span style="color: #ff4c20" ng-if="dibufengji2.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id73737330" ng-if="dibufengji2.state != 1"
+                                ng-click="onoffwindow('73,73,73,30','dibufengji','dibufengji2',1)">送风
+                        </button>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id73737333" ng-if="dibufengji2.state != 2"
+                                ng-click="onoffwindow('73,73,73,33','dibufengji','dibufengji2',2)">抽风
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning btn-sm" name="oprText" id="id73737334" ng-if="dibufengji2.state != 0"
+                                ng-click="onoffwindow('73,73,73,34','dibufengji','dibufengji2',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengji3">
+                        <div>
+                            <label>底部风机3</label>
+                            <span style="color: #1b72e2;" ng-if="dibufengji3.state == 1">送风</span>
+                            <span style="color: #1e7e34;" ng-if="dibufengji3.state == 2">抽风</span>
+                            <span style="color: #ff4c20" ng-if="dibufengji3.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id737330" ng-if="dibufengji3.state != 1"
+                                ng-click="onoffwindow('73,73,30','dibufengji','dibufengji3',1)">送风
+                        </button>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" id="id73737337" ng-if="dibufengji3.state != 2"
+                                ng-click="onoffwindow('73,73,73,37','dibufengji','dibufengji3',2)">抽风
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning btn-sm" name="oprText" id="id73737338" ng-if="dibufengji3.state != 0"
+                                ng-click="onoffwindow('73,73,73,38','dibufengji','dibufengji3',0)">关闭
+                        </button>
+                    </td>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="dibufengji4">
+                        <div>
+                            <label>底部风机4</label>
+                            <span style="color: #1b72e2;" ng-if="dibufengji4.state == 1">送风</span>
+                            <span style="color: #1e7e34;" ng-if="dibufengji4.state == 2">抽风</span>
+                            <span style="color: #ff4c20" ng-if="dibufengji4.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" ng-if="dibufengji4.state != 1"
+                                id="id7373737330"
+                                ng-click="onoffwindow('73,73,73,73,30','dibufengji','dibufengji4',1)">送风
+                        </button>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText" ng-if="dibufengji4.state != 2"
+                                id="id7373737332"
+                                ng-click="onoffwindow('73,73,73,73,32','dibufengji','dibufengji4',2)">抽风
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning btn-sm" name="oprText" ng-if="dibufengji4.state != 0"
+                                id="id7373737333"
+                                ng-click="onoffwindow('73,73,73,73,33','dibufengji','dibufengji4',0)">关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 15px;text-align: center;">
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText"
+                                id="id7373737337"
+                                ng-click="onoffwindow('73,73,73,73,37','dibufengji','',1)">全部送风
+                        </button>
+                        <button type="button" class="btn btn-default btn-success btn-sm" name="oprText"
+                                id="id7373737338"
+                                ng-click="onoffwindow('73,73,73,73,38','dibufengji','',2)">全部抽风
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning btn-sm" name="oprText"
+                                id="id7373737339"
+                                ng-click="onoffwindow('73,73,73,73,39','dibufengji','',0)">全部关闭
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;padding: 15px;text-align: center;" ng-if="huanliufengji">
+                        <div>
+                            <label>环流风机</label>
+                            <span style="color: #1b72e2;" ng-if="huanliufengji.state == 1">已打开</span>
+                            <span style="color: #ff4c20" ng-if="huanliufengji.state == 0">已关闭</span>
+                        </div>
+                        <button type="button" class="btn btn-default btn-success" name="oprText" id="id7373737334" ng-if="huanliufengji.state != 1"
+                                ng-click="onoffwindow('73,73,73,73,34','huanliufengji','huanliufengji',1)">打开
+                        </button>
+                        <button type="button" class="btn btn-default btn-warning" name="oprText" id="id7373737335" ng-if="huanliufengji.state != 0"
+                                ng-click="onoffwindow('73,73,73,73,35','huanliufengji','huanliufengji',0)">关闭
+                        </button>
+                    </td>
+                    <td colspan="3" style="width: 75%;padding: 15px;text-align: center;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var app = angular.module('app', []);
+    app.controller('xiangqingCtrl', function ($scope, $http) {
+        $scope.house = "{'houseno':'17','houseip':'192.0.0.192'}";
+        $scope.moshi = "1";
+        $scope.moshi1 = true;
+        $scope.moshi2 = false;
+        $scope.moshi3 = false;
+
+        $scope.mosc = function () {
+            if ($scope.moshi === "1") {
+                $scope.moshi1 = true;
+                $scope.moshi2 = false;
+                $scope.moshi3 = false;
+            }
+            if ($scope.moshi === "2") {
+                $scope.moshi1 = false;
+                $scope.moshi2 = true;
+                $scope.moshi3 = false;
+            }
+            if ($scope.moshi === "3") {
+                $scope.moshi1 = false;
+                $scope.moshi2 = false;
+                $scope.moshi3 = true;
+            }
+            $scope.changeHouse();
+        };
+
+        $scope.changeHouse = function () {
+            var obj = eval('(' + $scope.house + ')');
+            $scope.houseip = obj.houseip;
+            $scope.houseno = obj.houseno;
+            $http({
+                url: '/window/control/queryWindowControlList',
+                method: 'POST',
+                params: {
+                    houseno: $scope.houseno
+                }
+            }).success(function (data) {
+                if (data.success) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var window = data.data[i];
+                        $scope[window.windowcode] = window;
+                    }
+                }
+            }).error(function (result) { //提交失败
+                alert("服务器异常！");
+            });
+        };
+
+        $scope.onoffwindow = function (minl,windowType,windowCode,state) {
+            var pData = {
+                hostIp: $scope.houseip,
+                houseno: $scope.houseno,
+                windowType: windowType,
+                windowCode: windowCode,
+                state: state,
+                instructions: minl
+            };
+            $http({
+                url: '/window/control/windowsControl',
+                method: 'POST',
+                params: pData
+            }).success(function (data) {
+                if (data.success) {
+                    $scope.changeHouse();
+                }
+                alert(data.info);
+            }).error(function (result) { //提交失败
+                alert("发送失败！");
+            });
+        };
+
+        $scope.sleep = function (n) {
+            var start = new Date().getTime();
+            //  console.log('休眠前：' + start);
+            while (true) {
+                if (new Date().getTime() - start > n) {
+                    break;
+                }
+            }
+            // console.log('休眠后：' + new Date().getTime());
+        }
+        //执行默认仓库
+        $scope.changeHouse();
+
+    });
+
+
+</script>

@@ -1,0 +1,21 @@
+<h3 id="topBar">
+    气体详情 <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="container-fluid" ng-controller="gasViewController">
+    <div class="col-lg-12">
+        <!--图表信息-高度必填 begin-->
+        <rzhecharts id="gasViewCharts" rid="gasViewCharts" option="gas_view_option" height="500"></rzhecharts>
+        <!--图表信息 end-->
+        <!-- 列表信息 begin-->
+        <div class="bg-fcfcfc mt p">
+            <h4>数据(规格：[磷化氢，氮气，氧气，二氧化碳] ppm)</h4>
+            <hr mt mb/>
+            <div ng-controller="gasViewGridController">
+                <table id="gasViewTableGrids" class="row-border hover">
+                </table>
+            </div>
+        </div>
+        <!-- 列表信息 end-->
+    </div>
+</div>
+

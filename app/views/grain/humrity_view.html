@@ -1,0 +1,94 @@
+<h3 id="topBar">
+    湿度详情
+    <!--<span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>-->
+</h3>
+<div class="panel panel-default ng-scope" ng-controller="humrityViewController">
+    <div class="panel-body">
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓房名称：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.housename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">储粮档案编号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.archivesno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">湿度检测编码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.inspectionhno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">最高湿度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.highh}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">最低湿度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.lowh}}</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">平均湿度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.avgh}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓内空气湿度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.inh}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓外空气湿度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.outh}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">报备编号</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.reportno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">检测结果：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.resultname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">分析结果：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.statusname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">备注：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.memo}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

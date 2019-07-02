@@ -1,0 +1,97 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 详情查看页面-->
+<div class="panel panel-default ng-scope" ng-controller="viewgranaryController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">详情查看</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">廒间名称：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granaryname}}
+                        </div>
+                        <label class="col-sm-2 control-label">长（米）：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarylength}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">宽（米）：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarywidth}}
+                        </div>
+                        <label class="col-sm-2 control-label">高(米)：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granaryheight}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">设计仓容：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarydesigncapacity}}
+                        </div>
+                        <label class="col-sm-2 control-label">实际仓容：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granaryactualcapacity}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">廒间经度：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarylongitude}}
+                        </div>
+                        <label class="col-sm-2 control-label">廒间纬度：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarylatitude}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">启用日期：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granaryenabledate}}
+                        </div>
+                        <label class="col-sm-2 control-label">联系电话：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarytel}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">建设状态：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granarystatus}}
+                        </div>
+                        <label class="col-sm-2 control-label">使用状态：</label>
+                        <div class="col-sm-4 mt">
+                            {{granary.granaryusestatus}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="col-sm-10 mt">
+                            <script type="text/ng-template" id="ng-wig/views/ng-wig.html"><div class="ng-wig"><div class="nw-editor"><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div></script>
+                            <textarea ng-wig="granary.memo" ng-maxlength="5000"></textarea>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-20" >
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END 详情查看页面-->
+

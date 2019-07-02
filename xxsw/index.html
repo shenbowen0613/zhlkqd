@@ -1,0 +1,807 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example 03.01 - Ambient Light</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script type="text/javascript" src="js/DDSLoader.js"></script>
+    <script type="text/javascript" src="js/OBJLoader.js"></script>
+    <script type="text/javascript" src="js/MTLLoader.js"></script>
+    <script type="text/javascript" src="js/Detector.js"></script>
+    <script type="text/javascript" src="js/stats.min.js"></script>
+    <script type="text/javascript" src="js/OrbitControls.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <script type="text/javascript" src="js/WdatePicker.js"></script>
+    <!--<script type="text/javascript" src="js/Water.js"></script>-->
+    <script type="text/javascript" src="js/xinxitc.js"></script><!--仓房弹出信息 -->
+    <!--<script type="text/javascript" src="build/OrbitControls.js"></script> -->
+</head>
+<body>
+<div class="progressdiv">
+    <div style="width: 70%;height: 70%;margin: 15%;text-align: center;">
+        <!--<img src="img/zyghlogo.png" style="margin: 3%;"/>-->
+        <div class="progress">
+            <span class="blue" style="width: 0%;"><span id="spantext">0%</span></span>
+        </div>
+    </div>
+</div>
+<!-- Div which will hold the Output -->
+<button type="button" id="buttone" class="btn btn-block btn-primary btn-lg" onclick="cameraAnimateout();" style="display: none;" >退出漫游</button>
+<div id="wendud" style="display: none;">
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperatureout();">退出</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperaturew(0);">一层</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperaturew(1);">二层</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperaturew(2);">三层</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperaturew(3);">四层</button>
+        </div>
+        <div class="col-md-2">
+            <select id="cangfangwd" onchange="liangshic()" class="form-control">
+                <option value="06b4b29841b5484190a23f33760d0c3a" selected = "selected">01仓</option>
+                <option value="489d905fc59f4c5a916c97265370cd79">02仓</option>
+                <option value="489d905fc59f4c5a916c97265370c001">03仓</option>
+                <option value="489d905fc59f4c5a916c97265370c002">04仓</option>
+                <option value="489d905fc59f4c5a916c97265370c003">05仓</option>
+                <option value="489d905fc59f4c5a916c97265370c004">06仓</option>
+                <option value="489d905fc59f4c5a916c97265370c005">07仓</option>
+                <option value="489d905fc59f4c5a916c97265370c006">08仓</option>
+                <option value="489d905fc59f4c5a916c97265370c007">09仓</option>
+                <option value="489d905fc59f4c5a916c97265370c010">10仓</option>
+                <option value="489d905fc59f4c5a916c97265370c011">11仓</option>
+                <option value="489d905fc59f4c5a916c97265370c012">12仓</option>
+                <option value="489d905fc59f4c5a916c97265370c013">13仓</option>
+                <option value="489d905fc59f4c5a916c97265370c014">14仓</option>
+                <option value="489d905fc59f4c5a916c97265370c015">15仓</option>
+                <option value="489d905fc59f4c5a916c97265370c016">16仓</option>
+                <option value="37f16fdc1eab4f8f84c1985fd93b33b4">17仓</option>
+                <option value="f5c260fdbf194307acda2298b80760a3">18仓</option>
+                <option value="373d9ed612d640a4ad87c96f9982851d">19仓</option>
+                <option value="21e0c17e19ec4203822fc6071caa342f">20仓</option>
+                <option value="cb9a4b01a48f426b845852047235a53c">21仓</option>
+                <option value="7f418dfaf1344d3b88161ce3dc6de7c9">22仓</option>
+                <option value="f4e1e92f8c4a4d50b614a8495ce0a670">23仓</option>
+                <option value="203511f65716481296c598d198296ff8">24仓</option>
+                <option value="9acd4a4bf2364d1e904035fae8872222">25仓</option>
+                <option value="519667f3126f472698b7ee99b7985333">26仓</option>
+                <option value="f87cb7140f744959929d5c79b59ce2f1">27仓</option>
+                <option value="1591266692c54ade8140bd28d850aa79">28仓</option>
+                <option value="04f9fb1700f84f3f97644659b8f837d6">29仓</option>
+                <option value="b03565fcb118453c8aa5f7fe94dabb21">30仓</option>
+                <option value="8bf2adfea9e74d1cb73beac38afd56df">31仓</option>
+                <option value="02e58f2517c2400c8593c0ab1f90504d">32仓</option>
+                <option value="c0993a18cd8f4194b955f198ee48d28f">33仓</option>
+                <option value="383fb5c952c5468ebbfa256cd4da5fcd">34仓</option>
+                <option value="86cd0f7839ff4cf5b9ab220a6f98d54a">35仓</option>
+                <option value="aee87d5fa09a46dba2cd4722c7868d53">36仓</option>
+                <option value="73529738081543cc85cb7a82e22c9d63">37仓</option>
+                <option value="2a24b6fa434749c3a9a9fe31efe9b057">38仓</option>
+                <option value="d5ca11546e0544369ea78e0826c29afa">39仓</option>
+                <option value="19de90deb5f243d5ab90e3331fdee004">40仓</option>
+                <option value="f8b7f00255904bd181bc102eee066b2e">49仓东</option>
+                <option value="521674f1c459470b923d8a5a05199bd6">49仓西</option>
+                <option value="77e3d77e9afb449f9401d4d25b5b1c6d">54仓</option>
+                <option value="c56549ecae7e4236b0191d2af18bf203">55仓</option>
+                <option value="ac0e74a66d054a209e71ee2fb1f4ff6f">56仓</option>
+            </select>
+        </div>
+        <!--<div class="col-md-2">-->
+            <!--<input type="date" id="myDate" >-->
+        <!--</div>-->
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <input type="text" id="myDate" autocomplete="off" onfocus="WdatePicker({dateFmt:'yyyyMMdd',startDate:'%y%M%d'})">
+        </div>
+    </div>
+</div>
+<div id="cameracn" style="display: none;">
+    <div class="col-md-12">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperatureout();">退出</button>
+        </div>
+        <div class="col-md-3">
+            <select id="cameracnwd" class="form-control">
+                <option value="3" selected = "selected">11仓</option>
+                <option value="4">13仓</option>
+                <option value="5">15仓</option>
+                <option value="7">17仓</option>
+                <option value="8">19仓</option>
+                <option value="9">21仓</option>
+                <option value="11">23仓</option>
+                <option value="12">25仓</option>
+                <option value="13">27仓</option>
+                <option value="14">28仓</option>
+                <option value="15">31仓</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+<div class="col-md-12 column" id="db">
+    <div class="row clearfix">
+        <!--<div class="col-md-2 column">-->
+        <!--</div>-->
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-1 column">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="cameracangn();">仓内监控</button>
+        </div>
+        <div class="col-md-2 column">
+            <input type="range" id="range" min="0" max="10" value="10" oninput="change()" style="margin-top: 20px">
+        </div>
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-1 column">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="cameraAnimate();">自动漫游</button>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-1 column">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="temperature();">温度</button>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-1 column">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="kaichuangopen();">开窗</button>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-1 column">
+            <button type="button" onclick="windowhref()" class="btn btn-block btn-primary btn-lg" >退出</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 column" id="db2">
+    <div class="row clearfix">
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-2 column">
+            <!--<button type="button" class="btn btn-block btn-primary btn-lg" onclick="tana();">一键通风</button>-->
+        </div>
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-2 column">
+
+        </div>
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-1 column">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function windowhref() {
+        window.location.href = "http://192.0.0.250:84/#/page/index";
+    }
+    function getNow(s) {
+        return s < 10 ? '0' + s: s;
+    }
+    var myDate = new Date();
+    //获取当前年
+    var year=myDate.getFullYear();
+    //获取当前月
+    var month=myDate.getMonth()+1;
+    //获取当前日
+    var date=myDate.getDate();
+    var now=year+""+getNow(month)+""+getNow(date);
+    $("#myDate").val(now);
+    var path;
+    var chuangac =[];
+    var chuangbc =[];//动画循环计数
+    var wenduid = [0,0,0,0];
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2(), INTERSECTED;
+    var camera, controls, scene, renderer,caizhi, touming;
+    var stats = new Stats();//性能监视器
+    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(stats.dom);//性能监视器显示
+    init();
+    animate();
+    function init() {
+        scene = new THREE.Scene();
+        var loader = new THREE.TextureLoader();//地面
+        var groundTexture = loader.load('img/grasslight-big.jpg');
+        groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+        groundTexture.repeat.set(20, 20);
+        groundTexture.anisotropy = 16;
+        var groundMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, specular: 0x111111, map: groundTexture});
+        var mesh = new THREE.Mesh(new THREE.CircleGeometry(2000,36), groundMaterial);
+        //mesh.position.y = - 47;
+        mesh.rotation.x = -Math.PI / 2;
+        scene.add(mesh);
+        mesh.name = 'sba';
+        light();
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(676,13,235);
+        renderer = new THREE.WebGLRenderer({antialias: true});//WEBGL渲染器
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);//渲染器大小
+        renderer.shadowMap.renderSingleSided = false;
+        document.body.appendChild(renderer.domElement);//将渲染器添加到网页上
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.maxDistance = 1000;
+        controls.addEventListener( 'change', render );
+        cangf();//仓房编号
+        setSkybox();//天空盒
+        liangku();//粮库模型
+        //单机
+        document.addEventListener('click', onDocumentMouseMove, false);
+        //双击
+        document.addEventListener('dblclick', dblclickchangxinxi, false);
+        //运动路径点
+        var points = [
+            [594,216],
+            [421,197],
+            [197,170],
+            [-79,131],
+            [-271,105],
+            [-549,67],
+            [-700,50],
+            [-710,24],
+            [-636,-144],
+            [-545,-146],
+            [-306,-110],
+            [60,-57],
+            [368,-1]
+        ];
+        for (var i = 0; i < points.length; i++) {
+            var x = points[i][0];
+            var y = 10;
+            var z = points[i][1];
+            points[i] = new THREE.Vector3(x, y, z);
+        }
+        path = new THREE.CatmullRomCurve3(points);
+    }
+    function kaichuangopen() {
+        scene.remove(controls);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        scene.add(camera);
+        camera.position.set(1000,-200,1000);
+        camera.lookAt(2000,-500,2000);
+        layer.open({
+            type: 2,
+            title: '开窗',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['100%', '100%'],
+            content: "/xxsw/tpl/dancang01.html",//iframe的url
+            end: function () {
+                camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+                camera.position.z = 500;
+                scene.add(camera);
+                controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+                controls.maxPolarAngle = Math.PI * 0.495;
+                controls.maxDistance = 1000;
+                controls.addEventListener( 'change', render );
+                camera.position.set(676,13,235);
+            }
+        });
+    }
+    function cangf() {
+        var cangfangb= [
+            ['cf55',630,35,-92],
+            ['cf54',641,35,-189],
+            ['cf30',508,35,-227],
+            ['cf31',491,35,-88],
+            ['cf11',390,39,-90],
+            ['cf12',410,39,-222],
+            ['cf14',310,39,-243],
+            ['cf13',293,39,-115],
+            ['cf15',192,39,-134],
+            ['cf16',212,39,-261],
+            ['cf18',111,39,-279],
+            ['cf17',90,39,-144],
+            ['cf19',-3,39,-165],
+            ['cf20',14,39,-285],
+            ['cf22',-89,39,-307],
+            ['cf21',-104,39,-184],
+            ['cf23',-205,39,-190],
+            ['cf24',-187,39,-315],
+            ['cf26',-297,39,-327],
+            ['cf25',-317,39,-199],
+            ['cf27',-413,35,-217],
+            ['cf28',-496,35,-231],
+            ['cf56',-595,35,-239],
+            ['cf49',-478,40,-82],
+            ['cf38',-580,35,-1],
+            ['cf37',-419,35,20],
+            ['cf36',-274,35,42],
+            ['cf35',-109,35,63],
+            ['cf34',7,35,79],
+            ['cf33',138,35,96],
+            ['cf32',305,35,120],
+            ['cf29',638,35,7],
+            ['cf10',247,35,248],
+            ['cf09',147,35,238],
+            ['cf08',47,35,228],
+            ['cf07',-53,35,218],
+            ['cf06',-153,35,208],
+            ['cf05',-253,35,198],
+            ['cf04',-353,35,188],
+            ['cf03',-449,35,178],
+            ['cf02',-547,35,168],
+            ['cf01',-650,35,140]
+        ];
+        for(var i=0;i<cangfangb.length;i++){
+            cangfang(cangfangb[i][0],cangfangb[i][1],cangfangb[i][2],cangfangb[i][3]);
+        }
+        function cangfang(tp,x,y,z) {
+            var mapA = new THREE.TextureLoader().load( "img/"+tp+".png" );
+            var materialA = new THREE.SpriteMaterial( { map: mapA, transparent:true } );
+            var cangfang = new THREE.Sprite(materialA);
+            cangfang.scale.set(0.5 * 30, 0.5 * 30, 0.5 * 30);
+            cangfang.position.set(x, y * 1.1, z);
+            scene.add(cangfang);
+        }
+    }
+    function light() {//灯光
+        scene.add(new THREE.AmbientLight(0x444444));
+        var light = new THREE.DirectionalLight(0xdfebff, 2);
+        light.position.set(0, 500, 0);
+        light.position.multiplyScalar(1.3);
+
+
+        light.shadow.mapSize.width = 1024;
+        light.shadow.mapSize.height = 1024;
+
+        var d = 300;
+
+        light.shadow.camera.left = -d;
+        light.shadow.camera.right = d;
+        light.shadow.camera.top = d;
+        light.shadow.camera.bottom = -d;
+        light.shadow.camera.far = 1000;
+        scene.add(light);
+
+    }
+    function liangku() {//粮库模型
+        var onProgress = function ( xhr ) {
+            if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                var id = (percentComplete-2) +'%';
+                var id2 = Math.round(percentComplete,2) + '%';
+                $(".blue").width(id);
+                $("#spantext").text(id2);
+                if (Math.round(percentComplete,2)==100){
+                    setTimeout(function () {
+                        $(".progressdiv").remove();
+                    },5000)
+                }
+            }
+        };
+        var mtlLoader = new THREE.MTLLoader();//声明mtl对象
+        mtlLoader.setPath('moxing/');
+        mtlLoader.load('666.mtl', function (materials) {//加载mtl材质
+            materials.preload();
+            var objLoader = new THREE.OBJLoader();//声明obj对象
+            objLoader.setMaterials(materials);
+            objLoader.setPath('moxing/');
+            objLoader.load('666.obj', function (object) {//加载obj模型
+//            var chuang = object.children[43].clone();
+//            chuang.position.set(257.32, 17.3, -112.8);
+//            chuang.rotation.y = -1.70;
+//            chuang.scale.set(3, 3, 3);
+//            object.children[43].position.set(83.317, -3.24, -20.138);
+//            object.children[43].rotation.y = -1.70;
+//            object.children[42].position.set(101, -9, -58);
+//            object.children[44].position.set(83.3, -3.24, -20.138);
+//            object.children[45].position.y = -5;
+//            object.children[45].material.transparent = true;
+                object.scale.set(3, 3, 3);
+                object.position.y = 27;
+//                liangshi = object.children[69].clone();
+//                liangshi.position.set(0, 25, 0);
+//                liangshi.scale.set(3, 3, 3);
+//                liangshi.name = 'liangshi';
+                scene.add(object);//添加到场景
+                function chuanghu(x,y,z,ry) {//窗户
+                    var chuang = scene.getObjectByName('chuang').clone();
+                    var gan = scene.getObjectByName('gan').clone();
+                    gan.position.set(x, y, z);
+                    gan.scale.set(3, 3, 3);
+                    chuang.position.set(x, y, z);
+                    chuang.rotation.y = ry;
+                    chuang.scale.set(3, 3, 3);
+                    scene.add(gan);
+                    scene.add(chuang);
+                }
+                var zuobiao = [
+                    [257.32,17.3,-112.8,-1.7],
+                    [260.4,17.3,-134.95,-1.7],
+                    [266.2,17.3,-176.5,-1.7],
+                    [268.2,17.3,-189.3,-1.7],
+                    [275,17.3,-238.15,-1.7],
+                    [278,17.3,-258.83,-1.7],
+                    [284.35,17.25,-304.4,-1.7],
+                    [352.42,17.29,-299.62,1.4415],
+                    [345.07,17.29,-247.15,1.4415],
+                    [342,17.29,-225,1.4415],
+                    [336.27,17.29,-183.6,1.4415],
+                    [334.4,17.29,-170.7,1.4415],
+                    [327.5,17.29,-122,1.4415],
+                    [324.55,17.29,-101.41,1.4415],
+                    [318.1,17.29,-55.85,1.4415]
+                ];
+                for (var i=0;i<zuobiao.length;i++){
+                    chuanghu(zuobiao[i][0],zuobiao[i][1],zuobiao[i][2],zuobiao[i][3]);
+                }
+//                var chuang = scene.getObjectByName('chuang').clone();
+//                chuang.position.set(257.32, 17.3, -112.8);
+//                chuang.rotation.y = -1.70;
+//                chuang.scale.set(3, 3, 3);
+//                scene.add(chuang);
+                //scene.add(liangshi);
+                scene.getObjectByName('chuang').position.set(83.317, -3.24, -20.138);
+                scene.getObjectByName('chuang').rotation.y = -1.70;
+               // scene.getObjectByName('fwenduguan').position.set(101, -9, -58);
+                scene.getObjectByName('gan').position.set(83.3, -3.24, -20.138);
+                scene.getObjectByName('Plane001').position.y = -5;
+                scene.getObjectByName('Plane001').material.transparent = true;
+                //存材质
+                caizhi = scene.getObjectByName('Line05').material;
+                change();//滑动条控制隐藏
+            },onProgress);
+        });
+    }
+    function change() {//滑动条控制隐藏
+        var num = document.getElementById("range");
+        var id = num.value / 10;
+        //console.log( scene.getObjectByName('Line005').material);
+        if (id == 1) {
+            for(var i=0;i<scene.getObjectById(95).material.length;i++){
+                scene.getObjectById(95).material[i].transparent = true;
+                scene.getObjectById(95).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(66).material.length;i++){
+                scene.getObjectById(66).material[i].transparent = true;
+                scene.getObjectById(66).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(79).material.length;i++){
+                scene.getObjectById(79).material[i].transparent = true;
+                scene.getObjectById(79).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(60).material.length;i++){
+                scene.getObjectById(60).material[i].transparent = true;
+                scene.getObjectById(60).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(77).material.length;i++){
+                scene.getObjectById(77).material[i].transparent = true;
+                scene.getObjectById(77).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(65).material.length;i++){
+                scene.getObjectById(65).material[i].transparent = true;
+                scene.getObjectById(65).material[i].opacity = 1;
+            }
+            for(var i=0;i<scene.getObjectById(81).material.length;i++){
+                scene.getObjectById(81).material[i].transparent = true;
+                scene.getObjectById(81).material[i].opacity = 1;
+            }
+        } else {
+            for(var i=0;i<scene.getObjectById(95).material.length;i++){
+            scene.getObjectById(95).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(66).material.length;i++){
+                scene.getObjectById(66).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(79).material.length;i++){
+                scene.getObjectById(79).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(60).material.length;i++){
+                scene.getObjectById(60).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(77).material.length;i++){
+                scene.getObjectById(77).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(65).material.length;i++){
+                scene.getObjectById(65).material[i].opacity = id;
+            }
+            for(var i=0;i<scene.getObjectById(81).material.length;i++){
+                scene.getObjectById(81).material[i].opacity = id;
+            }
+        };
+    }
+    function setSkybox() {//天空盒
+        cubeMap = new THREE.CubeTexture([]);
+        cubeMap.format = THREE.RGBFormat;
+        var loader = new THREE.ImageLoader();
+        loader.load( 'img/skyboxsun25degtest.png', function ( image ) {
+            var getSide = function ( x, y ) {
+                var size = 1024;
+                var canvas = document.createElement( 'canvas' );
+                canvas.width = size;
+                canvas.height = size;
+                var context = canvas.getContext( '2d' );
+                context.drawImage( image, - x * size, - y * size );
+                return canvas;
+            };
+            cubeMap.images[ 0 ] = getSide( 2, 1 ); // px
+            cubeMap.images[ 1 ] = getSide( 0, 1 ); // nx
+            cubeMap.images[ 2 ] = getSide( 1, 0 ); // py
+            cubeMap.images[ 3 ] = getSide( 1, 2 ); // ny
+            cubeMap.images[ 4 ] = getSide( 1, 1 ); // pz
+            cubeMap.images[ 5 ] = getSide( 3, 1 ); // nz
+            cubeMap.needsUpdate = true;
+        } );
+        var cubeShader = THREE.ShaderLib[ 'cube' ];
+        cubeShader.uniforms[ 'tCube' ].value = cubeMap;
+        var skyBoxMaterial = new THREE.ShaderMaterial( {
+            fragmentShader: cubeShader.fragmentShader,
+            vertexShader: cubeShader.vertexShader,
+            uniforms: cubeShader.uniforms,
+            side: THREE.BackSide
+        } );
+        var skyBox = new THREE.Mesh(
+            new THREE.BoxGeometry( 2000 * 5 + 100, 2000 * 5 + 100, 2000 * 5 + 100 ),
+            skyBoxMaterial
+        );
+        scene.add( skyBox );
+    }
+    function createSpriteText(t, zbx, zby, zbz,color) {
+        //2d文字
+        //先用画布将文字画出
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        var wendu = '℃';
+        var text = t + wendu;
+        ctx.fillStyle = color;
+        ctx.font = "Bold 100px Arial";
+        ctx.lineWidth = 4;
+        ctx.fillText(text, 4, 104);
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        //使用Sprite显示文字
+        var material = new THREE.SpriteMaterial({map: texture});
+        var textObj = new THREE.Sprite(material);
+        textObj.scale.set(0.5 * 10, 0.25 * 10, 0.75 * 10);
+        textObj.position.set(zbx, zby, zbz);
+        return textObj;
+    }
+    function dblclickchangxinxi(event) {//双击模型弹出
+        var INTERSECTED2;
+        event.preventDefault();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        if (intersects.length > 0) {
+            INTERSECTED2 = intersects[0].object;
+            if (INTERSECTED2.name == 'Line005') {
+                xinxinchun(INTERSECTED2.name);
+            }
+        }
+    };
+    function onDocumentMouseMove(event) {//鼠标获取模型
+        event.preventDefault();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        if (intersects.length > 0) {
+            INTERSECTED = intersects[0].object;
+            if(INTERSECTED.name.slice(0,6)=="Camera"){
+                var cameraid = INTERSECTED.name.slice(6);
+                tanc(parseInt(cameraid));
+            }
+            if(INTERSECTED.name=="cnCamera"){
+                console.log($("#cameracnwd").val());
+                layer.open({
+                    type: 2,
+                    skin: 'layui-layer-lan', //加上边框
+                    area: ['630px', '460px'], //宽高
+                    content: '/xxsw/tpl/bdsplayer.html?id='+$("#cameracnwd").val()
+                });
+            }
+            if (INTERSECTED.name == 'xiangji') {
+                layer.open({
+                    type: 2,
+                    skin: 'layui-layer-lan', //加上边框
+                    area: ['630px', '460px'], //宽高
+                    content: 'demo1.html'
+                });
+            }
+            if (INTERSECTED.name == 'chuang') {//开窗
+                if (chuangbc[INTERSECTED.id]==0||chuangbc[INTERSECTED.id]==undefined) {
+                    var id = INTERSECTED.id;
+                    chuangbc[id]=0;
+                    chuangac[id] = setInterval(function () {
+                        scene.getObjectById(id).rotation.y += 0.01;
+                        chuangbc[id]++;
+                        if (chuangbc[id] == 120) {
+                            clearInterval(chuangac[id]);
+                        }
+                    }, 10);
+                }
+                if (chuangbc[INTERSECTED.id] == 120) {
+                    var id = INTERSECTED.id;
+                    chuangac[id] = setInterval(function () {
+                        scene.getObjectById(id).rotation.y -= 0.01;
+                        chuangbc[id]--;
+                        if (chuangbc[id] == 0) {
+                            clearInterval(chuangac[id]);
+                        }
+                    }, 10);
+                }
+            }
+        }
+    }
+    //相机漫游
+    function cameraAnimate() {
+        db.style.display = 'none';
+        db2.style.display = 'none';
+        buttone.style.display = '';
+        percentage = 0;
+        scene.remove(controls);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        cameraAn = setInterval(function () {
+            percentage += 0.001;
+            var p1 = path.getPointAt(percentage%1);
+            var p2 = path.getPointAt((percentage + 0.01)%1);
+            camera.position.set(p1.x,p1.y,p1.z);
+            camera.lookAt(p2);
+        }, 20);
+    }
+    //退出相机漫游
+    function cameraAnimateout() {
+        db.style.display = '';
+        db2.style.display = '';
+        buttone.style.display = 'none';
+        clearInterval(cameraAn);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 500;
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.maxDistance = 1000;
+        camera.position.set(676,13,235);
+    }
+
+    //仓房监控
+    function cameracangn() {
+        //console.log(controls.getObject().position.x);
+        //console.log(controls.getObject().position.z);
+        db.style.display = 'none';
+        db2.style.display = 'none';
+        cameracn.style.display = '';
+        scene.remove(controls);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(200,13,-200);
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.target.set(206,12,-206);
+        controls.enableZoom = false;
+        controls.enablePan = false;
+    };
+    //仓房温度
+    function temperature() {
+        //console.log(controls.getObject().position.x);
+        //console.log(controls.getObject().position.z);
+        db.style.display = 'none';
+        db2.style.display = 'none';
+        wendud.style.display = '';
+        scene.remove(controls);
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(272.4,13,-68.2);
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.target.set(276,12,-78);
+        controls.enableZoom = false;
+        controls.enablePan = false;
+    }
+    function temperatureout() {
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 500;
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.maxDistance = 1000;
+        camera.position.set(676,13,235);
+        db.style.display = '';
+        db2.style.display = '';
+        wendud.style.display = 'none';
+        cameracn.style.display = 'none';
+
+    }
+    function Arraymin(data) {//最小
+        var min = data[0].data;
+        var len = data.length;
+        for (var i = 1; i < len; i++){
+            if (parseFloat(data[i].data) < parseFloat(min)){
+                min = data[i].data;
+            }
+        }
+        return min;
+    }
+    function Arraymax(data) {//最大
+        var max = data[0].data;
+        var len = data.length;
+        for (var i = 1; i < len; i++){
+            if (parseFloat(data[i].data) > parseFloat(max)){
+                max = data[i].data;
+            }
+        }
+        return max;
+    }
+    function temperaturew(id) {//温度显示
+        //console.log($("#myDate").val());
+        $.ajax({
+            type: "GET",
+            url: "http://192.0.0.250:7671/getlq",
+            data: {
+                housecode:$("#cangfangwd").val(),
+                checktime:$("#myDate").val()
+            },
+            dataType: "json",
+            success: function(data){
+                var tmep_data;
+                var x,y,z;
+                tmep_data = data;
+                if ( wenduid[id]==0){
+                    var textwzz = new THREE.Sprite();
+                    for(var i=0;i<tmep_data.length;i++){
+                        if((tmep_data[i].storey-1)==id){
+                            x = (84.065 + (1.03 * tmep_data[i].xaxis)+(3.961 * tmep_data[i].yaxis))*3;
+                            y = -((22.457 + (7.428 * tmep_data[i].xaxis)-(0.551 * tmep_data[i].yaxis))*3);
+                            z = 2.5 + (3.7*id);
+                            if(tmep_data[i].data==Arraymax(tmep_data)){
+                                textwzz.add(createSpriteText(tmep_data[i].data, x, z, y,'#ff0000'));
+                            }else if(tmep_data.data==Arraymin(tmep_data)){
+                                textwzz.add(createSpriteText(tmep_data[i].data, x, z, y,'#72bbdf'));
+                            }else{
+                                textwzz.add(createSpriteText(tmep_data[i].data, x, z, y,'#D4D4D4'));
+                            }
+                        }
+                    }
+                    scene.add(textwzz);
+                    textwzz.name = "textn"+id;
+                    wenduid[id]=1;
+                }else{
+                    var name = "textn"+id;
+                    scene.remove(scene.getObjectByName(name));
+                    wenduid[id]=0;
+                }
+            }
+        });
+
+    }
+    function liangshic() {
+        for(var i=0;i<wenduid.length;i++){
+            if(wenduid[i] ==1){
+                var id = "textn" + i;
+                scene.remove(scene.getObjectByName(id));
+                wenduid[i]=0;
+            }
+        }
+    }
+    function animate() {
+        requestAnimationFrame( animate );
+        controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+        stats.begin();
+        stats.end();
+        render();
+    }
+    function render() {
+        renderer.render( scene, camera );
+    }
+</script>
+</body>
+</html>

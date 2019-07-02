@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/xxsw/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .dae {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .dae2 {
+            text-align: center;
+        }
+
+        table tr td {
+            padding: 2px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var curren = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var ac = [];
+        var bc = [];
+
+        function aaaa(id) {
+            if (bc[id] == undefined || bc[id] == 1) {
+                bc[id] = 0;
+                ac[id] = setInterval(function () {
+                    curren[id] = (curren[id] + 45) % 360;
+                    document.getElementById('target' + id).style.transform = 'rotate(' + curren[id] + 'deg)';
+                }, 100);
+            } else {
+                clearInterval(ac[id]);
+                bc[id] = 1;
+            }
+        }
+
+        function abb(id) {
+            if (bc[id] == undefined || bc[id] == 1) {
+                bc[id] = 0;
+                ac[id] = setInterval(function () {
+                    curren[id] = (curren[id] + 45) % 360;
+                    document.getElementById('target' + id).style.transform = 'rotate(' + curren[id] + 'deg)';
+                }, 100);
+            }
+        }
+
+        function aaa(data) {
+            for (var i = 0; i < data.length; i++) {
+                if (bc[i] == undefined || bc[i] == 1) {
+                    abb(i);
+                }
+            }
+        }
+
+        function abc() {
+            for (var i = 0; i < 12; i++) {
+                if (bc[i] == undefined || bc[i] == 0) {
+                    clearInterval(ac[i]);
+                    bc[i] = 1;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<select id="cangfangwd"   class="form-control">
+    <option value=11 selected = "selected">11仓、12仓</option>
+    <option value=13>13仓、14仓</option>
+    <option value=15>15仓、16仓</option>
+    <option value=17>17仓、18仓</option>
+    <option value=19>19仓、20仓</option>
+    <option value=21>21仓、22仓</option>
+    <option value=23>23仓、24仓</option>
+    <option value=25>25仓、26仓</option>
+    <option value=27>27仓</option>
+    <option value=28>28仓</option>
+    <option value=10>30仓、31仓</option>
+</select>
+<div class="col-md-12 column">
+    <div class="dae">
+        <table>
+            <tr>
+                <td>
+                    <img id="target0" src="/xxsw/img/123.png" alt="" onclick="aaaa(0);">
+                </td>
+                <td>
+                    <img id="target1" src="/xxsw/img/123.png" alt="" onclick="aaaa(1);">
+                </td>
+                <td>
+                    <img id="target2" src="/xxsw/img/123.png" alt="" onclick="aaaa(2);">
+                </td>
+                <td>
+                    <img id="target3" src="/xxsw/img/123.png" alt="" onclick="aaaa(3);">
+                </td>
+                <td>
+                    <img id="target4" src="/xxsw/img/123.png" alt="" onclick="aaaa(4);">
+                </td>
+                <td>
+                    <img id="target5" src="/xxsw/img/123.png" alt="" onclick="aaaa(5);">
+                </td>
+            </tr>
+            <tr>
+                <td>#01
+                </td>
+                <td>#02
+                </td>
+                <td>#03
+                </td>
+                <td>#04
+                </td>
+                <td>#05
+                </td>
+                <td>#06
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 column">
+    <div class="dae">
+        <table>
+            <tr>
+                <td>
+                    <img id="target6" src="/xxsw/img/123.png" alt="" onclick="aaaa(6);">
+                </td>
+                <td>
+                    <img id="target7" src="/xxsw/img/123.png" alt="" onclick="aaaa(7);">
+                </td>
+                <td>
+                    <img id="target8" src="/xxsw/img/123.png" alt="" onclick="aaaa(8);">
+                </td>
+                <td>
+                    <img id="target9" src="/xxsw/img/123.png" alt="" onclick="aaaa(9);">
+                </td>
+                <td>
+                    <img id="target10" src="/xxsw/img/123.png" alt="" onclick="aaaa(10);">
+                </td>
+                <td>
+                    <img id="target11" src="/xxsw/img/123.png" alt="" onclick="aaaa(11);">
+                </td>
+            </tr>
+            <tr>
+                <td>#07
+                </td>
+                <td>#08
+                </td>
+                <td>#09
+                </td>
+                <td>#10
+                </td>
+                <td>#11
+                </td>
+                <td>#12
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="col-md-12 column">
+    <div class="col-md-2 dae2">
+        <button type="button" class="btn btn-primary btn-lg" onclick="aaa([0,1,2,3,4,5,6,7,8,9,10,11]);">全部开启</button>
+        <button type="button" class="btn btn-warning btn-lg" onclick="abc();">全部关闭</button>
+    </div>
+</div>
+</body>
+</html>

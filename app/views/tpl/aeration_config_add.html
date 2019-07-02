@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="addaerationcfgController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">参数类型<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <select name="type" ng-model="aerationcfg.type" id="type" class="form-control" required placeholder="请选择配置的参数类型">
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in treeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">设备编号<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="code"  ng-model="aerationcfg.code" class="form-control" required  ng-maxlength="200"  placeholder="请输入该类型多个设备编号(用,隔开)"/>
+                    <span ng-show="form.code.$dirty && form.code.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

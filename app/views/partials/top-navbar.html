@@ -1,0 +1,178 @@
+<!-- 全局顶部模块 begin-->
+<nav role="navigation" class="navbar topnavbar">
+   <!-- logo begin-->
+   <div class="navbar-header">
+         <div class="nav navbar-nav zhls-navbar">
+            <span class="s1" ng-click="toIndex()">{{app.housename}}</span>
+         </div>
+   </div>
+   <!-- logo end-->
+   <!-- 顶部信息 begin -->
+   <div class="nav-wrapper">
+      <!--&lt;!&ndash; 顶部导航 左 begin &ndash;&gt;-->
+      <div class="nav navbar-nav zhls-navbar">
+         <span class="s1">@智慧粮食 - {{app.navbarTitle}}</span>
+         <!--<li>-->
+            <!--&lt;!&ndash; pc端显示和隐藏导航栏 &ndash;&gt;-->
+            <!--<a ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">-->
+               <!--<em class="fa fa-navicon"></em>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; 移动设备上显示和隐藏导航栏 &ndash;&gt;-->
+            <!--<a toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">-->
+               <!--<em class="fa fa-navicon"></em>-->
+            <!--</a>-->
+         <!--</li>-->
+
+         <!--<li>-->
+            <!--&lt;!&ndash; Button used to collapse the left sidebar. Only visible on tablet and desktops&ndash;&gt;-->
+            <!--<a href="#" ng-click="toggleUserBlock()">-->
+               <!--<em class="icon-user"></em>-->
+            <!--</a>-->
+         <!--</li>-->
+      </div>
+      <!-- 顶部导航 左 end -->
+      <!-- 顶部导航 右  begin -->
+      <ul class="nav navbar-nav navbar-right">
+
+         <!--<li>-->
+            <!--&lt;!&ndash; pc端显示和隐藏导航栏 &ndash;&gt;-->
+            <!--<a ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">-->
+               <!--<em class="fa fa-navicon"></em>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; 移动设备上显示和隐藏导航栏 &ndash;&gt;-->
+            <!--<a toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">-->
+               <!--<em class="fa fa-navicon"></em>-->
+            <!--</a>-->
+         <!--</li>-->
+
+         <!--<li>-->
+            <!--&lt;!&ndash; Button used to collapse the left sidebar. Only visible on tablet and desktops&ndash;&gt;-->
+            <!--<a href="#" ng-click="toggleUserBlock()">-->
+               <!--<em class="icon-user"></em>-->
+            <!--</a>-->
+         <!--</li>-->
+
+         <!--&lt;!&ndash;&lt;!&ndash;全局搜索 begin&ndash;&gt;&ndash;&gt;-->
+         <!--&lt;!&ndash;<li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a search-open="">&ndash;&gt;-->
+               <!--&lt;!&ndash;<em class="icon-magnifier"></em>&ndash;&gt;-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+         <!--&lt;!&ndash;</li>&ndash;&gt;-->
+         <!--&lt;!&ndash;&lt;!&ndash;全局搜索 end&ndash;&gt;&ndash;&gt;-->
+         <!--&lt;!&ndash;全屏展示 begin&ndash;&gt;-->
+         <!--<li class="visible-lg">-->
+            <!--<a href="#" toggle-fullscreen="toggle-fullscreen">-->
+               <!--<em class="fa fa-expand"></em>-->
+            <!--</a>-->
+         <!--</li>-->
+         <!--&lt;!&ndash;全屏展示 end&ndash;&gt;-->
+         <!--&lt;!&ndash; 扩展功能 begin TODO 暂时先屏蔽&ndash;&gt;-->
+         <!--&lt;!&ndash;<li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a toggle-state="offsidebar-open" no-persist="no-persist">&ndash;&gt;-->
+               <!--&lt;!&ndash;<em class="icon-notebook"></em>&ndash;&gt;-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+         <!--&lt;!&ndash;</li>&ndash;&gt;-->
+         <!--&lt;!&ndash; 扩展功能 end&ndash;&gt;-->
+         <!--&lt;!&ndash; 通知功能 begin&ndash;&gt;-->
+         <!--<li dropdown="" class="dropdown dropdown-list">-->
+            <!--<a dropdown-toggle="">-->
+               <!--<em class="icon-bell"></em>-->
+               <!--<div class="label label-danger">7</div>-->
+            <!--</a>-->
+            <!--&lt;!&ndash; START Dropdown menu&ndash;&gt;-->
+            <!--<ul class="dropdown-menu animated flipInX">-->
+               <!--<li>-->
+                  <!--&lt;!&ndash; START list group&ndash;&gt;-->
+                  <!--<div class="list-group">-->
+                     <!--&lt;!&ndash; list item&ndash;&gt;-->
+                     <!--<a href="#" class="list-group-item">-->
+                        <!--<div class="media-box">-->
+                           <!--<div class="pull-left">-->
+                              <!--<em class="fa fa-twitter fa-2x text-danger"></em>-->
+                           <!--</div>-->
+                           <!--<div class="media-box-body clearfix">-->
+                              <!--<p class="m0">仓房报警</p>-->
+                              <!--<p class="m0 text-muted">-->
+                                 <!--<small>1号仓温度过高急需通风</small>-->
+                              <!--</p>-->
+                           <!--</div>-->
+                        <!--</div>-->
+                     <!--</a>-->
+                     <!--&lt;!&ndash; list item&ndash;&gt;-->
+                     <!--<a href="#" class="list-group-item">-->
+                        <!--<div class="media-box">-->
+                           <!--<div class="pull-left">-->
+                              <!--<em class="fa fa-tasks fa-2x text-success"></em>-->
+                           <!--</div>-->
+                           <!--<div class="media-box-body clearfix">-->
+                              <!--<p class="m0">作业通知</p>-->
+                              <!--<p class="m0 text-muted">-->
+                                 <!--<small>2号仓通风作业已经完成</small>-->
+                              <!--</p>-->
+                           <!--</div>-->
+                        <!--</div>-->
+                     <!--</a>-->
+                     <!--&lt;!&ndash; list item&ndash;&gt;-->
+                     <!--<a href="#" class="list-group-item">-->
+                        <!--<div class="media-box">-->
+                           <!--<div class="pull-left">-->
+                              <!--<em class="fa fa-envelope fa-2x text-warning"></em>-->
+                           <!--</div>-->
+                           <!--<div class="media-box-body clearfix">-->
+                              <!--<p class="m0">短信通知</p>-->
+                              <!--<p class="m0 text-muted">-->
+                                 <!--<small>3号仓除虫作业已审批通过</small>-->
+                              <!--</p>-->
+                           <!--</div>-->
+                        <!--</div>-->
+                     <!--</a>-->
+                     <!--&lt;!&ndash; last list item &ndash;&gt;-->
+
+                     <!--<a href="#" class="list-group-item">-->
+                        <!--<small>更多通知</small>-->
+                        <!--<span class="label label-danger pull-right">4</span>-->
+                     <!--</a>-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash; END list group&ndash;&gt;-->
+               <!--</li>-->
+            <!--</ul>-->
+            <!--&lt;!&ndash; END Dropdown menu&ndash;&gt;-->
+         <!--</li>-->
+         <!--&lt;!&ndash; 通知功能 end&ndash;&gt;-->
+         <!--&lt;!&ndash; START lock screen&ndash;&gt;-->
+         <!--<li>-->
+            <!--<a ui-sref="page.lock" title="修改密码">-->
+               <!--<em class="icon-lock"></em>-->
+            <!--</a>-->
+         </li>
+         <!-- END lock screen-->
+         <!-- START 权限管理 screen-->
+         <li>
+            <a  ng-click="to_mgt()" title="权限管理">
+               <em class="icon-settings"></em>
+            </a>
+         </li>
+         <!-- END 权限管理 screen-->
+
+         <!-- 扩展功能 begin-->
+         <li>
+            <a ng-click="logout()" title="退出登陆">
+               <em class="fa fa-power-off"></em>
+            </a>
+         </li>
+         <!-- 扩展功能 end-->
+      </ul>
+      <!-- 顶部导航 右  end -->
+   </div>
+   <!-- 顶部信息 end-->
+   <!-- 搜索框 begin-->
+   <form role="search" action="search.html" class="navbar-form">
+      <div class="form-group has-feedback">
+         <input type="text" placeholder="{{ 'topbar.search.PLACEHOLDER' | translate }}" class="form-control" />
+         <div search-dismiss="search-dismiss" class="fa fa-times form-control-feedback"></div>
+      </div>
+      <button type="submit" class="hidden btn btn-default">Submit</button>
+   </form>
+   <!-- 搜索框 end -->
+</nav>
+<!-- 全局顶部模块 end-->

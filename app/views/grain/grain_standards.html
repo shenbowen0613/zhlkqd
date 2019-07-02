@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($(window).width() < 992) {
+            $("#grainStandardsIndexLeft").insertAfter($("#grainStandardsIndexRight"));
+        }
+    });
+</script>
+<h3>
+    <span name="standardstypename">温度标准</span> <span id="houseName"></span>
+    <div class="float-right" ng-controller="grainStandardsBarController">
+        <div class="btn-group pc-show">
+            <a type="button" ng-repeat="item in menus" ng-href="{{item.sref}}" class="btn btn-labeled bg-green mr">
+               <span class="btn-label">
+                   <i class="{{item.icon}}"></i>
+               </span>
+                {{item.text}}
+            </a>
+        </div>
+        <!-- 移动端 begin-->
+        <div class="pull-right mobile-show">
+            <div dropdown="" class="btn-group">
+                <button type="button" dropdown-toggle="" class="btn btn-default">查看更多
+                    <span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                    <li ng-repeat="item in menus">
+                        <a ng-href="{{item.sref}}"><em class="{{item.icon}}"></em> {{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 移动端 end-->
+    </div>
+</h3>
+<div class="container-fluid" ng-controller="grainStandardsController">
+    <div class="row mb-lg">
+        <div id="grainStandardsIndexLeft" class="col-lg-12">
+            <form form-wizard="" steps="4" novalidate="" >
+                <div class="form-wizard wizard-horizontal">
+                    <!-- START wizard steps indicator-->
+                    <ol id="active_bar" class="row">
+                        <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);changeStandardsType('wendu','温度标准')" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="fa fa-file-text-o mr"></em>温度标准</h4>
+                            <small class="text-muted">包含仓温度标准的信息</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);changeStandardsType('shidu','湿度标准')" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="fa fa-file-text-o mr"></em>湿度标准</h4>
+                            <small class="text-muted">包含湿度标准的信息</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);changeStandardsType('qiti','气体浓度')" class="col-md-3 border-r-e6 bg-white">
+                            <h4><em class="fa fa-file-text-o mr"></em>气体浓度</h4>
+                            <small class="text-muted">包含气体浓度的信息</small>
+                        </li>
+                        <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);changeStandardsType('chonghai','虫害标准')" class="col-md-3 bg-white">
+                            <h4><em class="fa fa-file-text-o mr"></em>虫害标准</h4>
+                            <small class="text-muted">包含虫害标准的信息</small>
+                        </li>
+                    </ol>
+                    <!-- END wizard steps indicator-->
+                </div>
+            </form>
+
+            <div class="bg-white mt p">
+                <h4 name="standardstypename"><em class="fa fa-newspaper-o"></em> 温度标准</h4>
+                <hr mt mb/>
+                <div class="panel-body" ng-controller="grainStandardsListController"  ng-if="standards!=null">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal p-20" ng-submit="save()" method="post">
+                                <div class="form-group" ng-repeat="standard in standards">
+                                    <div class="col-sm-2 control-label">{{standard.label}}：</div>
+                                    <div class="col-sm-4">
+                                        <input type="hidden" value="{{standard.code}}" name="standardCode"/>
+                                        <input type="text" class="form-control"  value="{{standard.remark}}" name="standardRemark"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-6" >
+                                        <span ng-include="'app/views/base/to_submit.html'"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

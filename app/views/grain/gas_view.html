@@ -1,0 +1,85 @@
+<h3 id="topBar">
+    气体详情 <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="panel panel-default ng-scope" ng-controller="humrityViewController">
+    <div class="panel-body">
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓房编号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.housecode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">仓房名称：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.housename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">储粮档案编号：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.archivesno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">气体检测编码：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.inspectionairno}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="well">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">氧气浓度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.oxygenconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">二氧化碳浓度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.co2concentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">磷化氢浓度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.phosphineconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">氮气浓度：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.nitrogenconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">报备编号</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.reportno}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">分析结果：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.statusname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">备注：</label>
+                        <div class="col-lg-6">
+                            <strong>{{entityInfo.memo}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

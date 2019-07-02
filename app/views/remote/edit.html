@@ -1,0 +1,85 @@
+<h3>
+    <a href="javascript:history.go(-1)">返回命令列表</a>
+</h3>
+<div class="row" ng-controller="commondController">
+    <div class="col-lg-6">
+        <div class="well">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">命令名称：</label>
+                    <div class="col-lg-4">
+                        <input type="text" ng-model="commandName" placeholder="命令名称不能为空"  required placeholder="命令名称" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">标 识 符：</label>
+                    <div class="col-lg-4">
+                        <input type="text" ng-model="key" placeholder="标识符不能为空" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">中文名称：</label>
+                    <div class="col-lg-4">
+                        <input type="text" ng-model="title" placeholder="中文名称不能为空" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">数据类型：</label>
+                    <div class="col-lg-4">
+                            <label class="radio-inline">
+                                <input ng-model="type" name="test" type="radio" value="string" checked="checked" />文本类型</label>
+                            <label class="radio-inline">
+                                <input ng-model="type" name="test" type="radio" value="num" />数值类型</label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">表名：</label>
+                    <div class="col-lg-4">
+                        <input type="text" ng-model="tableName" placeholder="表名不能为空" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">列名：</label>
+                    <div class="col-lg-4">
+                        <input type="text" ng-model="columnName" placeholder="列名不能为空" required class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"></label>
+                    <div class="col-lg-4">
+                        <input type="button" value="新增" onclick="Add()" class="mb-sm btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="well well-lg">
+            <button type="button" onclick="DeleteSelectCommandContent()" class="mb-sm btn btn-primary">删除选中行</button>
+            <button type="button" onclick="AddCommandContent()" class="mb-sm btn btn-primary">保存</button>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>操作</th>
+                    <th>标识符</th>
+                    <th>中文名</th>
+                    <th>数据类型</th>
+                    <th>表名称</th>
+                    <th>列名称</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="commandInfo in commandInfoList">
+                        <td><input type="checkbox"/></td>
+                        <td>{{commandInfo.key}}</td>
+                        <td>{{commandInfo.title}}</td>
+                        <td>{{commandInfo.type}}</td>
+                        <td>{{commandInfo.tableName}}</td>
+                        <td>{{commandInfo.columnName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

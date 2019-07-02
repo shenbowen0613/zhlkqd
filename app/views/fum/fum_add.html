@@ -1,0 +1,128 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="addfumController">
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <h4><em class="fa fa-newspaper-o"></em> 熏蒸信息</h4>
+            <hr mt mb/>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">仓房名称</label>
+                <div class="col-lg-4">
+                    <select ng-model="plan.housecode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in housealist" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">粮食品种</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.foodType" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">熏蒸药剂</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.fumPharmacy" class="form-control" />
+                </div>
+                <label class="col-lg-2 control-label">粮食数量</label>
+                <div class="col-lg-4">
+                    <div class="input-group date">
+                        <input class="form-control" type="text" ng-model="plan.foodQuantity">
+                        <span class="input-group-addon"><p style="margin: 0;">吨</p></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">熏蒸模式</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.fumType" class="form-control" />
+                </div>
+                <label class="col-lg-2 control-label">累计充药量</label>
+                <div class="col-lg-4">
+                    <div class="input-group date">
+                        <input class="form-control" type="text" ng-model="plan.phaQuantity">
+                        <span class="input-group-addon"><p style="margin: 0;">KG</p></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">熏蒸操作人</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.fumMan" class="form-control" />
+                </div>
+                <label class="col-lg-2 control-label">目标浓度</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.concentration" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">熏蒸负责人</label>
+                <div class="col-lg-4">
+                    <input type="text"  ng-model="plan.fumPrincipal" class="form-control" />
+                </div>
+                <label class="col-lg-2 control-label">熏蒸开始时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="startime" data-date-format="yyyy-MM-dd hh:ii:ss">
+                        <input class="form-control" type="text" ng-model="plan.fumStartTime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">熏蒸结束时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd hh:ii:ss">
+                        <input class="form-control" type="text" ng-model="plan.fumEndTime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="ypadd">
+                <h4><em class="fa fa-newspaper-o"></em> 补药信息</h4>
+                <hr mt mb/>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">药剂品种</label>
+                    <div class="col-lg-4">
+                        <input type="text"  ng-model="planyj.tonName" class="form-control" />
+                    </div>
+                    <label class="col-lg-2 control-label">补药数量</label>
+                    <div class="col-lg-4">
+                        <div class="input-group date">
+                            <input class="form-control" type="text" ng-model="planyj.tonQuantity">
+                            <span class="input-group-addon"><p style="margin: 0;">公斤</p></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">补药操作人</label>
+                    <div class="col-lg-4">
+                        <input type="text"  ng-model="planyj.tonMan" class="form-control" />
+                    </div>
+                    <label class="col-lg-2 control-label">补药时间</label>
+                    <div class="col-lg-4">
+                        <div class="input-group date" id="pytime" data-date-format="yyyy-MM-dd hh:ii:ss">
+                            <input class="form-control" type="text" ng-model="planyj.tonTime">
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <button type="submit" title="提交"  ng-show="ypxqa" ng-click="addfum()" class="btn btn-success bar-h3-btn mr">
+                        <em class="fa fa-check fa-fw mr-sm"></em>提交
+                    </button>
+                    <button type="button" title="取消" ng-click="toRemove()" class="btn btn-warning bar-h3-btn mr">
+                        <em class="fa fa-close fa-fw mr-sm"></em>取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

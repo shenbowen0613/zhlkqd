@@ -1,0 +1,145 @@
+<h3 id="topBar">
+    <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="panel panel-default" ng-controller="fumViewController">
+    <div class="panel-heading">熏蒸信息详情</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">仓房信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">所属粮库:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.orgname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓房:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.housename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮品种:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.varietyname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮等级:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.gradename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮数量:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-info">{{fumInfo.grainnum}}T</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p class="lead bb">熏蒸信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">熏蒸模式:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.mode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">虫害种类:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.pestkind}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">虫害密度:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.pestdensity}} 头/公斤</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">主虫害名称:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.mainpestname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">主虫害密度:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.mainpestdensity}} 头/公斤</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">虫害等级:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.pestgraingrade}}</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">详细信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">密闭方法</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.airtightmethod}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">熏蒸开启时间:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.starttime}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">熏蒸结束时间:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.endtime}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">施药方式:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.drugway}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">施药浓度指标:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.drugconcentration}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">散气方式:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.aerationway}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">散气浓度指标:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.aerationconcentration}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">药品用量:</div>
+                        <div class="col-sm-8">
+                            <strong>{{fumInfo.sumdrugquantity}}</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert alert-success">
+            <em class="fa fa-check-circle fa-lg fa-fw"></em>
+            作业状态：{{fumInfo.workstate}}
+        </div>
+    </div>
+</div>

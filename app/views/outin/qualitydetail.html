@@ -1,0 +1,147 @@
+﻿<h3>入库质检详情</h3>
+<div class="container-fluid" ng-controller="viewqualityController">
+    <div class="col-lg-12">
+        <form class="form-horizontal p-20">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">质检时间：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{qutinQualityResult.zjtime}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">车牌号码：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.vehicleno}}</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">质检单号：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinQuality.qualityno}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">品种名称：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.varietyname}}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">产地：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.prodplace}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">年份：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{outinEnty.grainyear}}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">等级：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{qutinQualityResult.gradename}}</strong>
+                </div>
+                <div class="col-sm-2 control-label">质检结果：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{qutinQualityResult.advise}}</strong>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">质检扣量：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{qutinQualityResult.qualitycutweight}}%</strong>
+                </div>
+                <div class="col-sm-2 control-label">质检员：</div>
+                <div class="col-sm-4 mt">
+                    <strong>{{qutinQualityResult.zjoperator}}</strong>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="col-lg-12">
+        <div ng-app="table" class="panel panel-default">
+            <div class="panel-heading">
+                质检项目详情
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped" style="text-align:center;">
+                    <tr>
+                        <td>质检项目</td>
+                        <td>质检结果</td>
+                        <td>质检扣量</td>
+                        <td>标准上限</td>
+                        <td>标准下限</td>
+                        <td>拒收上限</td>
+                        <td>拒收下限</td>
+                    </tr>
+                    <tr ng-repeat="qdetail in outinQualityDetail">
+                        <td>{{qdetail.qualityname}}</td>
+                        <td>{{qdetail.qvalue}}</td>
+                        <td>{{qdetail.cutvalue}}</td>
+                        <!--容重标准-->
+                        <td ng-if="qdetail.qualityname==='容重'">--</td>
+                        <td ng-if="qdetail.qualityname==='容重'">750</td>
+                        <td ng-if="qdetail.qualityname==='容重'">--</td>
+                        <td ng-if="qdetail.qualityname==='容重'">710</td>
+                        <!--出糙率标准-->
+                        <td ng-if="qdetail.qualityname==='出糙率'">100%</td>
+                        <td ng-if="qdetail.qualityname==='出糙率'">79.0%</td>
+                        <td ng-if="qdetail.qualityname==='出糙率'">--</td>
+                        <td ng-if="qdetail.qualityname==='出糙率'">--</td>
+                        <!--整精米率标准-->
+                        <td ng-if="qdetail.qualityname==='整精米率'">100%</td>
+                        <td ng-if="qdetail.qualityname==='整精米率'">50%</td>
+                        <td ng-if="qdetail.qualityname==='整精米率'">--</td>
+                        <td ng-if="qdetail.qualityname==='整精米率'">44%</td>
+                        <!--水分标准-->
+                        <td ng-if="qdetail.qualityname==='水分'">12.5%</td>
+                        <td ng-if="qdetail.qualityname==='水分'">--</td>
+                        <td ng-if="qdetail.qualityname==='水分'">--</td>
+                        <td ng-if="qdetail.qualityname==='水分'">--</td>
+                        <!--杂质标准-->
+                        <td ng-if="qdetail.qualityname==='杂质'">1%</td>
+                        <td ng-if="qdetail.qualityname==='杂质'">--</td>
+                        <td ng-if="qdetail.qualityname==='杂质'">--</td>
+                        <td ng-if="qdetail.qualityname==='杂质'">--</td>
+                        <!--谷外糙米含量标准-->
+                        <td ng-if="qdetail.qualityname==='谷外糙米含量'">2%</td>
+                        <td ng-if="qdetail.qualityname==='谷外糙米含量'">0%</td>
+                        <td ng-if="qdetail.qualityname==='谷外糙米含量'">--</td>
+                        <td ng-if="qdetail.qualityname==='谷外糙米含量'">2%</td>
+                        <!--互混率标准-->
+                        <td ng-if="qdetail.qualityname==='互混率'">5%</td>
+                        <td ng-if="qdetail.qualityname==='互混率'">0%</td>
+                        <td ng-if="qdetail.qualityname==='互混率'">--</td>
+                        <td ng-if="qdetail.qualityname==='互混率'">20%</td>
+                        <!--色泽气味标准-->
+                        <td ng-if="qdetail.qualityname==='色泽气味'">正常</td>
+                        <td ng-if="qdetail.qualityname==='色泽气味'">正常</td>
+                        <td ng-if="qdetail.qualityname==='色泽气味'">正常</td>
+                        <td ng-if="qdetail.qualityname==='色泽气味'">正常</td>
+                        <!--重金属镉标准-->
+                        <td ng-if="qdetail.qualityname==='重金属镉'">0.2</td>
+                        <td ng-if="qdetail.qualityname==='重金属镉'">--</td>
+                        <td ng-if="qdetail.qualityname==='重金属镉'">--</td>
+                        <td ng-if="qdetail.qualityname==='重金属镉'">--</td>
+                        <!--不完善粒标准-->
+                        <td ng-if="qdetail.qualityname==='不完善粒'">6%</td>
+                        <td ng-if="qdetail.qualityname==='不完善粒'">--</td>
+                        <td ng-if="qdetail.qualityname==='不完善粒'">10%</td>
+                        <td ng-if="qdetail.qualityname==='不完善粒'">--</td>
+                        <!--面筋吸水盘标准-->
+                        <td ng-if="qdetail.qualityname==='面筋吸水盘'">18</td>
+                        <td ng-if="qdetail.qualityname==='面筋吸水盘'">17</td>
+                        <td ng-if="qdetail.qualityname==='面筋吸水盘'">19</td>
+                        <td ng-if="qdetail.qualityname==='面筋吸水盘'">10</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <span ng-include="'app/views/base/to_remove.html'"></span>
+        </div>
+    </div>
+</div>

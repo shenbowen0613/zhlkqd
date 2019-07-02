@@ -1,0 +1,144 @@
+<h3 id="topBar">
+    <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="panel panel-default" ng-controller="grainViewController">
+    <div class="panel-heading">粮情信息详情</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">温度信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.innert}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.outt}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最高温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.hight}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最低温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.lowt}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均温:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-info">{{grainInfo.avgt}}°C</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p class="lead bb">湿度信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.inh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.outh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最高湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.highh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最低湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.lowh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均湿：</div>
+                        <div class="col-sm-8">
+                            <div class="label label-success">{{grainInfo.avgh}}%</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">气体浓度信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">磷化氢</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.phosphineconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">氮气:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.nitrogenconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">氧气:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.oxygenconcentration}}ppm</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">二氧化碳:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.co2Concentration}}ppm</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p class="lead bb">虫害信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">虫害密度</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.pestdensity}}头/公斤</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">虫害种类:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.pestkind}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">主虫害密度:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.mainpestdensity}}头/公斤</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">主虫害种类:</div>
+                        <div class="col-sm-8">
+                            <strong>{{grainInfo.mainpestname}}</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert {{stl}}">
+            <em class="fa fa-check-circle fa-lg fa-fw"></em>
+            检测结果：{{stlInfo}}
+        </div>
+    </div>
+</div>

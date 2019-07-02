@@ -1,0 +1,172 @@
+<!--
+
+<h3>摄像机编辑页面
+</h3>
+<ol class="breadcrumb">
+    <li><a href="camera/cameralist">摄像机列表</a>
+    </li>
+    <li class="active">摄像机编辑页面</li>
+</ol>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well">
+-->
+
+<div class="panel panel-default ng-scope" ng-controller="updateCameraController">
+    <div class="panel-body">
+        <form class="form-horizontal" id="subForm" ng-submit="save()">
+            <input type="hidden" name="id"  ng-model="camera.id" class="form-control" value="{{camera.id}}" required/>
+            <div class="col-lg-6">
+                <div class="well">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机设备序号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" name="cameracode"  class="form-control" placeholder="{{camera.no}}" readonly/>
+                                <input type="hidden" class="form-control" ng-model="camera.no"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机设备编码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" name="cameracode" id="txtCameracode" class="form-control" ng-model="camera.cameracode"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机设备名称：</label>
+                            <div class="col-lg-6">
+                                <input type="text" name="cameraname" id="txtCameraname" class="form-control" ng-model="camera.cameraname"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">硬盘录像机序号：</label>
+                            <div class="col-lg-6">
+                                <select name="dvrno" id="dvrno" class="form-control"
+                                        ng-options="item.no as item.dvrname for item in dvrInfo" ng-model="camera.dvrno">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="col-lg-4 control-label">照射区域：</label>
+                        <div class="col-lg-6">
+                        <input type="text" id="txtjurisdiction" name="jurisdiction" class="form-control" ng-model="camera.jurisdiction"/>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">是否安装补光灯：</label>
+                            <div class="col-lg-6">
+                                <label class="switch switch-lg">
+                                    <input name="islight" ng-model="camera.islight" type="checkbox"/>
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机类型</label>
+                            <div class="col-lg-6">
+                                <select name="cameratypecode" id="cameratypecode" class="form-control"
+                                        ng-options="item.dvrtypecode as item.dvrtypename for item in dvrType" ng-model="camera.cameratypecode">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-lg-4 control-label">通道编号：</label>-->
+                            <!--<div class="col-lg-6">-->
+                                <!--<input type="text" id="txtchannelno" name="channelno" class="form-control" ng-model="camera.channelno"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-lg-4 control-label">通道别名：</label>-->
+                            <!--<div class="col-lg-6">-->
+                                <!--<input type="text" id="txtchannelname" name="channelname" class="form-control" ng-model="camera.channelname"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="well">
+                    <div class="form-horizontal">
+
+
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">仓房编码：</label>
+                            <div class="col-lg-6">
+                                <select name="houseid" id="houseid" class="form-control"
+                                        ng-options="item.id as item.housename for item in houseInfos" ng-model="camera.houseid">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">是否仓内：</label>
+                            <div class="col-lg-6">
+                                <label class="switch switch-lg">
+                                    <input name="ishourse" ng-model="camera.ishourse" type="checkbox"/>
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">安装位置：</label>
+                            <div class="col-lg-6">
+                                <input type="text" id="txtlocation" name="location" class="form-control" ng-model="camera.location"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机设备IP：</label>
+                            <div class="col-lg-6">
+                                <input type="text" id="txtcameraip" name="cameraip" class="form-control" ng-model="camera.cameraip"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">摄像机设备端口号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" id="txtcameraport" name="cameraport" class="form-control" ng-model="camera.cameraport"/>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-lg-4 control-label">子网掩码：</label>-->
+                            <!--<div class="col-lg-6">-->
+                                <!--<input type="text" id="txtsubnetmask" name="subnetmask" class="form-control" ng-model="camera.subnetmask"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-lg-4 control-label">网关地址：</label>-->
+                            <!--<div class="col-lg-6">-->
+                                <!--<input type="text" id="txtgateway" name="gateway" class="form-control" ng-model="camera.gateway"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">登录账号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" id="txtlogincode" name="logincode" class="form-control" ng-model="camera.logincode"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">登录密码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" id="txtloginpassword" name="loginpassword" class="form-control" ng-model="camera.loginpassword"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--
+
+        </div>
+    </div>
+</div>
+-->

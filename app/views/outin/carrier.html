@@ -1,0 +1,55 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<h3 id="topBar">
+    供应商
+</h3>
+<div ng-controller="carrierController" class="table-grid table-grid-desktop">
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <!-- 列表信息-->
+    <div class="mr">
+        <div ng-controller="carrierGridController" class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <div class="input-group" id="cellphone">
+                                <input class="form-control" placeholder="手机号码" type="text" ng-model="cellphone">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group" id="carrier">
+                                <input class="form-control" placeholder="姓名" type="text" ng-model="carrier">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group" id="indentitycard">
+                                <input class="form-control" placeholder="身份证号" type="text" ng-model="indentitycard">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="input-group" id="fulladdress">
+                                <input class="form-control" placeholder="详细地址" type="text" ng-model="fulladdress">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" title="搜索" ng-click="toSearch()" class="btn btn-primary pull-left mb">
+                                <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <table id="carrierTableGrids" class="row-border hover">
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

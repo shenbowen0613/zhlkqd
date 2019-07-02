@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<h3 id="topBar">
+    检验单管理
+</h3>
+<div ng-controller="qainspectionController" class="table-grid table-grid-desktop">
+    <!--类型树-->
+    <div class="col col-md pr">
+        <div class="pr"  ng-controller="qainspectionhouseTypeController" id="qainspectionhouseTypePanel">
+            <div ng-hide="$state.is('app.mailbox.compose')" class="clearfix">
+                <button type="button" ng-click="mailboxMenuCollapsed = !mailboxMenuCollapsed"
+                        ng-init="mailboxMenuCollapsed = true" class="btn btn-sm btn-default mb-toggle-button pull-right mb">
+                    <em class="fa fa-bars fa-fw fa-lg"></em>{{all_info}}
+                </button>
+            </div>
+            <div collapse="mailboxMenuCollapsed" class="mb-boxes">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="housetreePanelId">
+                        <span ng-if="doing_async">加载中...</span>
+                            <span ng-if="show_all_info">
+                                <div><h4 ng-click="showAllInfo()">{{all_info}}</h4></div>
+                                <hr class="mt mb"/>
+                            </span>
+                        <abn-tree tree-data="housetreeInfos" on-select="my_tree_handler(branch)" expand-level="1" ></abn-tree>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <!-- 列表信息-->
+    <div class="mr">
+        <div ng-controller="qainspectionGridController" class="panel panel-default">
+            <div class="panel-body">
+                <table id="qainspectionTableGrids" class="row-border hover">
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--删除信息 弹框-->
+    <script type="text/ng-template" id="delqainspectionDialogId">
+        <div class="ngdialog-message">
+            <h5 class="fa fa-exclamation-circle font-color-orangered"> 您确定要删除选中的数据吗？</h5>
+        </div>
+        <div class="text-right">
+            <button type="button" ng-disabled="editFrom.$dirty && editFrom.$invalid" ng-click="confirm(areaInfo)" class="btn btn-primary mr">确认</button>
+            <button type="button" ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+        </div>
+    </script>
+    <!--删除信息 弹框-->
+</div>

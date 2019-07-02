@@ -1,0 +1,148 @@
+<div class="row" ng-controller="viewwarningController">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="row">
+                    <div   class="well">
+                        <div class="panel-heading">硬盘录像机信息</div>
+                        <div class="panel-body">
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">硬盘录像机序号：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pDvrNo">{{dvrInfo.no}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">硬盘录像机名称：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pDvrName">{{dvrInfo.dvrname}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">硬盘录像机类型：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pDvrType">{{dvrInfo.dvrtypename}}</p>
+                            </div>
+
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">硬盘录像机厂商：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pDvrFac">{{dvrInfo.dvrmanufacturer}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">硬盘录像机型号：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pDvrModel">{{dvrInfo.dvrmodel}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div  class="well">
+                        <div class="panel-heading">摄像机信息</div>
+                        <div class="panel-body">
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机名称：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraName">{{cameraInfo.cameraname}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机序号：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraNO">{{cameraInfo.no}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机类型：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraType">{{cameraInfo.cameratypename}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机通道：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraChanel">{{cameraInfo.channelname}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机安装位置：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraLocation">{{cameraInfo.location}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机照射区域：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraJurisdiction">{{cameraInfo.jurisdiction}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">是否在仓内：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraIshourse">{{cameraInfo.ishourse}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机所在仓：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCamerahouseName">{{cameraInfo.houseid}}</p>
+                            </div>
+                            <!--
+
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机厂商：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCameraFac">{{cameraInfo.}}</p>
+                            </div>
+                            <div class="col-xs-9 col-lg-6">
+                                <p class="mt-sm">摄像机型号：</p>
+                            </div>
+                            <div class="col-xs-3 col-lg-6">
+                                <p class="mt-sm" id="pCamerModel">{{cameraInfo.}}</p>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div   class="well">
+                    <div class="panel-heading">监控报警信息</div>
+                    <div class="panel-body">
+                        <div class="col-xs-9 col-lg-6">
+                            <p class="mt-sm">报警类型：</p>
+                        </div>
+                        <div class="col-xs-3 col-lg-6">
+                            <p class="mt-sm" id="pWarningType">{{warningInfo.warningtypename}}</p>
+                        </div>
+                        <div class="col-xs-9 col-lg-6">
+                            <p class="mt-sm">图片名称：</p>
+                        </div>
+                        <div class="col-xs-3 col-lg-6">
+                            <p class="mt-sm" id="pWarningImageName">{{warningInfo.filename}}</p>
+                        </div>
+                        <div class="col-xs-9 col-lg-6">
+                            <p class="mt-sm">图片路径：</p>
+                        </div>
+                        <div class="col-xs-3 col-lg-6">
+                            <p class="mt-sm" id="pWarningImagePath">{{warningInfo.cameraname}}</p>
+                        </div>
+                        <div class="col-xs-9 col-lg-12">
+                            <div class="col-masonry">
+                                <!--图片路径暂定写死1-->
+                                <img src="../../app/img/liangshi2.jpg" alt="" class="img-thumbnail img-responsive" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

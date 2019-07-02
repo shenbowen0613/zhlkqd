@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->\
+<div ng-controller="chukuController" class="table-grid table-grid-desktop">
+    <div ng-controller="xiaokaController">
+        <form id="subForm" data-parsley-validate="" novalidate="" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-1 control-label">智能卡号：</label>
+                <div class="col-lg-2">
+                    <input type="text" id="cardno" ng-click="readSmartCard()" name="cardno" required placeholder="智能卡号"
+                           class="form-control">
+                </div>
+                <object id="mcard" classid="CLSID:856964B5-F42F-447B-A37D-ED07E8973ED2" style="display: none"></object>
+                <label class="col-lg-1 control-label">销卡人：</label>
+                <div class="col-lg-2">
+                    <select id="dtoperator" name="dtoperator" class="form-control">
+                        <option value="">无</option>
+                        <option ng-repeat="tree in xiaokaerList" value="{{tree.code}}">{{tree.label}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-1">
+                    <button class="btn btn-primary btn-lg" id="xksub">销卡</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <!-- 列表信息-->
+    <div class="mr">
+        <div ng-controller="chukuGridController" class="panel panel-default">
+            <div class="panel-body">
+                <table id="chukuTableGrids" class="row-border hover">
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

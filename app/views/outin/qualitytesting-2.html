@@ -1,0 +1,261 @@
+<form class="form-horizontal" ng-controller="qualitytestingController">
+    <div class="row">
+        <div class="col-sm-6">
+            <div  class="form-horizontal" >
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">智能卡号：</label>
+                    <div class="col-lg-5">
+                        <input type="text" id="smart_card" name="cardno" ng-click="readSmartCard()" required placeholder="智能卡号" class="form-control" ng-blur="qualitytestingGetByCardno()">
+                    </div>
+                    <object id="mcard" classid="CLSID:856964B5-F42F-447B-A37D-ED07E8973ED2" style="display: none"></object>
+                </div>
+                <div class="form-group ">
+                    <label class="col-lg-3  control-label">粮食产地： </label>
+                    <div class="col-lg-5">
+                        <label class="control-label">{{outinEntry.prodplace}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">供应商：</label>
+                    <div class="col-lg-5">
+                        <label class="control-label">{{outinEntry.customername}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">承运人：</label>
+                    <div class="col-lg-5">
+                        <label class="control-label">{{outinEntry.carrier}}</label>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label class="col-lg-3 control-label">车牌号码： </label>-->
+                <!--<div class="col-lg-5">-->
+                <!--<label class="control-label">{{outinEntry.vehicleno}}</label>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="well well-sm text-center">
+                <div style="height: 20px">
+                    <label class="col-lg-2">化验名称</label>
+                    <label class="col-lg-2">化验值</label>
+                    <label class="col-lg-2">标准上限</label>
+                    <label class="col-lg-2">标准下限</label>
+                    <label class="col-lg-2">拒收上限</label>
+                    <label class="col-lg-2">拒收下限</label>
+                </div>
+            </div>
+            <div class="well well-sm text-center" style="margin-top: -15px">
+                <div class="form-horizontal">
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">容重</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="rongzhong">
+                            <input type="text" name="assayValues" required="" placeholder="容重" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">100</span>
+                        <span class="col-lg-2 ng-binding">500</span>
+                        <span class="col-lg-2 ng-binding">700</span>
+                        <span class="col-lg-2 ng-binding">100</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">出糙率</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="chucaolv">
+                            <input type="text" name="assayValues" required="" id="chucaolvVal" placeholder="出糙率" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">100%</span>
+                        <span class="col-lg-2 ng-binding">79.0%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">整精米率</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="zhengjingmilv">
+                            <input type="text" name="assayValues" required="" id="zhengjingmilvVal" placeholder="整精米率" ng-blur="zhengjingmilvCheck()" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">100%</span>
+                        <span class="col-lg-2 ng-binding">50%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">44%</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">水分</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="shuifen">
+                            <input type="text" name="assayValues" required="" id="shuifenVal" placeholder="水分" ng-blur="shuifenCheck()" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">13.5%</span>
+                        <span class="col-lg-2 ng-binding">11%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">杂质</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="zazhi">
+                            <input type="text" name="assayValues" required="" placeholder="杂质" id="zazhiVal" ng-blur="zazhiCheck()" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">1%</span>
+                        <span class="col-lg-2 ng-binding">0%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">黄粒米含量</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="hanglimi">
+                            <input type="text" name="assayValues" required="" placeholder="不完善粒" id="hanglimiVal" ng-blur="hanglimiCheck()" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">1%</span>
+                        <span class="col-lg-2 ng-binding">0%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">2%</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">谷外糙米含量</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="guwaicaomi">
+                            <input type="text" name="assayValues" required="" placeholder="谷外糙米含量" id="guwaicaomiVal" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">2%</span>
+                        <span class="col-lg-2 ng-binding">0%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">2%</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">互混率</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="huhunlv">
+                            <input type="text" name="assayValues" required="" placeholder="互混率" id="huhunlvVal" ng-blur="huhunlvCheck()" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">5%</span>
+                        <span class="col-lg-2 ng-binding">0%</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">20%</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">色泽气味</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="sezeqiwei">
+                            <input type="text" name="assayValues" required="" placeholder="色泽气味" class="form-control" value="正常">
+                        </div>
+                        <span class="col-lg-2 ng-binding">正常</span>
+                        <span class="col-lg-2 ng-binding">正常</span>
+                        <span class="col-lg-2 ng-binding">正常</span>
+                        <span class="col-lg-2 ng-binding">正常</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <span class="col-lg-2 ng-binding">重金属镉</span>
+                        <div class="col-lg-2">
+                            <input type="hidden" name="assayNames" value="zhongjinshuege">
+                            <input type="text" name="assayValues" required="" placeholder="重金属镉" class="form-control">
+                        </div>
+                        <span class="col-lg-2 ng-binding">0.2</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                        <span class="col-lg-2 ng-binding">--</span>
+                    </div>
+                    <!--<div class="form-group ng-scope">-->
+                        <!--<span class="col-lg-2 ng-binding">面筋吸水盘</span>-->
+                        <!--<div class="col-lg-2">-->
+                            <!--<input type="hidden" name="assayNames" value="mianjinxishuipan">-->
+                            <!--<input type="text" name="assayValues" required="" placeholder="面筋吸水盘" class="form-control">-->
+                        <!--</div>-->
+                        <!--<span class="col-lg-2 ng-binding">18</span>-->
+                        <!--<span class="col-lg-2 ng-binding">17</span>-->
+                        <!--<span class="col-lg-2 ng-binding">19</span>-->
+                        <!--<span class="col-lg-2 ng-binding">10</span>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-repeat="item in qualitytestings">-->
+                    <!--<span class="col-lg-2">{{item.label}}</span>-->
+                    <!--<div class="col-lg-2">-->
+                    <!--<input type="hidden" name="assayNames" value="{{item.code}}">-->
+                    <!--<input type="text" name="assayValues" required placeholder="{{item.label}}" class="form-control">-->
+                    <!--</div>-->
+                    <!--<span class="col-lg-2">{{item.remarks[0]}}</span>-->
+                    <!--<span class="col-lg-2">{{item.remarks[1]}}</span>-->
+                    <!--<span class="col-lg-2">{{item.remarks[2]}}</span>-->
+                    <!--<span class="col-lg-2">{{item.remarks[3]}}</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">化验结果：</label>
+                        <div class="col-sm-5">
+                            <label class="radio-inline c-radio">
+                                <input type="radio" name="isPass" ng-model="isPass"   required value="合格"/>
+                                <span class="fa fa-circle"></span>合格</label>
+                            <label class="radio-inline c-radio">
+                                <input type="radio" name="isPass" ng-model="isPass" required value="不合格"/>
+                                <span class="fa fa-circle"></span>不合格</label>
+                        </div>
+                        <label class="col-sm-1 control-label">扣量：</label>
+                        <div class="col-sm-2">
+                            <div class="input-group">
+                                <input id="removeFood1" required type="hidden" value="0" class="form-control" />
+                                <input id="removeFood2" required type="hidden" value="0" class="form-control" />
+                                <input id="removeFood3" required type="hidden" value="0" class="form-control" />
+                                <input id="removeFood4" required type="hidden" value="0" class="form-control" />
+                                <input id="removeFood5" required type="hidden" value="0" class="form-control" />
+                                <input name="removeWater" ng-model="removeWater" id="removeWater" required type="hidden" value="0" class="form-control" />
+                                <input name="removeFood"  ng-model="removeFood"  id="removeFood"  required type="text" class="form-control" />
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-horizontal ">
+                    <div class="form-group " >
+                        <label class="col-sm-2 control-label">化验等级：</label>
+                        <div class="col-sm-5">
+                            <div class="btn-group" id="btnLevel">
+                                <label class="radio-inline c-radio">
+                                    <input type="radio" name="level" ng-model="level"  required value="一等"/>
+                                    <span class="fa fa-circle"></span>一等</label>
+                                <label class="radio-inline c-radio">
+                                    <input type="radio" name="level" ng-model="level" required value="二等"/>
+                                    <span class="fa fa-circle"></span>二等</label>
+                                <label class="radio-inline c-radio">
+                                    <input type="radio" name="level" ng-model="level" required value="三等"/>
+                                    <span class="fa fa-circle"></span>三等</label>
+                                <label class="radio-inline c-radio">
+                                    <input type="radio" name="level" ng-model="level" required value="四等"/>
+                                    <span class="fa fa-circle"></span>四等</label>
+                                <label class="radio-inline c-radio">
+                                    <input type="radio" name="level" ng-model="level" required value="五等"/>
+                                    <span class="fa fa-circle"></span>五等</label>
+                            </div>
+                        </div>
+
+                        <label class="col-sm-1 control-label">仓库：</label>
+                        <div class="col-sm-2">
+                            <select name="housecode" ng-model="housecode" class="form-control">
+                                <option value="">请选择</option>
+                                <option  ng-repeat="tree in treeInfos" value="{{tree.code}}">{{tree.label}}</option>
+                            </select>
+                            <input name="housename" id="housename" style="display: none"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <div class="col-lg-offset-5">
+                <button id="reset" type="reset" id="btnReset" class="btn btn-info  btn-lg">重  置</button>
+                <button type="button"  ng-click="save()" class="btn btn-primary btn-lg">提  交</button>
+            </div>
+        </div>
+</form>

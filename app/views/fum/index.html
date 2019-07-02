@@ -1,0 +1,173 @@
+<div ng-controller="fumController">
+<h3>
+    智能熏蒸中心 <span id="houseName"></span>
+    <div class="float-right">
+        <div class="btn-group pc-show">
+            <button type="button" title="开始熏蒸" ng-click="stxunzheng('开始熏蒸')" class="btn btn-purple bar-h3-btn mr">
+                <em class="fa fa-plus fa-fw mr-sm"></em>开始熏蒸
+            </button>
+            <button type="button" title="结束熏蒸" ng-click="stxunzheng('结束熏蒸')" class="btn btn-green bar-h3-btn mr">
+                <em class="fa fa-plus fa-fw mr-sm"></em>结束熏蒸
+            </button>
+            <button type="button" title="结束熏蒸" ng-click="stxunzheng('审核通过')" class="btn btn-primary bar-h3-btn mr">
+                <em class="fa fa-plus fa-fw mr-sm"></em>审核
+            </button>
+            <button type="button" title="添加物资" id="toadd" ng-click="addupdata(1)" class="btn btn-info bar-h3-btn mr">
+                <em class="fa fa-plus fa-fw mr-sm"></em>添加熏蒸
+            </button>
+            <button type="button" title="添加药品" ng-click="addupdata(3)" class="btn btn-info bar-h3-btn mr">
+                <em class="fa fa-plus fa-fw mr-sm"></em>添加药品
+            </button>
+            <button type="button" title="修改物资" id="toupdate" ng-click="addupdata(2)" class="btn btn-primary bar-h3-btn mr">
+                <em class="fa fa-pencil fa-fw mr-sm"></em>修改熏蒸
+            </button>
+            <button type="button" title="删除物资" id="todelete" ng-click="deldata()" class="btn btn-danger bar-h3-btn mr">
+                <em class="fa fa-trash fa-fw mr-sm"></em>删除熏蒸
+            </button>
+        </div>
+    </div>
+</h3>
+<div class="container-fluid">
+    <div class="row mb-lg">
+        <div id="fumIndexLeft" class="col-lg-9 bg-white mt p">
+            <!--操作区域-->
+            <div ui-view="" class="mr ng-scope"></div>
+            <div class="mr ng-scope col-lg-12">
+                <div class="col-lg-4">
+                    <h4><em class="fa fa-newspaper-o"></em> 熏蒸记录</h4>
+                </div>
+                <div class="col-lg-3">
+                    <div class="input-group date mr" id="sttime" data-date-format="yyyy-MM-dd hh:ii:ss">
+                        <input class="form-control" type="text" ng-model="sttime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="input-group date mr" id="edtime" data-date-format="yyyy-MM-dd hh:ii:ss">
+                        <input class="form-control" type="text" ng-model="edtime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button type="button" ng-click="findxz()" title="搜索" id="toSearch" class="btn btn-primary bar-h3-btn mr">
+                        <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body dataTables_wrapper">
+                <table id="detailedTableGrids" class="row-border hover dataTable no-footer" role="grid" aria-describedby="detailedTableGrids_info">
+                    <thead>
+                    <tr role="row">
+                        <th style="width: 60px;"></th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">仓房名称</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">熏蒸模式</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">累计充药量</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">目标浓度</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">熏蒸开始时间</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">实际熏蒸结束时间</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">熏蒸状态</font>
+                            </font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">详情</font>
+                            </font>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="b in housexz">
+                        <th class="sorting_asc" aria-label="" style="width: 60px;">
+                            <div class="checkbox c-checkbox">
+                                <label>
+                                    <input ng-model="b.checked" ng-click="selectOne()" type="checkbox">
+                                    <span class="fa fa-check"></span>
+                                </label>
+                            </div>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.housename}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.fumType}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.phaQuantity}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.concentration}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.fumStartTime}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.fumEndTime}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <font style="vertical-align: inherit;">{{b.fumStatus}}</font>
+                        </th>
+                        <th class="sorting_disabled">
+                            <button type="button" title="详情" ng-click="xqxunzheng(b.fumId)" class="btn btn-green bar-h3-btn mr">
+                                <em class="icon-magnifier-add fa-fw mr-sm"></em>详情
+                            </button>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="dataTables_info" role="status" aria-live="polite">共 {{items.total}} 条</div>
+                <div class="dataTables_paginate paging_full_numbers" id="detailedTableGrids_paginate">
+                    <a class="paginate_button previous disabled" ng-click="fenyeq(items.prePage)">上一页</a>
+                    <span>
+                        <a class="paginate_button" ng-repeat="page in items.navigatepageNums" ng-class="{current:page==items.pageNum}" ng-click="fenyeq(page)" tabindex="0">{{page}}</a>
+                    </span>
+                    <a class="paginate_button next disabled" ng-click="fenyeq(items.nextPage)">下一页</a>
+                </div>
+            </div>
+        </div>
+        <div id="fumIndexRight" class="col-lg-3">
+            <!--仓房信息 begin-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><em class="fa fa-newspaper-o"></em> 仓房信息</div>
+                    <hr class="mt mb0"/>
+                </div>
+                <div class="list-group panel-heading clear" id="all_house">
+                    <button type="button" ng-repeat="item in houseItems" ng-class="{'btn-primary': item.code == statescode}" ng-click="houseInspectionInfo(item.code,item.label)" class="btn btn-default grain-c-w23">
+                        {{item.label}}
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="panel-footer clearfix text-muted">
+                    <small>注：点击查看对应仓房信息</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

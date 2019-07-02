@@ -1,0 +1,316 @@
+<script type="text/javascript">
+    function resizeHit(){
+        $("#bg_img").height($(window).height());
+    }
+    $(document).ready(function () {
+        window.onresize = resizeHit;  //每次屏幕大小发生变化，自动重新加载
+        resizeHit();
+    })//设置背景图片高度
+</script>
+<div ng-controller="indexPageController">
+    <!-- top navbar-->
+    <header ng-include="'app/views/partials/top-navbar.html'" class="topnavbar-wrapper"></header>
+    <div id="index-c-info">
+        <div class="contect_main">
+            <div class="distribution-map" style="position: relative;">
+                <!--晴天卡片-->
+                <!--天气面板--start-->
+                <div class="card-qxz" ng-show="weather.typea">
+                    <div style="text-align: center;">
+                        <span style="font-size: 20px;"></span> &nbsp;&nbsp;<span>{{weather.createtime}}</span>
+                        <br><br>
+                        <div class="card-one">
+                            <h1>{{weather.wd}}°</h1>
+                        </div>
+                        <div class="card-two">
+                            <p>湿度:{{weather.sd}}</p>
+                            <p>风速:{{weather.fs}}</p>
+                            <p>气压:{{weather.qy}}</p>
+                            <p>雨感:{{weather.yg}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!--天气面板--end-->
+                <img src="app/img/index/Main_Content.jpg" id="bg_img" />
+
+                <img
+                        class="map-point" src="app/img/index/27.png" style="top: 30%; left: 24.5%"
+                        onclick="studyModalDialog('11')"
+                        ng-mouseover="show(this,'mydiv2','27');"
+                        onMouseOut="hide(this,'mydiv2')" id="green27" />
+                <img
+                        class="map-point" src="app/img/index/28.png" style="top: 30%; left: 20%;"
+                        onclick="studyShowModalDialog('12')"
+                        ng-mouseover="show(this,'mydiv2','28');"
+                        onMouseOut="hide(this,'mydiv2')" id="green28"/>
+                <img
+                        class="map-point" src="app/img/index/56.png" style="top: 30%; left: 13.5%"
+                        onclick="studyShowModalDialog('13')"
+                        ng-mouseover="show(this,'mydiv2','56');"
+                        onMouseOut="hide(this,'mydiv2')" id="green56"/>
+                <img
+                        class="map-point" src="app/img/index/10.png" style="top: 65%; left: 71.5%"
+                        onclick="studyShowModalDialog('10')"
+                        ng-mouseover="show(this,'mydiv2','10');"
+                        onMouseOut="hide(this,'mydiv2')" id="green10"/>
+                <img
+                        class="map-point" src="app/img/index/09.png" style="top: 65%; left: 64%"
+                        onclick="studyShowModalDialog('9')"
+                        ng-mouseover="show(this,'mydiv2','09');"
+                        onMouseOut="hide(this,'mydiv2')" id="green09"/>
+                <img
+                        class="map-point" src="app/img/index/08.png" style="top: 65%; left: 56.5%"
+                        onclick="studyShowModalDialog('8')"
+                        ng-mouseover="show(this,'mydiv2','08');"
+                        onMouseOut="hide(this,'mydiv2')" id="green08"/>
+                <img
+                        class="map-point" src="app/img/index/07.png" style="top: 65%; left: 49%"
+                        onclick="studyShowModalDialog('7')"
+                        ng-mouseover="show(this,'mydiv2','07');"
+                        onMouseOut="hide(this,'mydiv2')" id="green07"/>
+                <img
+                        class="map-point" src="app/img/index/06.png" style="top: 65%; left: 41.5%"
+                        onclick="studyShowModalDialog('6')"
+                        ng-mouseover="show(this,'mydiv2','06');"
+                        onMouseOut="hide(this,'mydiv2')" id="green06"/>
+                <img
+                        class="map-point" src="app/img/index/05.png" style="top: 65%; left: 34%"
+                        onclick="studyShowModalDialog('5')"
+                        ng-mouseover="show(this,'mydiv2','05');"
+                        onMouseOut="hide(this,'mydiv2')" id="green05"/>
+                <img
+                        class="map-point" src="app/img/index/04.png" style="top: 65%; left: 26.5%"
+                        onclick="studyShowModalDialog('4')"
+                        ng-mouseover="show(this,'mydiv2','04');"
+                        onMouseOut="hide(this,'mydiv2')" id="green04"/>
+                <img
+                        class="map-point" src="app/img/index/03.png" style="top: 65%; left: 19%"
+                        onclick="studyShowModalDialog('3')"
+                        ng-mouseover="show(this,'mydiv2','03');"
+                        onMouseOut="hide(this,'mydiv2')" id="green03"/>
+                <img
+                        class="map-point" src="app/img/index/02.png" style="top: 65%; left: 11.5%"
+                        onclick="studyShowModalDialog('2')"
+                        ng-mouseover="show(this,'mydiv2','02');"
+                        onMouseOut="hide(this,'mydiv2')" id="green02"/>
+                <img
+                        class="map-point" src="app/img/index/01.png" style="top: 65%; left: 4%"
+                        onclick="studyShowModalDialog('1')"
+                        ng-mouseover="show(this,'mydiv2','01');"
+                        onMouseOut="hide(this,'mydiv2')" id="green01"/>
+                <img
+                        class="map-point" src="app/img/index/32.png" style="top: 47%; left: 70%"
+                        onclick="studyShowModalDialog('32')"
+                        ng-mouseover="show(this,'mydiv2','32');"
+                        onMouseOut="hide(this,'mydiv2')" id="green32"/>
+                <img
+                        class="map-point" src="app/img/index/33.png" style="top: 47%; left: 62%"
+                        onclick="studyShowModalDialog('33')"
+                        ng-mouseover="show(this,'mydiv2','33');"
+                        onMouseOut="hide(this,'mydiv2')" id="green33"/>
+                <img
+                        class="map-point" src="app/img/index/34.png" style="top: 47%; left: 54%"
+                        onclick="studyShowModalDialog('34')"
+                        ng-mouseover="show(this,'mydiv2','34');"
+                        onMouseOut="hide(this,'mydiv2')" id="green34"/>
+                <img
+                        class="map-point" src="app/img/index/35.png" style="top: 47%; left: 46%"
+                        onclick="studyShowModalDialog('35')"
+                        ng-mouseover="show(this,'mydiv2','35');"
+                        onMouseOut="hide(this,'mydiv2')" id="green35"/>
+                <img
+                        class="map-point" src="app/img/index/36.png" style="top: 47%; left: 33%"
+                        onclick="studyShowModalDialog('36')"
+                        ng-mouseover="show(this,'mydiv2','36');"
+                        onMouseOut="hide(this,'mydiv2')" id="green36"/>
+                <img
+                        class="map-point" src="app/img/index/37.png" style="top: 47%; left: 23%"
+                        onclick="studyShowModalDialog('37')"
+                        ng-mouseover="show(this,'mydiv2','37');"
+                        onMouseOut="hide(this,'mydiv2')" id="green37"/>
+                <img
+                        class="map-point" src="app/img/index/38.png" style="top: 47%; left: 14%"
+                        onclick="studyShowModalDialog('38')"
+                        ng-mouseover="show(this,'mydiv2','38');"
+                        onMouseOut="hide(this,'mydiv2')" id="green38"/>
+                <img
+                        class="map-point" src="app/img/index/49.png" style="top: 40%; left: 18%"
+                        onclick="studyShowModalDialog('49')"
+                        ng-mouseover="show(this,'mydiv2','49');"
+                        onMouseOut="hide(this,'mydiv2')" id="green49"/>
+                <img
+                        class="map-point" src="app/img/index/29.png" style="top: 35%; left: 90%"
+                        onclick="studyShowModalDialog('29')"
+                        ng-mouseover="show(this,'mydiv2','29');"
+                        onMouseOut="hide(this,'mydiv2')" id="green29"/>
+                <img
+                        class="map-point" src="app/img/index/55.png" style="top: 29%; left: 87.5%"
+                        onclick="studyShowModalDialog('55')"
+                        ng-mouseover="show(this,'mydiv2','55');"
+                        onMouseOut="hide(this,'mydiv2')" id="green55"/>
+                <img
+                        class="map-point" src="app/img/index/54.png" style="top: 22%; left: 85.5%"
+                        onclick="studyShowModalDialog('54')"
+                        ng-mouseover="show(this,'mydiv2','54');"
+                        onMouseOut="hide(this,'mydiv2')" id="green54"/>
+                <img
+                        class="map-point" src="app/img/index/31.png" style="top: 32%; left: 80%"
+                        onclick="studyShowModalDialog('31')"
+                        ng-mouseover="show(this,'mydiv2','31');"
+                        onMouseOut="hide(this,'mydiv2')" id="green31"/>
+                <img
+                        class="map-point" src="app/img/index/30.png" style="top: 24%; left: 78%"
+                        onclick="studyShowModalDialog('30')"
+                        ng-mouseover="show(this,'mydiv2','30');"
+                        onMouseOut="hide(this,'mydiv2')" id="green30"/>
+                <img
+                        class="map-point" src="app/img/index/11.png" style="top: 32%; left: 74%"
+                        onclick="studyShowModalDialog('11')"
+                        ng-mouseover="show(this,'mydiv2','11');"
+                        onMouseOut="hide(this,'mydiv2')" id="green11"/>
+                <img
+                        class="map-point" src="app/img/index/12.png" style="top: 24%; left: 72.5%"
+                        onclick="studyShowModalDialog('12')"
+                        ng-mouseover="show(this,'mydiv2','12');"
+                        onMouseOut="hide(this,'mydiv2')" id="green12"/>
+                <img
+                        class="map-point" src="app/img/index/13.png" style="top: 32%; left: 68%"
+                        onclick="studyShowModalDialog('13')"
+                        ng-mouseover="show(this,'mydiv2','13');"
+                        onMouseOut="hide(this,'mydiv2')" id="green13"/>
+                <img
+                        class="map-point" src="app/img/index/14.png" style="top: 24%; left: 67%"
+                        onclick="studyShowModalDialog('14')"
+                        ng-mouseover="show(this,'mydiv2','14');"
+                        onMouseOut="hide(this,'mydiv2')" id="green14"/>
+                <img
+                        class="map-point" src="app/img/index/15.png" style="top: 32%; left: 61.5%"
+                        onclick="studyShowModalDialog('15')"
+                        ng-mouseover="show(this,'mydiv2','15');"
+                        onMouseOut="hide(this,'mydiv2')" id="green15"/>
+                <img
+                        class="map-point" src="app/img/index/16.png" style="top: 24%; left: 61%"
+                        onclick="studyShowModalDialog('16')"
+                        ng-mouseover="show(this,'mydiv2','16');"
+                        onMouseOut="hide(this,'mydiv2')" id="green16"/>
+                <img
+                        class="map-point" src="app/img/index/17.png" style="top: 32%; left: 55.5%"
+                        onclick="studyShowModalDialog('17')"
+                        ng-mouseover="show(this,'mydiv2','17');"
+                        onMouseOut="hide(this,'mydiv2')" id="green17"/>
+                <img
+                        class="map-point" src="app/img/index/18.png" style="top: 24%; left: 55%"
+                        onclick="studyShowModalDialog('18')"
+                        ng-mouseover="show(this,'mydiv2','18');"
+                        onMouseOut="hide(this,'mydiv2')" id="green18"/>
+                <img class="map-point" src="app/img/index/19.png" style="top: 32%; left: 49.5%"
+                     onclick="studyShowModalDialog('19')"
+                     ng-mouseover="show(this,'mydiv2','19');"
+                     onMouseOut="hide(this,'mydiv2')" id="green19"> </img>
+                <img
+                        class="map-point" src="app/img/index/20.png" style="top: 24%; left: 49.5%"
+                        onclick="studyShowModalDialog('20')"
+                        ng-mouseover="show(this,'mydiv2','20');"
+                        onMouseOut="hide(this,'mydiv2')" id="green20"> </img>
+                <img
+                        class="map-point" src="app/img/index/21.png" style="top: 32%; left: 43%"
+                        onclick="studyShowModalDialog('21')"
+                        ng-mouseover="show(this,'mydiv2','21');"
+                        onMouseOut="hide(this,'mydiv2')" id="green21"/>
+                <img
+                        class="map-point" src="app/img/index/22.png" style="top: 24%; left: 43.5%"
+                        onclick="studyShowModalDialog('22')"
+                        ng-mouseover="show(this,'mydiv2','22');"
+                        onMouseOut="hide(this,'mydiv2')" id="green22"/>
+                <img
+                        class="map-point" src="app/img/index/23.png" style="top: 32%; left: 37%"
+                        onclick="studyShowModalDialog('23')"
+                        ng-mouseover="show(this,'mydiv2','23');"
+                        onMouseOut="hide(this,'mydiv2')" id="green23"/>
+                <img
+                        class="map-point" src="app/img/index/24.png" style="top: 24%; left: 38%"
+                        onclick="studyShowModalDialog('24')"
+                        ng-mouseover="show(this,'mydiv2','24');"
+                        onMouseOut="hide(this,'mydiv2')" id="green24"/>
+                <img
+                        class="map-point" src="app/img/index/25.png" style="top: 32%; left: 30.5%"
+                        onclick="studyShowModalDialog('25')"
+                        ng-mouseover="show(this,'mydiv2','25');"
+                        onMouseOut="hide(this,'mydiv2')" id="green25"/>
+                <img
+                        class="map-point" src="app/img/index/26.png" style="top: 24%; left: 31.5%"
+                        onclick="studyShowModalDialog('26')"
+                        ng-mouseover="show(this,'mydiv2','26');"
+                        onMouseOut="hide(this,'mydiv2')" id="green26"/>
+
+            </div>
+        </div>
+        <div id="mydiv2"
+             style="position: absolute; display: none; border: 2px solid silver; background:#62c462; width: 180px;font-family:arial; border-radius: 10px;">
+            <ul class="list-unstyled">
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;：
+                        <span id="ch"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;平&nbsp;&nbsp;均&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="avgt"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;平&nbsp;&nbsp;均&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="avgh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;高&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="hight"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;高&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="highh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;内&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="innert"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;内&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="inh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;低&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="lowt"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;低&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="lowh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;外&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="outt"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;外&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="outh"></span>
+                    </strong>
+                </li>
+                <li id="tishi" style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;示&nbsp;&nbsp;：
+                        <span id="wendutishi"></span>
+                    </strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Page footer-->
+    <footer style="margin-left: 0;z-index: 111;" ng-include="'app/views/partials/footer.html'"></footer>
+</div>

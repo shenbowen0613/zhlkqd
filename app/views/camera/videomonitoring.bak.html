@@ -1,0 +1,120 @@
+<style>
+    .button-video {
+        width: 45%;
+        border: 0;
+        height: 50px;
+        font-size: 18px;
+    }
+    .button-cilck{
+        color:#fcfcfc;
+        background: #5990ec;
+    }
+    .plugin
+    {
+        width:800px;
+        height:600px;
+    }
+</style>
+<div id="content" class="row" ng-controller="monitoringController">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-1 well">
+                <h4 class="page-header mt0">硬盘录像机</h4>
+                <div ng-repeat="x in dvrname" class="video-div">
+                    <span ng-click="yingpanluxiangji(x.dvrip,x.dvrport,x.dvrlogincode,x.dvrloginpassword)"
+                          class="houseOption">{{x.dvraliasname}}</span>
+                </div>
+            </div>
+            <div class="col-lg-2 well">
+                <h4 class="page-header mt0">监控点</h4>
+                <div ng-repeat="x in oSelname" class="video-div">
+                    <span ng-click="clickStartRealPlay(x.id)" id="{{x.id}}"
+                          class="houseOption">{{x.name}}</span>
+                </div>
+            </div>
+            <!--云台控制-->
+            <div class="col-lg-2 well">
+                <table cellpadding="0" cellspacing="3" border="0" class="left">
+                    <tr>
+                        <td>
+                            <input type="button" class="btn" value="左上" onmousedown="mouseDownPTZControl(5);" onmouseup="mouseUpPTZControl();" />
+                            <input type="button" class="btn" value="上" onmousedown="mouseDownPTZControl(1);" onmouseup="mouseUpPTZControl();" />
+                            <input type="button" class="btn" value="右上" onmousedown="mouseDownPTZControl(7);" onmouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="btn" value="左" onmousedown="mouseDownPTZControl(3);" onmouseup="mouseUpPTZControl();" />
+                            <input type="button" class="btn" value="自动" onclick="mouseDownPTZControl(9);" />
+                            <input type="button" class="btn" value="右" onmousedown="mouseDownPTZControl(4);" onmouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="btn" value="左下" onmousedown="mouseDownPTZControl(6);" onmouseup="mouseUpPTZControl();" />
+                            <input type="button" class="btn" value="下" onmousedown="mouseDownPTZControl(2);" onmouseup="mouseUpPTZControl();" />
+                            <input type="button" class="btn" value="右下" onmousedown="mouseDownPTZControl(8);" onmouseup="mouseUpPTZControl();" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-8">
+                <div id="divPlugin" class="plugin"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    // PTZ控制 9为自动，1,2,3,4,5,6,7,8为方向PTZ
+    var g_bPTZAuto = false;
+    var iPTZSpeed  = 9;
+    function mouseDownPTZControl(iPTZIndex) {
+        var oWndInfo = WebVideoCtrl.I_GetWindowStatus(0);
+        // ,bZeroChannel = $("#channels option").eq($("#channels").get(0).selectedIndex).attr("bZero") == "true" ? true : false,
+        // iPTZSpeed = $("#ptzspeed").val(),
+        // bStop = false;
+        // if (bZeroChannel) {// 零通道不支持云台
+        //     return;
+        // }
+
+        if (oWndInfo != null) {
+            if (9 == iPTZIndex && g_bPTZAuto) {
+                iPTZSpeed = 0;// 自动开启后，速度置为0可以关闭自动
+                bStop = true;
+            } else {
+                g_bPTZAuto = false;// 点击其他方向，自动肯定会被关闭
+                bStop = false;
+            }
+
+            WebVideoCtrl.I_PTZControl(iPTZIndex, bStop, {
+                iPTZSpeed: iPTZSpeed,
+                success: function (xmlDoc) {
+                    if (9 == iPTZIndex) {
+                        g_bPTZAuto = !g_bPTZAuto;
+                    }
+                    // alert(oWndInfo.szIP + " 开启云台成功！");
+                },
+                error: function () {
+                    // alert(oWndInfo.szIP + " 开启云台失败！");
+                }
+            });
+        }
+    }
+
+    // 方向PTZ停止
+    function mouseUpPTZControl() {
+        var oWndInfo = WebVideoCtrl.I_GetWindowStatus(0);
+
+        if (oWndInfo != null) {
+            WebVideoCtrl.I_PTZControl(1, true, {
+                success: function (xmlDoc) {
+                    // alert(oWndInfo.szIP + " 停止云台成功！");
+                },
+                error: function () {
+                    // alert(oWndInfo.szIP + " 停止云台失败！");
+                }
+            });
+        }
+    }
+</script>

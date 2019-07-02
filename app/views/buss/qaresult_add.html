@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+<div class="panel panel-default ng-scope" ng-controller="addqaresultController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">检验名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="qaId" ng-model="qaId"  id="qaId" ng-change="selectQa()" class="form-control"  required>
+                        <option value="0">请选择...</option>
+                        <option ng-repeat="item in inspectreeInfos" value="{{item.remark}}" >{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label class="col-lg-2 control-label">检查结果<font color="red">*</font></label>
+                <div class="col-lg-10" id="paras">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

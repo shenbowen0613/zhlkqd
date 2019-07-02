@@ -1,0 +1,137 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<div class="panel panel-default ng-scope" ng-controller="updatecontractController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <input type="hidden" name="id"  ng-model="contract.id" class="form-control" required/>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">合同名称<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="name"  ng-model="contract.name" class="form-control" required  ng-maxlength="30" />
+                    <span ng-show="form.name.$dirty && form.name.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">合同来源<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="sourcecode" ng-model="contract.sourcecode" id="sourcecode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in sourcetreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">合同模板<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="tplcode" ng-model="contract.tplcode" id="tplcode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in tplcontracttreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label"> 审批模板<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="approvalcode" ng-model="approvalcode" id="approvalcode" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in tplapprovaltreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">合同内码<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="innercode"  ng-model="contract.innercode" class="form-control" required ng-maxlength="30" placeholder="请填写粮库内部便于识别的计划编码"/>
+                    <span ng-show="form.innercode.$dirty && form.innercode.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">文件号<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="contractno"  ng-model="contract.planno" class="form-control" required ng-maxlength="30" placeholder="请填写计划纸质文件的计划号"/>
+                    <span ng-show="form.contractno.$dirty && form.contractno.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">负责人<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="author"  ng-model="contract.author" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.author.$dirty && form.author.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">执行部门<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="department"  ng-model="contract.department" class="form-control" required ng-maxlength="30"/>
+                    <span ng-show="form.department.$dirty && form.department.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">摘要<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="summary"  ng-model="contract.summary" class="form-control" required ng-maxlength="200" />
+                    <span ng-show="form.summary.$dirty && form.summary.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">签订时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="startime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="contract.startime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+                <label class="col-lg-2 control-label">终止时间</label>
+                <div class="col-lg-4">
+                    <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd">
+                        <input class="form-control" type="text" ng-model="contract.endtime">
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">执行优先级<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <select name="priority" ng-model="contract.priority" id="priority" class="form-control" required>
+                        <option value="">请选择...</option>
+                        <option ng-repeat="item in prioritytreeInfos" value="{{item.code}}">{{item.label}}</option>
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">是否置顶<font color="red">*</font></label>
+                <div class="col-lg-1">
+                    <label class="switch switch-lg">
+                        <input name="istop" ng-model="contract.istop" type="checkbox"/>
+                        <span></span>
+                    </label>
+                </div>
+                <label class="col-lg-2 control-label">是否热门<font color="red">*</font></label>
+                <div class="col-lg-1">
+                    <label class="switch switch-lg">
+                        <input name="ishot" ng-model="contract.ishot" type="checkbox"/>
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">内容详情<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"> </textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="contract.content"  name="content"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.content.$dirty && form.content.$invalid" class="text-danger">最多输入5000个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

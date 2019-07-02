@@ -1,0 +1,131 @@
+<div class="well" ng-controller="updateVedioController">
+    <div class="row">
+        <form class="form-horizontal" id="subForm" ng-submit="save()">
+            <input type="hidden" ng-model="dvrInfo.id" name="id">
+            <div class="col-lg-6">
+                <div class="well">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备序号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.no" id="drvNo" class="form-control" required/>
+                                <span ng-show="form.no.$dirty && form.no.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备编码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrcode" id="txtDrvCode" class="form-control" required/>
+                                <span ng-show="form.dvrcode.$dirty && form.dvrcode.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备名称：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrname" id="txtDrvng-model" class="form-control" required/>
+                                <span ng-show="form.dvrname.$dirty && form.dvrname.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备别名：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvraliasname" id="txtDrvAliasng-model"  class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备类型：</label>
+                            <div class="col-lg-6">
+                                <select ng-model="dvrInfo.dvrtypecode" id="dvrtypecode" class="form-control"
+                                        ng-options="item.dvrtypecode as item.dvrtypename for item in dvrType">
+                                    <option value="">请选择...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备厂商：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrmanufacturer" id="selectFacng-model" class="form-control" required/>
+                                <span ng-show="form.dvrmanufacturer.$dirty && form.dvrmanufacturer.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备型号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrmodel" id="txtDrvModel" class="form-control" required/>
+                                <span ng-show="form.dvrmodel.$dirty && form.dvrmodel.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备序列号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrserial" id="txtDrvSer" class="form-control" required/>
+                                <span ng-show="form.dvrserial.$dirty && form.dvrserial.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6"  >
+                <div class="well">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备IP：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrip" id="txtDrvIP" class="form-control" required/>
+                                <span ng-show="form.dvrip.$dirty && form.dvrip.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备端口号：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrport" id="txtDrvPort" class="form-control" required/>
+                                <span ng-show="form.dvrport.$dirty && form.dvrport.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">子网掩码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.subnetmask" id="txtDrvMask" class="form-control" required/>
+                                <span ng-show="form.subnetmask.$dirty && form.subnetmask.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">网关地址：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.gateway" id="txtDrvGateway" class="form-control" required/>
+                                <span ng-show="form.gateway.$dirty && form.gateway.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">登录代码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrlogincode" id="txtDrvLoginCode" class="form-control" required/>
+                                <span ng-show="form.dvrlogincode.$dirty && form.dvrlogincode.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">登录密码：</label>
+                            <div class="col-lg-6">
+                                <input type="text" ng-model="dvrInfo.dvrloginpassword" id="txtDrvLoginPwd" class="form-control" required/>
+                                <span ng-show="form.dvrloginpassword.$dirty && form.dvrloginpassword.$invalid" class="text-danger">必填字段</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">设备详情：</label>
+                            <div class="col-lg-6">
+                                <textarea type="text" ng-model="dvrInfo.dvrinfo" id="txtDrvInfo" style="height: 88px"   class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

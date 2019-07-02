@@ -1,0 +1,57 @@
+<!-- START 添加数据字典类型信息-->
+<div class="panel panel-default ng-scope" ng-controller="addFinanceController">
+    <div class="panel-body">
+        <form class="form-horizontal" name="form" ng-submit="save()" method="post">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">标题<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <input type="text" name="title"  ng-model="finance.title" class="form-control" required ng-maxlength="30"/>
+                    <span ng-show="form.title.$dirty && form.title.$invalid" class="text-danger">不可为空，且最多输入30个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">报账人<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="author"  ng-model="finance.author" class="form-control" required ng-maxlength="20"/>
+                    <span ng-show="form.author.$dirty && form.author.$invalid" class="text-danger">不可为空，且最多输入20个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">金额（元）<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="number" name="amount"  ng-model="finance.amount" class="form-control" required ng-maxlength="6"/>
+                    <span ng-show="form.amount.$dirty && form.amount.$invalid" class="text-danger">不可为空，且最多输入6位数字</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">用途<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="source"  ng-model="finance.source" class="form-control" required ng-maxlength="100"/>
+                    <span ng-show="form.source.$dirty && form.source.$invalid" class="text-danger">不可为空，且最多输入100个字符</span>
+                </div>
+                <label class="col-lg-2 control-label">摘要<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="text" name="summary"  ng-model="finance.summary" class="form-control" required ng-maxlength="200"/>
+                    <span ng-show="form.summary.$dirty && form.summary.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">详情<font color="red">*</font></label>
+                <div class="col-lg-10">
+                    <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                        <div class="ng-wig"><div class="btn-group btn-group-sm wd-wide"><button type="button" title="Header" ng-click="execCommand('formatblock', '&lt;h1&gt;')" class="btn btn-sm btn-default"><em class="fa fa-header"></em></button><button type="button" title="Paragraph" ng-click="execCommand('formatblock', '&lt;p&gt;')" class="btn btn-sm btn-default"><em class="fa fa-paragraph"></em></button><button type="button" title="Unordered List" ng-click="execCommand('insertunorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ul"></em></button><button type="button" title="Ordered List" ng-click="execCommand('insertorderedlist')" class="btn btn-sm btn-default"><em class="fa fa-list-ol"></em></button><button type="button" title="Bold" ng-click="execCommand('bold')" class="btn btn-sm btn-default"><em class="fa fa-bold"></em></button><button type="button" title="Italic" ng-click="execCommand('italic')" class="btn btn-sm btn-default"><em class="fa fa-italic"></em></button><button type="button" title="link" ng-click="execCommand('createlink')" class="btn btn-sm btn-default"><em class="fa fa-link"></em></button><button type="button" title="Edit Html" ng-class="{ 'nw-button--active': editMode }" ng-click="toggleEditMode()" class="pull-right btn btn-sm btn-default"><em class="fa fa-pencil"></em></button></div><div class="nw-editor"><textarea ng-show="editMode" ng-model="content" class="nw-editor__src"></textarea><iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe></div></div>
+                    </script>
+                    <textarea ng-wig="finance.content"  name="content"  ng-maxlength="5000"></textarea>
+                    <span ng-show="form.summary.$dirty && form.summary.$invalid" class="text-danger">最多输入5000个字符</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_submit.html'"></span>
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END 添加数据字典类型信息-->
+

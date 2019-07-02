@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        var htm = "";
+        for (var i = 0; i < indexMenuItems.length; i++) { //拼装按钮
+            if((indexMenuItems[i].sref).indexOf("http") ==0 ){
+                htm += '<li><a class="dockItem" href="'+indexMenuItems[i].sref+'"> <img src="app/img/nav/' + indexMenuItems[i].icon + '.png" alt="' + indexMenuItems[i].text + '" /> </a></li>'
+            }else if((indexMenuItems[i].sref).indexOf(".home") > -1 ){
+                var href= baseInfo.getInfo("inoutHref")+indexMenuItems[i].sref.replace(".home",".html");
+                htm += '<li><a class="dockItem" href="'+href+'"> <img src="app/img/nav/' + indexMenuItems[i].icon + '.png" alt="' + indexMenuItems[i].text + '" /> </a></li>'
+            }else{
+                htm += '<li><a class="dockItem" href="" ng-click="getMod(\'' + indexMenuItems[i].code + '\',\'' + indexMenuItems[i].sref + '\')"> <img src="app/img/nav/' + indexMenuItems[i].icon + '.png" alt="' + indexMenuItems[i].text + '" /> </a></li>'
+            }
+        }
+        if(footerMenuUrl != undefined){
+            if (footerMenuUrl.indexOf("app.") > -1) { //自动宽度
+                $("#dockContainer").css("width",($(window).width()-400)+"px");
+            }else{
+                $("#dockContainer").css("width",$(window).width()+"px");
+            }
+        }else{
+            $("#dockContainer").css("width",$(window).width()+"px");
+        }
+        $("#jqDock").html(htm); //填充图标
+        var jqDockOpts = {align: 'bottom', duration: 100, labels: 'tc', size: 86, distance: 85};
+        $('#jqDock').jqDock(jqDockOpts);
+    });
+</script>
+<div id="footer_menu" ng-controller="businessInfoFooterController">
+    <!--小于992px时显示 begin-->
+    <div class="navigation-footer-min">
+        <button type="button" ng-repeat="item in businessInfoFooterItems" ng-click="getMod(item.code,item.sref)" class="btn footer-btn btn-oval btn-primary pr0 pl0 col-xs-2">
+            {{item.text}}
+        </button>
+    </div>
+    <!--小于992px时显示 end-->
+    <!--大于992px时显示 begin-->
+    <div id="dockContainer">
+        <ul id="jqDock">
+        </ul>
+    </div>
+    <!--大于992px时显示 end-->
+</div>

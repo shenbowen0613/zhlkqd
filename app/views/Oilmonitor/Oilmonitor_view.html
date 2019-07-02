@@ -1,0 +1,95 @@
+<div class="table-grid table-grid-desktop" ng-controller="OilmonitorViewController">
+    <div class="mr">
+        <div class="panel panel-default">
+            <div class="panel-heading">能耗监测详情
+                <button type="button" title="返回" ng-click="toRemove()" id="toBack" class="btn btn-warning bar-h3-btn mr">
+                    <em class="fa fa-mail-reply fa-fw mr-sm"></em>返回
+                </button>
+            </div>
+            <div class="panel-body dataTables_wrapper">
+                <table id="detailedTableGrids" class="row-border hover dataTable no-footer" role="grid" aria-describedby="detailedTableGrids_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">仓房</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">最高温</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">最低温</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">平均温</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">液位</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">检测时间</font>
+                                </font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">七层温</font>
+                                </font>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="b in items.list">
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{oilTankName}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{b.t_max}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{b.t_min}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{b.t_average}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{b.t_yemian}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">{{b.t_shijian}}</font>
+                            </th>
+                            <th class="sorting_disabled">
+                                <font style="vertical-align: inherit;">
+                                    1层{{b.t_wendu["1"]}}&nbsp;
+                                    2层{{b.t_wendu["2"]}}&nbsp;
+                                    3层{{b.t_wendu["3"]}}&nbsp;
+                                    4层{{b.t_wendu["4"]}}&nbsp;
+                                    5层{{b.t_wendu["5"]}}&nbsp;
+                                    6层{{b.t_wendu["6"]}}&nbsp;
+                                    7层{{b.t_wendu["7"]}}&nbsp;
+                                </font>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="dataTables_info" role="status" aria-live="polite">共 {{items.total}} 条</div>
+                <div class="dataTables_paginate paging_full_numbers" id="detailedTableGrids_paginate">
+                    <a class="paginate_button previous disabled" ng-click="fenyeq(items.prePage)">上一页</a>
+                    <span>
+                        <a class="paginate_button" ng-repeat="page in items.navigatepageNums" ng-class="{current:page==items.pageNum}" ng-click="fenyeq(page)" tabindex="0">{{page}}</a>
+                    </span>
+                    <a class="paginate_button next disabled" ng-click="fenyeq(items.nextPage)">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

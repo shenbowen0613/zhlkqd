@@ -1,0 +1,303 @@
+<h3>
+   <!-- START Language list-->
+   <!--<div class="pull-right">-->
+      <!--<div dropdown="" is-open="language.listIsOpen" class="btn-group">-->
+         <!--<button type="button" dropdown-toggle="" class="btn btn-default">{{language.selected}}-->
+            <!--<span class="caret"></span>-->
+         <!--</button>-->
+         <!--<ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">-->
+            <!--<li ng-repeat="(localeId, langName) in language.available"><a ng-click="language.set(localeId, $event)" href="#">{{langName}}</a>-->
+            <!--</li>-->
+         <!--</ul>-->
+      <!--</div>-->
+   <!--</div>-->
+   <!-- END Language list    -->
+   业务管理系统
+   <!--<small>为智慧粮食综合管理平台提供全面信息管理</small>-->
+</h3>
+
+<!--<div ng-controller="bussController">-->
+   <!--&lt;!&ndash; START widgets box&ndash;&gt;-->
+   <!--<div class="row" ng-controller="bussindexDataCountController">-->
+      <!--<div class="col-lg-3 col-sm-6">-->
+         <!--&lt;!&ndash; START widget&ndash;&gt;-->
+         <!--<div class="panel widget bg-primary">-->
+            <!--<div class="row row-table">-->
+               <!--<div class="col-xs-4 text-center bg-primary-dark pv-lg">-->
+                  <!--<em class="fa fa-database fa-3x"></em>-->
+               <!--</div>-->
+               <!--<div class="col-xs-8 pv-lg">-->
+                  <!--<div class="h2 mt0">{{datacount.house}}-->
+                     <!--<small>个</small>-->
+                  <!--</div>-->
+                  <!--<div class="text-uppercase">粮库仓房个数</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-3 col-sm-6">-->
+         <!--&lt;!&ndash; START widget&ndash;&gt;-->
+         <!--<div class="panel widget bg-purple">-->
+            <!--<div class="row row-table">-->
+               <!--<div class="col-xs-4 text-center bg-purple-dark pv-lg">-->
+                  <!--<em class="fa fa-cab fa-3x"></em>-->
+               <!--</div>-->
+               <!--<div class="col-xs-8 pv-lg">-->
+                  <!--<div class="h2 mt0">{{datacount.device}}-->
+                     <!--<small>个</small>-->
+                  <!--</div>-->
+                  <!--<div class="text-uppercase">仓储设备总量</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-3 col-md-6 col-sm-12">-->
+         <!--&lt;!&ndash; START widget&ndash;&gt;-->
+         <!--<div class="panel widget bg-green">-->
+            <!--<div class="row row-table">-->
+               <!--<div class="col-xs-4 text-center bg-green-dark pv-lg">-->
+                  <!--<em class="fa fa-medkit fa-3x"></em>-->
+               <!--</div>-->
+               <!--<div class="col-xs-8 pv-lg">-->
+                  <!--<div class="h2 mt0">{{datacount.res}}-->
+                     <!--<small>个</small>-->
+                  <!--</div>-->
+                  <!--<div class="text-uppercase">药剂包装总量</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-3 col-md-6 col-sm-12">-->
+         <!--&lt;!&ndash; START date widget&ndash;&gt;-->
+         <!--<div class="panel widget">-->
+            <!--<div class="row row-table">-->
+               <!--<div class="col-xs-4 text-center bg-green pv-lg">-->
+                  <!--<em class="fa fa-users fa-3x"></em>-->
+               <!--</div>-->
+               <!--<div class="col-xs-8 pv-lg">-->
+                  <!--<div class="h2 mt0">{{datacount.cust}}-->
+                     <!--<small>位</small>-->
+                  <!--</div>-->
+                  <!--<div class="text-uppercase">客户总量</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--&lt;!&ndash; END date widget    &ndash;&gt;-->
+      <!--</div>-->
+   <!--</div>-->
+   <!--&lt;!&ndash; END widgets box&ndash;&gt;-->
+   <!--<div class="row" >-->
+      <!--&lt;!&ndash; START dashboard sidebar&ndash;&gt;-->
+      <!--<aside class="col-lg-3">-->
+         <!--&lt;!&ndash; START loader widget&ndash;&gt;-->
+         <!--<div class="panel panel-default" ng-controller="bussindexhousevolumeChartController">-->
+            <!--<div class="panel-body" >-->
+               <!--&lt;!&ndash;<a href="#" class="text-muted pull-right">&ndash;&gt;-->
+               <!--&lt;!&ndash;<em class="fa fa-arrow-right"></em>&ndash;&gt;-->
+               <!--&lt;!&ndash;</a>&ndash;&gt;-->
+               <!--&lt;!&ndash;<div class="text-info">Average Monthly Uploads</div>&ndash;&gt;-->
+               <!--<rzhecharts id="housevolumeCharts" rid="housevolumeCharts" option="house_option" height="260"></rzhecharts>-->
+            <!--</div>-->
+            <!--<div class="panel-footer">-->
+               <!--<p class="text-muted">-->
+                  <!--<em class="fa fa-database fa-fw"></em>-->
+                  <!--<span>占用{{vol.grainvolume}}方，剩余{{vol.involume}}方</span>-->
+                  <!--&lt;!&ndash;<a href="#/app/la/house" class="text-muted pull-right">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<em class="fa fa-arrow-right"></em>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</a>&ndash;&gt;-->
+               <!--</p>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--&lt;!&ndash;END loader widget&ndash;&gt;-->
+         <!--&lt;!&ndash; START messages and activity&ndash;&gt;-->
+         <!--<div class="panel panel-default" ng-controller="indexplanapprovalrecordController">-->
+            <!--<div class="panel-heading">-->
+               <!--<div class="panel-title">待审批列表<span class="label label-danger pull-right">{{indexplanapprovalcount}}</span></div>-->
+
+            <!--</div>-->
+            <!--&lt;!&ndash; START list group&ndash;&gt;-->
+            <!--<div class="list-group" >-->
+               <!--&lt;!&ndash; START list group item&ndash;&gt;-->
+               <!--<div class="list-group-item" ng-repeat="item in indexplanapprovalrecord">-->
+                  <!--<div class="media-box">-->
+                     <!--<div class="pull-left">-->
+                     <!--<span class="fa-stack">-->
+                        <!--<em class="fa fa-circle fa-stack-2x {{item.color}}"></em>-->
+                        <!--<em class="fa {{item.icon}} fa-stack-1x fa-inverse text-white"></em>-->
+                     <!--</span>-->
+                     <!--</div>-->
+                     <!--<div class="media-box-body clearfix">-->
+                        <!--<small class="text-muted pull-right ml">第{{item.curstepcode}}步</small>-->
+                        <!--<div class="media-box-heading"><a href="#/app/buss/approval/index/{{item.precode}}" class="{{item.color}} m0">{{item.typename}}</a>-->
+                        <!--</div>-->
+                        <!--<p class="m0">-->
+                           <!--<small><a href="#/app/buss/approval/index/{{item.precode}}">{{item.curstep}}</a>-->
+                           <!--</small>-->
+                        <!--</p>-->
+                     <!--</div>-->
+                  <!--</div>-->
+               <!--</div>-->
+               <!--&lt;!&ndash; END list group item&ndash;&gt;-->
+
+            <!--</div>-->
+            <!--&lt;!&ndash; END list group&ndash;&gt;-->
+
+            <!--&lt;!&ndash;&lt;!&ndash; START panel footer&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="panel-footer clearfix">&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="#" class="pull-left">&ndash;&gt;-->
+            <!--&lt;!&ndash;<small>Load more</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; END panel-footer&ndash;&gt;&ndash;&gt;-->
+         <!--</div>-->
+         <!--&lt;!&ndash; END messages and activity&ndash;&gt;-->
+      <!--</aside>-->
+      <!--&lt;!&ndash; END dashboard sidebar&ndash;&gt;-->
+      <!--&lt;!&ndash; START dashboard main content&ndash;&gt;-->
+      <!--<div class="col-lg-9">-->
+         <!--&lt;!&ndash; START chart&ndash;&gt;-->
+         <!--<div class="row">-->
+            <!--<div class="col-lg-6">-->
+               <!--&lt;!&ndash; START widget&ndash;&gt;-->
+               <!--<div id="financepanelChart" ng-controller="bussindexfinanceChartController" class="panel panel-default">-->
+                  <!--&lt;!&ndash;<div class="panel-heading">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<paneltool tool-collapse="tool-collapse" tool-refresh="traditional"></paneltool>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="panel-title">最新财务变化</div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--<div class="panel-body">-->
+                     <!--<rzhecharts id="financeCharts" rid="financeCharts" option="finance_option" height="300"></rzhecharts>-->
+                  <!--</div>-->
+               <!--</div>-->
+               <!--&lt;!&ndash; END widget&ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; END chart&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; START chart&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+            <!--<div class="col-lg-6">-->
+               <!--&lt;!&ndash; START widget&ndash;&gt;-->
+               <!--<div id="inoutpanelChart" ng-controller="bussindexinoutChartController" class="panel panel-default">-->
+                  <!--&lt;!&ndash;<div class="panel-heading">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<paneltool tool-collapse="tool-collapse" tool-refresh="traditional"></paneltool>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="panel-title">最新出入库变化</div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--<div class="panel-body">-->
+                     <!--<rzhecharts id="inoutCharts" rid="inoutCharts" option="inout_option" height="300"></rzhecharts>-->
+                  <!--</div>-->
+               <!--</div>-->
+               <!--&lt;!&ndash; END widget&ndash;&gt;-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--&lt;!&ndash; END chart&ndash;&gt;-->
+         <!--<div class="row" ng-controller="bussindexTaskCountController">-->
+            <!--<div class="col-lg-12">-->
+               <!--<div class="panel widget">-->
+                  <!--<div class="row row-table">-->
+                     <!--<div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">-->
+                        <!--<em class="icon-list fa-3x"></em>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-2 col-sm-3 col-xs-6 pv br">-->
+                        <!--<div class="h3 m0 text-bold">{{taskcount.total}}个</div>-->
+                        <!--<div class="text-uppercase">作业调度总数</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-2 col-sm-3 hidden-xs pv text-center br">-->
+                        <!--<div class="text-muted text-md">-->
+                           <!--<em class="icon-pin text-purple"></em>-->
+                        <!--</div>-->
+                        <!--<div class="text-purple text-sm">审批中</div>-->
+                        <!--&lt;!&ndash;<div class="text-info">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<em class="wi wi-sprinkles"></em>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="text-muted">20%</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<div class="text-muted">{{taskcount.checking}}个</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-2 col-sm-3 hidden-xs pv text-center br">-->
+                        <!--<div class="text-muted text-md">-->
+                           <!--<em class="icon-check text-warning"></em>-->
+                        <!--</div>-->
+                        <!--<div class="text-warning text-sm">已审批</div>-->
+                        <!--&lt;!&ndash;<div class="text-info">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<em class="wi wi-sprinkles"></em>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="text-muted">未审批</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<div class="text-muted">{{taskcount.checked}}个</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-2 hidden-sm hidden-xs pv text-center br">-->
+                        <!--<div class="text-muted text-md">-->
+                           <!--<em class="icon-loop text-success"></em>-->
+                        <!--</div>-->
+                        <!--<div class="text-success text-sm">执行中</div>-->
+                        <!--&lt;!&ndash;<div class="text-info">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<em class="wi wi-sprinkles"></em>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="text-muted"></span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<div class="text-muted">{{taskcount.doing}}个</div>-->
+                     <!--</div>-->
+                     <!--<div class="col-md-2 hidden-sm hidden-xs pv text-center">-->
+                        <!--<div class="text-muted text-md">-->
+                           <!--<em class="icon-power text-info"></em>-->
+                        <!--</div>-->
+                        <!--<div class="text-info text-sm">已完成</div>-->
+                        <!--&lt;!&ndash;<div class="text-info">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<em class="wi wi-sprinkles"></em>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="text-muted">0%</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<div class="text-muted">{{taskcount.done}}个</div>-->
+                     <!--</div>-->
+                  <!--</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+         <!--<div class="row">-->
+            <!--&lt;!&ndash;<div class="col-lg-4">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; START widget&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="panel widget">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="panel-body">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="clearfix">&ndash;&gt;-->
+            <!--&lt;!&ndash;<h3 class="pull-left text-muted mt0">300</h3>&ndash;&gt;-->
+            <!--&lt;!&ndash;<em class="pull-right text-muted fa fa-coffee fa-2x"></em>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div sparkline="" data-type="line" data-height="80" data-width="100%" data-line-width="2" data-line-color="{{colorByName('purple')}}" data-spot-color="#888" data-min-spot-color="{{colorByName('purple')}}" data-max-spot-color="{{colorByName('purple')}}"&ndash;&gt;-->
+            <!--&lt;!&ndash;data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="3" values="1,3,4,7,5,9,4,4,7,5,9,6,4" data-resize="true" class="pv-lg"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<small class="text-muted">Actual progress</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<progressbar value="80" type="info" class="progress-striped progress-xs">80%</progressbar>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; END widget&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="col-lg-12">-->
+               <!--<div class="panel panel-default">-->
+                  <!--<div class="panel-heading">-->
+                     <!--&lt;!&ndash;<div class="pull-right label label-danger">5</div>&ndash;&gt;-->
+                     <!--&lt;!&ndash;<div class="pull-right label label-success">12</div>&ndash;&gt;-->
+                     <!--<div class="panel-title">最新经营信息</div>-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash; START list group&ndash;&gt;-->
+                  <!--<scrollable height="180" class="list-group" ng-controller="indexbussinfoController">-->
+                     <!--&lt;!&ndash; START list group item&ndash;&gt;-->
+                     <!--<a class="list-group-item" ng-repeat="item in indexbussinfo" href="#/app/buss/bussinfo/view/{{item.id}}">-->
+                        <!--<div class="media-box">-->
+                           <!--<div class="pull-left">-->
+                              <!--&lt;!&ndash;<img src="app/img/user/02.jpg" alt="Image" class="media-box-object img-circle thumb32" />&ndash;&gt;-->
+                           <!--</div>-->
+                           <!--<div class="media-box-body clearfix">-->
+                              <!--<small class="pull-right">{{item.uptime}}</small>-->
+                              <!--<strong class="media-box-heading text-primary">-->
+                                 <!--<span class="circle {{item.typecode}} circle-lg text-left"></span>{{item.title}}</strong>-->
+                              <!--<p class="mb-sm">-->
+                                 <!--<small>{{item.summary}}</small>-->
+                              <!--</p>-->
+                           <!--</div>-->
+                        <!--</div>-->
+                     <!--</a>-->
+                     <!--&lt;!&ndash; END list group item&ndash;&gt;-->
+                  <!--</scrollable>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash; END dashboard main content&ndash;&gt;-->
+   <!--</div>-->
+<!--</div>-->

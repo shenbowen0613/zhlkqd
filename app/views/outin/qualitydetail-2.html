@@ -1,0 +1,99 @@
+﻿<h3>出入库
+    <small>质检详情</small>
+</h3>
+<div class="container-fluid" ng-controller="viewqualityController">
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">质检结果详情</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>质检时间</label>
+                        <input id="zjsj" type="text" value="{{qutinQualityResult.zjtime}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>车船号</label>
+                        <input id="cch" type="text" value="{{outinEnty.vehicleno}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>商户名称</label>
+                        <input id="shmc" type="text" value="{{outinEnty.customername}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>质检单号</label>
+                        <input id="zjdh" type="text" value="{{outinQuality.qualityno}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>业务类型</label>
+                        <input id="ywlx"  type="text" value="{{outinEnty.iotypename}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>粮食品种</label>
+                        <input id="lspz" type="text" value="{{qutinQualityResult.varietyname}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>存储方式</label>
+                        <input id="ccfs"  type="text" value="{{qutinQualityResult.storagemode}}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+        <div class="col-lg-6">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">质检结果详情</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>收获年度</label>
+                        <input id="shnd"  type="text" value="{{qutinQualityResult.grainyear}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>产地</label>
+                        <input id="cd" type="text" value="{{qutinQualityResult.prodplace}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>等级</label>
+                        <input id="dj"  type="text" value="{{qutinQualityResult.gradename}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>质检结果</label>
+                        <input id="zjjg"  type="text" value="{{qutinQualityResult.advise}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>质检扣量(%)</label>
+                        <input id="zjkl" type="text" value="{{qutinQualityResult.qualitycutweight}}" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label>质检员</label>
+                        <input id="zjy" type="text" value="{{qutinQualityResult.zjoperator}}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div ng-app="table" class="panel panel-default">
+                <div class="panel-heading">
+                    出入库 |
+                    <small>质检项目详情</small>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>质检项目</td>
+                            <td>质检结果</td>
+                        </tr>
+                        <tr ng-repeat="qdetail in outinQualityDetail">
+                            <td>{{qdetail.qualityname}}</td>
+                            <td>{{qdetail.qvalue}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

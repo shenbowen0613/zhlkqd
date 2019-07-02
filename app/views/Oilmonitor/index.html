@@ -1,0 +1,283 @@
+﻿<div id="box" class="ngdialog ngdialog-theme-default ng-scope" style="display: none;">
+    <div class="ngdialog-overlay"></div>
+    <div class="ngdialog-content">
+        <p class="fa fa-info-circle">正在采集...</p>
+        <div class="ngdialog-close"></div>
+    </div>
+</div>
+<div class="table-grid table-grid-desktop" ng-controller="OilmonitorindexController">
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <div style="width:100%;padding: 0 50px 0 50px;">
+        <div class="row clearfix" style="background-color:#f6f6f6;">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-3 column">
+                        <div class="top-ban">
+                            <div class="top-yg">
+                                {{oilTankName}}
+                            </div>
+                            <div class="top-drop">
+                                <button type="button" class="btn dropdown-toggle btn-primary btn-lg" id="dropdownMenu1"
+                                        data-toggle="dropdown">
+                                    油罐
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <a ng-click="youguanchaxun(1)">1</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a ng-click="youguanchaxun(2)">2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <div class="top-ban">
+                            <div class="col-md-6 column">
+                                <article>
+                                    <div style="margin: 5px 0 0 15px;" id="temp2">
+                                        <div class="tempGauge2"></div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="top-font">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                液位
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{youguan1.t_yemian}}M
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <div class="top-ban">
+                            <div class="col-md-6 column">
+                                <article>
+                                    <div style="margin: 5px 0 0 15px;" id="temp0">
+                                        <div class="tempGauge0"></div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div class="top-font">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                温度
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{youguan1.t_average}}℃
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <div class="top-ban">
+                            <div class="col-md-12 column">
+                                <div style="text-align: center;margin-top: 40px;">
+                                    <button type="button" title="返回" ng-click="collectionInfo(youguan1.t_cang)" id="cjBack" class="btn btn-purple mr">
+                                        <em class="fa fa-hand-o-right"></em>采集
+                                    </button>
+                                    <button type="button" title="返回" ng-click="buttontoview(youguan1.t_cang)" id="toBack" class="btn btn-green mr">
+                                        <em class="icon-magnifier-add"></em>详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix" style="padding-bottom:15px;">
+                    <div class="col-md-4 column">
+                        <div class="bottom-one">
+
+                            <table>
+                                <tr>
+                                    <td>
+                                        粮油<a><span class="glyphicon glyphicon-arrow-down"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 300px;background: url('app/img/yzck/bb01261f1bff0.png') no-repeat center;background-size: 30%;">
+                                        <div style="width:12px; height:60%; border-radius:5px; background-color:#ddd; position:relative;left: 68%;">
+                                            <div style="width:12px; height:{{youlianghie}}%; border-radius:5px; background-color:skyblue; position:absolute; left:0; bottom:0;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4 column">
+                        <div class="bottom-two">
+                            <div id="ylfx1" class="no5"></div>
+                            <table class="table table-hover">
+                                <tr class="info">
+                                    <td style="width: 45%">
+                                        1层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["1"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td style="width: 45%">
+                                        2层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["2"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td style="width: 45%">
+                                        3层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["3"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td style="width: 45%">
+                                        4层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["4"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td style="width: 45%">
+                                        5层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["5"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td style="width: 45%">
+                                        6层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["6"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td style="width: 45%">
+                                        7层
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{qicengwen["7"]}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        检测时间
+                                    </td>
+                                    <td colspan="2">
+                                        {{youguan1.t_shijian}}
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 column">
+                        <div class="bottom-two">
+                            <div id="ylfx2" class="no5"></div>
+                            <table class="table table-hover">
+                                <tr>
+                                    <td style="width: 45%">
+                                        最高温度
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{youguan1.t_max}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td>
+                                        最低温度
+                                    </td>
+                                    <td>
+                                        {{youguan1.t_min}}
+                                    </td>
+                                    <td>
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        平均温度
+                                    </td>
+                                    <td>
+                                        {{youguan1.t_average}}
+                                    </td>
+                                    <td>
+                                        ℃
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td style="width: 45%">
+                                        液位
+                                    </td>
+                                    <td style="width: 30%">
+                                        {{youguan1.t_yemian}}
+                                    </td>
+                                    <td style="width: 25%">
+                                        M
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        检测时间
+                                    </td>
+                                    <td colspan="2">
+                                        {{youguan1.t_shijian}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

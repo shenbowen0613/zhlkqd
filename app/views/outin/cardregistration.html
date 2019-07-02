@@ -1,0 +1,236 @@
+<form ng-controller="cardregController" class="form-horizontal">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">人员登记</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-6">
+                                <div class="panel-wrapper">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">姓 名</label>
+                                            <div class="col-lg-6">
+                                                <input ng-model="outinCarrier.carrier" type="text" class="form-control" id="nameInput">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">联系方式</label>
+                                            <div class="col-lg-6">
+                                                <input id="cellphone" ng-model="outinCarrier.cellphone" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">身份证号</label>
+                                            <div class="col-lg-6">
+                                                <input id="sfzh" ng-model="outinCarrier.indentitycard" type="text"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">家庭住址</label>
+                                            <div class="col-lg-6">
+                                                <input id="jtzz" ng-model="outinCarrier.fulladdress" type="text"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-lg-2 control-label">开户行</label>-->
+                                            <!--<div class="col-lg-6">-->
+                                                <!--<input id="bankname" ng-model="outinCarrier.bankname" type="text"-->
+                                                       <!--class="form-control">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-lg-2 control-label">银行卡</label>-->
+                                            <!--<div class="col-lg-6">-->
+                                                <!--<input id="bankcard" ng-model="outinCarrier.bankcard" type="text"-->
+                                                       <!--class="form-control">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="width: 200px">
+                                <div class="panel widget" style="margin-right: 10px">
+                                    <div class="row row-table row-flush">
+                                        <picture class="lateral-picture">
+                                            <img src="app/img/nopeople.jpg" alt="" id="people_img"/>
+                                        </picture>
+                                        <input ng-model="outinCarrier.identityimage" id="identityimage" type="hidden" value="">
+                                    </div>
+                                    <!--<div style="text-align: center">-->
+                                    <!--<button type="button" onclick="XianChangDengJi();"-->
+                                            <!--class="btn btn-default btn-xs">现场登记照-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                    <br/>
+                                    <div style="text-align: center">
+                                        <button type="button" ng-click="readIdCardInfo();" class="btn btn-primary">
+                                            读取身份证信息
+                                        </button>
+                                        <object type="application/cert-reader"  id="CertCtl" width=0 height=0> </object>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">基本信息登记</div>
+                            <div class="panel-wrapper">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">业务类型</label>
+                                        <div class="col-lg-4">
+                                            <label class="radio-inline c-radio">
+                                                <input type="radio" ng-model="iotypename" name="iotypename" checked value="入库" />
+                                                <span class="fa fa-circle"></span>入库</label>
+                                            <label class="radio-inline c-radio">
+                                                <input type="radio" ng-model="iotypename" name="iotypename" value="出库" />
+                                                <span class="fa fa-circle"></span>出库</label>
+                                        </div>
+                                        <label class="col-lg-2 control-label">计划单号</label>
+                                        <div class="col-lg-4">
+                                            <select ng-model="outinEntry.outinplanno" class="form-control">
+                                                <option value="无">无</option>
+                                                <option ng-repeat="item in planList" value="{{item.code}}">{{item.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">车牌号码</label>
+                                        <div class="col-lg-4">
+                                            <input ng-model="outinEntry.vehicleno" type="text" id="cph" class="form-control">
+                                        </div>
+                                        <label class="col-lg-2 control-label">合同编号</label>
+                                        <div class="col-lg-4">
+                                            <select ng-model="outinEntry.outincontractno" id="outincontractno" class="form-control">
+                                                <option value="无">无</option>
+                                                <option ng-repeat="item in contractList" value="{{item.code}}">{{item.label}}</option>
+                                            </select>
+                                        </div>
+                                        <!--<label class="col-lg-2 control-label">商户名称</label>-->
+                                        <!--<div class="col-lg-4">-->
+                                            <!--<input ng-model="outinEntry.customername" type="text" readonly >-->
+                                            <!--{{outinCarrier.carrier}}-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash;<select ng-model="outinEntry.customername" class="form-control">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option value="">请选择...</option>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option ng-repeat="item in custList" value="{{item.label}}">{{item.label}}</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</select>&ndash;&gt;-->
+
+
+                                        <!--</div>-->
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">粮食产地</label>
+                                        <div class="col-lg-4">
+                                            <input ng-model="outinEntry.prodplace" type="text" class="form-control">
+                                        </div>
+                                        <label class="col-lg-2 control-label">粮食品种</label>
+                                        <div class="col-lg-4">
+                                            <select  class="form-control" id="varietyname" ng-model="outinEntry.varietyname">
+                                                <option ng-repeat="item in varietynameList" value="{{item.code}}">{{item.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">收获年份</label>
+                                        <div class="col-lg-4">
+                                            <select ng-model="outinEntry.grainyear" class="form-control">
+                                                <option value="">请选择...</option>
+                                                <option ng-repeat="item in yearList" value="{{item.key}}">{{item.key}}年度</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-lg-2 control-label">智能卡号</label>
+                                        <div class="col-lg-4">
+                                            <input id="smart_card" ng-click="readSmartCard()" type="text" class="form-control">
+                                        </div>
+                                        <div>
+                                        <object id="mcard" classid="CLSID:856964B5-F42F-447B-A37D-ED07E8973ED2" style="display: none"></object>
+                                    </div>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label class="col-lg-2 control-label" ng-if="iotypename == '出库'">仓房</label>
+                                        <div class="col-lg-4" ng-if="iotypename == '出库'">
+                                            <select ng-model="outinEntry.housecode" id="housecode" class="form-control">
+                                                <option value="">请选择...</option>
+                                                <option ng-repeat="item in houseList" value="{{item.code}}">{{item.label}}</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-lg-2 control-label">编号</label>
+                                        <div class="col-lg-4">
+                                            <input id="bianhao" type="text" class="form-control"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" >
+                                        <label class="col-lg-2 control-label">登记人</label>
+                                        <div class="col-lg-4">
+                                            <select ng-model="outinEntry.dtoperator" id="dtoperator" class="form-control">
+                                                <option value="">无</option>
+                                                <option ng-repeat="item in cardregDtoperatorList" value="{{item.code}}">{{item.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div style="text-align: center">
+                                        <div class="form-group">
+                                            <button type="reset" class="btn btn-primary">重置</button>
+                                            <button type="button" ng-click="save()" class="btn btn-primary">提交</button>
+                                            <button type="button" ng-click="print_preview()" class="btn btn-primary">打印</button>
+                                            <button type="button" ng-click="print_setup()" class="btn btn-primary">打印维护</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--<div class="col-lg-3" style="width: 380px">-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-12">-->
+
+                    <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading">-->
+                            <!--<div class="panel-title">车辆登记</div>-->
+                        <!--</div>-->
+                        <!--<div class="panel widget">-->
+                            <!--<div class="panel-body">-->
+                                <!--<div class="row row-table row-flush">-->
+                                    <!--<picture class="lateral-picture">-->
+                                        <!--<img id="clzp" src="app/img/cheliang.jpg" alt="车辆图片"/>-->
+                                    <!--</picture>-->
+                                <!--</div>-->
+                                <!--<br/>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-lg-3 control-label">车牌号码</label>-->
+                                    <!--<div class="col-lg-5">-->
+                                        <!--<input id="cphm" ng-model="vehicleno" type="text"-->
+                                               <!--class="form-control">-->
+                                    <!--</div>-->
+                                    <!--<button type="button" class="btn btn-primary" ng-click="readLicensePlate();">-->
+                                        <!--获取车牌-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</form>

@@ -1,0 +1,101 @@
+<form class="form-horizontal row" ng-controller="storeController">
+    <div class="col-sm-8">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">卡号:</label>
+                <div class="col-lg-9">
+                    <input type="text" ng-model="cardno"id="smart_card" ng-click="readSmartCard()"  ng-blur="getByCardno()" placeholder="智能卡号" class="form-control">
+                </div>
+                <object id="mcard" classid="CLSID:856964B5-F42F-447B-A37D-ED07E8973ED2" style="display: none"></object>
+            </div>
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">供应商:</label>
+                <div class="col-lg-3">
+                    <input name="customername" readonly="readonly" value='{{outinEntry.customername}}' class="form-control"/>
+                </div>
+
+                <label class="col-lg-2  control-label">产地:</label>
+                <div class="col-lg-4">
+                    <input name="prodplace" readonly="readonly" value='{{outinEntry.prodplace}}' class="form-control"/>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">仓房:</label>
+                <div class="col-lg-3">
+                    <input name="housename" readonly="readonly" value='{{outinEntry.housename}}' class="form-control"/>
+                </div>
+
+                <label class="col-lg-2 control-label">车牌号:</label>
+                <div class="col-lg-4">
+                    <input name="vehicleno" readonly="readonly" value='{{outinEntry.vehicleno}}' class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <hr/>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">监视员：</label>
+                <div class="col-lg-3">
+                    <select ng-model="outinStore.looker"  class="form-control">
+                        <option ng-repeat="x in storeLookerList" value="{{x.code}}">{{x.label}}</option>
+                        <!--<option value="邱金光">邱金光</option>-->
+                        <!--<option value="扬平">扬平</option>-->
+                        <!--<option value="刘全义">刘全义</option>-->
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label">保管员：</label>
+                <div class="col-lg-4">
+                    <select ng-model="outinStore.verifyoperatorname"  class="form-control">
+                        <option ng-repeat="x in verifyoperatornameList" value="{{x.code}}">{{x.label}}</option>
+                        <!--<option value="邱金光">邱金光</option>-->
+                        <!--<option value="扬平">扬平</option>-->
+                        <!--<option value="刘全义">刘全义</option>-->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">包装物：</label>
+                <div class="col-lg-3">
+                    <input type="text" ng-model="outinStore.packages" required="" placeholder="包装物" value="散装" class="form-control">
+                </div>
+                <label class="col-lg-2 control-label">包装件数：</label>
+                <div class="col-lg-4">
+                    <input type="text" ng-model="outinStore.packagenum" data-parsley-type="integer" value="0"  required="" placeholder="包装件数" class="form-control">
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="col-lg-3 control-label">扣粮方式：</label>-->
+                <!--<div class="col-lg-3">-->
+                    <!--&lt;!&ndash;<label class="radio-inline c-radio">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" ng-model="outinStore.storekeepercuttype" required value="方式A"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="fa fa-circle"></span>方式A</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="radio-inline c-radio">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" ng-model="outinStore.storekeepercuttype" required value="方式B"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="fa fa-circle"></span>方式B</label>&ndash;&gt;-->
+                    <!--<input type="text" ng-model="outinStore.storekeepercuttype" required value="整理扣粮" style="display: none"/>整理扣粮-->
+                <!--</div>-->
+                <!--<label class="col-lg-3 control-label">扣粮：</label>-->
+                <!--<div class="col-lg-3">-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" ng-model="outinStore.storekeepercut" required data-parsley-type="number"  placeholder="扣粮" class="form-control">-->
+                        <!--<span class="input-group-addon">KG</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+         <hr/>
+            <div class="form-group">
+                <div class="col-lg-offset-5">
+                    <button type="reset" id="btnReset" class="btn btn-info ">重  置</button>
+                    <button type="button"  ng-click="save()"  class="btn btn-primary">提交</button>
+                    <!--<button type="button"  ng-click="print_preview()"  class="btn btn-primary">打印</button>-->
+                    <!--<button type="button"  ng-click="print_setup()"  class="btn btn-primary">打印维护</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,296 @@
+﻿<div class="container-fluid" ng-controller="viewOutinDetailController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">基本信息</p>
+                <div class="form-group">
+                    <a href="{{outinEnty.outinCarrier.identityimage}}" target="_blank">
+                        <img src="{{outinEnty.outinCarrier.identityimage}}" style="height: 200px;width: 200px;"/>
+                    </a>
+                </div>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">出入库类型：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.iotypename}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">业务日期：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{yewuriqi}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">供应商：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.carrier}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">身份证：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.indentitycard}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">车牌号：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.vehicleno}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">品种名称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.varietyname}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">产地：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.prodplace}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">年份：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.grainyear}}</strong>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="lead bb">报岗信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">报岗时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{baogangshijian}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">登记人：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.dtoperator}}</strong>
+                        </div>
+                    </div>
+                </form>
+                
+                <p class="lead bb">质检信息</p>
+                <form class="form-horizontal p-20">
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">扦样员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinQuality.dtoperator}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">扦样时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{qianyangshijian}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">检验结果：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinQualityResult.advise}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">质检扣量：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinQualityResult.qualitycutweight}} %</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">检验等级：</div>
+                        <div class="col-sm-10 mt">
+                            <strong>{{outinEnty.outinQualityResult.gradename}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">质检人：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinQualityResult.zjoperator}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">检验时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{zhijianshijian}}</strong>
+                        </div>
+                    </div>
+
+                </form>
+                
+                <p class="lead bb">毛重信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinGross.clzp}}" target="_blank">
+                                <img src="{{outinEnty.outinGross.clzp}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinGross.zp1}}" target="_blank">
+                                <img src="{{outinEnty.outinGross.zp1}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinGross.zp2}}" target="_blank">
+                                <img src="{{outinEnty.outinGross.zp2}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinGross.zp3}}" target="_blank">
+                                <img src="{{outinEnty.outinGross.zp3}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">毛重(千克)：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinGross.grossweight}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">毛重监磅员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinGross.grosslooker}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">毛重称重时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{chengzhongshijian}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">毛重称重员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinGross.grossoperatorname}}</strong>
+                        </div>
+                    </div>
+
+                </form>
+                <p class="lead bb">保管信息</p>
+                <form class="form-horizontal p-20">
+                    <!--<div class="form-group">-->
+                        <!--<div class="col-sm-2 control-label">保管员扣量方式：</div>-->
+                        <!--<div class="col-sm-4 mt">-->
+                            <!--<strong>{{outinEnty.outinStore.storekeepercuttype}}</strong>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-2 control-label">保管员扣量：</div>-->
+                        <!--<div class="col-sm-4 mt">-->
+                            <!--<strong>{{outinEnty.outinStore.storekeepercut}}</strong>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">保管员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinStore.looker}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">仓房名称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.housename}}</strong>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">确认时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{querenshijian}}</strong>
+                        </div>
+                    </div>
+                </form>
+                <p class="lead bb">皮重信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinTare.clzp}}" target="_blank">
+                                <img src="{{outinEnty.outinTare.clzp}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinTare.zp1}}" target="_blank">
+                                <img src="{{outinEnty.outinTare.zp1}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinTare.zp2}}" target="_blank">
+                                <img src="{{outinEnty.outinTare.zp2}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="{{outinEnty.outinTare.zp3}}" target="_blank">
+                                <img src="{{outinEnty.outinTare.zp3}}" style="height: 200px;width: 200px;"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">皮重(千克)：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinTare.tareweight}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">皮重监磅员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinTare.tarelooker}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">皮重称重时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{pizhongshijian}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">皮重称重员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinTare.dtoperator}}</strong>
+                        </div>
+                    </div>
+                </form>
+                <p class="lead bb">结算信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">净重(千克)：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinTare.netweight}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">结算重量：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinSettlement.jsweight}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">结算单价：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{jiesuandanjia}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">结算金额：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{jiesuanjine}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">结算员：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinSettlement.jsoperatorname}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">结算时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{jiesuanshijian}}</strong>
+                        </div>
+                    </div>
+                </form>
+                <p class="lead bb">出门信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">出门时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{chumenshijian}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">销卡人：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{outinEnty.outinPincard.outoperatorname}}</strong>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

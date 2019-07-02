@@ -1,0 +1,54 @@
+<h3 id="topBar">
+    粮温分析
+</h3>
+<div class="table-grid table-grid-desktop" ng-controller="GrainTrendJsController">
+    <!-- 列表信息-->
+    <div class="mr">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-lg-2">
+                    <select name="packtype" ng-model="housecode" id="packtype" class="form-control" required>
+                        <option value="">请选择仓房...</option>
+                        <option ng-repeat="x in house" value="{{x.housecode}}">{{x.housename}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <p class="input-group">
+                        <input type="text" datepicker-popup="yyyy-MM-dd" close-text="关闭"  clear-text="清空" current-text="今天" ng-model="startDate" is-open="startimeIsOpen" class="form-control" />
+                        <span class="input-group-btn">
+                           <button type="button" ng-click="startimeOpen($event)" class="btn btn-default">
+                               <em class="fa fa-calendar"></em>
+                           </button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <button type="button" title="搜索" ng-click="toSearch()" class="btn btn-primary pull-left mb">
+                        <em class="icon-magnifier fa-fw mr-sm"></em>搜索
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--温度图表信息-高度必填 begin-->
+                <div class="col-md-6 pr0 pl0">
+                    <rzhecharts id="fumCharts" rid="fumCharts" option="charts_option" height="450"></rzhecharts>
+                </div>
+                <!--温度图表信息 end-->
+                <!--四层图表信息-高度必填 begin-->
+                <div class="col-md-3 pr0">
+                    <rzhecharts id="tempOneCharts" rid="tempOneCharts" option="temp_one_option" height="220"></rzhecharts>
+                </div>
+                <div class="col-md-3 pr0">
+                    <rzhecharts id="tempTwoCharts" rid="tempTwoCharts" option="temp_two_option" height="220"></rzhecharts>
+                </div>
+                <div class="col-md-3 pr0 mt">
+                    <rzhecharts id="tempThreeCharts" rid="tempThreeCharts" option="temp_three_option" height="220"></rzhecharts>
+                </div>
+                <div class="col-md-3 pr0 mt">
+                    <rzhecharts id="tempFourCharts" rid="tempFourCharts" option="temp_four_option" height="220"></rzhecharts>
+                </div>
+                <!--四层图表信息 end-->
+            </div>
+        </div>
+    </div>
+</div>

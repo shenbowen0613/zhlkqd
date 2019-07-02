@@ -1,0 +1,80 @@
+<!--
+  ~ Copyright (c) 2016. .保留所有权利.
+  ~
+  ~      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
+  ~      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
+  ~      本代码仅用于智慧粮库项目.
+  -->
+
+<!-- START 详情查看页面-->
+<div class="panel panel-default ng-scope" ng-controller="viewqainspectionController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead bb">详情查看</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">质检名称：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{qainspection.name}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">检测时间：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{qainspection.inspectiontime}}</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">参数详情：</div>
+                        <div class="col-sm-10 mt">
+                            <div ng-repeat="item in qainspection.details" ng-if="qainspection.details!=null">
+                                {{item.name}}<span ng-show="item.unit!=null&&item.unit!=''">({{item.unit}})</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">单号：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{qainspection.bussinessno}}</strong>
+                        </div>
+                        <div class="col-sm-2 control-label">检测人：</div>
+                        <div class="col-sm-4 mt">
+                            <strong>{{qainspection.inspector}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">二维码：</div>
+                        <div class="col-sm-10 mt" id="erweima">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">条形码：</div>
+                        <div class="col-sm-10 mt" id="tiaoxingma">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">备注：</div>
+                        <div class="col-lg-10">
+                            <script type="text/ng-template" id="ng-wig/views/ng-wig.html">
+                                <div class="ng-wig">
+                                    <div class="nw-editor">
+                                        <iframe scrolling="{{ autoexpand ? 'no' : 'yes' }}" frameBorder="0" ng-hide="editMode" ng-model="content" ng-wig-editable="" class="nw-editor__res"></iframe>
+                                    </div>
+                                </div>
+                            </script>
+                            <textarea ng-wig="qainspection.memo" ng-maxlength="5000"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" >
+                    <span ng-include="'app/views/base/to_remove.html'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END 详情查看页面-->
+

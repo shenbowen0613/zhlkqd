@@ -1,0 +1,44 @@
+<div class="table-grid table-grid-desktop" ng-controller="nhjcindexController">
+    <!--操作区域-->
+    <div ui-view="" class="mr ng-scope"></div>
+    <!-- 列表信息-->
+        <!--卡片-->
+        <div class="card_nh col-md-3 pr0" ng-repeat="a in allData">
+
+            <!--电表面板--start-->
+            <div class="card-body">
+                <div class="leftmodel_nh">
+                    <!--电表图-->
+                    <img src="app/img/1.png" style="width: 100px;height: 100px;margin: -13px -3px;" class="float-left">
+                    <!--电表标题-->
+                    <!--详情按钮-->
+                    <a class="a_style btn btn-sm btn-dark text-center active" style="float: left;margin-top: 15px;width: 85px;" ng-click="buttontoview(a.housecode)">详情</a>
+                </div>
+                <!--标题-->
+                <p class="card-text text-center">{{a.housecode}}号仓电表</p>
+
+                <!--电表信息-->
+                <div class="right_nh">
+                    <dl class="right_left_nh">
+                        <p class="card-text text-left"><mark>电压一：</mark>{{a.vl1}}V</p>
+                        <p class="card-text text-left"><mark>电压二：</mark>{{a.vl2}}V</p>
+                        <p class="card-text text-left"><mark>电压三：</mark>{{a.vl3}}V</p>
+                    </dl>
+                    <dl class="right_right_nh">
+                        <p class="card-text text-left"><mark>电流一：</mark>{{a.il1}}A</p>
+                        <p class="card-text text-left"><mark>电流二：</mark>{{a.il2}}A</p>
+                        <p class="card-text text-left"><mark>电流三：</mark>{{a.il3}}A</p>
+                    </dl>
+                    <dl class="right_right_nh">
+                        <p class="card-text text-left"><mark>电表读数：</mark>{{a.nz}}度</p>
+                    </dl>
+                </div>
+
+            </div>
+            <!--电表面板--end-->
+
+            <!--底部-->
+            <div class="text-center col-lg-12">检测时间：{{a.cxdata}}</div>
+
+        </div>
+</div>

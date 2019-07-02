@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example 03.01 - Ambient Light</title>
+    <link href="/xxsw/css/style.css" rel="stylesheet"/>
+    <link href="/xxsw/css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/xxsw/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="/xxsw/js/three.min.js"></script>
+    <script type="text/javascript" src="/xxsw/js/DDSLoader.js"></script>
+    <script type="text/javascript" src="/xxsw/js/OBJLoader.js"></script>
+    <script type="text/javascript" src="/xxsw/js/MTLLoader.js"></script>
+    <script type="text/javascript" src="/xxsw/js/Detector.js"></script>
+    <script type="text/javascript" src="/xxsw/js/stats.min.js"></script>
+    <script type="text/javascript" src="/xxsw/js/OrbitControls.js"></script>
+    <script type="text/javascript" src="/xxsw/js/layer/layer.js"></script>
+    <!--<script type="text/javascript" src="js/Water.js"></script>-->
+    <script type="text/javascript" src="/xxsw/js/xinxitc.js"></script><!--仓房弹出信息 -->
+    <!--<script type="text/javascript" src="build/OrbitControls.js"></script> -->
+</head>
+<body>
+<!-- Div which will hold the Output -->
+<div>
+    <div id="wendud" class="col-md-12">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-block btn-primary btn-lg" onclick="guanbiyemian();">退出</button>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+            <select id="cangfangwd"  onchange="cangfangbh();" class="form-control">
+                <option value=15 selected = "selected">15仓、16仓</option>
+                <option value=17>17仓、18仓</option>
+                <option value=19>19仓、20仓</option>
+                <option value=21>21仓、22仓</option>
+                <option value=23>23仓、24仓</option>
+                <option value=25>25仓、26仓</option>
+                <option value=27>27仓</option>
+                <option value=28>28仓</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var path;
+    var zhuangtai11 = 2;
+    var cangid = $('#cangfangwd option:selected').val();
+    var cangfang01,cangfang02,cangfang03,cangfang04,chuang,gan;
+    var chuangac =[];
+    var cangic =[];
+    var chuangbc =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//动画循环计数
+    var wenduid = [];
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2(), INTERSECTED;
+    var camera, controls, scene, renderer,caizhi, touming;
+    var stats = new Stats();//性能监视器
+    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(stats.dom);//性能监视器显示
+    init();
+    animate();
+function guanbiyemian(){
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);
+}
+    function init() {
+        scene = new THREE.Scene();
+        var loader = new THREE.TextureLoader();//地面
+        var groundTexture = loader.load('/xxsw/img/grasslight-big.jpg');
+        groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+        groundTexture.repeat.set(5, 5);
+        groundTexture.anisotropy = 16;
+        var groundMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, specular: 0x111111, map: groundTexture});
+        var mesh = new THREE.Mesh(new THREE.CircleGeometry(2000,36), groundMaterial);
+        //mesh.position.y = - 47;
+        mesh.rotation.x = -Math.PI / 2;
+        mesh.receiveShadow = true;
+        scene.add(mesh);
+        mesh.name = 'sba';
+        light();
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.set(470,20,-157);
+        renderer = new THREE.WebGLRenderer({antialias: true});//WEBGL渲染器
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);//渲染器大小
+        renderer.shadowMap.renderSingleSided = false;
+        document.body.appendChild(renderer.domElement);//将渲染器添加到网页上
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
+        controls = new THREE.OrbitControls( camera, renderer.domElement );//控制器
+        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.enablePan = false;
+        controls.maxDistance = 350;
+        controls.target.x = 300;
+        controls.target.z = -170;
+        controls.addEventListener( 'change', render );
+
+        setSkybox();//天空盒
+        liangku();//粮库模型
+        cangfang();//仓房编号
+        //单机
+        document.addEventListener('click', onDocumentMouseMove, false);
+        //双击
+        document.addEventListener('dblclick', dblclickchangxinxi, false);
+
+    }
+
+        function cangfang() {
+            var mapA = new THREE.TextureLoader().load( "/xxsw/img/cf16.png" );
+            var materialA = new THREE.SpriteMaterial( { map: mapA, transparent:true } );
+            var cangfang = new THREE.Sprite(materialA);
+            cangfang.scale.set(0.5 * 30, 0.5 * 30, 0.5 * 30);
+            cangfang.position.set(310, 43, -243);
+            scene.add(cangfang);
+            cangfang.name = "cangfang";
+            var mapb = new THREE.TextureLoader().load( "/xxsw/img/cf15.png" );
+            var materialb = new THREE.SpriteMaterial( { map: mapb, transparent:true } );
+            var cangfang2 = new THREE.Sprite(materialb);
+            cangfang2.scale.set(0.5 * 30, 0.5 * 30, 0.5 * 30);
+            cangfang2.position.set(293, 43, -115);
+            scene.add(cangfang2);
+            cangfang2.name = "cangfang2";
+        }
+        function cangfangbh() {
+            cangid = $('#cangfangwd option:selected').val();
+            var cangid2 = Number(cangid) + 1;
+            if(Number(cangid)==27||Number(cangid)==28){
+                    var mapA = new THREE.TextureLoader().load( "/xxsw/img/cf"+cangid+".png" );
+                    scene.getObjectByName("cangfang").material = new THREE.SpriteMaterial( { map: mapA, transparent:true } );
+                    scene.getObjectByName("cangfang").position.set(300, 43, -170);
+                    var mapb = new THREE.TextureLoader().load( "/xxsw/img/cf.png" );
+                    scene.getObjectByName("cangfang2").material = new THREE.SpriteMaterial( { map: mapb, transparent:true } );
+            }else{
+                if(Number(cangid)==10){
+                    var mapA = new THREE.TextureLoader().load( "/xxsw/img/cf30.png" );
+                    scene.getObjectByName("cangfang").material = new THREE.SpriteMaterial( { map: mapA, transparent:true } );
+                    scene.getObjectByName("cangfang").position.set(310, 43, -243);
+                    var mapb = new THREE.TextureLoader().load( "/xxsw/img/cf31.png" );
+                    scene.getObjectByName("cangfang2").material = new THREE.SpriteMaterial( { map: mapb, transparent:true } );
+                }else{
+                    var mapA = new THREE.TextureLoader().load( "/xxsw/img/cf"+cangid2+".png" );
+                    scene.getObjectByName("cangfang").material = new THREE.SpriteMaterial( { map: mapA, transparent:true } );
+                    scene.getObjectByName("cangfang").position.set(310, 43, -243);
+                    var mapb = new THREE.TextureLoader().load( "/xxsw/img/cf"+cangid+".png" );
+                    scene.getObjectByName("cangfang2").material = new THREE.SpriteMaterial( { map: mapb, transparent:true } );
+                }
+            }
+            if(Number(cangid)>26){
+                if(zhuangtai11!=0){
+                    for(var i=0;i<16;i++){
+                        var name = "chuang"+i;
+                        var gan = "gan" + i;
+                        scene.remove(scene.getObjectByName(name));
+                        scene.remove(scene.getObjectByName(gan));
+                    }
+                    var cangfan27 = [
+                        [258.3,17.3,-124.4,-1.7],
+                        [266,17.3,-179.35,-1.7],
+                        [269.2,17.3,-202.55,-1.7],
+                        [275.3,17.3,-246,-1.7],
+                        [343.35,17.29,-239.9,1.4415],
+                        [336.28,17.29,-188.7,1.4415],
+                        [333.25,17.29,-167.1,1.4415],
+                        [326.65,17.29,-119.4,1.4415]
+                    ];
+                    for (var i=0;i<cangfan27.length;i++){
+                        chuanghu(cangfan27[i][0],cangfan27[i][1],cangfan27[i][2],cangfan27[i][3],i);
+                    }
+                    if(cangic[cangid]==undefined){
+                        for(var i=0;i<8;i++){
+                            var name = "chuang"+i;
+                            if(i<4){
+                                scene.getObjectByName(name).rotation.y = -1.7;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = 1.4415;
+                            }
+                        }
+                        chuangbc =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                    }else{
+                        chuangbc = cangic[cangid];
+                        for(var i=0;i<8;i++){
+                            var name = "chuang"+i;
+                            if(i<4){
+                                if(cangic[cangid][i]==120){
+                                    scene.getObjectByName(name).rotation.y = -0.5;
+                                }else{
+                                    scene.getObjectByName(name).rotation.y = -1.7;
+                                }
+                            }else{
+                                if(cangic[cangid][i]==120){
+                                    scene.getObjectByName(name).rotation.y = 2.6415;
+                                }else{
+                                    scene.getObjectByName(name).rotation.y = 1.4415;
+                                }
+                            }
+                        }
+                    }
+                    scene.remove(cangfang01);
+                    scene.remove(cangfang04);
+                    scene.add(cangfang03);
+                    zhuangtai11 = 0;
+                }else{
+                    if(cangic[cangid]==undefined){
+                        for(var i=0;i<8;i++){
+                            var name = "chuang"+i;
+                            if(i<4){
+                                scene.getObjectByName(name).rotation.y = -1.7;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = 1.4415;
+                            }
+                        }
+                        chuangbc =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                    }else{
+                        chuangbc = cangic[cangid];
+                        for(var i=0;i<8;i++){
+                            var name = "chuang"+i;
+                            if(i<4){
+                                if(cangic[cangid][i]==120){
+                                    scene.getObjectByName(name).rotation.y = -0.5;
+                                }else{
+                                    scene.getObjectByName(name).rotation.y = -1.7;
+                                }
+                            }else{
+                                if(cangic[cangid][i]==120){
+                                    scene.getObjectByName(name).rotation.y = 2.6415;
+                                }else{
+                                    scene.getObjectByName(name).rotation.y = 1.4415;
+                                }
+                            }
+                        }
+                    }
+                }
+            }else if(zhuangtai11!=2){
+                for(var i=0;i<8;i++){
+                    var name = "chuang"+i;
+                    var gan = "gan" + i;
+                    scene.remove(scene.getObjectByName(name));
+                    scene.remove(scene.getObjectByName(gan));
+                }
+                var cangfan01 = [
+                    [249.951,17.3,-60.414,-1.7],
+                    [257.32,17.3,-112.8,-1.7],
+                    [260.4,17.3,-134.95,-1.7],
+                    [266.2,17.3,-176.5,-1.7],
+                    [268.2,17.3,-189.3,-1.7],
+                    [275,17.3,-238.15,-1.7],
+                    [278,17.3,-258.83,-1.7],
+                    [284.35,17.25,-304.4,-1.7],
+                    [352.42,17.29,-299.62,1.4415],
+                    [345.07,17.29,-247.15,1.4415],
+                    [342,17.29,-225,1.4415],
+                    [336.27,17.29,-183.6,1.4415],
+                    [334.4,17.29,-170.7,1.4415],
+                    [327.5,17.29,-122,1.4415],
+                    [324.55,17.29,-101.41,1.4415],
+                    [318.1,17.29,-55.85,1.4415]
+                ];
+                for (var i=0;i<cangfan01.length;i++){
+                    chuanghu(cangfan01[i][0],cangfan01[i][1],cangfan01[i][2],cangfan01[i][3],i);
+                }
+                if(cangic[cangid]==undefined){
+                    for(var i=0;i<chuangbc.length;i++){
+                        var name = "chuang"+i;
+                        if(i<8){
+                            scene.getObjectByName(name).rotation.y = -1.7;
+                        }else{
+                            scene.getObjectByName(name).rotation.y = 1.4415;
+                        }
+                    }
+                    chuangbc =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                }else{
+                    chuangbc = cangic[cangid];
+                    for(var i=0;i<cangic[cangid].length;i++){
+                        var name = "chuang"+i;
+                        if(i<8){
+                            if(cangic[cangid][i]==120){
+                                scene.getObjectByName(name).rotation.y = -0.5;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = -1.7;
+                            }
+                        }else{
+                            if(cangic[cangid][i]==120){
+                                scene.getObjectByName(name).rotation.y = 2.6415;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = 1.4415;
+                            }
+                        }
+                    }
+                }
+                scene.remove(cangfang04);
+                scene.remove(cangfang03);
+                scene.add(cangfang01);
+                zhuangtai11 = 2;
+            }else{
+                if(cangic[cangid]==undefined){
+                    for(var i=0;i<chuangbc.length;i++){
+                        var name = "chuang"+i;
+                        if(i<8){
+                            scene.getObjectByName(name).rotation.y = -1.7;
+                        }else{
+                            scene.getObjectByName(name).rotation.y = 1.4415;
+                        }
+                    }
+                    chuangbc =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                }else{
+                    chuangbc = cangic[cangid];
+                    for(var i=0;i<cangic[cangid].length;i++){
+                        var name = "chuang"+i;
+                        if(i<8){
+                            if(cangic[cangid][i]==120){
+                                scene.getObjectByName(name).rotation.y = -0.5;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = -1.7;
+                            }
+                        }else{
+                            if(cangic[cangid][i]==120){
+                                scene.getObjectByName(name).rotation.y = 2.6415;
+                            }else{
+                                scene.getObjectByName(name).rotation.y = 1.4415;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    function light() {//灯光
+        scene.add(new THREE.AmbientLight(0x666666));
+
+        var light = new THREE.DirectionalLight(0xdfebff, 2);
+        light.position.set(0, 500, 0);
+        light.position.multiplyScalar(1.3);
+
+        light.castShadow = true;
+
+        light.shadow.mapSize.width = 1024;
+        light.shadow.mapSize.height = 1024;
+
+        var d = 300;
+
+        light.shadow.camera.left = -d;
+        light.shadow.camera.right = d;
+        light.shadow.camera.top = d;
+        light.shadow.camera.bottom = -d;
+        light.shadow.camera.far = 1000;
+        scene.add(light);
+    }
+    function chuanghu(x,y,z,ry,i) {//窗户
+        var c1 = chuang.clone();
+        var g1 = gan.clone();
+        g1.position.set(x, y, z);
+        g1.scale.set(3, 3, 3);
+        c1.position.set(x, y, z);
+        c1.rotation.y = ry;
+        c1.scale.set(3, 3, 3);
+        scene.add(g1);
+        scene.add(c1);
+        g1.name = "gan" + i;
+        c1.name = "chuang" + i;
+    }
+    var zuobiao = [
+        [249.951,17.3,-60.414,-1.7],
+        [257.32,17.3,-112.8,-1.7],
+        [260.4,17.3,-134.95,-1.7],
+        [266.2,17.3,-176.5,-1.7],
+        [268.2,17.3,-189.3,-1.7],
+        [275,17.3,-238.15,-1.7],
+        [278,17.3,-258.83,-1.7],
+        [284.35,17.25,-304.4,-1.7],
+        [352.42,17.29,-299.62,1.4415],
+        [345.07,17.29,-247.15,1.4415],
+        [342,17.29,-225,1.4415],
+        [336.27,17.29,-183.6,1.4415],
+        [334.4,17.29,-170.7,1.4415],
+        [327.5,17.29,-122,1.4415],
+        [324.55,17.29,-101.41,1.4415],
+        [318.1,17.29,-55.85,1.4415]
+    ];
+    function liangku() {//粮库模型
+
+        var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.setPath('/xxsw/moxing/');
+        mtlLoader.load('dancang2.mtl', function (materials) {//加载mtl材质
+            materials.preload();
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setMaterials(materials);
+            objLoader.setPath('/xxsw/moxing/');
+            objLoader.load('dancang2.obj', function (object) {//加载obj模型
+//            var chuang = object.children[43].clone();
+//            chuang.position.set(257.32, 17.3, -112.8);
+//            chuang.rotation.y = -1.70;
+//            chuang.scale.set(3, 3, 3);
+//            object.children[43].position.set(83.317, -3.24, -20.138);
+//            object.children[43].rotation.y = -1.70;
+//            object.children[42].position.set(101, -9, -58);
+//            object.children[44].position.set(83.3, -3.24, -20.138);
+//            object.children[45].position.y = -5;
+//            object.children[45].material.transparent = true;
+//                object.scale.set(3, 3, 3);
+//                object.position.y = 27;
+//                object.castShadow = true;
+                //scene.add(object);//添加到场景
+
+                cangfang02 = object.children[7];
+                cangfang02.scale.set(3, 3, 3);
+                cangfang02.position.y = 27;
+
+                cangfang03 = object.children[2];
+                cangfang03.scale.set(3, 3, 3);
+                cangfang03.position.y = 27;
+
+                cangfang04 = object.children[1];
+                cangfang04.scale.set(3, 3, 3);
+                cangfang04.position.y = 27;
+
+                chuang = object.children[5];
+
+                gan = object.children[6];
+
+                cangfang01 = object.children[0];
+                cangfang01.scale.set(3, 3, 3);
+                cangfang01.position.y = 27;
+                scene.add(cangfang01);
+
+                for (var i=0;i<zuobiao.length;i++){
+                    chuanghu(zuobiao[i][0],zuobiao[i][1],zuobiao[i][2],zuobiao[i][3],i);
+                }
+//                var chuang = scene.getObjectByName('chuang').clone();
+//                chuang.position.set(257.32, 17.3, -112.8);
+//                chuang.rotation.y = -1.70;
+//                chuang.scale.set(3, 3, 3);
+//                scene.add(chuang);
+//                scene.getObjectByName('chuang').position.set(83.317, -3.24, -20.138);
+//                scene.getObjectByName('chuang').rotation.y = -1.70;
+//                scene.getObjectByName('gan').position.set(83.3, -3.24, -20.138);
+                //存材质
+            });
+        });
+    }
+
+    function setSkybox() {//天空盒
+
+        cubeMap = new THREE.CubeTexture([]);
+        cubeMap.format = THREE.RGBFormat;
+
+        var loader = new THREE.ImageLoader();
+        loader.load( '/xxsw/img/skyboxsun25degtest.png', function ( image ) {
+
+            var getSide = function ( x, y ) {
+
+                var size = 1024;
+
+                var canvas = document.createElement( 'canvas' );
+                canvas.width = size;
+                canvas.height = size;
+
+                var context = canvas.getContext( '2d' );
+                context.drawImage( image, - x * size, - y * size );
+
+                return canvas;
+
+            };
+
+            cubeMap.images[ 0 ] = getSide( 2, 1 ); // px
+            cubeMap.images[ 1 ] = getSide( 0, 1 ); // nx
+            cubeMap.images[ 2 ] = getSide( 1, 0 ); // py
+            cubeMap.images[ 3 ] = getSide( 1, 2 ); // ny
+            cubeMap.images[ 4 ] = getSide( 1, 1 ); // pz
+            cubeMap.images[ 5 ] = getSide( 3, 1 ); // nz
+            cubeMap.needsUpdate = true;
+
+        } );
+
+        var cubeShader = THREE.ShaderLib[ 'cube' ];
+        cubeShader.uniforms[ 'tCube' ].value = cubeMap;
+
+        var skyBoxMaterial = new THREE.ShaderMaterial( {
+            fragmentShader: cubeShader.fragmentShader,
+            vertexShader: cubeShader.vertexShader,
+            uniforms: cubeShader.uniforms,
+            side: THREE.BackSide
+        } );
+
+        var skyBox = new THREE.Mesh(
+            new THREE.BoxGeometry( 2000 * 5 + 100, 2000 * 5 + 100, 2000 * 5 + 100 ),
+            skyBoxMaterial
+        );
+
+        scene.add( skyBox );
+
+    }
+//    function loadFont() {//3d加载文字
+//                var loader = new THREE.FontLoader();
+//                loader.load( 'js/helvetiker_bold.typeface.json', function ( response ) {
+//                    font = response;
+//                    //文字
+//                    textaa('26', 266 , 2.5 , -101.2);
+//                    textaa('26.3' , 266, 6.2 , -101.2);
+//                    textaa('26.4' , 266, 9.9, -101.2);
+//                    textaa('26.6' , 266, 13.6 , -101.2);
+//                });
+//            }
+//            function textaa(t,zbx,zby,zbz) {
+//                var wendu = '°C';
+//                var text = t + wendu;
+//                var textg = new THREE.TextGeometry(text,{
+//                    // 设定文字字体，
+//                    font:font,
+//                    //尺寸
+//                    size:1,
+//                    //厚度
+//                    height:0,
+//                });
+//                //计算边界，暂时不用管
+//                textg.computeBoundingBox();
+//                //3D文字材质
+//                var textm = new THREE.MeshBasicMaterial({color:0xff0000});
+//
+//                var textmesh = new THREE.Mesh(textg,textm);
+//                // 加入到场景中
+//                textmesh.position.set(zbx,zby,zbz);
+//                scene.add(textmesh);
+//                textmesh.name = 'txt';
+//            }
+    function createSpriteText(t, zbx, zby, zbz,color) {//2d文字
+        //先用画布将文字画出
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        var wendu = '℃';
+        var text = t + wendu;
+        ctx.fillStyle = color;
+        ctx.font = "Bold 100px Arial";
+        ctx.lineWidth = 4;
+        ctx.fillText(text, 4, 104);
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        //使用Sprite显示文字
+        var material = new THREE.SpriteMaterial({map: texture});
+        var textObj = new THREE.Sprite(material);
+        textObj.scale.set(0.5 * 10, 0.25 * 10, 0.75 * 10);
+        textObj.position.set(zbx, zby, zbz);
+        return textObj;
+    }
+    function dblclickchangxinxi(event) {//双击模型弹出
+        var INTERSECTED2;
+        event.preventDefault();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        if (intersects.length > 0) {
+            INTERSECTED2 = intersects[0].object;
+            if (INTERSECTED2.name == 'Line005') {
+                xinxinchun();
+            }
+        }
+    };
+    var cangfangip = {
+        "cang15":"",
+        "cang17":"192.0.0.192",
+        "cang19":"192.0.0.193",
+        "cang21":"192.0.0.194",
+        "cang23":"192.0.0.195",
+        "cang25":"192.0.0.196",
+        "cang27":"192.0.0.197",
+        "cang28":"192.0.0.198",
+"cang31":"192.0.0.191"
+    };
+    var kcangfangc = ['56','52','4e','4a',0,0,0,0,0,0,0,0,'46','42','26','22'];
+    var gcangfangc = ['58','54','50','4c',0,0,0,0,0,0,0,0,'48','44','3f','24'];
+    var kcangfanga = ['56','52','4e','4a','46','42','26','22'];
+    var gcangfanga = ['58','54','50','4c','48','44','3f','24'];
+    function onoffwindow(hip,zhil,id,name,kg){
+        var index_load = layer.load(1, {
+            shade: [0.5,'#000'] //0.1透明度的白色背景
+        });
+        console.log("ip:"+hip+",命令："+zhil+"，id:"+id+"，名字："+name);
+        var pData = {
+            hostIp:hip,//?hostIp=192.0.0.6&instructions=22
+            instructions:zhil
+        };
+        $.ajax({
+            type: "POST",
+            url: "http://192.0.0.250:84/window/control/windowsControl",
+            data: pData,
+            dataType: "json",
+            success: function(data){
+                if (data.success){
+                    if(kg==1){
+                        chuangbc[id]=0;
+                        chuangac[id] = setInterval(function () {
+                            scene.getObjectByName(name).rotation.y += 0.01;
+                            chuangbc[id]++;
+                            if (chuangbc[id] == 120) {
+                                clearInterval(chuangac[id]);
+                                cangic[cangid] = chuangbc;
+                            }
+                        }, 10);
+                    }else{
+                        chuangac[id] = setInterval(function () {
+                            scene.getObjectByName(name).rotation.y -= 0.01;
+                            chuangbc[id]--;
+                            if (chuangbc[id] == 0) {
+                                clearInterval(chuangac[id]);
+                                cangic[cangid] = chuangbc;
+                            }
+                        }, 10);
+                    }
+                }
+                layer.close(index_load);
+                layer.msg(data.info);
+            },
+            error:function (error) {
+                layer.close(index_load);
+                layer.msg("失败");
+            }
+        });
+    };
+    function onDocumentMouseMove(event) {//鼠标获取模型
+        event.preventDefault();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        if (intersects.length > 0) {
+            INTERSECTED = intersects[0].object;
+           // console.log(INTERSECTED);
+            if (INTERSECTED.name == 'xiangji') {
+                layer.open({
+                    type: 2,
+                    skin: 'layui-layer-lan', //加上边框
+                    area: ['630px', '460px'], //宽高
+                    content: 'demo1.html'
+                });
+            }
+            if (INTERSECTED.name.substr(0,6) == 'chuang') {//开窗
+                if (chuangbc[Number(INTERSECTED.name.substring(6))]==0||chuangbc[Number(INTERSECTED.name.substring(6))]==undefined) {
+                    var id = Number(INTERSECTED.name.substring(6));
+                    //console.log(id);
+                   // console.log($('#cangfangwd option:selected').val());
+                    var name = INTERSECTED.name;
+                    if(Number($('#cangfangwd option:selected').val())==27||Number($('#cangfangwd option:selected').val())==28){
+                        onoffwindow(cangfangip["cang"+$('#cangfangwd option:selected').val()],kcangfanga[id],id,name,1);
+                    }else{
+                        onoffwindow(cangfangip["cang"+$('#cangfangwd option:selected').val()],kcangfangc[id],id,name,1);
+                    };
+                }
+                if (chuangbc[Number(INTERSECTED.name.substring(6))] == 120) {
+                    var id = Number(INTERSECTED.name.substring(6));
+                    var name = INTERSECTED.name;
+                    if(Number($('#cangfangwd option:selected').val())==27||Number($('#cangfangwd option:selected').val())==28){
+                        onoffwindow(cangfangip["cang"+$('#cangfangwd option:selected').val()],gcangfanga[id],id,name,2);
+                    }else{
+                        onoffwindow(cangfangip["cang"+$('#cangfangwd option:selected').val()],gcangfangc[id],id,name,2);
+                    };
+                }
+            }
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame( animate );
+        controls.update();
+        stats.begin();
+        stats.end();
+        render();
+
+    }
+    function render() {
+
+        renderer.render( scene, camera );
+
+    }
+</script>
+</body>
+</html>

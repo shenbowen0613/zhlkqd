@@ -1,0 +1,180 @@
+<h3 id="topBar">
+    <span id="houseName"></span>&nbsp;<span id="inspectionTime"></span>
+</h3>
+<div class="panel panel-default" ng-controller="aerateViewController">
+    <div class="panel-heading">通风信息详情</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">仓房信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">所属粮库:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.orgname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓房:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.housename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮品种:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.varietyname}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮等级:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.gradename}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">储粮数量:</div>
+                        <div class="col-sm-8">
+                            <div class="label label-info">{{aerateInfo.grainnum}}T</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p class="lead bb">通风信息</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">通风模式:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.mode}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">开始时间:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.starttime}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">结束时间:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.endtime}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">使用时长:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.timelength}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最大风速:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.maxspeed}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">最小风速:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.minspeed}}</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">耗电量:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.powerconsumption}}</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead bb">通风前粮情</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内温</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeint}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeoutt}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均粮温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeat}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeinh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeouth}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.beforeah}}%</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <p class="lead bb">通风后粮情</p>
+                <form class="form-horizontal p-20">
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内温</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afterint}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afteroutt}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均粮温:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afterat}}°C</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓内湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afterinh}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">仓外湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afterouth}}%</strong>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">平均湿:</div>
+                        <div class="col-sm-8">
+                            <strong>{{aerateInfo.afterah}}%</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert alert-success">
+            <em class="fa fa-check-circle fa-lg fa-fw"></em>
+            作业状态：{{aerateInfo.workstate}}
+        </div>
+    </div>
+</div>
