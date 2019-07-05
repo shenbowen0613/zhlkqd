@@ -86,36 +86,24 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     }
 
 
-    //获取车牌照片;
+    //商城获取车牌照片;
     $scope.readLicensePlate = function () {
-        $scope.doding = true;
-        if ($scope.iotypename == "入库") {
-            $scope.url = '/lpr/xxklpr?cameraId=113';
-        } else if ($scope.iotypename == "出库") {
-            $scope.url = '/lpr/xxklpr?cameraId=114';
-        } else {
-            $scope.doding = false;
-            rzhdialog(ngDialog, "请选择出入库类型", "error");
-        }
-        if ($scope.doding) {
-            $http({
-                url: $scope.url,
-                method: 'POST'
-            }).success(function (response) { //提交成功
-                if (response.success) { //信息处理成功，进入用户中心页面
-                    $scope.result = response.data;
-                    $scope.vehicleno = $scope.result.plate;
-                    $("#cphm").val($scope.vehicleno);
-                    // $("#clzp").attr("src", $scope.result.clzp);
-                    // $("#clzpval").val($scope.result.clzp);
-                } else { //信息处理失败，提示错误信息
-                    rzhdialog(ngDialog, response.info, "error");
-                }
-
-            }).error(function (response) { //提交失败
-                rzhdialog(ngDialog, "操作失败", "error");
-            })
-        }
+        $http({
+            url: '/PlateServlet',
+            method: 'GET'
+        }).success(function (response) { //提交成功
+            if (response.success) {
+                $scope.vehicleno = response.info;
+                $("#cphm").val($scope.vehicleno);
+                $("#clzp").attr("src", "app/img/cur_cheliang.jpg");
+            }else{
+                $("#cphm").val("");
+                $("#clzp").attr("src", "app/img/cheliang.jpg");
+                rzhdialog(ngDialog, "无车牌信息", "error");
+            }
+        }).error(function (response) { //提交失败
+            rzhdialog(ngDialog, "操作失败", "error");
+        })
     }
 
     //下磅抬杆;
@@ -139,7 +127,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     //获取称重;
     $scope.getWeight = function () {
-        $scope.url = 'http://192.0.0.79:8868/liangqing';
+        $scope.url = 'http://192.0.0.200:8868/liangqing';
         $http({
             url: $scope.url,
             method: 'GET'
@@ -159,7 +147,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
         //抓拍三张图
         $http({
-            url: '/lpr/carImg',
+            url: '/lpr/scklpr',
             method: 'POST'
         }).success(function (response) { //提交成功
             if (response.success) { //信息处理成功，进入用户中心页面
@@ -168,8 +156,6 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
                 $("#zp1val").val($scope.result.zp1);
                 $("#zp2").attr("src", $scope.result.zp2);
                 $("#zp2val").val($scope.result.zp2);
-                $("#zp3").attr("src", $scope.result.zp3);
-                $("#zp3val").val($scope.result.zp3);
             } else { //信息处理失败，提示错误信息
                 rzhdialog(ngDialog, response.info, "error");
             }

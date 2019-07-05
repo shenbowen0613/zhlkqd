@@ -7,9 +7,6 @@
  */
 App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
 
-
-
-
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=cardreg_dtoperator_list",
         method: 'POST',

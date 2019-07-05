@@ -37,7 +37,6 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     //商城获取车牌照片;
     $scope.readLicensePlate = function () {
-
         $http({
             url: '/PlateServlet',
             method: 'GET'
@@ -76,7 +75,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     //获取称重;
     $scope.getWeight = function () {
-        $scope.url='http://192.0.0.99:8868/liangqing';
+        $scope.url='http://192.0.0.200:8868/liangqing';
         $http({
             url: $scope.url,
             method: 'GET'
