@@ -1,10 +1,8 @@
 <style>
     body {
         min-width: 1200px;
-        /*background-color: #ffffff;*/
-
     }
-    .btn1, .btn2, .btn3, .btn4, .btn5, .btn6, .btn7 {
+    .btn1 {
         position: absolute;
         margin-top: 30px;
     }
@@ -15,7 +13,7 @@
     }
     .chuku{
         position: absolute;
-        margin-top: 450px;
+        margin-top:300px;
         margin-left:50px;
     }
 
@@ -24,78 +22,115 @@
 <div ng-controller="outinController">
     <div class="row">
         <h4 class="ruku">入库流程</h4>
-        <div class="btn1" style="margin-left:150px;margin-top:54px;">
-            <a href="#outin/cardregistration">
-                <img src="app/img/outin/rk1.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:50px;margin-top:75px">
+            <a href="#outin/cardregistration" style="text-decoration: none">
+              <div  class="img-flow-div" >
+                  <img src="../../../flow1.png" alt="" style="height: 90px;width: 103px;"></div>
+              <div  class="flow-div">领卡登记</div>
             </a>
         </div>
-        <div class="btn2" style=" margin-left:369px;margin-top:65px">
-            <a href="#outin/sampling">
-                <img src="app/img/outin/rk2.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:180px;margin-top:75px">
+            <a href="#outin/sampling" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow2.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">入库扦样</div>
             </a>
         </div>
-        <div class="btn2" style=" margin-left:582px;margin-top:69px">
-            <a href="#outin/qualitytesting">
-                <img src="app/img/outin/rk3.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:310px;margin-top:75px">
+            <a href="#outin/qualitytesting" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow3.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">质量检验</div>
             </a>
         </div>
-        <div class="btn3" style=" margin-left:790px;margin-top:70px">
-            <a href="#outin/grossweight">
-                <img src="app/img/outin/rk4.png" alt="Image"/>
+
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:440px;margin-top:75px">
+            <a href="#outin/grossweight" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow4.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">毛斤检重</div>
             </a>
         </div>
-        <div class="btn4" style=" margin-left:816px;margin-top:250px">
-            <a href="#outin/store">
-                <img src="app/img/outin/rk5.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:570px;margin-top:75px">
+            <a href="#outin/store" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow5.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">值仓入仓</div>
             </a>
         </div>
-        <div class="btn5" style=" margin-left:565px;margin-top:250px">
-            <a href="#outin/tareweight">
-                <img src="app/img/outin/rk6.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:700px;margin-top:75px">
+            <a href="#outin/tareweight" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow6.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">回皮检斤</div>
             </a>
         </div>
-        <div class="btn6" style=" margin-left:361px;margin-top:250px">
-            <a href="#outin/settlement">
-                <img src="app/img/outin/rk7.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:830px;margin-top:75px">
+            <a href="#outin/settlement" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow7.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">业务结算</div>
             </a>
         </div>
-        <div class="btn7" style=" margin-left:180px;margin-top:250px">
-            <a href="#outin/xiaoka_chuku">
-                <img src="app/img/outin/rk8.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:960px;margin-top:75px">
+            <a href="#outin/xiaoka_chuku" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow8.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">销卡出库</div>
             </a>
         </div>
+
     </div>
 
     <div class="row">
         <h4 class="chuku">出库流程</h4>
-        <div class="btn1" style="margin-left:25px;margin-top:505px;">
-            <a href="#outin/cardregistration">
-                <img src="app/img/outin/ck1.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:50px;margin-top:350px">
+            <a href="#outin/cardregistration" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow1.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">领卡登记</div>
             </a>
         </div>
-        <div class="btn2" style=" margin-left:308px;margin-top:505px">
-            <a href="#outin/tareweight">
-                <img src="app/img/outin/ck2.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:205px;margin-top:350px">
+            <a href="#outin/tareweight" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow6.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">空车称重</div>
             </a>
         </div>
-        <div class="btn3" style=" margin-left:565px;margin-top:505px">
-            <a href="#outin/store">
-                <img src="app/img/outin/ck3.png" alt="Image"/>
+
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:360px;margin-top:350px">
+            <a href="#outin/store" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow5.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">值仓入仓</div>
             </a>
         </div>
-        <div class="btn4" style=" margin-left:815px;margin-top:505px">
-            <a href="#outin/grossweight">
-                <img src="app/img/outin/ck4.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:510px;margin-top:350px">
+            <a href="#outin/grossweight" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow4.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">满载称重</div>
             </a>
         </div>
-        <div class="btn5" style=" margin-left:1050px;margin-top:505px">
-            <a href="#outin/settlement">
-                <img src="app/img/outin/ck41.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:665px;margin-top:350px">
+            <a href="#outin/settlement" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow7.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">业务结算</div>
             </a>
         </div>
-        <div class="btn6" style=" margin-left:1250px;margin-top:505px">
-            <a href="#outin/xiaoka_chuku">
-                <img src="app/img/outin/ck5.png" alt="Image"/>
+        <div class="btn1" style="width: 105px;height: 120px;margin-left:820px;margin-top:350px">
+            <a href="#outin/xiaoka_chuku" style="text-decoration: none">
+                <div  class="img-flow-div" >
+                    <img src="../../../flow8.png" alt="" style="height: 90px;width: 103px;"></div>
+                <div  class="flow-div">销卡出户</div>
             </a>
         </div>
     </div>

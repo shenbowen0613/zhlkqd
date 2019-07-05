@@ -1,7 +1,7 @@
-# zhlk_scui
+# zhlk_xxui
 
 #### Description
-智能粮库商城ui
+智能粮库浚县ui
 
 #### Software Architecture
 Software architecture description

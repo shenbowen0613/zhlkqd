@@ -273,13 +273,13 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
     };
     //显示显示
     if($scope.global_type=="all"){
-        $scope.reporttime_show=false;
-        $scope.starttime_show=true;
-        $scope.endtime_show=true;
-    }else{
         $scope.reporttime_show=true;
         $scope.starttime_show=false;
         $scope.endtime_show=false;
+    }else{
+        $scope.reporttime_show=false;
+        $scope.starttime_show=true;
+        $scope.endtime_show=true;
     }
     //添加数据
     $scope.save = function () {
@@ -296,6 +296,13 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
         //验证通过
         if(false) {rzhdialog(ngDialog,"您输入的表单内容的不合法，请修改后提交","error");return;}else{
             if($scope.global_type=="all"){
+                if($scope.reporttime!=null&&$scope.reporttime!=''){
+                    $scope.rsgainreport.starttime = $filter('date')($scope.reporttime, 'yyyyMMddHHmmss'); //格式化开始日期
+                }else{
+                    rzhdialog(ngDialog,"统计时间不能为空！","error");
+                    return;
+                }
+            }else{
                 var isallselect=true;
                 if($scope.starttime!=null&&$scope.starttime!=''){
                     $scope.rsgainreport.starttime = $filter('date')($scope.starttime, 'yyyyMMddHHmmss'); //格式化开始日期
@@ -311,38 +318,42 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
                     rzhdialog(ngDialog,"开始时间不能早于结束时间！","error");
                     return;
                 }
-            }else{
-                if($scope.reporttime!=null&&$scope.reporttime!=''){
-                    $scope.rsgainreport.starttime = $filter('date')($scope.reporttime, 'yyyyMMddHHmmss'); //格式化开始日期
-                }else{
-                    rzhdialog(ngDialog,"统计时间不能为空！","error");
-                    return;
-                }
+
             }
             //增加分类属性
-            $scope.rsgainreport.typecode=global_type_code;
-            $scope.rsgainreport.type=$scope.global_type;
-            var pData = {
-                paras: JSON.stringify($scope.rsgainreport),
-                type:$scope.type
-            };
-           $http({
-                url: GserverURL+'/buss/reports/add',
-                method: 'POST',
-                data: pData
-            }).success(function (response) { //提交成功
-                if (response.success) { //信息处理成功，进入用户中心页面
-                    $scope.rsgainreport = null;
-                    table.draw(); //重新加载数据
-                    ckClickTr($scope.gridtableid); //单击行，选中复选框
-                    rzhdialog(ngDialog,response.info,"success");
-                    $scope.toRemove();
-                } else { //信息处理失败，提示错误信息
-                    rzhdialog(ngDialog,response.info,"error");
+            // $scope.rsgainreport.typecode=global_type_code;
+            // $scope.rsgainreport.type=$scope.global_type;
+            // var pData = {
+            //     paras: JSON.stringify($scope.rsgainreport),
+            //     type:$scope.type
+            // };
+            var typeName="";
+            angular.forEach($scope.treeInfos, function (data) {
+                if(global_type_code==data.code){
+                    typeName=data.label;
                 }
-            }).error(function (response) { //提交失败
-                rzhdialog(ngDialog,"操作失败","error");
-            })
+            });
+            window.location.href= GserverURL+'/buss/reports/add?typeName='+typeName+'&typecode='+global_type_code+"&starttime="+$scope.rsgainreport.starttime+"&endtime="+$scope.rsgainreport.endtime;
+           // $http({
+           //      url: GserverURL+'/buss/reports/add',
+           //      method: 'POST',
+           //      data: pData
+           //  }).success(function (response) { //提交成功
+           //      console.log(response);
+           //     window.location.href=response;
+           //     // console.log(response.info);
+           //      // if (response.success) { //信息处理成功，进入用户中心页面
+           //      //     $scope.rsgainreport = null;
+           //      //     table.draw(); //重新加载数据
+           //      //     ckClickTr($scope.gridtableid); //单击行，选中复选框
+           //      //     rzhdialog(ngDialog,response.info,"success");
+           //      //     $scope.toRemove();
+           //      // } else { //信息处理失败，提示错误信息
+           //      //     rzhdialog(ngDialog,response.info,"error");
+           //      // }
+           //  }).error(function (response) { //提交失败
+           //      rzhdialog(ngDialog,"操作失败","error");
+           //  })
         }
     }
 });

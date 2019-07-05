@@ -48,6 +48,17 @@ App.controller('qataskController', ['$scope', '$http', "ngDialog", function ($sc
                 base_levels += getHtmlInfos("app/views/base/to_" + data.operatecode + ".html", data.operatename, data.method) + " ";
             });
             angular.element("#topBar").append(base_levels); //添加功能按钮
+            $("#toapproval").addClass("btn-bg-color");
+            $("#toapproval").removeClass("btn-purple");
+
+            $("#tochange").addClass("btn-bg-color");
+            $("#tochange").removeClass("btn-purple");
+
+            $("#toreport").addClass("btn-bg-color");
+            $("#toreport").removeClass("btn-default");
+
+            $("#toupload").addClass("btn-bg-color");
+            $("#toupload").removeClass("btn-default");
             topbar_bind_operate(ngDialog);//绑定topbar操作
         } else {
             rzhdialog(ngDialog,response.info,"error");

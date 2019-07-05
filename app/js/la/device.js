@@ -126,6 +126,8 @@ App.controller('deviceController', ['$scope', '$http', "ngDialog", function ($sc
                 base_levels += getHtmlInfos("app/views/base/to_" + data.operatecode + ".html", data.operatename, data.method) + " ";
             });
             angular.element("#topBar").append(base_levels); //添加功能按钮
+            $("#toreport").addClass("btn-bg-color");
+            $("#toreport").removeClass("btn-default");
             topbar_bind_operate(ngDialog);//绑定topbar操作
         } else {
             rzhdialog(ngDialog,response.info,"error");
