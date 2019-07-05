@@ -127,7 +127,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     //获取称重;
     $scope.getWeight = function () {
-        $scope.url = 'http://192.0.0.200:8868/liangqing';
+        $scope.url = 'http://192.168.1.222:8868/liangqing';
         $http({
             url: $scope.url,
             method: 'GET'
