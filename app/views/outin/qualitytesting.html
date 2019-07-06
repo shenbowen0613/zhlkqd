@@ -72,6 +72,36 @@
                     </div>
                     <div class="form-group ng-scope">
                         <label class="col-lg-1"></label>
+                        <span class="col-lg-2 ng-binding">出糙率</span>
+                        <div class="col-lg-1">
+                            <input type="hidden" name="assayNames" value="chucaolv">
+                            <input type="text" name="assayValues" required="" id="chucaolvVal" placeholder="出糙率" class="form-control">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" name="assayCutValues" id="chucaolvValRemove" value="0"required="" ng-blur="calcRemoveFood()" placeholder="出糙率扣量" class="form-control">
+                        </div>
+                        <span class="col-lg-1 ng-binding">79%</span>
+                        <span class="col-lg-1 ng-binding">75%</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <label class="col-lg-1"></label>
+                        <span class="col-lg-2 ng-binding">整精米率</span>
+                        <div class="col-lg-1">
+                            <input type="hidden" name="assayNames" value="zhengjingmilv">
+                            <input type="text" name="assayValues" required="" id="zhengjingmilvVal" placeholder="整精米率" ng-blur="zhengjingmilvCheck()" class="form-control">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" name="assayCutValues" id="zhengjingmilvValRemove" value="0"required="" ng-blur="calcRemoveFood()" placeholder="整精米率扣量" class="form-control">
+                        </div>
+                        <span class="col-lg-1 ng-binding">50%</span>
+                        <span class="col-lg-1 ng-binding">44%</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <label class="col-lg-1"></label>
                         <span class="col-lg-2 ng-binding">水分</span>
                         <div class="col-lg-1">
                             <input type="hidden" name="assayNames" value="水分">
@@ -102,33 +132,48 @@
                     </div>
                     <div class="form-group ng-scope">
                         <label class="col-lg-1"></label>
-                        <span class="col-lg-2 ng-binding">矿物质</span>
+                        <span class="col-lg-2 ng-binding">黄粒米含量</span>
                         <div class="col-lg-1">
-                            <input type="hidden" name="assayNames" value="矿物质">
-                            <input type="text" name="assayValues" required="" placeholder="矿物质" id="kuangwuzhiVal" ng-blur="kuangwuzhiCheck()" class="form-control">
+                            <input type="hidden" name="assayNames" value="hanglimi">
+                            <input type="text" name="assayValues" required="" placeholder="黄粒米含量" id="hanglimiVal" ng-blur="hanglimiCheck()" class="form-control">
                         </div>
                         <div class="col-lg-1">
-                            <input type="text" name="assayCutValues" id="kuangwuzhiValRemove"value="0" required="" ng-blur="calcRemoveFood()" placeholder="矿物质扣量" class="form-control">
+                            <input type="text" name="assayCutValues" id="hanglimiValRemove"value="0" required="" ng-blur="calcRemoveFood()" placeholder="黄粒米含量扣量" class="form-control">
                         </div>
-                        <span class="col-lg-1 ng-binding">0.5%</span>
+                        <span class="col-lg-1 ng-binding">1%</span>
+                        <span class="col-lg-1 ng-binding">0%</span>
                         <span class="col-lg-1 ng-binding">--</span>
-                        <span class="col-lg-1 ng-binding">--</span>
-                        <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">2%</span>
                     </div>
                     <div class="form-group ng-scope">
                         <label class="col-lg-1"></label>
-                        <span class="col-lg-2 ng-binding">不完善粒</span>
+                        <span class="col-lg-2 ng-binding">谷外糙米含量</span>
                         <div class="col-lg-1">
-                            <input type="hidden" name="assayNames" value="不完善粒">
-                            <input type="text" name="assayValues" required="" placeholder="不完善粒" id="buwanshanliVal" ng-blur="buwanshanliCheck()" class="form-control">
+                            <input type="hidden" name="assayNames" value="guwaicaomi">
+                            <input type="text" name="assayValues" required="" placeholder="谷外糙米含量" id="guwaicaomiVal" class="form-control">
                         </div>
                         <div class="col-lg-1">
-                            <input type="text" name="assayCutValues" id="buwanshanliValRemove"value="0" required="" ng-blur="calcRemoveFood()" placeholder="不完善粒扣量" class="form-control">
+                            <input type="text" name="assayCutValues" id="guwaicaomiValRemove"value="0" required="" ng-blur="calcRemoveFood()" placeholder="谷外糙米扣量" class="form-control">
                         </div>
-                        <span class="col-lg-1 ng-binding">6%</span>
+                        <span class="col-lg-1 ng-binding">2%</span>
+                        <span class="col-lg-1 ng-binding">0%</span>
                         <span class="col-lg-1 ng-binding">--</span>
-                        <span class="col-lg-1 ng-binding">10%</span>
+                        <span class="col-lg-1 ng-binding">2%</span>
+                    </div>
+                    <div class="form-group ng-scope">
+                        <label class="col-lg-1"></label>
+                        <span class="col-lg-2 ng-binding">互混率</span>
+                        <div class="col-lg-1">
+                            <input type="hidden" name="assayNames" value="huhunlv">
+                            <input type="text" name="assayValues" required="" placeholder="互混率" id="huhunlvVal" ng-blur="huhunlvCheck()" class="form-control">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" name="assayCutValues" id="huhunlvValRemove"value="0" required="" ng-blur="calcRemoveFood()" placeholder="互混率扣量" class="form-control">
+                        </div>
+                        <span class="col-lg-1 ng-binding">5%</span>
+                        <span class="col-lg-1 ng-binding">0%</span>
                         <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">20%</span>
                     </div>
                     <div class="form-group ng-scope">
                         <label class="col-lg-1"></label>
@@ -146,6 +191,21 @@
                         <span class="col-lg-1 ng-binding">正常</span>
                     </div>
 
+                    <div class="form-group ng-scope">
+                        <label class="col-lg-1"></label>
+                        <span class="col-lg-2 ng-binding">重金属镉</span>
+                        <div class="col-lg-1">
+                            <input type="hidden" name="assayNames" value="zhongjinshuege">
+                            <input type="text" name="assayValues" required="" placeholder="重金属镉" id="zhongjinshuegeVal" class="form-control">
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="text" name="assayCutValues" id="zhongjinshuegeValRemove" value="0" required="" ng-blur="calcRemoveFood()" placeholder="重金属镉扣量" class="form-control">
+                        </div>
+                        <span class="col-lg-1 ng-binding">0.2</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                        <span class="col-lg-1 ng-binding">--</span>
+                    </div>
             </div>
         </div>
         <div class="well well-sm text-center">

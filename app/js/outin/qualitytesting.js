@@ -179,7 +179,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
     $scope.shuifenCheck = function () {
         var shuifenVal = $("#shuifenVal").val() * 10;
         var shuifenValcut = 0;
-        var biaozhunshuifen = 125;
+        var biaozhunshuifen = 135;
         var kouliang = shuifenVal - biaozhunshuifen;
         var adds = 0;
         if (kouliang <= 0) {
@@ -211,11 +211,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
         if (kouliang <= 0) {
             kouliang = kouliang *(-1);
             var addsz = Math.floor(kouliang / 5);
-            if (addsz >= 2) {
-                adds = 1.5;
-            } else {
-                adds = addsz * 0.75;
-            }
+            adds = addsz * 0.75;
             adds = adds * (-1);
             zazhiValcut = adds;
         } else {
@@ -227,41 +223,59 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
         this.calcRemoveFood();
     }
 
-    //矿物质检测
-    $scope.kuangwuzhiCheck = function () {
-        var kuangwuzhiVal = $("#kuangwuzhiVal").val() * 10;
-        var kuangwuzhiValCut = 0;
-        var biaozhunkuangwuzhi = 5;
-        var kouliang = kuangwuzhiVal - biaozhunkuangwuzhi;
+    //整精米率检测
+    $scope.zhengjingmilvCheck = function () {
+        var zhengjingmilvVal = $("#zhengjingmilvVal").val();
+        var zhengjingmilvValCut = 0;
+        var biaozhengjingmilvVal = 50;
+        var kouliang = zhengjingmilvVal - biaozhengjingmilvVal;
         if (kouliang > 0) {
-            kuangwuzhiValCut = 0.75;
+            var addsz = Math.floor(kouliang / 1);
+            zhengjingmilvValCut = addsz * 0.75;
         }else{
-            kuangwuzhiValCut = 0;
+            zhengjingmilvValCut = 0;
         }
-
-        if ($scope.varietyname == '荞麦'){//品种是荞麦
-            kuangwuzhiValCut = Math.floor(kouliang/1);
-        }
-
-        $("#kuangwuzhiValRemove").val(kuangwuzhiValCut);
+        $("#zhengjingmilvValRemove").val(zhengjingmilvValCut);
         this.calcRemoveFood();
     }
 
-    //不完善颗粒
-    $scope.buwanshanliCheck = function () {
-        var buwanshanliVal = $("#buwanshanliVal").val() * 10;
-        var buwanshanliValCut = 0;
-        var biaobuwanshanli = 60;
-        var kouliang = buwanshanliVal - biaobuwanshanli;
+    //黄粒米
+    $scope.hanglimiCheck = function () {
+        var hanglimiVal = $("#hanglimiVal").val();
+        var hanglimiValCut = 0;
+        var biaohanglimiVal = 1;
+        var kouliang = hanglimiVal - biaohanglimiVal;
         var adds = 0;
         if (kouliang <= 0) {
-            buwanshanliValCut = 0;
+            hanglimiValCut = 0;
         } else {
-            var addsz = Math.floor(kouliang / 10);
-            adds = addsz * 0.5;
-            buwanshanliValCut = adds;
+            var addsz = Math.floor(kouliang / 1);
+            adds = addsz * 1;
+            hanglimiValCut = adds;
         }
-        $("#buwanshanliValRemove").val(buwanshanliValCut);
+        $("#hanglimiValRemove").val(hanglimiValCut);
+        this.calcRemoveFood();
+    }
+
+
+    //互混率
+    $scope.huhunlvCheck = function () {
+        var huhunlvVal = $("#huhunlvVal").val();
+        var huhunlvValCut = 0;
+        var biaohuhunlvVal = 5;
+        var kouliang = huhunlvVal - biaohuhunlvVal;
+        var adds = 0;
+        if (kouliang <= 0) {
+            huhunlvValCut = 0;
+        } else {
+            var addsz = Math.floor(kouliang /5 );
+            if ($scope.varietyname == '糯米'){//品种是糯米
+                addsz = Math.floor(kouliang /2 );
+            }
+            adds = addsz * 1;
+            huhunlvValCut = adds;
+        }
+        $("#huhunlvValCutRemove").val(huhunlvValCut);
         this.calcRemoveFood();
     }
 
@@ -276,18 +290,26 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
     $scope.calcRemoveFood = function () {
         //容重扣量
         var rongzhong = Number($("#rongzhongRemove").val());
+        //出糙率
+        var chucaolv = Number($("#chucaolvValRemove").val());
+        //整精米率
+        var zhengjingmilv = Number($("#zhengjingmilvValRemove").val());
+        //谷外糙米
+        var guwaicaomi = Number($("#guwaicaomiValRemove").val());
+        //黄米粒
+        var hanglimi = Number($("#hanglimiValRemove").val());
+        //重金属镉
+        var zhongjinshuege = Number($("#zhongjinshuegeValRemove").val());
+        //互混率
+        var huhunlv = Number($("#huhunlvValRemove").val());
         //水分扣量
         var shuifen = Number($("#shuifenValRemove").val());
         //杂质扣量
         var zazhi = Number($("#zazhiValRemove").val());
-        //矿物质扣量
-        var kuangwuzhi = Number($("#kuangwuzhiValRemove").val());
-        //不完善粒扣量
-        var buwanshanli = Number($("#buwanshanliValRemove").val());
         //色泽气味扣量
         var sezeqiwei = Number($("#sezeqiweiRemove").val());
 
-        $("#removeFood").val(rongzhong + shuifen + zazhi + kuangwuzhi + buwanshanli + sezeqiwei);
+        $("#removeFood").val(rongzhong +chucaolv + zhengjingmilv+ guwaicaomi+ hanglimi+ zhongjinshuege + huhunlv +  shuifen + zazhi + sezeqiwei);
     }
 
     //根据智能卡号获取出入库信息
