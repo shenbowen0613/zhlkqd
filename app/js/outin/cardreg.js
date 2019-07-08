@@ -173,7 +173,6 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         })
     }
 
-
     $scope.print_setup = function () {//打印维护
         LODOP = getLodop();
         LODOP.PRINT_INITA(10, 9, 762, 533, "领卡登记打印");
