@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @author 立坤 整理于 2016.06.15
  * @ramark 全站框架核心控制处，框架技术 - Bootstrap + AngularJS
  * 
@@ -43,7 +43,7 @@ App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', fu
     // 常用局部变量
     $rootScope.app = {
         navbarTitle: "首页",
-        housename: "河南省粮食局浚县直属粮库",
+        housename: "信阳山信恒盛粮油储备有限公司",
         name: baseInfo.getInfo("name"),
         description: baseInfo.getInfo("description"),
         phone: baseInfo.getInfo("phone"),

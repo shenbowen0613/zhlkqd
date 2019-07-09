@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2016. .保留所有权利.
  *
  *      保留所有代码著作权.如有任何疑问请访问官方网站与我们联系.
@@ -8,7 +8,7 @@
 var selHouseCode;
 var selHouseName;
 var table;
-var zyghOAURL = 'http://192.0.0.250:8002/zhlsOA/';
+var zyghOAURL = 'http://192.168.1.116:8002/zhlsOA/';
 App.controller('fumController', ['$scope', '$http', 'ngDialog', '$rootScope', function ($scope, $http, ngDialog, $rootScope) {
     $scope.menus = menuItems;
     $rootScope.app.navbarTitle = "智能熏蒸系统"; //设置头部提示信息
