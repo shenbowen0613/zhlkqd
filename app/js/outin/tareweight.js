@@ -123,10 +123,21 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                         "content-Type": "application/json;charset=UTF-8",
                         "Accept": "application/json;charset=UTF-8"
                     },
-                    url: "/xxbf/send129",
+                    url: "/led/ScSend99",
                     type: "POST",
                     data: JSON.stringify(dapingData),
                     dataType: "json"
+                }
+            );
+
+
+            $.ajax({
+                    headers: {
+                        "content-Type": "application/json;charset=UTF-8",
+                        "Accept": "application/json;charset=UTF-8"
+                    },
+                    url: "/led/ScSmallsend?weight="+$scope.outinTare.netweight,
+                    type: "POST"
                 }
             );
 
