@@ -72,32 +72,47 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
             //毛重 - 皮重
             var netweight = $("#netweight").val();
-            var bwsl_num = parseInt(Math.floor(netweight * removeMap.不完善粒 / 100));
             var sf_num = parseInt(Math.floor(netweight * removeMap.水分 / 100));
             var zz_num = parseInt(Math.floor(netweight * removeMap.杂质 / 100));
-            var kwz_num = parseInt(Math.floor(netweight * removeMap.矿物质 / 100));
+            var zjml_num=parseInt(Math.floor(netweight * removeMap.整精米率 / 100));
+            var gwcm_num=parseInt(Math.floor(netweight * removeMap.谷外糙米 / 100));
+            var hlm_num=parseInt(Math.floor(netweight * removeMap.黄粒米 / 100));
+            var hhl_num=parseInt(Math.floor(netweight * removeMap.互混率 / 100));
+            var zjsg_num=parseInt(Math.floor(netweight * removeMap.重金属镉 / 100));
+            var szqw_value=removeMap.色泽气味;
 
-            var  cutweight =  bwsl_num + sf_num +  zz_num + kwz_num;
+            var  cutweight =  sf_num + zz_num +  zjml_num + gwcm_num + hlm_num + hhl_num + zjsg_num;
             $("#cutweight").val(cutweight);
             var realnetweight = netweight - cutweight ;
             realnetweight = parseInt(realnetweight);
             $("#netweight").val(realnetweight);
             $scope.outinTare.netweight = realnetweight;
 
-
+/*
+            {"qualitys":{"谷外糙米":"7","黄粒米":"6","互混率":"8","色泽气味":"正常","重金属镉":"9","出糙率":"2","杂质":"5","整精米率":"3","容重":"1","水分":"4"},
+             "removes":{"谷外糙米":"0","黄粒米":"5","互混率":"0","色泽气味":"0","重金属镉":"0","出糙率":"0","杂质":"12","整精米率":"0","容重":"0","水分":"-3.75"}}
+  */
             var dapingData = {
                 hphm: $scope.outinEntry.vehicleno,//车牌号码
                 dj: $scope.outinEntry.outinQualityResult.gradename,//等级，一级，二级
                 pz: $scope.outinEntry.outinQualityResult.varietyname,//品种
                 rz: qualityMap.容重,//容重
-                bwsl: qualityMap.不完善粒,//不完善粒
-                bwsl_num: bwsl_num,//不完善粒扣量
                 sf: qualityMap.水分,//水分
                 sf_num: sf_num,//水分扣量
                 zz: qualityMap.杂质,//杂质
                 zz_num: zz_num,//杂质扣量
-                kwz: qualityMap.矿物质,//矿物质
-                kwz_num: kwz_num,//矿物质扣量
+                zjml: qualityMap.整精米率,//整精米率
+                zjml_num: zjml_num,//整精米率扣量
+                gwcm: qualityMap.谷外糙米,//谷外糙米
+                gwcm_num: gwcm_num,//谷外糙米扣量
+                hlm: qualityMap.黄粒米,//黄粒米
+                hlm_num: hlm_num,//黄粒米扣量
+                hhl: qualityMap.互混率,//互混率
+                hhl_num: qualityMap.互混率,//互混率
+                szqw: qualityMap.色泽气味,//互混率
+                szqw_value: szqw_value,//色泽气味
+                zjsg: qualityMap.重金属镉,//重金属镉
+                zjsg_num: zjsg_num,//重金属镉
             };
             //把质检信息保存到皮重环节
             $scope.outinTare.memo = JSON.stringify(dapingData);
@@ -183,9 +198,13 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             if ($scope.grossweight == null) {
                 $scope.grossweight = 0;
             }
+            if($scope.qualitycutweight==null){
+                $scope.qualitycutweight=0;
+            }
             //先初始化净重
-            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight);
+            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight)-parseInt($scope.qualitycutweight);
             $("#netweight").val(jz);
+            $scope.outinTare.netweight=jz;
         } else {
             $("#netweight").val(0);
             $("#cutweight").val(0);

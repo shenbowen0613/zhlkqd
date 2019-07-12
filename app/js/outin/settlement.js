@@ -361,7 +361,6 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
 
     var currDate = new Date();
     $scope.print_preview = function () {
-
         $scope.doding = false;
         $scope.cardno = $("#smart_card").val();
         $http({
@@ -374,7 +373,6 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
                 $scope.outinAll = response.data;
                 $("#jsweight").val($scope.jsweight);
                 $scope.print_preview_1();
-
             }
         });
 
@@ -391,8 +389,11 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
 
         //质检扣量
         var detailMap = eval("(" + $scope.outinAll.outinTare.memo + ")");
-
+        var lldetail = eval("(" + $scope.outinAll.outinQualityResult.memo + ")");
+        var lvDetail=lldetail.removes;
+        console.log($scope.outinAll);
         LODOP = getLodop();
+
 
         LODOP.PRINT_INITA(10,9,800,600,"结算打印");
         LODOP.ADD_PRINT_RECT("20.37mm","5.29mm","200mm","120.99mm",0,1);
@@ -504,25 +505,25 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("59.27mm","65.88mm","9.79mm","3.97mm",$scope.outinAll.outinQualityResult.gradename);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("59.53mm","80.7mm","9mm","3.7mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","80.7mm","9mm","3.7mm", lvDetail.出糙率);//出糙率
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("59.53mm","96.57mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","96.57mm","11.11mm","3.97mm",lvDetail.整精米率);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("59.53mm","108.56mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","108.56mm","11.11mm","3.97mm",lvDetail.水分);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("59.53mm","119.57mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","119.57mm","11.11mm","3.97mm",lvDetail.杂质);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_LINE("65.09mm","107.55mm","39.69mm","107.84mm",0,1);
-        LODOP.ADD_PRINT_TEXT("59.53mm","129.57mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","129.57mm","11.11mm","3.97mm",lvDetail.黄粒米);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_LINE("65.09mm","114.54mm","39.69mm","114.83mm",0,1);
-        LODOP.ADD_PRINT_TEXT("59.53mm","139.57mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","139.57mm","11.11mm","3.97mm",lvDetail.谷外糙米);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_LINE("65.09mm","135.55mm","39.69mm","135.84mm",0,1);
-        LODOP.ADD_PRINT_TEXT("59.53mm","149.57mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","149.57mm","11.11mm","3.97mm",lvDetail.互混率);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_LINE("65.09mm","155.55mm","39.69mm","155.84mm",0,1);
-        LODOP.ADD_PRINT_TEXT("59.53mm","157.56mm","11.11mm","3.97mm","0");
+        LODOP.ADD_PRINT_TEXT("59.53mm","157.56mm","11.11mm","3.97mm",lvDetail.重金属镉);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("59.53mm","167.56mm","11.11mm","3.97mm","正常");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -536,7 +537,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("91.02mm","24.87mm","18.52mm","3.97mm","杂质扣量");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("97.9mm","24.34mm","18.26mm","3.97mm","整装米率扣量");
+        LODOP.ADD_PRINT_TEXT("97.9mm","24.34mm","18.26mm","3.97mm","整精米率扣量");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("102.39mm","21.43mm","23.81mm","3.97mm","黄粒米扣量");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -558,12 +559,12 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.ADD_PRINT_TEXT("113.64mm","130.44mm","9.53mm","3.97mm","小写");
         LODOP.ADD_PRINT_TEXT("71.97mm","149.23mm","13.23mm","3.97mm",$scope.outinAll.outinGross.grossweight);
         LODOP.ADD_PRINT_TEXT("77.26mm","149.23mm","13.23mm","3.97mm",$scope.outinAll.outinTare.tareweight);
-        LODOP.ADD_PRINT_TEXT("82.84mm","150.28mm","13.23mm","3.97mm","   0");
-        LODOP.ADD_PRINT_TEXT("90.41mm","149.49mm","13.23mm","3.97mm","   0");
+        LODOP.ADD_PRINT_TEXT("82.84mm","150.28mm","13.23mm","3.97mm",detailMap.sf_num);
+        LODOP.ADD_PRINT_TEXT("90.41mm","149.49mm","13.23mm","3.97mm",detailMap.zz_num);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("97.08mm","149.23mm","13.23mm","3.97mm","    0");
-        LODOP.ADD_PRINT_TEXT("102.9mm","150.02mm","13.23mm","3.97mm","   0");
-        LODOP.ADD_PRINT_TEXT("108.72mm","150.28mm","13.23mm","3.97mm","  0");
+        LODOP.ADD_PRINT_TEXT("97.08mm","149.23mm","13.23mm","3.97mm",detailMap.zjml_num);
+        LODOP.ADD_PRINT_TEXT("102.9mm","150.02mm","13.23mm","3.97mm",detailMap.hlm_num);
+        LODOP.ADD_PRINT_TEXT("108.72mm","150.28mm","13.23mm","3.97mm",detailMap.hhl_num);
         LODOP.ADD_PRINT_TEXT("113mm","150.5mm","13.23mm","3.97mm",jsweight);
         LODOP.ADD_PRINT_TEXT("120.91mm","148.96mm","15.88mm","3.97mm",jsmoney);
         LODOP.ADD_PRINT_TEXT("67.2mm","93.4mm","16.4mm","3.97mm","入库仓号");
@@ -593,16 +594,16 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.ADD_PRINT_TEXT("72.23mm","62.44mm","34.4mm","3.97mm",intToChinese($scope.outinAll.outinGross.grossweight));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("77.26mm","62.44mm","34.4mm","3.97mm",intToChinese($scope.outinAll.outinTare.tareweight));
-        LODOP.ADD_PRINT_TEXT("83.61mm","62.44mm","34.4mm","3.97mm","        零");
+        LODOP.ADD_PRINT_TEXT("83.61mm","62.44mm","34.4mm","3.97mm",intToChinese(detailMap.sf_num));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("90.22mm","62.71mm","34.4mm","3.97mm","        零");
+        LODOP.ADD_PRINT_TEXT("90.22mm","62.71mm","34.4mm","3.97mm",intToChinese(detailMap.zz_num));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("97.63mm","62.44mm","34.4mm","3.97mm","        零");
+        LODOP.ADD_PRINT_TEXT("97.63mm","62.44mm","34.4mm","3.97mm",intToChinese(detailMap.zjml_num));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("102.39mm","62.44mm","34.4mm","3.97mm","        零");
+        LODOP.ADD_PRINT_TEXT("102.39mm","62.44mm","34.4mm","3.97mm",intToChinese(detailMap.hlm_num));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("107.1mm","62.44mm","34.4mm","3.97mm","        零");
-        LODOP.ADD_PRINT_TEXT("113.74mm","61.04mm","34.4mm","3.97mm","        零");
+        LODOP.ADD_PRINT_TEXT("107.1mm","62.44mm","34.4mm","3.97mm",intToChinese(detailMap.hhl_num));
+        LODOP.ADD_PRINT_TEXT("113.74mm","61.04mm","34.4mm","3.97mm",intToChinese($scope.outinAll.outinTare.netweight));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("120.65mm","50.8mm","10.85mm","3.97mm",jsprice);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -670,7 +671,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
 
     function toYMD(str) {
         var result;
-        result = str.substring(4, 6) + "月" + str.substring(6, 8) + "日" + str.substring(8, 10) + "时" + str.substring(10, 12) + "分";
+        result = str.substring(0, 4) + "年"+str.substring(4, 6) + "月" + str.substring(6, 8) + "日" + str.substring(8, 10) + "时" + str.substring(10, 12) + "分";
         return result;
 
     }

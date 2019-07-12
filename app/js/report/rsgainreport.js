@@ -38,7 +38,8 @@ App.controller('rsgainreportController', ['$scope', '$http',"$stateParams", "ngD
     var levels = null;
     var pData = { code: moduleId}; //设置模块id（用以查询模块对应的操作按钮）
     angularParamString($http); //解决post提交接收问题，json方式改为string方式
-    var oprHtml= getHtmlInfos("app/views/base/to_add.html", "生成报表", "toadd");
+    // var oprHtml= getHtmlInfos("app/views/base/to_add.html", "生成报表", "toadd");
+    var oprHtml= "";
     if(!$scope.rsgainreport_treeshow){
         oprHtml+= getHtmlInfos("app/views/base/to_back.html", "返回", "toback");
     }
@@ -96,10 +97,7 @@ App.controller('rsgainreportController', ['$scope', '$http',"$stateParams", "ngD
         }
         window.location.href = "#"+$scope.global_redirect_path.replace(/-/g,"/");//替换返回路径
     });
-    //关闭弹出窗口操作
-    $scope.toRemove=function(){
-        window.location.href = "#/app/report/rsgain"+$scope.global_redirect_path;
-    }
+
 
 }]);
 
@@ -108,7 +106,7 @@ App.controller('rsgainreportController', ['$scope', '$http',"$stateParams", "ngD
 //类型树信息处理
 App.controller('rsgainreportTypeController', ['$scope', "$http", function ($scope, $http) {
     $scope.show_all_info = true;
-    $scope.all_info = "全部类型";
+    $scope.all_info = "报表类型";
     $scope.showAllInfo = function(){
         global_type_code=null;
         $scope.toRemove();
@@ -119,7 +117,6 @@ App.controller('rsgainreportTypeController', ['$scope', "$http", function ($scop
     }
     //选择信息
     $scope.my_tree_handler = function (branch) {
-        $scope.toRemove();
         $scope.output = branch.code;
         if (branch.children && branch.children.code) {
             $scope.output += '(' + branch.children.code + ')';
@@ -236,7 +233,7 @@ App.controller('rsgainreportGridController', ['$scope', "$http", "ngDialog", fun
 // 查看详情
 App.controller("viewrsgainreportController", function ($scope, $stateParams,$http, ngDialog) {
     $http({
-            url: GserverURL+ '/buss/reports/view',
+        url: GserverURL+ '/buss/reports/view',
         method: 'POST',
         data: {id: $stateParams.id}
     }).success(function (response) { //提交成功
@@ -252,6 +249,16 @@ App.controller("viewrsgainreportController", function ($scope, $stateParams,$htt
 
 //添加信息
 App.controller("addrsgainreportController", function ($scope, $http, $filter, ngDialog) {
+    $.ajax({ //获取仓房信息
+        url: GserverURL + "/la/house/houseList",
+        method: 'POST',
+        async: false
+    }).success(function (response) {
+        if (response.success) {
+            $scope.houseItems = response.data;
+        }
+
+    });
     $scope.rsgainreport = {};
     //开启开始日期弹框
     $scope.reporttimeOpen = function ($event) {
@@ -281,8 +288,20 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
         $scope.starttime_show=true;
         $scope.endtime_show=true;
     }
+    //关闭弹出窗口操作
+    $scope.toRemove=function(){
+        $scope.rsgainreport.starttime=null;
+        $scope.starttime=null;
+        $scope.rsgainreport.endtime=null;
+        $scope.endtime=null;
+        $scope.housecode=null;
+    }
     //添加数据
     $scope.save = function () {
+        if(global_type_code==null){
+            rzhdialog(ngDialog,"您还没有选择报表类型！","error");
+            return;
+        }
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         var table = $('#'+$scope.gridtableid).DataTable();
         //编码输入不合法
@@ -304,12 +323,14 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
                 }
             }else{
                 var isallselect=true;
-                if($scope.starttime!=null&&$scope.starttime!=''){
+                $scope.rsgainreport.starttime=null;
+                $scope.rsgainreport.endtime=null;
+                if(typeof($scope.starttime)!="undefined"&&$scope.starttime!=null&&$scope.starttime!=''){
                     $scope.rsgainreport.starttime = $filter('date')($scope.starttime, 'yyyyMMddHHmmss'); //格式化开始日期
                 }else{
                     isallselect=false;
                 }
-                if($scope.endtime!=null&&$scope.endtime!=''){
+                if(typeof($scope.endtime)!="undefined"&&$scope.endtime!=null&&$scope.endtime!=''){
                     $scope.rsgainreport.endtime = $filter('date')($scope.endtime, 'yyyyMMddHHmmss'); //格式化开始日期
                 }else{
                     isallselect=false;
@@ -333,27 +354,33 @@ App.controller("addrsgainreportController", function ($scope, $http, $filter, ng
                     typeName=data.label;
                 }
             });
-            window.location.href= GserverURL+'/buss/reports/add?typeName='+typeName+'&typecode='+global_type_code+"&starttime="+$scope.rsgainreport.starttime+"&endtime="+$scope.rsgainreport.endtime;
-           // $http({
-           //      url: GserverURL+'/buss/reports/add',
-           //      method: 'POST',
-           //      data: pData
-           //  }).success(function (response) { //提交成功
-           //      console.log(response);
-           //     window.location.href=response;
-           //     // console.log(response.info);
-           //      // if (response.success) { //信息处理成功，进入用户中心页面
-           //      //     $scope.rsgainreport = null;
-           //      //     table.draw(); //重新加载数据
-           //      //     ckClickTr($scope.gridtableid); //单击行，选中复选框
-           //      //     rzhdialog(ngDialog,response.info,"success");
-           //      //     $scope.toRemove();
-           //      // } else { //信息处理失败，提示错误信息
-           //      //     rzhdialog(ngDialog,response.info,"error");
-           //      // }
-           //  }).error(function (response) { //提交失败
-           //      rzhdialog(ngDialog,"操作失败","error");
-           //  })
+            var houseCode;
+            if( $scope.housecode==undefined){
+                houseCode='';
+            }else{
+                houseCode=$scope.housecode;
+            }
+            window.location.href= GserverURL+'/buss/reports/add?housecode='+ houseCode+'&typeName='+typeName+'&typecode='+global_type_code+"&starttime="+$scope.rsgainreport.starttime+"&endtime="+$scope.rsgainreport.endtime;
+            // $http({
+            //      url: GserverURL+'/buss/reports/add',
+            //      method: 'POST',
+            //      data: pData
+            //  }).success(function (response) { //提交成功
+            //      console.log(response);
+            //     window.location.href=response;
+            //     // console.log(response.info);
+            //      // if (response.success) { //信息处理成功，进入用户中心页面
+            //      //     $scope.rsgainreport = null;
+            //      //     table.draw(); //重新加载数据
+            //      //     ckClickTr($scope.gridtableid); //单击行，选中复选框
+            //      //     rzhdialog(ngDialog,response.info,"success");
+            //      //     $scope.toRemove();
+            //      // } else { //信息处理失败，提示错误信息
+            //      //     rzhdialog(ngDialog,response.info,"error");
+            //      // }
+            //  }).error(function (response) { //提交失败
+            //      rzhdialog(ngDialog,"操作失败","error");
+            //  })
         }
     }
 });

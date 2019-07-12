@@ -23,6 +23,9 @@
                     <li ng-class="{'active':wizard.active(5)}" ng-click="wizard.go(5);getTempData(4)" class="col-md-2">
                         <h4><em class="fa fa-tasks mr"></em>第四层</h4>
                     </li>
+                    <li class="col-md-2">
+                        <button type="button" ng-click="print_page()" class="btn btn-primary">打印报表</button>
+                    </li>
                 </ol>
             </div>
 
@@ -36,7 +39,7 @@
         <div id="showData" style="width: 100%;height: 700px;">
         </div>
 
-        <input type=button value=" 打 印 " ng-click="print_page()">
+
         <style>
             @media print{
                 INPUT {display:none}
@@ -305,7 +308,7 @@
 
 
         </style>
-        <div style="display:block;" id="printPage">
+        <div style="display:none;" id="printPage">
         </div>
 
         <!--转换检测 begin-->
@@ -314,15 +317,15 @@
         <!--图表信息 end-->
         <!-- 列表信息 begin-->
         <!--<div class="bg-fcfcfc mt p">-->
-            <!--<h4>坐标及数据</h4>-->
-            <!--<hr mt mb/>-->
-            <!--<div id="gridDiv">-->
+        <!--<h4>坐标及数据</h4>-->
+        <!--<hr mt mb/>-->
+        <!--<div id="gridDiv">-->
 
-                <!--<table id="tempViewTableGrids" class="row-border hover">-->
-                <!--</table>-->
-            <!--</div>-->
+        <!--<table id="tempViewTableGrids" class="row-border hover">-->
+        <!--</table>-->
         <!--</div>-->
-         <!--列表信息 end-->
+        <!--</div>-->
+        <!--列表信息 end-->
     </div>
 </div>
 
