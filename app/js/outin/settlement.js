@@ -390,7 +390,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         //质检扣量
         var detailMap = eval("(" + $scope.outinAll.outinTare.memo + ")");
         var lldetail = eval("(" + $scope.outinAll.outinQualityResult.memo + ")");
-        var lvDetail=lldetail.removes;
+        var lvDetail=lldetail.qualitys;
         console.log($scope.outinAll);
         LODOP = getLodop();
 
