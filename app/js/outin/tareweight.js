@@ -131,12 +131,9 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             );
 
 
-            $.ajax({
-                    headers: {
-                        "content-Type": "application/json;charset=UTF-8",
-                        "Accept": "application/json;charset=UTF-8"
-                    },
-                    url: "/ledsamll/ScSmallsend?weight="+realnetweight
+            $http({
+                type: "GET",
+                url: "/ledsamll/ScSmallsend?weight="+realnetweight
                 }
             );
 

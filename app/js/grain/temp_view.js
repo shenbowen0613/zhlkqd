@@ -92,36 +92,48 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
 
 
     $scope.print_page = function () {
-        //铺设页面
-        var htmls = $scope.getPrintData($scope.data, $stateParams.housecode, $stateParams.time);
-        // $("#showData1").hide();
-        // $("#showData2").hide();
-        // $("#showData").hide();
-        // $("#printPage").show();
 
-        var iframe=document.getElementById("printPage");
-        if(!iframe){
-            iframe = document.createElement('IFRAME');
-            iframe.setAttribute("id", "printPage");
-            document.body.appendChild(iframe);
-            iframe.contentWindow.focus();
+        var LODOP;
+        $scope.print_page = function () {
+            var htmls = $scope.getPrintData($scope.data, $stateParams.housecode, $stateParams.time);
+            // var newstr = document.getElementById("printPage").innerHTML;
+            LODOP = getLodop();
+            LODOP.SET_PRINT_PAGESIZE(1,0,0,"A4");
+            LODOP.SET_PRINT_STYLEA(1,"Angle",90);
+            LODOP.ADD_PRINT_HTM("1.0cm","0.5cm","RightMargin:0.9cm","BottomMargin:9mm",htmls);
+            LODOP.PREVIEW();
         }
-        var doc = null;
-        doc = iframe.contentWindow.document;
-        doc.write(htmls);
-        doc.close();
-        iframe.contentWindow.print();
-        document.body.removeChild(iframe);
-        // var newstr = document.getElementById("printPage").innerHTML;
-        // var oldstr = document.body.innerHTML;
-        // document.body.innerHTML = newstr;
-        // window.print();
-        // document.body.innerHTML = oldstr;
-        // $("#printPage").hide();
-        // $("#showData1").show();
-        // $("#showData2").show();
-        // $("#showData").show();
-        // return false;
+
+        // //铺设页面
+        // var htmls = $scope.getPrintData($scope.data, $stateParams.housecode, $stateParams.time);
+        // // $("#showData1").hide();
+        // // $("#showData2").hide();
+        // // $("#showData").hide();
+        // // $("#printPage").show();
+        //
+        // var iframe=document.getElementById("printPage");
+        // if(!iframe){
+        //     iframe = document.createElement('IFRAME');
+        //     iframe.setAttribute("id", "printPage");
+        //     document.body.appendChild(iframe);
+        //     iframe.contentWindow.focus();
+        // }
+        // var doc = null;
+        // doc = iframe.contentWindow.document;
+        // doc.write(htmls);
+        // doc.close();
+        // iframe.contentWindow.print();
+        // document.body.removeChild(iframe);
+        // // var newstr = document.getElementById("printPage").innerHTML;
+        // // var oldstr = document.body.innerHTML;
+        // // document.body.innerHTML = newstr;
+        // // window.print();
+        // // document.body.innerHTML = oldstr;
+        // // $("#printPage").hide();
+        // // $("#showData1").show();
+        // // $("#showData2").show();
+        // // $("#showData").show();
+        // // return false;
     }
 
 
