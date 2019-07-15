@@ -11,7 +11,7 @@ var baseInfo = (function() {
         keyword:"智慧,智能,粮食,粮库,智慧粮食,智慧粮库,管理系统，粮食系统,粮食平台",
         unjquery:"未引入jquery，请引入",
         loadFailure:"数据加载失败",
-        mgtHref:"http://127.0.0.1:8090/",//权限系统链接
+        mgtHref:"http://127.0.0.1:18090/",//权限系统链接
     }
     var Test={};
     // 定义了一个静态方法

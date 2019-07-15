@@ -32,6 +32,7 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
     // var gridData4 = [{},{},{},{},{},{},{},{},{},{}];
     //var color = ['#1710c0', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#fe0300'];
     $scope.data;
+    $scope.xzb;
     $scope.getTempData = function (num) {
         $.ajax({
             type: "POST",
@@ -50,7 +51,8 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
 
                     var wdmax = $scope.arraymax(result.data.list);
                     var wdmix = $scope.arraymix(result.data.list);
-                    var xzb = Number(result.data.maxXY.maxx) + 1;
+                    $scope.xzb = Number(result.data.maxXY.maxx) + 1;
+                     var xzb = Number(result.data.maxXY.maxx) + 1;
                     for (var i = 0; i < result.data.list.length; i++) {
                         var wddata = result.data.list[i];
                         // xyzlist[i] = [wddata.xaxis,wddata.yaxis-1,num,Number(wddata.data)]
@@ -92,13 +94,25 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
 
 
     $scope.print_page = function () {
-        var newstr = document.getElementById("printPage").innerHTML;
-        var oldstr = document.body.innerHTML;
-        document.body.innerHTML = newstr;
-        window.print();
-        document.body.innerHTML = oldstr;
-        window.location.reload();
-        //return false;
+        //铺设页面
+        $scope.getPrintData($scope.data, $stateParams.housecode, $stateParams.time);
+        $("#showData1").hide();
+        $("#showData2").hide();
+        $("#showData").hide();
+        $("#printPage").show();
+
+        // var newstr = document.getElementById("printPage").innerHTML;
+        // var oldstr = document.body.innerHTML;
+        // document.body.innerHTML = newstr;
+        // window.print();
+        // document.body.innerHTML = oldstr;
+        // document.body.innerHTML = "";
+        // window.location.reload();
+        $("#printPage").hide();
+        $("#showData1").show();
+        $("#showData2").show();
+        $("#showData").show();
+        // return false;
     }
 
 
@@ -144,23 +158,30 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
         //获整仓的最高与最低 平均
         var houseMax;
         var houseMin;
-        for (var i=1,n=$scope.fencengshuju.length;i<n;i++){
-            if(i==1){
+        for (var i = 1, n = $scope.fencengshuju.length; i < n; i++) {
+            if (i == 1) {
                 houseMax = $scope.fencengshuju[1].maxData;
                 houseMin = $scope.fencengshuju[1].minData;
-                houseAvge= parseFloat("0.0");
-            }else{
-                if(Number(houseMax)<Number($scope.fencengshuju[i].maxData)){
+                houseAvge = parseFloat("0.0");
+            } else {
+                if (Number(houseMax) < Number($scope.fencengshuju[i].maxData)) {
                     houseMax = $scope.fencengshuju[i].maxData
                 }
-                if(Number(houseMin)>Number($scope.fencengshuju[i].minData)){
+                if (Number(houseMin) > Number($scope.fencengshuju[i].minData)) {
                     houseMin = $scope.fencengshuju[i].minData;
                 }
             }
         }
         var houseAvge = $scope.arrayavge(data);
 
-
+        var html01="";
+        var housename=$stateParams.name;
+        if(housename.length>10){
+            housename = "x号仓";
+        }
+        for(var curx=1;curx<$scope.xzb;curx++){
+            html01 += "                    <td class=\"xl101\">第 "+curx+" 列</td>\n";
+        }
         var html = "<table width=\"1082\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style='width:811.50pt;border-collapse:collapse;table-layout:fixed;'>\n" +
             "                <col width=\"72\" span=\"2\" class=\"xl93\" style='mso-width-source:userset;mso-width-alt:2304;'/>\n" +
             "                <col width=\"93\" span=\"9\" style='mso-width-source:userset;mso-width-alt:2976;'/>\n" +
@@ -169,72 +190,46 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
             "                    <td class=\"xl94\" height=\"43\" width=\"1082\" colspan=\"12\" style='height:32.25pt;width:811.50pt;border-right:none;border-bottom:2.0pt double;text-align: center;font-size: 24px;' >信阳山信恒盛粮油储备有限公司</td>\n" +
             "                </tr>\n" +
             "                <tr height=\"35\" style='height:26.25pt;'>\n" +
-            "                    <td class=\"xl95\" height=\"35\" colspan=\"12\" style='height:26.25pt;border-right:none;border-bottom:none;text-align: center' >"+$stateParams.name+"<span style='mso-spacerun:yes;'>&nbsp;&nbsp; </span>粮情报表</td>\n" +
+            "                    <td class=\"xl95\" height=\"35\" colspan=\"12\" style='height:26.25pt;border-right:none;border-bottom:none;text-align: center' >" + housename + "<span style='mso-spacerun:yes;'>&nbsp;&nbsp; </span>粮情报表</td>\n" +
             "                </tr>\n" +
             "                <tr height=\"30\" style='height:22.50pt;'>\n" +
             "                    <td class=\"xl96\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:none;border-bottom:.5pt solid windowtext;' >天气：晴</td>\n" +
             "                    <td class=\"xl97\" >西</td>\n" +
-            "                    <td class=\"xl98\" colspan=\"9\" style='border-right:none;border-bottom:.5pt solid;text-align: right' >检测时间："+formatDate($stateParams.time)+"<span style='mso-spacerun:yes;'>&nbsp;</span></td>\n" +
+            "                    <td class=\"xl98\" colspan=\"9\" style='border-right:none;border-bottom:.5pt solid;text-align: right' >检测时间：" + formatDate($stateParams.time) + "<span style='mso-spacerun:yes;'>&nbsp;</span></td>\n" +
             "                </tr>\n" +
             "\n" +
             "                <tr height=\"30\" style='height:22.50pt;'>\n" +
             "                    <td class=\"xl99\" height=\"30\" style='height:22.50pt;'></td>\n" +
             "                    <td class=\"xl100\"></td>\n" +
-            "                    <td class=\"xl101\">第 1 列</td>\n" +
-            "                    <td class=\"xl101\">第 2 列</td>\n" +
-            "                    <td class=\"xl101\">第 3 列</td>\n" +
-            "                    <td class=\"xl101\">第 4 列</td>\n" +
-            "                    <td class=\"xl101\">第 5 列</td>\n" +
-            "                    <td class=\"xl101\">第 6 列</td>\n" +
-            "                    <td class=\"xl101\">第 7 列</td>\n" +
-            "                    <td class=\"xl101\">第 8 列</td>\n" +
-            "                    <td class=\"xl101\">第 9 列</td>\n" +
-            "                    <td class=\"xl119\">第 10 列</td>\n" +
+            html01+
             "                </tr>\n";
         for (var d = 1; d < row.length; d++) {
+            var html02="";
+            for(var curx=1;curx<$scope.xzb;curx++){
+                html02 +="     <td class=\"xl100\">-" + d + "-</td>\n";
+            }
             html += " <tr height=\"30\" class=\"xl93\" style='height:22.50pt;'>\n" +
                 "     <td class=\"xl99\" height=\"30\" style='height:22.50pt;'></td>\n" +
                 "     <td class=\"xl100\"></td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl100\">-" + d + "-</td>\n" +
-                "     <td class=\"xl120\">-" + d + "-</td>\n" +
+                html02 +
                 "    </tr>";
+
+
             for (var f = 1; f < 5; f++) {
+                var html2 = "";
+                for (var curx = 1; curx < $scope.xzb; curx++) {
+                    html2 += "     <td class=\"xl104\" x:str>" + row[d][f][curx] + "</td>\n";
+                }
                 if (f == 1) {
                     html += "<tr height=\"30\" style='height:22.50pt;'>\n" +
                         "     <td class=\"xl102\" height=\"120\" rowspan=\"4\" style='height:90.00pt;border-right:none;border-bottom:none;' x:str>" + d + "行</td>\n" +
                         "     <td class=\"xl103\" x:str>" + f + "层</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][1] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][2] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][3] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][4] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][5] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][6] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][7] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][8] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][9] + "</td>\n" +
-                        "     <td class=\"xl121\" x:str>" + row[d][f][10] + "</td>\n" +
+                        html2 +
                         "    </tr>";
                 } else {
                     html += "<tr height=\"30\" style='height:22.50pt;'>\n" +
                         "     <td class=\"xl103\" x:str>" + f + "层</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][1] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][2] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][3] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][4] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][5] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][6] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][7] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][8] + "</td>\n" +
-                        "     <td class=\"xl104\" x:str>" + row[d][f][9] + "</td>\n" +
-                        "     <td class=\"xl121\" x:str>" + row[d][f][10] + "</td>\n" +
+                        html2 +
                         "    </tr>";
                 }
             }
@@ -254,41 +249,41 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
             "    </tr>\n" +
             "    <tr height=\"30\" style='height:22.50pt;'>\n" +
             "     <td class=\"xl106\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>1层</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[1].maxData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[1].minData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[1].avgData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[1].zhouAvg+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[1].inAvg+"</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[1].maxData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[1].minData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[1].avgData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[1].zhouAvg + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[1].inAvg + "</td>\n" +
             "    </tr>\n" +
             "    <tr height=\"30\" style='height:22.50pt;'>\n" +
             "     <td class=\"xl106\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>2层</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[2].maxData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[2].minData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[2].avgData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[2].zhouAvg+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[2].inAvg+"</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[2].maxData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[2].minData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[2].avgData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[2].zhouAvg + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[2].inAvg + "</td>\n" +
             "    </tr>\n" +
             "    <tr height=\"30\" style='height:22.50pt;'>\n" +
             "     <td class=\"xl106\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>3层</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[3].maxData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[3].minData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[3].avgData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[3].zhouAvg+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[3].inAvg+"</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[3].maxData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[3].minData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[3].avgData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[3].zhouAvg + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[3].inAvg + "</td>\n" +
             "    </tr>\n" +
             "    <tr height=\"30\" style='height:22.50pt;'>\n" +
             "     <td class=\"xl106\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>4层</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[4].maxData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[4].minData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[4].avgData+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[4].zhouAvg+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+$scope.fencengshuju[4].inAvg+"</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[4].maxData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[4].minData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[4].avgData + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[4].zhouAvg + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + $scope.fencengshuju[4].inAvg + "</td>\n" +
             "    </tr>\n" +
             "    <tr height=\"30\" style='height:22.50pt;'>\n" +
             "     <td class=\"xl106\" height=\"30\" colspan=\"2\" style='height:22.50pt;border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>整仓</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+houseMax+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+houseMin+"</td>\n" +
-            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>"+houseAvge.toFixed(1)+"</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + houseMax + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + houseMin + "</td>\n" +
+            "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str>" + houseAvge.toFixed(1) + "</td>\n" +
             "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span></td>\n" +
             "     <td class=\"xl106\" colspan=\"2\" style='border-right:.5pt solid #000000;border-bottom:.5pt solid #000000;' x:str><span style='mso-spacerun:yes;'>&nbsp;</span></td>\n" +
             "    </tr>\n" +
@@ -360,9 +355,9 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
     $scope.arrayavge = function (data) {
         var avge = parseFloat(data[0].data);
         for (var i = 1; i < data.length; i++) {
-            avge+=parseFloat(data[i].data);
+            avge += parseFloat(data[i].data);
         }
-        return avge/data.length;
+        return avge / data.length;
     };
 
     $scope.loadStorey = function (hourseCode, time, storeyCode) {
@@ -379,10 +374,7 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
             "success": function (result) {
                 if (result.data != null && result.success == true) {
                     fengcengxinxi.push(result.data);
-                    console.log("*******result.data*******"+result.data);
-                    console.log("*******fengcengxinxi*******"+fengcengxinxi);
                     $scope.fencengshuju = fengcengxinxi;
-                    console.log("*******$scope.fencengshuju*******"+$scope.fencengshuju);
                 }
             }
         })
@@ -467,7 +459,6 @@ App.controller('tempViewController', ['$scope', '$http', '$stateParams', functio
     $scope.getTempData();
 
     $scope.getPrintData($scope.data, $stateParams.housecode, $stateParams.time);
-
     //
     // $scope.tempOption = function () {
     //     $scope.temp_view_option = {
