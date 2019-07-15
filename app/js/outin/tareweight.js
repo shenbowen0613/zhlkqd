@@ -108,7 +108,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 hlm: qualityMap.黄粒米,//黄粒米
                 hlm_num: hlm_num,//黄粒米扣量
                 hhl: qualityMap.互混率,//互混率
-                hhl_num: qualityMap.互混率,//互混率
+                hhl_num: hhl_num,//互混率
                 szqw: qualityMap.色泽气味,//互混率
                 szqw_value: szqw_value,//色泽气味
                 zjsg: qualityMap.重金属镉,//重金属镉
