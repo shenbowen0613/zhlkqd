@@ -1170,7 +1170,7 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
                 url: '/temp_view/:id/:name/:time/:housecode/:backurl',
                 title: '温度检测详情',
                 templateUrl: helper.basepath('grain/temp_view.html'),
-                resolve: helper.resolveFor('datatables','echarts-gljs', 'tempView', 'ngWig')
+                resolve: helper.resolveFor('datatables','echarts-gljs', 'tempView', 'ngWig','lodopFuncsJs','clodopFuncsJs')
             })
             .state('grain.humrity_view', {
                 url: '/humrity_view/:id/:name/:time/:backurl',
