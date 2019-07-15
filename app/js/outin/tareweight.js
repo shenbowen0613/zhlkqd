@@ -83,6 +83,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
             var  cutweight =  sf_num + zz_num +  zjml_num + gwcm_num + hlm_num + hhl_num + zjsg_num;
             $("#cutweight").val(cutweight);
+            $scope.outinTare.cutweight=cutweight;
             var realnetweight = netweight - cutweight ;
             realnetweight = parseInt(realnetweight);
             $("#netweight").val(realnetweight);
