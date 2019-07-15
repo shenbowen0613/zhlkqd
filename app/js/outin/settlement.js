@@ -391,7 +391,8 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         var detailMap = eval("(" + $scope.outinAll.outinTare.memo + ")");
         var lldetail = eval("(" + $scope.outinAll.outinQualityResult.memo + ")");
         var lvDetail=lldetail.qualitys;
-        console.log($scope.outinAll);
+        console.log("---lldetail----"+JSON.stringify(lldetail));
+        console.log("---lvDetail----"+JSON.stringify(lvDetail));
         LODOP = getLodop();
 
 

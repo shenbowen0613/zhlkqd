@@ -136,8 +136,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                         "content-Type": "application/json;charset=UTF-8",
                         "Accept": "application/json;charset=UTF-8"
                     },
-                    url: "/led/ScSmallsend?weight="+$scope.outinTare.netweight,
-                    type: "POST"
+                    url: "/ledsamll/ScSmallsend?weight="+realnetweight
                 }
             );
 
@@ -213,7 +212,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 $scope.qualitycutweight=0;
             }
             //先初始化净重
-            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight)-parseInt($scope.qualitycutweight);
+            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight);
             $("#netweight").val(jz);
             $scope.outinTare.netweight=jz;
         } else {

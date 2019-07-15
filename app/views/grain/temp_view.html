@@ -8,16 +8,20 @@
         <form id="showData1" form-wizard="" steps="5" novalidate="">
             <div class="form-wizard wizard-horizontal">
                 <ol id="active_bar" class="row">
-                    <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);getTempData()" class="col-md-2 border-r-e6">
+                    <li ng-class="{'active':wizard.active(1)}" ng-click="wizard.go(1);getTempData()"
+                        class="col-md-2 border-r-e6">
                         <h4><em class="fa fa-tasks mr"></em>全部</h4>
                     </li>
-                    <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);getTempData(1)" class="col-md-2 border-r-e6">
+                    <li ng-class="{'active':wizard.active(2)}" ng-click="wizard.go(2);getTempData(1)"
+                        class="col-md-2 border-r-e6">
                         <h4><em class="fa fa-tasks mr"></em>第一层</h4>
                     </li>
-                    <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);getTempData(2)" class="col-md-2 border-r-e6">
+                    <li ng-class="{'active':wizard.active(3)}" ng-click="wizard.go(3);getTempData(2)"
+                        class="col-md-2 border-r-e6">
                         <h4><em class="fa fa-tasks mr"></em>第二层</h4>
                     </li>
-                    <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);getTempData(3)" class="col-md-2 border-r-e6">
+                    <li ng-class="{'active':wizard.active(4)}" ng-click="wizard.go(4);getTempData(3)"
+                        class="col-md-2 border-r-e6">
                         <h4><em class="fa fa-tasks mr"></em>第三层</h4>
                     </li>
                     <li ng-class="{'active':wizard.active(5)}" ng-click="wizard.go(5);getTempData(4)" class="col-md-2">
@@ -38,296 +42,344 @@
         </div>
         <div id="showData" style="width: 100%;height: 700px;">
         </div>
-        <!--转换检测 begin-->
-        <!--图表信息-高度必填 begin-->
-        <!--<rzhecharts id="tempViewCharts" rid="tempViewCharts" option="temp_view_option" height="500"></rzhecharts>-->
-        <!--图表信息 end-->
-        <!-- 列表信息 begin-->
-        <!--<div class="bg-fcfcfc mt p">-->
-        <!--<h4>坐标及数据</h4>-->
-        <!--<hr mt mb/>-->
-        <!--<div id="gridDiv">-->
-
-        <!--<table id="tempViewTableGrids" class="row-border hover">-->
-        <!--</table>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--列表信息 end-->
-
-
-        <style>
-            @media print{
-                INPUT {display:none}
-            }
-
-            .xl93
-            {mso-style-parent:style0;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                mso-font-charset:134;}
-
-            .xl94
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                color:windowtext;
-                font-size:24.0pt;
-                font-family:楷体_GB2312, monospace;
-                mso-font-charset:134;
-                border-bottom:2.0pt double windowtext;}
-            .xl95
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                color:windowtext;
-                font-size:20.0pt;
-                mso-font-charset:134;}
-            .xl96
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:left;
-                color:windowtext;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-bottom:.5pt solid windowtext;}
-            .xl97
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:right;
-                color:windowtext;
-                font-size:18.0pt;
-                mso-font-charset:134;}
-            .xl98
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:right;
-                white-space:normal;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-bottom:.5pt solid windowtext;}
-            .xl99
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-left:.5pt solid windowtext;
-                border-top:.5pt solid windowtext;
-                border-bottom:.5pt solid windowtext;}
-
-
-            .xl100
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;
-                border-bottom:.5pt solid windowtext;}
-            .xl101
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;
-                border-bottom:.5pt solid windowtext;}
-            .xl102
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-left:.5pt solid windowtext;
-                border-top:.5pt solid windowtext;}
-            .xl103
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                font-size:18.0pt;
-                mso-font-charset:134;}
-            .xl104
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                font-size:18.0pt;
-                mso-font-charset:134;}
-            .xl106
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-left:.5pt solid #000000;
-                border-top:.5pt solid #000000;
-                border-bottom:.5pt solid #000000;}
-            .xl109
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:left;
-                vertical-align:top;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-left:.5pt solid windowtext;
-                border-top:.5pt solid windowtext;}
-            .xl110
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:left;
-                vertical-align:top;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;}
-
-            .xl118
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:right;
-                vertical-align:top;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;}
-            .xl119
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;
-                border-right:.5pt solid windowtext;
-                border-bottom:.5pt solid windowtext;}
-            .xl120
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFF00;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-top:.5pt solid windowtext;
-                border-right:.5pt solid windowtext;
-                border-bottom:.5pt solid windowtext;}
-            .xl121
-            {mso-style-parent:style0;
-                mso-number-format:"\@";
-                text-align:center;
-                font-size:18.0pt;
-                mso-font-charset:134;
-                border-right:.5pt solid windowtext;}
-            .xl122
-            {mso-style-parent:style0;
-                mso-font-charset:134;}
-            .xl123
-            {mso-style-parent:style0;
-                text-align:center;
-                mso-font-charset:134;}
-            .xl124
-            {mso-style-parent:style0;
-                text-align:left;
-                white-space:normal;
-                mso-font-charset:134;}
-            .xl125
-            {mso-style-parent:style0;
-                white-space:normal;
-                mso-font-charset:134;}
-            .xl126
-            {mso-style-parent:style0;
-                text-align:center;
-                mso-pattern:auto none;
-                background:#92D050;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl127
-            {mso-style-parent:style0;
-                text-align:left;
-                white-space:normal;
-                mso-pattern:auto none;
-                background:#92D050;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl128
-            {mso-style-parent:style0;
-                text-align:center;
-                mso-pattern:auto none;
-                background:#92D050;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl129
-            {mso-style-parent:style0;
-                text-align:left;
-                mso-font-charset:134;}
-            .xl130
-            {mso-style-parent:style0;
-                text-align:center;
-                white-space:normal;
-                mso-pattern:auto none;
-                background:#FFFFFF;
-                font-size:14.0pt;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl131
-            {mso-style-parent:style0;
-                text-align:center;
-                mso-pattern:auto none;
-                background:#FFFFFF;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl132
-            {mso-style-parent:style0;
-                text-align:left;
-                white-space:normal;
-                mso-pattern:auto none;
-                background:#FFFFFF;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl133
-            {mso-style-parent:style0;
-                text-align:left;
-                white-space:normal;
-                mso-pattern:auto none;
-                background:#92D050;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl134
-            {mso-style-parent:style0;
-                white-space:normal;
-                mso-pattern:auto none;
-                background:#92D050;
-                mso-font-charset:134;
-                border:.5pt solid windowtext;}
-            .xl135
-            {mso-style-parent:style0;
-                color:#333333;
-                font-family:Segoe UI;
-                mso-font-charset:134;}
-            .xl136
-            {mso-style-parent:style0;
-                text-align:left;
-                white-space:normal;
-                mso-font-charset:134;}
-            .xl137
-            {mso-style-parent:style0;
-                white-space:normal;
-                color:#333333;
-                font-family:Segoe UI;
-                mso-font-charset:134;}
-
-
-
-        </style>
-        <div style="display:block;" id="printPage">
-        </div>
 
     </div>
-
-
 </div>
+<style>
+    @media print {
+        INPUT {
+            display: none
+        }
+    }
+
+    .xl93 {
+        mso-style-parent: style0;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        mso-font-charset: 134;
+    }
+
+    .xl94 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        color: windowtext;
+        font-size: 24.0pt;
+        font-family: 楷体_GB2312, monospace;
+        mso-font-charset: 134;
+        border-bottom: 2.0pt double windowtext;
+    }
+
+    .xl95 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        color: windowtext;
+        font-size: 20.0pt;
+        mso-font-charset: 134;
+    }
+
+    .xl96 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: left;
+        color: windowtext;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl97 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: right;
+        color: windowtext;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+    }
+
+    .xl98 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: right;
+        white-space: normal;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl99 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-left: .5pt solid windowtext;
+        border-top: .5pt solid windowtext;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl100 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl101 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl102 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-left: .5pt solid windowtext;
+        border-top: .5pt solid windowtext;
+    }
+
+    .xl103 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+    }
+
+    .xl104 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+    }
+
+    .xl106 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-left: .5pt solid #000000;
+        border-top: .5pt solid #000000;
+        border-bottom: .5pt solid #000000;
+    }
+
+    .xl109 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: left;
+        vertical-align: top;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-left: .5pt solid windowtext;
+        border-top: .5pt solid windowtext;
+    }
+
+    .xl110 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: left;
+        vertical-align: top;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+    }
+
+    .xl118 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: right;
+        vertical-align: top;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+    }
+
+    .xl119 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+        border-right: .5pt solid windowtext;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl120 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFF00;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-top: .5pt solid windowtext;
+        border-right: .5pt solid windowtext;
+        border-bottom: .5pt solid windowtext;
+    }
+
+    .xl121 {
+        mso-style-parent: style0;
+        mso-number-format: "\@";
+        text-align: center;
+        font-size: 18.0pt;
+        mso-font-charset: 134;
+        border-right: .5pt solid windowtext;
+    }
+
+    .xl122 {
+        mso-style-parent: style0;
+        mso-font-charset: 134;
+    }
+
+    .xl123 {
+        mso-style-parent: style0;
+        text-align: center;
+        mso-font-charset: 134;
+    }
+
+    .xl124 {
+        mso-style-parent: style0;
+        text-align: left;
+        white-space: normal;
+        mso-font-charset: 134;
+    }
+
+    .xl125 {
+        mso-style-parent: style0;
+        white-space: normal;
+        mso-font-charset: 134;
+    }
+
+    .xl126 {
+        mso-style-parent: style0;
+        text-align: center;
+        mso-pattern: auto none;
+        background: #92D050;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl127 {
+        mso-style-parent: style0;
+        text-align: left;
+        white-space: normal;
+        mso-pattern: auto none;
+        background: #92D050;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl128 {
+        mso-style-parent: style0;
+        text-align: center;
+        mso-pattern: auto none;
+        background: #92D050;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl129 {
+        mso-style-parent: style0;
+        text-align: left;
+        mso-font-charset: 134;
+    }
+
+    .xl130 {
+        mso-style-parent: style0;
+        text-align: center;
+        white-space: normal;
+        mso-pattern: auto none;
+        background: #FFFFFF;
+        font-size: 14.0pt;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl131 {
+        mso-style-parent: style0;
+        text-align: center;
+        mso-pattern: auto none;
+        background: #FFFFFF;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl132 {
+        mso-style-parent: style0;
+        text-align: left;
+        white-space: normal;
+        mso-pattern: auto none;
+        background: #FFFFFF;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl133 {
+        mso-style-parent: style0;
+        text-align: left;
+        white-space: normal;
+        mso-pattern: auto none;
+        background: #92D050;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl134 {
+        mso-style-parent: style0;
+        white-space: normal;
+        mso-pattern: auto none;
+        background: #92D050;
+        mso-font-charset: 134;
+        border: .5pt solid windowtext;
+    }
+
+    .xl135 {
+        mso-style-parent: style0;
+        color: #333333;
+        font-family: Segoe UI;
+        mso-font-charset: 134;
+    }
+
+    .xl136 {
+        mso-style-parent: style0;
+        text-align: left;
+        white-space: normal;
+        mso-font-charset: 134;
+    }
+
+    .xl137 {
+        mso-style-parent: style0;
+        white-space: normal;
+        color: #333333;
+        font-family: Segoe UI;
+        mso-font-charset: 134;
+    }
+
+
+</style>
+<iframe style="display:none;" id="printPage">
+</iframe>
+
 
