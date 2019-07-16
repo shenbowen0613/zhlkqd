@@ -88,7 +88,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     //商城获取车牌照片;
     $scope.readLicensePlate = function () {
-        $http({
+        $.ajax({
             url: '/PlateServlet',
             method: 'GET'
         }).success(function (response) { //提交成功
@@ -118,7 +118,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             rzhdialog(ngDialog, "请选择出入库类型", "error");
         }
         if ($scope.doding) {
-            $http({
+            $.ajax({
                 url: $scope.url,
                 method: 'POST'
             })
@@ -132,21 +132,28 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             url: $scope.url,
             method: 'GET'
         }).success(function (response) { //提交成功
-            if (response.requst == 1) { //信息处理成功，进入用户中心页面
+            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
                 var grossweight = response.data;
                 grossweight = grossweight * 1;
                 $("#grossweight").val(grossweight);
+
+                $.ajax({
+                    url:"/ledsamll/ScSmallsend?weight="+grossweight,
+                    method: 'GET',
+                    async: false
+                })
+
                 $scope.upNetWeight();
-            } else { //信息处理失败，提示错误信息
-                rzhdialog(ngDialog, "服务器有异常", "error");
-            }
+            // } else { //信息处理失败，提示错误信息
+            //     rzhdialog(ngDialog, "服务器有异常", "error");
+            // }
 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
 
         //抓拍三张图
-        $http({
+        $.ajax({
             url: '/lpr/scklpr',
             method: 'POST'
         }).success(function (response) { //提交成功
@@ -169,7 +176,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     //根据智能卡号获取出入库信息
     $scope.grossWeightGetByCardno = function () {
         $scope.cardno = $("#smart_card").val();
-        $http({ //查询按钮权限
+        $.ajax({ //查询按钮权限
             url: "/outin/weight/loadGross",
             method: 'POST',
             data: {cardno: $scope.cardno},
@@ -208,7 +215,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             , vehicleno: $scope.vehicleno,
             netweight: $scope.netweight
         };
-        $http({
+        $.ajax({
             url: GserverURL + '/outin/weight/save',
             method: 'POST',
             data: pData
