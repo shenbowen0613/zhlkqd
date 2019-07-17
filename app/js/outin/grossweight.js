@@ -6,7 +6,7 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('grossweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-
+    $scope.grossweight =0;
 
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
@@ -84,7 +84,6 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             $scope.netweight = 0;
         }
 
-        $scope.xiaopingshow($scope.grossweight);
     }
 
 
@@ -130,15 +129,21 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     $scope.xiaopingshow =function(data){
         //TODO 删除
         console.log("---data---"+data);
+        // alert("---data---"+data);
         if(data==0){
             data=10 + parseInt(Math.random()*10);
         }
+         console.log("----小屏显示的数据--------"+data);
         // alert("----小屏显示的数据--------"+data);
         //投小屏
         $.ajax({
-            url:"/ledsamll/ScSmallsend?weight="+data,
-            async: true,
+            url:"/ledsamll/ScSmallsend?weight="+data+"&flag="+Math.random(),
+            async: false,
             method: 'GET'
+        }).success(function(response){
+            console.log("成功:"+response);
+        }).error(function (response) { //提交失败
+            console.log("失败:"+response);
         });
     }
 
@@ -161,7 +166,6 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
-        $scope.xiaopingshow($scope.grossweight);
     }
 
     //获取称重;
@@ -190,7 +194,6 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
         })
 
-        $scope.xiaopingshow($scope.grossweight);
     }
 
 

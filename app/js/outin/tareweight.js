@@ -62,20 +62,25 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     $scope.xiaopingshow1 =function(data){
         //TODO 删除
         console.log("---data---"+data);
+        // alert("---data---"+data);
         if(data==0){
             data=10 + parseInt(Math.random()*10);
         }
+        console.log("----小屏显示的数据--------"+data);
         // alert("----小屏显示的数据--------"+data);
         //投小屏
         $.ajax({
-            url:"/ledsamll/ScSmallsend?weight="+data,
-            async: true,
+            url:"/ledsamll/ScSmallsend?weight="+data+"&flag="+Math.random(),
+            async: false,
             method: 'GET'
+        }).success(function(response){
+            console.log("成功:"+response);
+        }).error(function (response) { //提交失败
+            console.log("失败:"+response);
         });
     }
 
     $scope.LedShow = function (){
-        $scope.xiaopingshow1($scope.tareWeight);
        //入库流程才对接大屏 begin
         if ($scope.iotypename == "入库") {
             //大屏显示的数据，调用沈博文接口  begin
@@ -141,7 +146,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 }
             );
         }
-        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 
@@ -199,7 +203,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
-        $scope.xiaopingshow1($scope.tareWeight);
     }
 
     //获取称重;
@@ -229,7 +232,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
-        $scope.xiaopingshow1($scope.tareWeight);
     }
 
     //商城获取车牌照片;
@@ -250,7 +252,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
-        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 
