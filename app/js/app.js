@@ -1858,7 +1858,7 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
                 url: '/index',
                 title: '能耗监测首页',
                 templateUrl: helper.basepath('nhjc/index.html'),
-                resolve: helper.resolveFor('datatables', "ngDialog", 'nhjcJs', 'ngWig')
+                resolve: helper.resolveFor('datatables', "ngDialog", 'nhjcJs', 'ngWig', "dateTimePicker")
             })
             .state('nhjc.index.view', {
                 url: '/view/:id',

@@ -35,6 +35,7 @@
 /*右边部分，左边列*/
 
 .right_left_nh {
+	width: 40%;
 	float: left;
 }
 

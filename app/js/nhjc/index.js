@@ -19,6 +19,18 @@ App.controller('nhjcindexController', ['$scope', '$http', 'ngDialog', '$rootScop
 // 查看详情
 App.controller('nhjcViewController', ['$scope', '$http', 'ngDialog','$rootScope','$stateParams', function ($scope, $http, ngDialog,$rootScope,$stateParams) {
     $scope.houstcode = $stateParams.id;
+    $('#starttime').datetimepicker({ //加载日期插件
+        todayBtn: 1, // '今天'按钮显示
+        autoclose: 1, //选择完成自动关闭
+        minView: 2, //最小显示单位  2 代表到天
+        todayHighlight: 1 //今天日期高亮
+    });
+    $('#endtime').datetimepicker({ //加载日期插件
+        todayBtn: 1, // '今天'按钮显示
+        autoclose: 1, //选择完成自动关闭
+        minView: 2, //最小显示单位  2 代表到天
+        todayHighlight: 1 //今天日期高亮
+    });
     $scope.wnduchaxun = function (datax) {
         $http({
             method: 'GET',
@@ -51,4 +63,32 @@ App.controller('nhjcViewController', ['$scope', '$http', 'ngDialog','$rootScope'
             rzhdialog(ngDialog,"采集失败","error");
         });
     };
+    $scope.toDateSerach = function () {
+        $("#box2").show();
+        $http({
+            method: 'GET',
+            url: OilmonURL + '/selectweek',
+            params: {
+                housecode: $scope.houstcode,
+                kaishitime:$scope.starttime,
+                jieshutime:$scope.endtime
+            }
+        }).success(function(response) {
+            //response.save('content.pdf');
+            //console.log(response);
+            try {
+                window.open(response.pdf);
+                $("#box2").hide();
+                rzhdialog(ngDialog,"导出成功","success");
+            }catch (err){
+                $("#box2").hide();
+                rzhdialog(ngDialog,"导出失败","error");
+            }
+            // $scope.wnduchaxun();
+        }).error(function () {
+            $("#box2").hide();
+            //处理响应失败
+            rzhdialog(ngDialog,"导出失败","error");
+        });
+    }
 }]);

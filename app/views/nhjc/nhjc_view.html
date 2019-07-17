@@ -5,17 +5,58 @@
         <div class="ngdialog-close"></div>
     </div>
 </div>
+<div id="box2" class="ngdialog ngdialog-theme-default ng-scope" style="display: none;">
+    <div class="ngdialog-overlay"></div>
+    <div class="ngdialog-content">
+        <p class="fa fa-info-circle">正在导出...</p>
+        <div class="ngdialog-close"></div>
+    </div>
+</div>
 <div class="table-grid table-grid-desktop" ng-controller="nhjcViewController">
     <div class="mr">
         <div class="panel panel-default">
-            <div class="panel-heading">能耗监测详情
-                <button type="button" title="返回" ng-click="toRemove()" id="toBack" class="btn btn-warning bar-h3-btn mr">
-                    <em class="fa fa-mail-reply fa-fw mr-sm"></em>返回
-                </button>
-                <button type="button" title="返回" ng-click="collectionInfo()" id="cjBack" class="btn btn-purple bar-h3-btn mr">
-                    <em class="fa fa-hand-o-right"></em>采集
-                </button>
+            <div class="form-group">
+                <div class="col-lg-4">
+                    <div class="panel-heading">能耗监测详情
+                    </div>
+                </div>
+                <!--<label class="col-lg-1 control-label">开始时间</label>-->
+                <div class="col-lg-2">
+                    <div class="panel-heading">
+                        <div class="input-group date" id="starttime" data-date-format="yyyy-MM-dd">
+                            <input class="form-control" placeholder="开始时间" type="text" ng-model="starttime">
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <!--<label class="col-lg-1 control-label">结束时间</label>-->
+                <div class="col-lg-2">
+                    <div class="panel-heading">
+                        <div class="input-group date" id="endtime" data-date-format="yyyy-MM-dd">
+                            <input class="form-control" placeholder="结束时间" type="text" ng-model="endtime">
+                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="panel-heading">
+                        <button type="button" title="导出" ng-click="toDateSerach()" class="btn btn-primary pull-left mb">
+                            <em class="icon-magnifier fa-fw mr-sm"></em>导出
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="panel-heading">
+                        <button type="button" title="返回" ng-click="toRemove()" id="toBack" class="btn btn-warning bar-h3-btn mr">
+                            <em class="fa fa-mail-reply fa-fw mr-sm"></em>返回
+                        </button>
+                        <button type="button" title="返回" ng-click="collectionInfo()" id="cjBack" class="btn btn-purple bar-h3-btn mr">
+                            <em class="fa fa-hand-o-right"></em>采集
+                        </button>
+                    </div>
+                </div>
             </div>
+
             <div class="panel-body dataTables_wrapper">
                 <table id="detailedTableGrids" class="row-border hover dataTable no-footer" role="grid" aria-describedby="detailedTableGrids_info">
                     <thead>
@@ -91,13 +132,17 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="dataTables_info" role="status" aria-live="polite">共 {{items.total}} 条</div>
+                <div class="dataTables_info" >共{{items.total}}条</div>
                 <div class="dataTables_paginate paging_full_numbers" id="detailedTableGrids_paginate">
-                    <a class="paginate_button previous disabled" ng-click="wnduchaxun(items.prePage)">上一页</a>
+                    <span>
+                    <a class="paginate_button" ng-click="wnduchaxun(items.prePage)">上一页</a>
+                    </span>
                     <span>
                         <a class="paginate_button" ng-repeat="page in items.navigatepageNums" ng-class="{current:page==items.pageNum}" ng-click="wnduchaxun(page)" tabindex="0">{{page}}</a>
                     </span>
-                    <a class="paginate_button next disabled" ng-click="wnduchaxun(items.nextPage)">下一页</a>
+                    <span>
+                    <a class="paginate_button" ng-click="wnduchaxun(items.nextPage)">下一页</a>
+                    </span>
                 </div>
             </div>
         </div>
