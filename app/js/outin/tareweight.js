@@ -59,10 +59,22 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }
     }
 
-
+    $scope.xiaopingshow1 =function(data){
+        //TODO 删除
+        if(data==0){
+            data=10 + parseInt(Math.random()*10);
+        }
+        // alert("----小屏显示的数据--------"+data);
+        //投小屏
+        $.ajax({
+            url:"/ledsamll/ScSmallsend?weight="+data,
+            method: 'GET'
+        });
+    }
 
     $scope.LedShow = function (){
-        //入库流程才对接大屏 begin
+
+       //入库流程才对接大屏 begin
         if ($scope.iotypename == "入库") {
             //大屏显示的数据，调用沈博文接口  begin
             $scope.qualityDetail = $scope.outinEntry.outinQualityResult.memo;
@@ -89,10 +101,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             $("#netweight").val(realnetweight);
             $scope.outinTare.netweight = realnetweight;
 
-/*
-            {"qualitys":{"谷外糙米":"7","黄粒米":"6","互混率":"8","色泽气味":"正常","重金属镉":"9","出糙率":"2","杂质":"5","整精米率":"3","容重":"1","水分":"4"},
-             "removes":{"谷外糙米":"0","黄粒米":"5","互混率":"0","色泽气味":"0","重金属镉":"0","出糙率":"0","杂质":"12","整精米率":"0","容重":"0","水分":"-3.75"}}
-  */
             var dapingData = {
                 hphm: $scope.outinEntry.vehicleno,//车牌号码
                 dj: $scope.outinEntry.outinQualityResult.gradename,//等级，一级，二级
@@ -130,60 +138,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                     dataType: "json"
                 }
             );
-
-            $.ajax({
-                url:"/ledsamll/ScSmallsend?weight="+$scope.outinTare.tareweight,
-                method: 'GET',
-                async: false
-            })
-
-            //ngix.conf文件中 修改 解决跨域问题
-
-            //     upstream proxy_store {
-            //         ip_hash;
-            //         server 127.0.0.1:8090;     #业务逻辑
-            //     }
-            //
-            //     upstream proxy_xxbf {
-            //         ip_hash;
-            //         server 192.0.0.79:8080;     #大屏显示
-            //     }
-            //
-            //     server {
-            //         listen       84;
-            //         server_name  127.0.0.1;
-            //
-            //     #charset koi8-r;
-            //
-            //     #access_log  logs/host.access.log  main;
-            //
-            //         location =/ {
-            //         root   D:/nginx-1.15.7/static;
-            //         index  index.html index.htm index.jsp index.do;
-            //     }
-            //
-            //     location / {
-            //         proxy_pass http://proxy_store;
-            //     proxy_set_header Host    $host;
-            //     proxy_set_header X-Real-IP $remote_addr;
-            //     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            // }
-            //
-            //     location /xxbf {
-            //         proxy_pass http://proxy_xxbf;
-            //             proxy_set_header Host    $host;
-            //         proxy_set_header X-Real-IP $remote_addr;
-            //         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            //     }
-            //
-            //     location ~ \.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css|woff|woff2|eot|otf|svg|ttf|psd|jade|less|scss|json|xls|xlsx)$ {
-            //         root  D:/nginx-1.15.7/static;
-            //     }
-
-            //大屏显示的数据，调用沈博文接口  end
         }
-
-        //入库流程才对接大屏 end
     }
 
 
@@ -235,6 +190,9 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 $scope.outinTare.tareweight = tareWeight;
                 $scope.upNetWeight();
                 $("#tareweight").val(tareWeight);
+
+                $scope.xiaopingshow1($scope.outinTare.tareweight);
+
             // } else { //信息处理失败，提示错误信息
             //     rzhdialog(ngDialog, "服务器有异常", "error");
             // }

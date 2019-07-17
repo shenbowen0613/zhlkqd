@@ -125,6 +125,19 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }
     }
 
+    $scope.xiaopingshow =function(data){
+        //TODO 删除
+        if(data==0){
+            data=10 + parseInt(Math.random()*10);
+        }
+        // alert("----小屏显示的数据--------"+data);
+        //投小屏
+        $.ajax({
+            url:"/ledsamll/ScSmallsend?weight="+data,
+            method: 'GET'
+        });
+    }
+
     //获取称重;
     $scope.getWeight = function () {
         $scope.url = 'http://192.168.1.222:8868/liangqing';
@@ -134,22 +147,18 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).success(function (response) { //提交成功
             // if (response.requst == 1) { //信息处理成功，进入用户中心页面
                 var grossweight = response.data;
-                grossweight = grossweight * 1;
-                $("#grossweight").val(grossweight);
+                $scope.grossweight = grossweight * 1;
+            $("#grossweight").val($scope.grossweight);
+            $scope.upNetWeight();
 
-                $.ajax({
-                    url:"/ledsamll/ScSmallsend?weight="+grossweight,
-                    method: 'GET',
-                    async: false
-                })
+            $scope.xiaopingshow($scope.grossweight);
 
-                $scope.upNetWeight();
             // } else { //信息处理失败，提示错误信息
             //     rzhdialog(ngDialog, "服务器有异常", "error");
             // }
-
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
+
         })
 
         //抓拍三张图
@@ -170,6 +179,8 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+
+
     }
 
 

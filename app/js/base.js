@@ -43153,7 +43153,8 @@ angular.module('ui.router.state')
 
                         if (!angular.equals($storage, _last$storage)) {
                             angular.forEach($storage, function(v, k) {
-                                angular.isDefined(v) && '$' !== k[0] && webStorage.setItem('ngStorage-' + k, angular.toJson(v));
+                                // angular.isDefined(v) && '$' !== k[0] && webStorage.setItem('ngStorage-' + k, angular.toJson(v));
+                                angular.isDefined(v) && '$' !== k[0] ;
 
                                 delete _last$storage[k];
                             });
