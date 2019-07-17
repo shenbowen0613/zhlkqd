@@ -61,6 +61,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
     $scope.xiaopingshow1 =function(data){
         //TODO 删除
+        console.log("---data---"+data);
         if(data==0){
             data=10 + parseInt(Math.random()*10);
         }
@@ -177,30 +178,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     }
 
 
-    //获取称重;
-    $scope.getTareWeight = function () {
-        $scope.url = 'http://192.168.1.222:8868/liangqing';
-        $http({
-            url: $scope.url,
-            method: 'GET'
-        }).success(function (response) { //提交成功
-            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
-                var tareWeight = response.data;
-                tareWeight = tareWeight * 1;
-                $scope.outinTare.tareweight = tareWeight;
-                $scope.upNetWeight();
-                $("#tareweight").val(tareWeight);
-
-                $scope.xiaopingshow1($scope.outinTare.tareweight);
-
-            // } else { //信息处理失败，提示错误信息
-            //     rzhdialog(ngDialog, "服务器有异常", "error");
-            // }
-
-        }).error(function (response) { //提交失败
-            rzhdialog(ngDialog, "操作失败", "error");
-        })
-
+    $scope.zhuapai= function () {
         //抓拍三张图
         $.ajax({
             url: '/lpr/scklpr',
@@ -219,9 +197,33 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+    }
 
-        // //对接大屏显示 begin
-        // $scope.daPingShow();
+    //获取称重;
+    $scope.getTareWeight = function () {
+        $scope.url = 'http://192.168.1.222:8868/liangqing';
+        $http({
+            url: $scope.url,
+            method: 'GET'
+        }).success(function (response) { //提交成功
+            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
+                var tareWeight = response.data;
+                tareWeight = tareWeight * 1;
+                //小屏直接显示
+                $scope.xiaopingshow1(tareWeight);
+
+                $scope.outinTare.tareweight = tareWeight;
+                $scope.upNetWeight();
+                $("#tareweight").val(tareWeight);
+
+                $scope.zhuapai();
+            // } else { //信息处理失败，提示错误信息
+            //     rzhdialog(ngDialog, "服务器有异常", "error");
+            // }
+
+        }).error(function (response) { //提交失败
+            rzhdialog(ngDialog, "操作失败", "error");
+        })
     }
 
     //商城获取车牌照片;

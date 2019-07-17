@@ -127,6 +127,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     $scope.xiaopingshow =function(data){
         //TODO 删除
+        console.log("---data---"+data);
         if(data==0){
             data=10 + parseInt(Math.random()*10);
         }
@@ -138,29 +139,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         });
     }
 
-    //获取称重;
-    $scope.getWeight = function () {
-        $scope.url = 'http://192.168.1.222:8868/liangqing';
-        $http({
-            url: $scope.url,
-            method: 'GET'
-        }).success(function (response) { //提交成功
-            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
-                var grossweight = response.data;
-                $scope.grossweight = grossweight * 1;
-            $("#grossweight").val($scope.grossweight);
-            $scope.upNetWeight();
-
-            $scope.xiaopingshow($scope.grossweight);
-
-            // } else { //信息处理失败，提示错误信息
-            //     rzhdialog(ngDialog, "服务器有异常", "error");
-            // }
-        }).error(function (response) { //提交失败
-            rzhdialog(ngDialog, "操作失败", "error");
-
-        })
-
+    $scope.zhuapai= function () {
         //抓拍三张图
         $.ajax({
             url: '/lpr/scklpr',
@@ -179,7 +158,32 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+    }
 
+    //获取称重;
+    $scope.getWeight = function () {
+        $scope.url = 'http://192.168.1.222:8868/liangqing';
+        $http({
+            url: $scope.url,
+            method: 'GET'
+        }).success(function (response) { //提交成功
+            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
+                var grossweight = response.data;
+                $scope.grossweight = grossweight * 1;
+                //小屏直接显示
+            $scope.xiaopingshow(grossweight);
+            $("#grossweight").val($scope.grossweight);
+            $scope.upNetWeight();
+
+            $scope.zhuapai();
+
+            // } else { //信息处理失败，提示错误信息
+            //     rzhdialog(ngDialog, "服务器有异常", "error");
+            // }
+        }).error(function (response) { //提交失败
+            rzhdialog(ngDialog, "操作失败", "error");
+
+        })
 
     }
 
