@@ -154,7 +154,7 @@ App.controller('grainHistoryController', ['$scope', '$http', 'ngDialog', '$filte
                         //温度检测数据详情
                         $("#" + $scope.gridtableid + " tbody").on('click', 'tr td button.toViewTemp', function () {
                             var data = table.row($(this).parent().parent()).data(); //获取爷爷节点 tr 的值
-                            window.location.href = "#/grain/temp_view/" + data.id + "/" + selHouseName + "/" + data.checktime + "/" + data.housecode + "/history";
+                            window.location.href = "#/grain/temp_view/" + data.id + "/" +  data.housename + "/" + data.checktime + "/" + data.housecode + "/history";
                         });
                     }
                 }
@@ -247,7 +247,7 @@ App.controller('grainHistoryController', ['$scope', '$http', 'ngDialog', '$filte
                         //湿度检测数据详情
                         $("#" + $scope.gridtableid + " tbody").on('click', 'tr td button.toViewHumrity', function () {
                             var data = table.row($(this).parent().parent()).data(); //获取爷爷节点 tr 的值
-                            window.location.href = "#/grain/humrity_view/" + data.id + "/" + selHouseName + "/" + data.checktime + "/history";
+                            window.location.href = "#/grain/humrity_view/" + data.id + "/" +  data.housename + "/" + data.checktime + "/history";
                         });
                     }
                 }
@@ -340,7 +340,7 @@ App.controller('grainHistoryController', ['$scope', '$http', 'ngDialog', '$filte
                         //气体浓度检测数据详情
                         $("#" + $scope.gridtableid + " tbody").on('click', 'tr td button.toViewGas', function () {
                             var data = table.row($(this).parent().parent()).data(); //获取爷爷节点 tr 的值
-                            window.location.href = "#/grain/gas_view/" + data.id + "/" + selHouseName + "/" + data.checktime + "/history";
+                            window.location.href = "#/grain/gas_view/" + data.id + "/" + data.housename + "/" + data.checktime + "/history";
                         });
                     }
                 }
@@ -426,7 +426,7 @@ App.controller('grainHistoryController', ['$scope', '$http', 'ngDialog', '$filte
                         //湿度检测数据详情
                         $("#" + $scope.gridtableid + " tbody").on('click', 'tr td button.toViewPest', function () {
                             var data = table.row($(this).parent().parent()).data(); //获取爷爷节点 tr 的值
-                            window.location.href = "#/grain/pest_view/" + data.id + "/" + selHouseName + "/" + data.checktime + "/" + data.housecode + "/history";
+                            window.location.href = "#/grain/pest_view/" + data.id + "/" + data.housename + "/" + data.checktime + "/" + data.housecode + "/history";
                         });
                     }
                 }
@@ -549,7 +549,7 @@ App.controller('grainHistoryGridController', ['$scope', "$http", "ngDialog", fun
     //温度检测数据详情
     $("#" + $scope.gridtableid + " tbody").on('click', 'tr td button.toViewTemp', function () {
         var data = table.row($(this).parent().parent()).data(); //获取爷爷节点 tr 的值
-        window.location.href = "#/grain/temp_view/" + data.id + "/" + selHouseName + "/" + data.checktime + "/" + data.housecode + "/history";
+        window.location.href = "#/grain/temp_view/" + data.id + "/" + data.housename + "/" + data.checktime + "/" + data.housecode + "/history";
         ;
     });
 }]);

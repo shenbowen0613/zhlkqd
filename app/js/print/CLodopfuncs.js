@@ -56,7 +56,7 @@
                         try {
                                 if (!this.webskt || this.webskt.readyState==3) {
                                         if (!window.WebSocket && window.MozWebSocket) window.WebSocket=window.MozWebSocket;
-                                        this.webskt=new WebSocket('ws://192.168.1.11:8000/c_webskt/');
+                                        this.webskt=new WebSocket('ws://192.168.1.116:8000/c_webskt/');
                                         this.webskt.onopen = function(e) {
                                             CLODOP.SocketOpened=true;
                                             if (window.On_CLodop_Opened){

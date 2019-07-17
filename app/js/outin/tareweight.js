@@ -7,7 +7,7 @@
  */
 App.controller('tareweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
 
-
+    $scope.tareWeight=0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
         method: 'POST',
@@ -59,10 +59,24 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }
     }
 
-
+    $scope.xiaopingshow1 =function(data){
+        //TODO 删除
+        console.log("---data---"+data);
+        if(data==0){
+            data=10 + parseInt(Math.random()*10);
+        }
+        // alert("----小屏显示的数据--------"+data);
+        //投小屏
+        $.ajax({
+            url:"/ledsamll/ScSmallsend?weight="+data,
+            async: true,
+            method: 'GET'
+        });
+    }
 
     $scope.LedShow = function (){
-        //入库流程才对接大屏 begin
+        $scope.xiaopingshow1($scope.tareWeight);
+       //入库流程才对接大屏 begin
         if ($scope.iotypename == "入库") {
             //大屏显示的数据，调用沈博文接口  begin
             $scope.qualityDetail = $scope.outinEntry.outinQualityResult.memo;
@@ -83,15 +97,12 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
             var  cutweight =  sf_num + zz_num +  zjml_num + gwcm_num + hlm_num + hhl_num + zjsg_num;
             $("#cutweight").val(cutweight);
+            $scope.outinTare.cutweight=cutweight;
             var realnetweight = netweight - cutweight ;
             realnetweight = parseInt(realnetweight);
             $("#netweight").val(realnetweight);
             $scope.outinTare.netweight = realnetweight;
 
-/*
-            {"qualitys":{"谷外糙米":"7","黄粒米":"6","互混率":"8","色泽气味":"正常","重金属镉":"9","出糙率":"2","杂质":"5","整精米率":"3","容重":"1","水分":"4"},
-             "removes":{"谷外糙米":"0","黄粒米":"5","互混率":"0","色泽气味":"0","重金属镉":"0","出糙率":"0","杂质":"12","整精米率":"0","容重":"0","水分":"-3.75"}}
-  */
             var dapingData = {
                 hphm: $scope.outinEntry.vehicleno,//车牌号码
                 dj: $scope.outinEntry.outinQualityResult.gradename,//等级，一级，二级
@@ -108,7 +119,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 hlm: qualityMap.黄粒米,//黄粒米
                 hlm_num: hlm_num,//黄粒米扣量
                 hhl: qualityMap.互混率,//互混率
-                hhl_num: qualityMap.互混率,//互混率
+                hhl_num: hhl_num,//互混率
                 szqw: qualityMap.色泽气味,//互混率
                 szqw_value: szqw_value,//色泽气味
                 zjsg: qualityMap.重金属镉,//重金属镉
@@ -129,65 +140,8 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                     dataType: "json"
                 }
             );
-
-
-            $.ajax({
-                    headers: {
-                        "content-Type": "application/json;charset=UTF-8",
-                        "Accept": "application/json;charset=UTF-8"
-                    },
-                    url: "/led/ScSmallsend?weight="+$scope.outinTare.netweight,
-                    type: "POST"
-                }
-            );
-
-            //ngix.conf文件中 修改 解决跨域问题
-
-            //     upstream proxy_store {
-            //         ip_hash;
-            //         server 127.0.0.1:8090;     #业务逻辑
-            //     }
-            //
-            //     upstream proxy_xxbf {
-            //         ip_hash;
-            //         server 192.0.0.79:8080;     #大屏显示
-            //     }
-            //
-            //     server {
-            //         listen       84;
-            //         server_name  127.0.0.1;
-            //
-            //     #charset koi8-r;
-            //
-            //     #access_log  logs/host.access.log  main;
-            //
-            //         location =/ {
-            //         root   D:/nginx-1.15.7/static;
-            //         index  index.html index.htm index.jsp index.do;
-            //     }
-            //
-            //     location / {
-            //         proxy_pass http://proxy_store;
-            //     proxy_set_header Host    $host;
-            //     proxy_set_header X-Real-IP $remote_addr;
-            //     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            // }
-            //
-            //     location /xxbf {
-            //         proxy_pass http://proxy_xxbf;
-            //             proxy_set_header Host    $host;
-            //         proxy_set_header X-Real-IP $remote_addr;
-            //         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            //     }
-            //
-            //     location ~ \.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css|woff|woff2|eot|otf|svg|ttf|psd|jade|less|scss|json|xls|xlsx)$ {
-            //         root  D:/nginx-1.15.7/static;
-            //     }
-
-            //大屏显示的数据，调用沈博文接口  end
         }
-
-        //入库流程才对接大屏 end
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 
@@ -213,7 +167,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 $scope.qualitycutweight=0;
             }
             //先初始化净重
-            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight)-parseInt($scope.qualitycutweight);
+            var jz = parseInt($scope.grossweight) - parseInt($scope.outinTare.tareweight);
             $("#netweight").val(jz);
             $scope.outinTare.netweight=jz;
         } else {
@@ -226,29 +180,9 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     }
 
 
-    //获取称重;
-    $scope.getTareWeight = function () {
-        $scope.url = 'http://192.168.1.222:8868/liangqing';
-        $http({
-            url: $scope.url,
-            method: 'GET'
-        }).success(function (response) { //提交成功
-            if (response.requst == 1) { //信息处理成功，进入用户中心页面
-                var tareWeight = response.data;
-                tareWeight = tareWeight * 1;
-                $scope.outinTare.tareweight = tareWeight;
-                $scope.upNetWeight();
-                $("#tareweight").val(tareWeight);
-            } else { //信息处理失败，提示错误信息
-                rzhdialog(ngDialog, "服务器有异常", "error");
-            }
-
-        }).error(function (response) { //提交失败
-            rzhdialog(ngDialog, "操作失败", "error");
-        })
-
+    $scope.zhuapai= function () {
         //抓拍三张图
-        $http({
+        $.ajax({
             url: '/lpr/scklpr',
             method: 'POST'
         }).success(function (response) { //提交成功
@@ -265,14 +199,42 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow1($scope.tareWeight);
+    }
 
-        // //对接大屏显示 begin
-        // $scope.daPingShow();
+    //获取称重;
+    $scope.getTareWeight = function () {
+        $scope.url = 'http://192.168.1.222:8868/liangqing';
+        $http({
+            url: $scope.url,
+            method: 'GET',
+            async: true
+        }).success(function (response) { //提交成功
+            // if (response.requst == 1) { //信息处理成功，进入用户中心页面
+                var tareWeight = response.data;
+                tareWeight = tareWeight * 1;
+                $scope.tareWeight=tareWeight;
+                //小屏直接显示
+                $scope.xiaopingshow1($scope.tareWeight);
+
+                $scope.outinTare.tareweight = tareWeight;
+                $scope.upNetWeight();
+                $("#tareweight").val(tareWeight);
+
+                $scope.zhuapai();
+            // } else { //信息处理失败，提示错误信息
+            //     rzhdialog(ngDialog, "服务器有异常", "error");
+            // }
+
+        }).error(function (response) { //提交失败
+            rzhdialog(ngDialog, "操作失败", "error");
+        })
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
     //商城获取车牌照片;
     $scope.readLicensePlate = function () {
-        $http({
+        $.ajax({
             url: '/PlateServlet',
             method: 'GET'
         }).success(function (response) { //提交成功
@@ -288,6 +250,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 
@@ -303,7 +266,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             rzhdialog(ngDialog, "请选择出入库类型", "error");
         }
         if ($scope.doding) {
-            $http({
+            $.ajax({
                 url: $scope.url,
                 method: 'POST'
             })
@@ -314,7 +277,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     //根据智能卡号获取出入库信息
     $scope.getByCardno = function () {
         $scope.cardno = $("#smart_card").val();
-        $http({ //查询按钮权限
+        $.ajax({ //查询按钮权限
             url: "/outin/weight/loadGross",
             method: 'POST',
             data: {cardno: $scope.cardno},
@@ -350,7 +313,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             outinEntryStr: JSON.stringify($scope.outinEntry),
             outinTareStr: JSON.stringify($scope.outinTare)
         };
-        $http({
+        $.ajax({
             url: GserverURL + '/outin/weight/saveTare',
             method: 'POST',
             data: pData
