@@ -7,7 +7,7 @@
  */
 App.controller('tareweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
 
-
+    $scope.tareWeight=0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
         method: 'POST',
@@ -75,7 +75,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     }
 
     $scope.LedShow = function (){
-
+        $scope.xiaopingshow1($scope.tareWeight);
        //入库流程才对接大屏 begin
         if ($scope.iotypename == "入库") {
             //大屏显示的数据，调用沈博文接口  begin
@@ -141,6 +141,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 }
             );
         }
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 
@@ -198,6 +199,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
     //获取称重;
@@ -211,8 +213,9 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             // if (response.requst == 1) { //信息处理成功，进入用户中心页面
                 var tareWeight = response.data;
                 tareWeight = tareWeight * 1;
+                $scope.tareWeight=tareWeight;
                 //小屏直接显示
-                $scope.xiaopingshow1(tareWeight);
+                $scope.xiaopingshow1($scope.tareWeight);
 
                 $scope.outinTare.tareweight = tareWeight;
                 $scope.upNetWeight();
@@ -226,6 +229,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
     //商城获取车牌照片;
@@ -246,6 +250,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow1($scope.tareWeight);
     }
 
 

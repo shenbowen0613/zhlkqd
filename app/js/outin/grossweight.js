@@ -83,6 +83,8 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             $("#netweight").val(0);
             $scope.netweight = 0;
         }
+
+        $scope.xiaopingshow($scope.grossweight);
     }
 
 
@@ -159,6 +161,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).error(function (response) { //提交失败
             rzhdialog(ngDialog, "操作失败", "error");
         })
+        $scope.xiaopingshow($scope.grossweight);
     }
 
     //获取称重;
@@ -187,6 +190,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
         })
 
+        $scope.xiaopingshow($scope.grossweight);
     }
 
 
