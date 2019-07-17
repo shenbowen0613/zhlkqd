@@ -69,6 +69,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         //投小屏
         $.ajax({
             url:"/ledsamll/ScSmallsend?weight="+data,
+            async: true,
             method: 'GET'
         });
     }
@@ -204,7 +205,8 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         $scope.url = 'http://192.168.1.222:8868/liangqing';
         $http({
             url: $scope.url,
-            method: 'GET'
+            method: 'GET',
+            async: true
         }).success(function (response) { //提交成功
             // if (response.requst == 1) { //信息处理成功，进入用户中心页面
                 var tareWeight = response.data;
