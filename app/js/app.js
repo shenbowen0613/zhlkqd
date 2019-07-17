@@ -1110,7 +1110,7 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
                 url: '/index',
                 title: '粮情检测首页',
                 templateUrl: helper.basepath('grain/index.html'),
-                resolve: helper.resolveFor('echartsjs', 'datatables', "ngDialog", 'grainJs', 'ngWig', "dateTimePicker")
+                resolve: helper.resolveFor('echartsjs', 'datatables', "ngDialog", 'grainJs', 'ngWig', "dateTimePicker",'lodopFuncsJs','clodopFuncsJs')
             })
             .state('grain.realtime', {
                 url: '/realtime',

@@ -331,6 +331,38 @@ App.controller('grainController', ['$scope', '$http', 'ngDialog', '$rootScope', 
             ]
         }; //图表数据
     }
+    $scope.printImgOne=function(){
+        var myChart = echarts.init(document.getElementById('tempCharts'));
+        // 把echarts图片转成64编码的图片
+        var img = new Image();
+        var imgSrc = myChart.getDataURL();
+        // 渲染到图表上面，遮住图表
+        img.src = imgSrc;
+        // 图片加载完成之后
+        // 执行打印
+        var LODOP;
+        LODOP = getLodop();
+        LODOP.SET_PRINT_PAGESIZE(1,0,0,"A4");
+        LODOP.SET_PRINT_STYLEA(1,"Angle",90);
+        LODOP.ADD_PRINT_IMAGE(10,10,1720,1230,imgSrc);
+        LODOP.PRINT_DESIGN();
+    }
+    $scope.printImgTwo=function(){
+        var myChart = echarts.init(document.getElementById('humrityCharts'));
+        // 把echarts图片转成64编码的图片
+        var img = new Image();
+        var imgSrc = myChart.getDataURL();
+        // 渲染到图表上面，遮住图表
+        img.src = imgSrc;
+        // 图片加载完成之后
+        // 执行打印
+        var LODOP;
+        LODOP = getLodop();
+        LODOP.SET_PRINT_PAGESIZE(1,0,0,"A4");
+        LODOP.SET_PRINT_STYLEA(1,"Angle",90);
+        LODOP.ADD_PRINT_IMAGE(10,10,1720,1230,imgSrc);
+        LODOP.PRINT_DESIGN();
+    }
     // $scope.gasInspection = function () {
     //     //重绘图表
     //     $scope.opt_title = "气体浓度";

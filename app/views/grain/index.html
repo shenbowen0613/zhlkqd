@@ -85,12 +85,22 @@
             <!--&lt;!&ndash;转换检测 begin&ndash;&gt;-->
 
             <!--温度图表信息-高度必填 begin-->
-            <div class="col-lg-6 pl0 mb" ng-controller="tempController">
+
+
+
+            <div class="col-lg-6 pl0 mb" ng-controller="tempController" id="ssss">
+                <button type="button" title="打印" ng-click="printImgOne()" class="btn btn-primary center-block mb">
+                    打印温度
+                </button>
                 <rzhecharts id="tempCharts" rid="tempCharts" option="temp_option" height="320"></rzhecharts>
             </div>
             <!--温度图表信息 end-->
+
             <!--湿度图表信息-高度必填 begin-->
             <div class="col-lg-6 pr0 mb" ng-controller="humrityController">
+                <button type="button" title="打印" ng-click="printImgTwo()" class="btn btn-primary center-block mb">
+                    打印湿度
+                </button>
                 <rzhecharts id="humrityCharts" rid="humrityCharts" option="humrity_option" height="320"></rzhecharts>
             </div>
             <!--湿度图表信息 end-->
