@@ -234,16 +234,28 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         })
     }
 
+    $scope.ifTaiGan= function(){
+        if ($scope.vehicleno == $scope.outinEntry.vehicleno){
+            $.ajax({
+                //出库 摄像头 ip 192.168.1.202 admin admin
+                url: '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
+                method: 'GET'
+            })
+        }else{
+            rzhdialog(ngDialog, "车牌不一致", "error");
+        }
+    }
     //商城获取车牌照片;
     $scope.readLicensePlate = function () {
         $.ajax({
-            url: '/PlateServlet',
+            url: '/outPlat/PlateServlet?flag='+Math.random(),
             method: 'GET'
         }).success(function (response) { //提交成功
             if (response.success) {
                 $scope.vehicleno = response.info;
                 $("#cphm").val($scope.vehicleno);
-                $("#clzp").attr("src", "app/img/cur_cheliang.jpg");
+                $scope.ifTaiGan();
+                $("#clzp").attr("src", "app/img/cur_cheliang_out.jpg");
             }else{
                 $("#cphm").val("");
                 $("#clzp").attr("src", "app/img/cheliang.jpg");
@@ -286,6 +298,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).success(function (response) {
             if (response.success) {
                 $scope.outinEntry = response.data.outinEntry;
+                $scope.ifTaiGan();
                 $scope.qualitycutweight = response.data.qualitycutweight;
                 $scope.grossweight = response.data.weight;
                 $scope.upNetWeight();

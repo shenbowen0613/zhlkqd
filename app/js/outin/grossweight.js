@@ -86,17 +86,29 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     }
 
+    $scope.ifTaiGan= function(){
+        if ($scope.vehicleno == $scope.outinEntry.vehicleno){
+            $.ajax({
+                //入库 摄像头 ip 192.168.1.183 admin admin12345
+                url: '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                method: 'GET'
+            })
+        }else{
+            rzhdialog(ngDialog, "车牌不一致", "error");
+        }
+    }
 
     //商城获取车牌照片;
     $scope.readLicensePlate = function () {
         $.ajax({
-            url: '/PlateServlet',
+            url: '/PlateServlet?flag='+Math.random(),
             method: 'GET'
         }).success(function (response) { //提交成功
             if (response.success) {
                 $scope.vehicleno = response.info;
                 $("#cphm").val($scope.vehicleno);
-                $("#clzp").attr("src", "app/img/cur_cheliang.jpg");
+                //入库8018
+                $("#clzp").attr("src", "app/img/cur_cheliang_in.jpg");
             }else{
                 $("#cphm").val("");
                 $("#clzp").attr("src", "app/img/cheliang.jpg");
