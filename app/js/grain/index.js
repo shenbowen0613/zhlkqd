@@ -363,6 +363,7 @@ App.controller('grainController', ['$scope', '$http', 'ngDialog', '$rootScope', 
         LODOP.ADD_PRINT_IMAGE(10,10,1720,1230,imgSrc);
         LODOP.PRINT_DESIGN();
     }
+
     // $scope.gasInspection = function () {
     //     //重绘图表
     //     $scope.opt_title = "气体浓度";
