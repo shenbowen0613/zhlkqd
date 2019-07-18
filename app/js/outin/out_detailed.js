@@ -194,16 +194,20 @@ App.controller("viewOutinDetailController", function ($scope, $stateParams, $htt
     }).success(function (response) { //提交成功
         if (response.success) { //信息处理成功，进入用户中心页面
             $scope.outinEnty = response.data;
+            if($scope.outinEnty.outinQuality){
+                $scope.qianyangshijian = formatDate($scope.outinEnty.outinQuality.crtime);
+            }
+            if($scope.outinEnty.outinQualityResult){
+                $scope.zhijianshijian = formatDate($scope.outinEnty.outinQualityResult.crtime);
+            }
             $scope.yewuriqi = formatDate($scope.outinEnty.crtime);
             $scope.baogangshijian = formatDate($scope.outinEnty.crtime);
-            $scope.qianyangshijian = formatDate($scope.outinEnty.outinQuality.crtime);
-            $scope.zhijianshijian = formatDate($scope.outinEnty.outinQualityResult.crtime);
             $scope.chengzhongshijian = formatDate($scope.outinEnty.outinGross.grosstime);
             $scope.querenshijian = formatDate($scope.outinEnty.outinStore.crtime);
             $scope.pizhongshijian = formatDate($scope.outinEnty.outinTare.taretime);
             $scope.jiesuanshijian = formatDate($scope.outinEnty.outinSettlement.jstime);
             $scope.chumenshijian = formatDate($scope.outinEnty.outinPincard.outtime);
-            $scope.jiesuanjine = outinEnty.outinSettlement.jsmoney;
+            $scope.jiesuanjine = $scope.outinEnty.outinSettlement.jsmoney;
             $scope.jiesuanjine = $scope.jiesuanjine.toFixed(2);
             $scope.jiesuandanjia = $scope.outinEnty.outinSettlement.jsprice;
             $scope.jiesuandanjia = $scope.jiesuandanjia.toFixed(2);
