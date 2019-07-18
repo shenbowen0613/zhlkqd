@@ -253,8 +253,8 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).success(function (response) { //提交成功
             if (response.success) {
                 $scope.vehicleno = response.info;
-                $("#cphm").val($scope.vehicleno);
                 $scope.ifTaiGan();
+                $("#cphm").val($scope.vehicleno);
                 $("#clzp").attr("src", "app/img/cur_cheliang_out.jpg");
             }else{
                 $("#cphm").val("");
@@ -298,7 +298,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }).success(function (response) {
             if (response.success) {
                 $scope.outinEntry = response.data.outinEntry;
-                $scope.ifTaiGan();
                 $scope.qualitycutweight = response.data.qualitycutweight;
                 $scope.grossweight = response.data.weight;
                 $scope.upNetWeight();

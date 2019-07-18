@@ -106,6 +106,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         }).success(function (response) { //提交成功
             if (response.success) {
                 $scope.vehicleno = response.info;
+                $scope.ifTaiGan();
                 $("#cphm").val($scope.vehicleno);
                 //入库8018
                 $("#clzp").attr("src", "app/img/cur_cheliang_in.jpg");
