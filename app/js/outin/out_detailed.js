@@ -194,6 +194,7 @@ App.controller("viewOutinDetailController", function ($scope, $stateParams, $htt
     }).success(function (response) { //提交成功
         if (response.success) { //信息处理成功，进入用户中心页面
             $scope.outinEnty = response.data;
+            $scope.iotypename=$scope.outinEnty.iotypename;
             if($scope.outinEnty.outinQuality){
                 $scope.qianyangshijian = formatDate($scope.outinEnty.outinQuality.crtime);
             }
