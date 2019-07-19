@@ -25,7 +25,13 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         async: false
     }).success(function (response) {
         if (response.success) {
+            var optionHtmls="";
             $scope.varietynameList = response.data;
+            angular.forEach($scope.varietynameList, function (data) {
+                console.log(data);
+                optionHtmls += "<option value=\""+data.code+"\">"+data.label+"</option>";
+            });
+            $("#varietyname").append(optionHtmls);
         }
     });
 
@@ -47,6 +53,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
 
 
 
+
     angular.element(document).ready(function(){
         $("#prodplace").chosen({
             no_results_text: "没有找到结果！",//搜索无结果时显示的提示
@@ -60,6 +67,12 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         $('#prodplace').on('chosen:no_results', function(e, params) {
             $("#prodplace1").val($(".chosen-search-input").val());
             $(".chosen-single").find('span').text($(".chosen-search-input").val());
+        });
+        $("#varietyname").chosen({
+            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+            allow_single_deselect:true, //是否允许取消选择
+            max_selected_options:1  //当select为多选时，最多选择个数
         });
     });
 
@@ -158,6 +171,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
     }
     $scope.yearList = years;
 
+
     $scope.iotypename = "入库";
     //添加数据
     $scope.save = function () {
@@ -166,6 +180,11 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         $scope.outinEntry.iotypename = $scope.iotypename;
         if ($scope.outinVehicle == null) {
             $scope.outinVehicle = $("#cphm").val();
+        }
+        if ($scope.outinEntry.dtoperator == null) {
+            $scope.outinEntry.dtoperator = $scope.cardregDtoperatorList[0].code;
+        }else {
+            $scope.outinEntry.dtoperator =$scope.outinEntry.dtoperator;
         }
         $scope.outinEntry.customername = $("#nameInput").val();
         $scope.outinCarrier.carrier = $("#nameInput").val();

@@ -379,6 +379,17 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         $scope.zp2 = $("#zp2val").val();
         $scope.zp3 = $("#zp3val").val();
 
+        if ($scope.outinTare.tarelooker!=null || $scope.outinTare.tarelooker!=undefined) {
+            $scope.outinTare.tarelooker = $scope.outinTare.tarelooker;
+        }else {
+            $scope.outinTare.tarelooker =$scope.lookerList[0].code;
+        }
+        if ($scope.outinTare.dtoperator!=null || $scope.outinTare.dtoperator!=undefined) {
+            $scope.outinTare.dtoperator = $scope.outinTare.dtoperator;
+        }else {
+            $scope.outinTare.dtoperator =$scope.dtoperatorList[0].code;
+        }
+
         $scope.outinTare.clzp = $scope.clzp;
         $scope.outinTare.zp1 = $scope.zp1;
         $scope.outinTare.zp2 = $scope.zp2;

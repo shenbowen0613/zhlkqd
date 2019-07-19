@@ -100,7 +100,7 @@
                                         <label class="col-lg-2 control-label">计划单号</label>
                                         <div class="col-lg-4">
                                             <select ng-model="outinEntry.outinplanno" class="form-control">
-                                                <option value="无">无</option>
+                                                <option value="">无</option>
                                                 <option ng-repeat="item in planList" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
@@ -113,7 +113,7 @@
                                         <label class="col-lg-2 control-label">合同编号</label>
                                         <div class="col-lg-4">
                                             <select ng-model="outinEntry.outincontractno" id="outincontractno" class="form-control">
-                                                <option value="无">无</option>
+                                                <option value="">无</option>
                                                 <option ng-repeat="item in contractList" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
@@ -137,22 +137,21 @@
                                             <!--<input ng-model="outinEntry.prodplace" type="text" class="form-control">-->
                                             <input  type="text" style="display: none" id="prodplace1">
                                             <select  class="form-control" id="prodplace" ng-model="outinEntry.prodplace">
-
                                                 <!--<option ng-repeat="item in prodplaceList" value="{{item.prodplace}}">{{item.prodplace}}</option>-->
                                             </select>
                                         </div>
-
                                         <label class="col-lg-2 control-label">粮食品种</label>
                                         <div class="col-lg-4">
                                             <select  class="form-control" id="varietyname" ng-model="outinEntry.varietyname">
-                                                <option ng-repeat="item in varietynameList" value="{{item.code}}">{{item.label}}</option>
+<!--                                                <option  value="">请选择...</option>-->
+<!--                                                <option ng-repeat="item in varietynameList" value="{{item.code}}">{{item.label}}</option>-->
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">收获年份</label>
                                         <div class="col-lg-4">
-                                            <select ng-model="outinEntry.grainyear" class="form-control">
+                                            <select ng-model="outinEntry.grainyear" class="form-control" id="yearSel">
                                                 <option value="">请选择...</option>
                                                 <option ng-repeat="item in yearList" value="{{item.key}}">{{item.key}}年度</option>
                                             </select>
@@ -173,17 +172,17 @@
                                                 <option ng-repeat="item in houseList" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
-                                        <label class="col-lg-2 control-label">编号</label>
-                                        <div class="col-lg-4">
-                                            <input id="bianhao" type="text" class="form-control"/>
-                                        </div>
+<!--                                        <label class="col-lg-2 control-label">编号</label>-->
+<!--                                        <div class="col-lg-4">-->
+<!--                                            <input id="bianhao" type="text" class="form-control"/>-->
+<!--                                        </div>-->
                                     </div>
 
                                     <div class="form-group" >
                                         <label class="col-lg-2 control-label">登记人</label>
                                         <div class="col-lg-4">
                                             <select ng-model="outinEntry.dtoperator" id="dtoperator" class="form-control">
-                                                <option value="">无</option>
+                                                <option value="">{{cardregDtoperatorList[0].code}}</option>
                                                 <option ng-repeat="item in cardregDtoperatorList" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
@@ -193,8 +192,8 @@
                                         <div class="form-group">
                                             <button type="reset" class="btn btn-primary">重置</button>
                                             <button type="button" ng-click="save()" class="btn btn-primary">提交</button>
-                                            <button type="button" ng-click="print_preview()" class="btn btn-primary">打印</button>
-                                            <button type="button" ng-click="print_setup()" class="btn btn-primary">打印维护</button>
+<!--                                            <button type="button" ng-click="print_preview()" class="btn btn-primary">打印</button>-->
+<!--                                            <button type="button" ng-click="print_setup()" class="btn btn-primary">打印维护</button>-->
                                         </div>
                                     </div>
                                 </div>
@@ -238,15 +237,5 @@
             <!--</div>-->
         <!--</div>-->
     </div>
-<script type="text/javascript">
 
-//    $(function(){
-//        $("#prodplace").chosen({
-//            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
-//            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
-//            allow_single_deselect:true, //是否允许取消选择
-//            max_selected_options:1  //当select为多选时，最多选择个数
-//        });
-//    });
-</script>
 </form>

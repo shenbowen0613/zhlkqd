@@ -89,6 +89,11 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         $scope.outinSettlement.jsweight = $scope.jsweight;
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.outinSettlement.busno = $scope.busno;
+        if ($scope.outinSettlement.jsoperatorname!=null || $scope.outinSettlement.jsoperatorname!=undefined) {
+            $scope.outinSettlement.jsoperatorname = $scope.outinSettlement.jsoperatorname;
+        }else {
+            $scope.outinSettlement.jsoperatorname =$scope.jsoperatornameList[0].code;
+        }
         var pData = {
             outinSettlementStr: JSON.stringify($scope.outinSettlement)
         };

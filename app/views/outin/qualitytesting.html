@@ -253,15 +253,15 @@
                     <div class="form-horizontal ">
                         <div class="form-group " >
                             <label class="col-lg-1"></label>
-                            <label class="col-sm-1 control-label">化验结果：</label>
-                            <div class="col-sm-3">
-                                <label class="radio-inline c-radio">
-                                    <input type="radio" name="isPass" ng-model="isPass"   required value="合格"/>
-                                    <span class="fa fa-circle"></span>合格</label>
-                                <label class="radio-inline c-radio">
-                                    <input type="radio" name="isPass" ng-model="isPass" required value="不合格"/>
-                                    <span class="fa fa-circle"></span>不合格</label>
-                            </div>
+<!--                            <label class="col-sm-1 control-label">化验结果：</label>-->
+<!--                            <div class="col-sm-3">-->
+<!--                                <label class="radio-inline c-radio">-->
+<!--                                    <input type="radio" name="isPass" ng-model="isPass"   required value="合格"/>-->
+<!--                                    <span class="fa fa-circle"></span>合格</label>-->
+<!--                                <label class="radio-inline c-radio">-->
+<!--                                    <input type="radio" name="isPass" ng-model="isPass" required value="不合格"/>-->
+<!--                                    <span class="fa fa-circle"></span>不合格</label>-->
+<!--                            </div>-->
                             <label class="col-sm-1 control-label">扣量：</label>
                             <div class="col-sm-3">
                                 <div class="input-group">
@@ -283,7 +283,7 @@
                             <label class="col-sm-1 control-label">质检人：</label>
                             <div class="col-sm-3">
                                 <select id="zjoperator" name="zjoperator" ng-model="zjoperator" class="form-control">
-                                <option value="">无</option>
+                                <option value="">{{zjoperatorList[0].label}}</option>
                                 <option  ng-repeat="tree in zjoperatorList" value="{{tree.code}}">{{tree.label}}</option>
                             </select>
                             </div>
@@ -297,8 +297,8 @@
             <div class="form-group">
                 <button id="reset" type="reset" id="btnReset" class="btn btn-info">重 置</button>
                 <button type="button" ng-click="save()" class="btn btn-primary">提 交</button>
-                <button type="button" ng-click="print_preview()" class="btn btn-primary">打印</button>
-                <button type="button" ng-click="print_setup()" class="btn btn-primary">打印维护</button>
+<!--                <button type="button" ng-click="print_preview()" class="btn btn-primary">打印</button>-->
+<!--                <button type="button" ng-click="print_setup()" class="btn btn-primary">打印维护</button>-->
 
             </div>
         </div>

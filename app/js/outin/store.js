@@ -81,6 +81,17 @@ App.controller('storeController', ['$scope', '$http', "ngDialog", function ($sco
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.outinStore.busno=$scope.outinEntry.busno;
         $scope.outinEntry.cardno=$("#smart_card").val();
+        if ($scope.outinStore.looker!=null || $scope.outinStore.looker!=undefined) {
+            $scope.outinStore.looker = $scope.outinStore.looker;
+        }else {
+            $scope.outinStore.looker =$scope.storeLookerList[0].code;
+        }
+
+        if ($scope.outinStore.verifyoperatorname!=null || $scope.outinStore.verifyoperatorname!=undefined) {
+            $scope.outinStore.verifyoperatorname = $scope.outinStore.verifyoperatorname;
+        }else {
+            $scope.outinStore.verifyoperatorname =$scope.verifyoperatornameList[0].code;
+        }
         var pData = {
             outinStoreStr: JSON.stringify($scope.outinStore),
             outinEntryStr: JSON.stringify($scope.outinEntry)

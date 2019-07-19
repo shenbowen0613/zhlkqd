@@ -302,6 +302,16 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         $scope.zp1 = $("#zp1val").val();
         $scope.zp2 = $("#zp2val").val();
         $scope.zp3 = $("#zp3val").val();
+        if ($scope.outinGross.grosslooker!=null || $scope.outinGross.grosslooker!=undefined) {
+            $scope.outinGross.grosslooker = $scope.outinGross.grosslooker;
+        }else {
+            $scope.outinGross.grosslooker =$scope.lookerList[0].code;
+        }
+        if ($scope.outinGross.grossoperatorname!=null || $scope.outinGross.grossoperatorname!=undefined) {
+            $scope.outinGross.grossoperatorname = $scope.outinGross.grossoperatorname;
+        }else {
+            $scope.outinGross.grossoperatorname =$scope.dtoperatorList[0].code;
+        }
         $scope.outinGross.grossweight = $scope.grossweight;
         $scope.outinGross.clzp = $scope.clzp;
         $scope.outinGross.zp1 = $scope.zp1;

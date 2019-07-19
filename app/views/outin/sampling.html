@@ -64,7 +64,8 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">扦样人员:</label>
                         <div class="col-lg-5">
-                            <select name="qyoperator" ng-model="qyoperator" id="qyoperator"  class="form-control">
+                            <select ng-model="qyoperator" id="qyoperator"  class="form-control">
+                                <option value="">{{samplingList[0].code}}</option>
                                 <option ng-repeat="x in samplingList" value="{{x.code}}">{{x.label}}</option>
                                 <!--<option value="邱金光">邱金光</option>-->
                                 <!--<option value="扬平">扬平</option>-->

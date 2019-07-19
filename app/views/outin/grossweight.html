@@ -144,6 +144,7 @@
                                     <div class="col-lg-8">
                                         <!--<input type="text" ng-model="outinGross.grosslooker" class="form-control">-->
                                         <select ng-model="outinGross.grosslooker" class="form-control">
+                                            <option value="">{{lookerList[0].code}}</option>
                                             <option ng-repeat="x in lookerList" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
@@ -156,6 +157,7 @@
                                     <div class="col-lg-8">
                                         <!--<input type="text" ng-model="outinGross.grossoperatorname" class="form-control">-->
                                         <select ng-model="outinGross.grossoperatorname" class="form-control">
+                                            <option value="">{{dtoperatorList[0].code}}</option>
                                             <option ng-repeat="x in dtoperatorList" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
@@ -183,8 +185,8 @@
                                     <!--<input type="button" id="outgross"-->
                                     <!--class="btn btn-primary col-lg-2 col-lg-offset-1" value="请上磅">-->
 
-                                    <!--<input type="button" class="btn btn-primary col-lg-3 col-lg-offset-1" value="请司机下车">
--->
+                                    <!--<input type="button" class="btn btn-primary col-lg-3 col-lg-offset-1" value="请司机下车">-->
+
                                     <button class="btn btn-primary text-center " ng-click="xiabangtaigan()">下磅抬杆</button>
                                     <button class="btn btn-primary text-center " ng-click="save()">保存</button>
                                     <button class="btn btn-primary text-center " ng-click="print_preview()">打印</button>

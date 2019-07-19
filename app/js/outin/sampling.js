@@ -54,8 +54,13 @@ App.controller('samplingController', ['$scope', '$http', "ngDialog", function ($
         $scope.cardno=$("#smart_card").val();
         $scope.name=$("#name").val();
         $scope.typecode=$("#typecode").val();
-        $scope.qyoperator=$("#qyoperator").val();
+        // $scope.qyoperator=$("#qyoperator").val();
         $scope.memo=$("#memo").val();
+        if ($scope.qyoperator!=null || $scope.qyoperator!=undefined) {
+            $scope.qyoperator = $scope.qyoperator;
+        }else {
+            $scope.qyoperator =$scope.samplingList[0].code;
+        }
         var pData = {
             busno:$scope.outinEntry.busno,
             cardno:$scope.cardno,

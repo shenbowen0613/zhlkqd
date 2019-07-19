@@ -125,6 +125,7 @@
                         <label class="col-lg-2 control-label">结算人员:</label>
                         <div class="col-lg-3">
                             <select ng-model="outinSettlement.jsoperatorname" class="form-control">
+                                <option value="">{{jsoperatornameList[0].code}}</option>
                                 <option ng-repeat="x in jsoperatornameList" value="{{x.code}}">{{x.label}}</option>
                                 <!--<option value="邱金光">邱金光</option>-->
                                 <!--<option value="扬平">扬平</option>-->

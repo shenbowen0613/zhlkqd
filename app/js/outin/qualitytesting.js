@@ -90,6 +90,11 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
             }
         });
         $("#housename").val($scope.housename);
+        if ($scope.zjoperator!=null || $scope.zjoperator!=undefined) {
+            $scope.zjoperator = $scope.zjoperator;
+        }else {
+            $scope.zjoperator =$scope.zjoperatorList [0].code;
+        }
         var pData = {
             cardno: $scope.cardno,
             assayNames: $scope.assayNames,
@@ -177,7 +182,12 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
 
     //水分增扣量
     $scope.shuifenCheck = function () {
+        var shuifenValDeal = $("#shuifenVal").val();
         var shuifenVal = $("#shuifenVal").val() * 10;
+        console.log(shuifenValDeal,12544);
+        if(shuifenValDeal>14.5){
+            rzhdialog(ngDialog, "水分含量超过标准值", "error");
+        }
         var shuifenValcut = 0;
         var biaozhunshuifen = 135;
         var kouliang = shuifenVal - biaozhunshuifen;

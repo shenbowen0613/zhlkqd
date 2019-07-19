@@ -42,6 +42,7 @@
                 <label class="col-lg-3 control-label">监视员：</label>
                 <div class="col-lg-3">
                     <select ng-model="outinStore.looker"  class="form-control">
+                        <option value="">{{storeLookerList[0].code}}</option>
                         <option ng-repeat="x in storeLookerList" value="{{x.code}}">{{x.label}}</option>
                         <!--<option value="邱金光">邱金光</option>-->
                         <!--<option value="扬平">扬平</option>-->
@@ -51,6 +52,7 @@
                 <label class="col-lg-2 control-label">保管员：</label>
                 <div class="col-lg-4">
                     <select ng-model="outinStore.verifyoperatorname"  class="form-control">
+                        <option value="">{{verifyoperatornameList[0].code}}</option>
                         <option ng-repeat="x in verifyoperatornameList" value="{{x.code}}">{{x.label}}</option>
                         <!--<option value="邱金光">邱金光</option>-->
                         <!--<option value="扬平">扬平</option>-->
@@ -58,16 +60,16 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">包装物：</label>
-                <div class="col-lg-3">
-                    <input type="text" ng-model="outinStore.packages" required="" placeholder="包装物" value="散装" class="form-control">
-                </div>
-                <label class="col-lg-2 control-label">包装件数：</label>
-                <div class="col-lg-4">
-                    <input type="text" ng-model="outinStore.packagenum" data-parsley-type="integer" value="0"  required="" placeholder="包装件数" class="form-control">
-                </div>
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label class="col-lg-3 control-label">包装物：</label>-->
+<!--                <div class="col-lg-3">-->
+<!--                    <input type="text" ng-model="outinStore.packages" required="" placeholder="包装物" value="散装" class="form-control">-->
+<!--                </div>-->
+<!--                <label class="col-lg-2 control-label">包装件数：</label>-->
+<!--                <div class="col-lg-4">-->
+<!--                    <input type="text" ng-model="outinStore.packagenum" data-parsley-type="integer" value="0"  required="" placeholder="包装件数" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
             <!--<div class="form-group">-->
                 <!--<label class="col-lg-3 control-label">扣粮方式：</label>-->
                 <!--<div class="col-lg-3">-->

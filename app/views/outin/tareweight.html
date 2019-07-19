@@ -139,6 +139,7 @@
                                     <label class="col-lg-4 control-label">监磅员:</label>
                                     <div class="col-lg-8">
                                         <select ng-model="outinTare.tarelooker"  class="form-control">
+                                            <option value="">{{lookerList[0].code}}</option>
                                             <option ng-repeat="x in lookerList" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
@@ -150,6 +151,7 @@
                                     <label class="col-lg-4 control-label">称重员:</label>
                                     <div class="col-lg-8">
                                         <select ng-model="outinTare.dtoperator"  class="form-control">
+                                            <option value="">{{dtoperatorList[0].code}}</option>
                                             <option ng-repeat="x in dtoperatorList" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
@@ -178,8 +180,8 @@
                                 <div class="form-group">
 				 <button class="btn btn-primary text-center " ng-click="xiabangtaigan()">下磅抬杆</button>
 				<button class="btn btn-primary text-center" ng-click="save()">保存</button>
-                                    <button class="btn btn-primary text-center " ng-click="print_preview()">打印</button>
-                                    <button class="btn btn-primary text-center " ng-click="print_setup()">打印维护</button>
+<!--                                    <button class="btn btn-primary text-center " ng-click="print_preview()">打印</button>-->
+<!--                                    <button class="btn btn-primary text-center " ng-click="print_setup()">打印维护</button>-->
                                 </div>
                             </div>
                         </div>
