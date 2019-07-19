@@ -24,13 +24,19 @@
                                        class="form-control"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label">仓房：</label>
-                            <div class="col-lg-8">
-                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'
-                                       class="form-control"/>
-                            </div>
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-lg-4 control-label">仓房：</label>-->
+<!--                            <div class="col-lg-8">-->
+<!--&lt;!&ndash;                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'&ndash;&gt;-->
+<!--&lt;!&ndash;                                       class="form-control"/>&ndash;&gt;-->
+
+<!--                                <select id="housecode" name="housecode" ng-model="housecode" class="form-control">-->
+<!--                                            <option value="">请选择</option>-->
+<!--                                            <option  ng-repeat="tree in treeInfos" value="{{tree.code}}">{{tree.label}}</option>-->
+<!--                                </select>-->
+<!--                                <input name="housename" id="housename" style="display: none"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="form-group">
                             <label class="col-lg-4 control-label">供应商：</label>
@@ -113,6 +119,20 @@
                             <hr/>
                             <div id="outinDiv" style="display: none;">
                                 <div class="form-group">
+                                    <label class="col-lg-4 control-label">仓房：</label>
+                                    <div class="col-lg-8">
+                                        <!--                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'-->
+                                        <!--                                       class="form-control"/>-->
+
+                                        <select id="housecode" name="housecode" ng-model="housecode" class="form-control">
+                                            <option value="">请选择</option>
+                                            <option  ng-repeat="tree in treeInfos" value="{{tree.code}}">{{tree.label}}</option>
+                                        </select>
+                                        <input name="housename" id="housename" style="display: none"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="col-lg-4 control-label">电子磅：</label>
                                     <div class="col-lg-8">
                                         <select name="scale" id="scale" class="form-control">
@@ -142,10 +162,8 @@
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">监磅员：</label>
                                     <div class="col-lg-8">
-                                        <!--<input type="text" ng-model="outinGross.grosslooker" class="form-control">-->
-                                        <select ng-model="outinGross.grosslooker" class="form-control">
-                                            <option value="">{{lookerList[0].code}}</option>
-                                            <option ng-repeat="x in lookerList" value="{{x.code}}">{{x.label}}</option>
+                                        <select id="grosslooker" class="form-control">
+                                            <option ng-repeat="x in lookerList" ng-selected="$index==0" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
                                             <!--<option value="刘全义">刘全义</option>-->
@@ -156,9 +174,8 @@
                                     <label class="col-lg-4 control-label">称重员：</label>
                                     <div class="col-lg-8">
                                         <!--<input type="text" ng-model="outinGross.grossoperatorname" class="form-control">-->
-                                        <select ng-model="outinGross.grossoperatorname" class="form-control">
-                                            <option value="">{{dtoperatorList[0].code}}</option>
-                                            <option ng-repeat="x in dtoperatorList" value="{{x.code}}">{{x.label}}</option>
+                                        <select id="grossoperatorname" class="form-control">
+                                            <option ng-repeat="x in dtoperatorList" ng-selected="$index==0" value="{{x.code}}">{{x.label}}</option>
                                             <!--<option value="邱金光">邱金光</option>-->
                                             <!--<option value="扬平">扬平</option>-->
                                             <!--<option value="刘全义">刘全义</option>-->

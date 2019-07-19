@@ -7,7 +7,6 @@
  */
 App.controller('grossweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
     $scope.grossweight =0;
-
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
         method: 'POST',
@@ -15,9 +14,20 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     }).success(function (response) {
         if (response.success) {
             $scope.lookerList = response.data;
+            // $scope.outinGross.grosslooker = $scope.lookerList[0].code;
         }
     });
 
+    //获取仓房列表
+    $.ajax({ //查询按钮权限
+        url: GserverURL + "/la/house/tree?isrs=1",
+        method: 'POST',
+        async: false
+    }).success(function (response) {
+        if (response.success) {
+            $scope.treeInfos = response.data;
+        }
+    });
 
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=dtoperator_list",
@@ -26,6 +36,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     }).success(function (response) {
         if (response.success) {
             $scope.dtoperatorList = response.data;
+            // $scope.outinGross.grossoperatorname = $scope.dtoperatorList[0].code;
         }
     });
 
@@ -302,26 +313,30 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         $scope.zp1 = $("#zp1val").val();
         $scope.zp2 = $("#zp2val").val();
         $scope.zp3 = $("#zp3val").val();
-        if ($scope.outinGross.grosslooker!=null || $scope.outinGross.grosslooker!=undefined) {
-            $scope.outinGross.grosslooker = $scope.outinGross.grosslooker;
-        }else {
-            $scope.outinGross.grosslooker =$scope.lookerList[0].code;
-        }
-        if ($scope.outinGross.grossoperatorname!=null || $scope.outinGross.grossoperatorname!=undefined) {
-            $scope.outinGross.grossoperatorname = $scope.outinGross.grossoperatorname;
-        }else {
-            $scope.outinGross.grossoperatorname =$scope.dtoperatorList[0].code;
-        }
-        $scope.outinGross.grossweight = $scope.grossweight;
-        $scope.outinGross.clzp = $scope.clzp;
-        $scope.outinGross.zp1 = $scope.zp1;
-        $scope.outinGross.zp2 = $scope.zp2;
-        $scope.outinGross.zp3 = $scope.zp3;
+        $scope.grosslooker = $("#grosslooker").val();
+        $scope.grossoperatorname = $("#grossoperatorname").val();
+
+        var outinGross ={
+            grossweight:$scope.grossweight,
+            grosslooker:$scope.grosslooker,
+            grossoperatorname:$scope.grossoperatorname,
+            clzp:$scope.clzp,
+            zp1:$scope.zp1,
+            zp2:$scope.zp2,
+            zp3:$scope.zp3
+        };
+        angular.forEach($scope.treeInfos, function (item) {
+            if ($scope.housecode == item.code) {
+                $scope.housename = item.label;
+            }
+        });
         var pData = {
             cardno: $scope.cardno,
+            housecode:$scope.housecode,
+            housename:$scope.housename,
             iotypename: $scope.iotypename,
-            outinGrossStr: JSON.stringify($scope.outinGross)
-            , vehicleno: $scope.vehicleno,
+            outinGrossStr: JSON.stringify(outinGross),
+            vehicleno: $scope.vehicleno,
             netweight: $scope.netweight
         };
         $.ajax({
