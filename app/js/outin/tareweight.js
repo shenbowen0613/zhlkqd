@@ -289,9 +289,53 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     $scope.xiabangtaigan = function () {
         $scope.doding = true;
         if ($scope.iotypename == "入库") {
-            $scope.url = '/lpr/xxklpr?cameraId=113';
+            $.ajax({
+                //入库 摄像头 ip 192.168.1.183 admin admin12345
+                url: '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                method: 'GET'
+            }).success(function (){
+                var timer=false
+                var i=0;
+                var j=3;//延迟几秒
+                if(timer){
+                    clearInterval(timer);
+                }
+                timer=setInterval(function(){
+                    ++i;
+                    if(i==j){
+                        $.ajax({
+                            //出库 摄像头 ip 192.168.1.202 admin admin
+                            url: '/gb/closeGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                            method: 'GET'
+                        })
+                        clearInterval(timer);
+                    }
+                },1000);
+            });
         } else if ($scope.iotypename == "出库") {
-            $scope.url = '/lpr/xxklpr?cameraId=114';
+            $.ajax({
+                //出库 摄像头 ip 192.168.1.202 admin admin
+                url: '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
+                method: 'GET'
+            }).success(function (){
+                var timer=false
+                var i=0;
+                var j=3;//延迟几秒
+                if(timer){
+                    clearInterval(timer);
+                }
+                timer=setInterval(function(){
+                    ++i;
+                    if(i==j){
+                        $.ajax({
+                            //出库 摄像头 ip 192.168.1.202 admin admin
+                            url: '/gb/closeGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
+                            method: 'GET'
+                        })
+                        clearInterval(timer);
+                    }
+                },1000);
+            });
         } else {
             $scope.doding = false;
             rzhdialog(ngDialog, "请选择出入库类型", "error");
