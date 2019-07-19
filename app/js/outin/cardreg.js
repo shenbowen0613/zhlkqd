@@ -27,11 +27,11 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         if (response.success) {
             var optionHtmls="";
             $scope.varietynameList = response.data;
-            angular.forEach($scope.varietynameList, function (data) {
-                console.log(data);
-                optionHtmls += "<option value=\""+data.code+"\">"+data.label+"</option>";
-            });
-            $("#varietyname").append(optionHtmls);
+            // angular.forEach($scope.varietynameList, function (data) {
+            //     console.log(data);
+            //     optionHtmls += "<option value=\""+data.code+"\">"+data.label+"</option>";
+            // });
+            // $("#varietyname").append(optionHtmls);
         }
     });
 
@@ -68,12 +68,12 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
             $("#prodplace1").val($(".chosen-search-input").val());
             $(".chosen-single").find('span').text($(".chosen-search-input").val());
         });
-        $("#varietyname").chosen({
-            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
-            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
-            allow_single_deselect:true, //是否允许取消选择
-            max_selected_options:1  //当select为多选时，最多选择个数
-        });
+        // $("#varietyname").chosen({
+        //     no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+        //     search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+        //     allow_single_deselect:true, //是否允许取消选择
+        //     max_selected_options:1  //当select为多选时，最多选择个数
+        // });
     });
 
 
