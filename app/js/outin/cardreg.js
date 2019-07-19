@@ -50,7 +50,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         }
     });
 
-
+    $("#prodplace").val("");
 
 
 
