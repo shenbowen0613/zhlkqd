@@ -92,7 +92,25 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
                 //入库 摄像头 ip 192.168.1.183 admin admin12345
                 url: '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
                 method: 'GET'
-            })
+            }).success(function (){
+                var timer=false
+                var i=0;
+                var j=3;//延迟几秒
+                if(timer){
+                    clearInterval(timer);
+                }
+                timer=setInterval(function(){
+                    ++i;
+                    if(i==j){
+                        $.ajax({
+                            //出库 摄像头 ip 192.168.1.202 admin admin
+                            url: '/gb/closeGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                            method: 'GET'
+                        })
+                        clearInterval(timer);
+                    }
+                },1000);
+            });
         }else{
             rzhdialog(ngDialog, "车牌不一致", "error");
         }
