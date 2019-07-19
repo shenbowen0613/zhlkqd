@@ -18,6 +18,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
     });
 
 
+
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=varietyname_list",
         method: 'POST',
@@ -27,6 +28,41 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
             $scope.varietynameList = response.data;
         }
     });
+
+    $.ajax({
+        url: GserverURL+"/outin/prodPlaceList",
+        method: 'POST',
+        async: false
+    }).success(function (response) {
+        if (response.success) {
+            var optionHtmls="";
+            $scope.prodplaceList = response.data;
+            angular.forEach($scope.prodplaceList, function (data) {
+                optionHtmls += "<option value=\""+data.prodplace+"\">"+data.prodplace+"</option>";
+            });
+            $("#prodplace").append(optionHtmls);
+        }
+    });
+
+
+
+
+    angular.element(document).ready(function(){
+        $("#prodplace").chosen({
+            no_results_text: "没有找到结果！",//搜索无结果时显示的提示
+            search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
+            allow_single_deselect:true, //是否允许取消选择
+            max_selected_options:1  //当select为多选时，最多选择个数
+        })
+        $('#prodplace').on('change', function(e, params) {
+            $("#prodplace1").val(params.selected);
+        });
+        $('#prodplace').on('chosen:no_results', function(e, params) {
+            $("#prodplace1").val($(".chosen-search-input").val());
+            $(".chosen-single").find('span').text($(".chosen-search-input").val());
+        });
+    });
+
 
     //采购合同列表
     $.ajax({
@@ -139,7 +175,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         $scope.outinCarrier.identityimage = $("#identityimage").val();
         $scope.outinCarrier.bankname = $("#bankname").val();
         $scope.outinCarrier.bankcard = $("#bankcard").val();
-
+        $scope.outinEntry.prodplace = $("#prodplace1").val();
 
         angular.forEach($scope.houseList, function (item) {
             if ($scope.outinEntry.housecode === item.code) {
@@ -265,5 +301,6 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
 
 
 }]);
+
 
 

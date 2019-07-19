@@ -1337,7 +1337,7 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
                 url: '/cardregistration',
                 title: '领卡登记',
                 templateUrl: helper.basepath('outin/cardregistration.html'),
-                resolve: helper.resolveFor('datatables', "ngDialog", 'CardregJs', 'ngWig')
+                resolve: helper.resolveFor('datatables', "ngDialog", 'CardregJs', 'ngWig','chosenJquery','chosenMin')
             })
 
             .state('outin.sampling', {
@@ -2036,6 +2036,8 @@ App.constant('APP_COLORS', {
             {name: 'bussinfoJs', files: ['app/js/buss/bussinfo.js']},
             {name: 'clodopFuncsJs', files: ['app/js/print/CLodopfuncs.js']},
             {name: 'lodopFuncsJs', files: ['app/js/print/LodopFuncs.js']},
+            {name: 'chosenJquery', files: ['app/js/chosen/chosen.jquery.js']},
+            {name: 'chosenMin', files: ['app/js/chosen/chosen.min.js']},
             {name: 'qainspectionJs', files: ['app/js/buss/qainspection.js']},
             {name: 'samplingJs', files: ['app/js/buss/sampling.js']},
 
