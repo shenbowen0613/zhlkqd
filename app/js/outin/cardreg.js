@@ -68,6 +68,10 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
             $("#prodplace1").val($(".chosen-search-input").val());
             $(".chosen-single").find('span').text($(".chosen-search-input").val());
         });
+        $(".chosen-search-input").change(function(){
+            $("#prodplace1").val($(".chosen-search-input").val());
+            $(".chosen-single").find('span').text($(".chosen-search-input").val());
+        });
         // $("#varietyname").chosen({
         //     no_results_text: "没有找到结果！",//搜索无结果时显示的提示
         //     search_contains:true,   //关键字模糊搜索，设置为false，则只从开头开始匹配
