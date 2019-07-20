@@ -24,13 +24,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-lg-4 control-label">仓房:</label>
-                            <div class="col-lg-8">
-                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'
-                                       class="form-control"/>
-                            </div>
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-lg-4 control-label">仓房:</label>-->
+<!--                            <div class="col-lg-8">-->
+<!--                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'-->
+<!--                                       class="form-control"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <div class="form-group">
                             <label class="col-lg-4 control-label">供应商:</label>
@@ -110,6 +110,21 @@
                             </div>
                             <hr/>
                             <div id="outinDiv" style="display: none;">
+
+                                <div class="form-group"  ng-if="val=='chuku'">
+                                    <label class="col-lg-4 control-label">仓房：</label>
+                                    <div class="col-lg-8">
+                                        <!--                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'-->
+                                        <!--                                       class="form-control"/>-->
+
+                                        <select id="housecode" name="housecode" ng-model="housecode" class="form-control">
+                                            <option value="">请选择</option>
+                                            <option  ng-repeat="tree in treeInfos" value="{{tree.code}}">{{tree.label}}</option>
+                                        </select>
+                                        <input name="housename" id="housename" style="display: none"/>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label">电子磅:</label>
                                     <div class="col-lg-8">

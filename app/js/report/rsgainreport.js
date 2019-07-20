@@ -124,6 +124,11 @@ App.controller('rsgainreportTypeController', ['$scope', "$http", function ($scop
         }
         global_type_code = $scope.output;
         var table = $('#'+$scope.gridtableid).DataTable();
+        if (global_type_code == 'xiaoshoutaizhang') {
+            $("div[name='xiaoshoutaizhangNo']").hide();
+        }else{
+            $("div[name='xiaoshoutaizhangNo']").show();
+        }
         table.draw();
         ckClickTr($scope.gridtableid); //单击行，选中复选框
     };

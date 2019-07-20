@@ -18,6 +18,16 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         }
     });
 
+    //获取仓房列表
+    $.ajax({ //查询按钮权限
+        url: GserverURL + "/la/house/tree?isrs=1",
+        method: 'POST',
+        async: false
+    }).success(function (response) {
+        if (response.success) {
+            $scope.treeInfos = response.data;
+        }
+    });
 
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=dtoperator_list",
@@ -380,6 +390,12 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         $scope.zp2 = $("#zp2val").val();
         $scope.zp3 = $("#zp3val").val();
 
+        angular.forEach($scope.treeInfos, function (item) {
+            if ($scope.housecode == item.code) {
+                $scope.housename = item.label;
+            }
+        });
+
         if ($scope.outinTare.tarelooker!=null || $scope.outinTare.tarelooker!=undefined) {
             $scope.outinTare.tarelooker = $scope.outinTare.tarelooker;
         }else {
@@ -397,6 +413,8 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
         $scope.outinTare.zp3 = $scope.zp3;
 
         var pData = {
+            housecode:$scope.housecode,
+            housename:$scope.housename,
             outinEntryStr: JSON.stringify($scope.outinEntry),
             outinTareStr: JSON.stringify($scope.outinTare)
         };

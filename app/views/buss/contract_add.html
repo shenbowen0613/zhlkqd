@@ -66,13 +66,17 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-2 control-label">摘要<font color="red">*</font></label>
-                <div class="col-lg-10">
+                <label class="col-lg-2 control-label">买方单位<font color="red">*</font></label>
+                <div class="col-lg-4">
                     <input type="text" name="summary"  ng-model="contract.summary" class="form-control" required ng-maxlength="200" />
                     <span ng-show="form.summary.$dirty && form.summary.$invalid" class="text-danger">不可为空，且最多输入200个字符</span>
                 </div>
+                <label class="col-lg-2 control-label">签名数量<font color="red">*</font></label>
+                <div class="col-lg-4">
+                    <input type="number" name="memo"  ng-model="contract.memo" class="form-control" required />
+                    <span ng-show="form.memo.$dirty && form.memo.$invalid" class="text-danger">不可为空</span>
+                </div>
             </div>
-
 
             <div class="form-group">
                 <label class="col-lg-2 control-label">签订时间</label>

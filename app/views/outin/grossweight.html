@@ -24,19 +24,13 @@
                                        class="form-control"/>
                             </div>
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <label class="col-lg-4 control-label">仓房：</label>-->
-<!--                            <div class="col-lg-8">-->
-<!--&lt;!&ndash;                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'&ndash;&gt;-->
-<!--&lt;!&ndash;                                       class="form-control"/>&ndash;&gt;-->
-
-<!--                                <select id="housecode" name="housecode" ng-model="housecode" class="form-control">-->
-<!--                                            <option value="">请选择</option>-->
-<!--                                            <option  ng-repeat="tree in treeInfos" value="{{tree.code}}">{{tree.label}}</option>-->
-<!--                                </select>-->
-<!--                                <input name="housename" id="housename" style="display: none"/>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <div class="form-group" ng-if="val=='chuku'">
+                            <label class="col-lg-4 control-label">仓房：</label>
+                            <div class="col-lg-8">
+                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'
+                                       class="form-control"/>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-lg-4 control-label">供应商：</label>
@@ -118,7 +112,7 @@
                             </div>
                             <hr/>
                             <div id="outinDiv" style="display: none;">
-                                <div class="form-group">
+                                <div class="form-group"  ng-if="val=='ruku'">
                                     <label class="col-lg-4 control-label">仓房：</label>
                                     <div class="col-lg-8">
                                         <!--                                <input name="housename" readonly="readonly" value='{{outinEntry.housename}}'-->

@@ -51,7 +51,7 @@
     <div class="table-grid table-grid-desktop">
         <!--类型树-->
         <div class="col col-md pr"  ng-controller="rsgainreportTypeController" id="rsgainreportTypePanel"
-             ng-include="'app/views/base/tree.html'" ng-show="{{rsgainreport_treeshow}}"></div>
+             ng-include="'app/views/base/tree.html'" ng-show="rsgainreport_treeshow"></div>
         <!--操作区域-->
         <!--<div ui-view="" class="mr ng-scope"></div>-->
         <!-- 列表信息-->
@@ -94,7 +94,7 @@
                     <!--</div>-->
                     <!--</div>-->
                     <!--</div>-->
-                    <div class="form-group">
+                    <div name="xiaoshoutaizhangNo" class="form-group">
                         <label class="col-lg-2 control-label">仓房名称</label>
                         <div class="col-lg-4">
                             <select name="housecode" ng-model="housecode" id="housecode" class="form-control">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-show="{{reporttime_show}}">
+                    <div name="xiaoshoutaizhangNo" class="form-group" ng-show="reporttime_show">
                         <label class="col-lg-2 control-label">统计时间<font color="red">*</font></label>
                         <div class="col-lg-4">
                             <p class="input-group">
@@ -117,7 +117,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-group" ng-show="{{starttime_show}}">
+                    <div name="xiaoshoutaizhangNo" class="form-group" ng-show="starttime_show">
                         <label class="col-lg-2 control-label">开始时间</label>
                         <div class="col-lg-4">
                             <p class="input-group">
@@ -130,7 +130,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-group" ng-show="{{endtime_show}}">
+                    <div name="xiaoshoutaizhangNo" class="form-group" ng-show="endtime_show">
                         <label class="col-lg-2 control-label">结束时间</label>
                         <div class="col-lg-4">
                             <p class="input-group">
