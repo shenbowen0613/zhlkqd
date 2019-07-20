@@ -1327,11 +1327,17 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
             })
             .state('outin.index', {
                 url: '/index',
-                title: '智能出入库首页',
+                title: '智能入库',
                 templateUrl: helper.basepath('outin/index.html'),
                 resolve: helper.resolveFor('datatables', "ngDialog", 'OutinJs', 'ngWig','clodopFuncsJs','lodopFuncsJs')
                 // OutinJs  的引用在 下面  1717 行
                 // datatables 用来布局表格列表显示
+            })
+            .state('outin.stockout', {
+                url: '/stockout',
+                title: '智能出库',
+                templateUrl: helper.basepath('outin/stockout.html'),
+                resolve: helper.resolveFor('datatables', "ngDialog", 'OutinJs', 'ngWig','clodopFuncsJs','lodopFuncsJs')
             })
             .state('outin.cardregistration', {
                 url: '/cardregistration',
@@ -2334,6 +2340,7 @@ App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
         };
 
         $scope.toggleCollapse = function ($index, isParentItem, modId, sonSize) { //modId为立坤扩展属性
+            console.log(11);
             // 侧边框崩溃时，禁止切换
             if (Utils.isSidebarCollapsed() || $rootScope.app.layout.asideHover) return true;
             // make sure the item index exists

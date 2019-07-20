@@ -98,11 +98,11 @@
                             <div class="form-group">
                                 <label class="col-lg-4 control-label">业务类型</label>
                                 <div class="col-lg-8">
-                                    <label class="radio-inline c-radio">
+                                    <label class="radio-inline c-radio" ng-if="val=='ruku'">
                                         <input type="radio" ng-model="iotypename" name="iotypename" checked value="入库"
                                                ng-click="showDiv('inDiv')"/>
                                         <span class="fa fa-circle"></span>入库</label>
-                                    <label class="radio-inline c-radio">
+                                    <label class="radio-inline c-radio"  ng-if="val=='chuku'">
                                         <input type="radio" ng-model="iotypename" name="iotypename" value="出库"
                                                ng-click="showDiv('outDiv')"/>
                                         <span class="fa fa-circle"></span>出库</label>

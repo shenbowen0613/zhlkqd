@@ -396,10 +396,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         var detailMap = eval("(" + $scope.outinAll.outinTare.memo + ")");
         var lldetail = eval("(" + $scope.outinAll.outinQualityResult.memo + ")");
         var lvDetail=lldetail.qualitys;
-        console.log("---lldetail----"+JSON.stringify(lldetail));
-        console.log("---lvDetail----"+JSON.stringify(lvDetail));
         LODOP = getLodop();
-
 
         LODOP.PRINT_INITA(10,9,800,600,"结算打印");
         LODOP.ADD_PRINT_RECT("20.37mm","5.29mm","200mm","120.99mm",0,1);

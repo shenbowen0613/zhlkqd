@@ -6,7 +6,7 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-
+    $scope.val=localStorage.getItem('mod')
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=cardreg_dtoperator_list",
         method: 'POST',

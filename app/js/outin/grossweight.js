@@ -6,6 +6,7 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('grossweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
+    $scope.val=localStorage.getItem('mod');
     $scope.grossweight =0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
@@ -152,6 +153,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
     //下磅抬杆;
     $scope.xiabangtaigan = function () {
         $scope.doding = true;
+        $scope.iotypename=$("input:radio[name='iotypename']:checked").val();
         if ($scope.iotypename == "入库") {
             $.ajax({
                 //出库 摄像头 ip 192.168.1.202 admin admin
@@ -214,12 +216,10 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
 
     $scope.xiaopingshow =function(data){
         //TODO 删除
-        console.log("---data---"+data);
-        // alert("---data---"+data);
         if(data==0){
             data=10 + parseInt(Math.random()*10);
         }
-         console.log("----小屏显示的数据--------"+data);
+         // console.log("----小屏显示的数据--------"+data);
         // alert("----小屏显示的数据--------"+data);
         //投小屏
         $.ajax({
@@ -227,9 +227,9 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
             async: false,
             method: 'GET'
         }).success(function(response){
-            console.log("成功:"+response);
+            // console.log("成功:"+response);
         }).error(function (response) { //提交失败
-            console.log("失败:"+response);
+            // console.log("失败:"+response);
         });
     }
 

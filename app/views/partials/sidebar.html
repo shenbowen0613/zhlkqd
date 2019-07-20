@@ -39,7 +39,8 @@
          </li>
          <!-- 管理员信息 end-->
          <!-- 遍历所有的导航栏-->
-         &nbsp;<li ng-class="getMenuItemPropClasses(item)" ng-repeat="item in menuItems" ng-init="pIndex = $index" ng-include="'sidebar-renderer.html'" ng-click="toggleCollapse(pIndex,true,item.code,item.submenu.length)">
+         &nbsp;<li ng-class="getMenuItemPropClasses(item)" ng-repeat="item in menuItems" ng-init="pIndex = $index"
+                   ng-include="'sidebar-renderer.html'" ng-click="toggleCollapse(pIndex,true,item.code,item.submenu.length)">
       </li>
       </ul>
    </nav>

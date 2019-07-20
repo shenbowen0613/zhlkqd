@@ -5,9 +5,7 @@
  *      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
  *      本代码仅用于智慧粮库项目.
  */
-App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-
-
+App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",function ($scope, $http, ngDialog) {
 
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=zjoperator_list",
@@ -184,7 +182,6 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
     $scope.shuifenCheck = function () {
         var shuifenValDeal = $("#shuifenVal").val();
         var shuifenVal = $("#shuifenVal").val() * 10;
-        console.log(shuifenValDeal,12544);
         if(shuifenValDeal>14.5){
             rzhdialog(ngDialog, "水分含量超过标准值", "error");
         }
@@ -236,6 +233,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
     //整精米率检测
     $scope.zhengjingmilvCheck = function () {
         var zhengjingmilvVal = $("#zhengjingmilvVal").val();
+        this.zhengjingmilvPk();
         var zhengjingmilvValCut = 0;
         var biaozhengjingmilvVal = 50;
         var kouliang = zhengjingmilvVal - biaozhengjingmilvVal;
@@ -247,6 +245,31 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
         }
         $("#zhengjingmilvValRemove").val(zhengjingmilvValCut);
         this.calcRemoveFood();
+    }
+
+
+    $scope.zhengjingmilvPk = function () {
+        var zhengjingmilvVal = $("#zhengjingmilvVal").val();
+        var chucaolvVal = $("#chucaolvVal").val()
+        if (zhengjingmilvVal>=50){
+            if(chucaolvVal>=79){
+               $scope.level='一等';
+            }else{
+                rzhdialog(ngDialog, "不合格", "error");
+            }
+        }else if (zhengjingmilvVal>=47 && zhengjingmilvVal<50){
+            if(chucaolvVal>=77){
+                $scope.level='二等';
+            }else{
+                rzhdialog(ngDialog, "不合格", "error");
+            }
+        }else if (zhengjingmilvVal>=44 && zhengjingmilvVal<47){
+            if(chucaolvVal>=75){
+                $scope.level='三等';
+            }else{
+                rzhdialog(ngDialog, "不合格", "error");
+            }
+        }
     }
 
     //黄粒米

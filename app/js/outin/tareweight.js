@@ -6,7 +6,7 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('tareweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-
+    $scope.val=localStorage.getItem('mod')
     $scope.tareWeight=0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
@@ -288,6 +288,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     //下磅抬杆;
     $scope.xiabangtaigan = function () {
         $scope.doding = true;
+        $scope.iotypename=$("input:radio[name='iotypename']:checked").val();
         if ($scope.iotypename == "入库") {
             $.ajax({
                 //入库 摄像头 ip 192.168.1.183 admin admin12345
