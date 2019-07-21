@@ -6,7 +6,22 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('tareweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-    $scope.val=localStorage.getItem('mod')
+    $scope.val=localStorage.getItem('mod');
+    if($scope.val=="chuku"){
+        $scope.iotypename="出库";
+        $("#outinDiv").hide();
+        $("#inDiv").hide();
+        $("#outDiv").hide();
+        $("#outinDiv").show();
+        $("#" + 'outDiv').show();
+    }else if($scope.val=="ruku"){
+        $scope.iotypename="入库";
+        $("#outinDiv").hide();
+        $("#inDiv").hide();
+        $("#outDiv").hide();
+        $("#outinDiv").show();
+        $("#" + 'inDiv').show();
+    }
     $scope.tareWeight=0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
@@ -381,6 +396,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
     //添加数据
     $scope.save = function () {
+        console.log("cehshi");
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.cardno = $("#smart_card").val();
         $scope.outinEntry.cardno = $scope.cardno;
@@ -395,7 +411,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                 $scope.housename = item.label;
             }
         });
-
         if ($scope.outinTare.tarelooker!=null || $scope.outinTare.tarelooker!=undefined) {
             $scope.outinTare.tarelooker = $scope.outinTare.tarelooker;
         }else {

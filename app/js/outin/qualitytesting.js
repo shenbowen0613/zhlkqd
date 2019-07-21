@@ -269,7 +269,20 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
             }else{
                 rzhdialog(ngDialog, "不合格", "error");
             }
+        }  else if (zhengjingmilvVal>=41 && zhengjingmilvVal<44){
+            if(chucaolvVal>=73){
+                $scope.level='四等';
+            }else{
+                rzhdialog(ngDialog, "不合格", "error");
+            }
+        }else if (zhengjingmilvVal>=38&& zhengjingmilvVal<41){
+            if(chucaolvVal>=71){
+                $scope.level='五等';
+            }else{
+                rzhdialog(ngDialog, "不合格", "error");
+            }
         }
+
     }
 
     //黄粒米

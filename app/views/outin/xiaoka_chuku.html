@@ -18,8 +18,9 @@
                 <label class="col-lg-1 control-label">销卡人：</label>
                 <div class="col-lg-2">
                     <select id="dtoperator" name="dtoperator" class="form-control">
-                        <option value="">无</option>
-                        <option ng-repeat="tree in xiaokaerList" value="{{tree.code}}">{{tree.label}}</option>
+<!--                        <option value="">{{xiaokaerList[0].label}}</option>-->
+<!--                        <option value="">无</option>-->
+                        <option ng-repeat="tree in xiaokaerList" ng-selected="$index==0" value="{{tree.code}}">{{tree.label}}</option>
                     </select>
                 </div>
                 <div class="col-lg-1">

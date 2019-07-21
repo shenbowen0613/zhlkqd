@@ -6,7 +6,12 @@
  *      本代码仅用于智慧粮库项目.
  */
 App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
-    $scope.val=localStorage.getItem('mod')
+    $scope.val=localStorage.getItem('mod');
+    if($scope.val=="chuku"){
+        $scope.iotypename="出库";
+    }else if($scope.val=="ruku"){
+        $scope.iotypename="入库"
+    }
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=cardreg_dtoperator_list",
         method: 'POST',
@@ -43,6 +48,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         if (response.success) {
             var optionHtmls="";
             $scope.prodplaceList = response.data;
+            console.log($scope.prodplaceList);
             angular.forEach($scope.prodplaceList, function (data) {
                 optionHtmls += "<option value=\""+data.prodplace+"\">"+data.prodplace+"</option>";
             });
@@ -176,7 +182,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
     $scope.yearList = years;
 
 
-    $scope.iotypename = "入库";
+    // $scope.iotypename = "入库";
     //添加数据
     $scope.save = function () {
         $scope.outinEntry.cardno = $("#smart_card").val();

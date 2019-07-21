@@ -107,10 +107,10 @@ App.controller('inDetailedGridController', ['$scope', "$http", "ngDialog", funct
                     return data == null ? "" : data.gradename;
                 }},
             {sTitle: "收获年份", mDataProp: "grainyear"},
-            {sTitle: "检验结果", mDataProp: "outinQualityResult",
-                render: function (data) {
-                    return data == null ? "" : data.advise;
-                }},
+            // {sTitle: "检验结果", mDataProp: "outinQualityResult",
+            //     render: function (data) {
+            //         return data == null ? "" : data.advise;
+            //     }},
             {sTitle: "毛重(千克)", mDataProp: "outinGross",
                 render: function (data) {
                     return data == null ? "" : data.grossweight;

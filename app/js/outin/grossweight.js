@@ -7,6 +7,21 @@
  */
 App.controller('grossweightController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
     $scope.val=localStorage.getItem('mod');
+    if($scope.val=="chuku"){
+        $scope.iotypename="出库";
+        $("#outinDiv").hide();
+        $("#inDiv").hide();
+        $("#outDiv").hide();
+        $("#outinDiv").show();
+        $("#" + 'outDiv').show();
+    }else if($scope.val=="ruku"){
+        $scope.iotypename="入库";
+        $("#outinDiv").hide();
+        $("#inDiv").hide();
+        $("#outDiv").hide();
+        $("#outinDiv").show();
+        $("#" + 'inDiv').show();
+    }
     $scope.grossweight =0;
     $.ajax({
         url: GserverURL+"/sys/dict/list?typecode=looker_list",
@@ -68,6 +83,10 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         catch (e) {
             console.log(e.Message);
         }
+    }
+
+    $scope.ceshi=function(){
+        console.log(1231);
     }
 
     $scope.showDiv = function (tid) {
@@ -315,7 +334,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
         $scope.zp3 = $("#zp3val").val();
         $scope.grosslooker = $("#grosslooker").val();
         $scope.grossoperatorname = $("#grossoperatorname").val();
-
+        $scope.housecode=$("#housecode").val();
         var outinGross ={
             grossweight:$scope.grossweight,
             grosslooker:$scope.grosslooker,
@@ -330,6 +349,7 @@ App.controller('grossweightController', ['$scope', '$http', "ngDialog", function
                 $scope.housename = item.label;
             }
         });
+        console.log($scope.housecode);
         var pData = {
             cardno: $scope.cardno,
             housecode:$scope.housecode,

@@ -224,11 +224,17 @@ App.controller("xiaokaController", function ($scope, $stateParams, $http, ngDial
     }
 
     $("#xksub").click(function () {
+        $scope.cardno=$("#cardno").val();
+        $scope.dtoperator=$("#dtoperator").val();
+        var searchData={
+            cardno:$scope.cardno,
+            dtoperator: $scope.dtoperator
+        }
         var table = $('#' + $scope.gridtableid).DataTable();
         $.ajax({
             url: GserverURL + '/outin/pinCard',
             method: 'POST',
-            data: $("#subForm").serialize()
+            data:searchData
         }).success(function (response) { //提交成功
             if (response.success) { //信息处理成功，进入用户中心页面
                 table.order([[1, 'asc']]).draw(false); //刷新表格并维持当前分页

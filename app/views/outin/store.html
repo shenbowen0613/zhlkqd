@@ -41,9 +41,9 @@
             <div class="form-group">
                 <label class="col-lg-3 control-label">监视员：</label>
                 <div class="col-lg-3">
-                    <select ng-model="outinStore.looker"  class="form-control">
-                        <option value="">{{storeLookerList[0].code}}</option>
-                        <option ng-repeat="x in storeLookerList" value="{{x.code}}">{{x.label}}</option>
+                    <select class="form-control" id="looker">
+<!--                        <option value="">{{storeLookerList[0].code}}</option>-->
+                        <option ng-repeat="x in storeLookerList" ng-selected="$index==0" value="{{x.code}}">{{x.label}}</option>
                         <!--<option value="邱金光">邱金光</option>-->
                         <!--<option value="扬平">扬平</option>-->
                         <!--<option value="刘全义">刘全义</option>-->
@@ -51,9 +51,8 @@
                 </div>
                 <label class="col-lg-2 control-label">保管员：</label>
                 <div class="col-lg-4">
-                    <select ng-model="outinStore.verifyoperatorname"  class="form-control">
-                        <option value="">{{verifyoperatornameList[0].code}}</option>
-                        <option ng-repeat="x in verifyoperatornameList" value="{{x.code}}">{{x.label}}</option>
+                    <select id="verifyoperatorname"  class="form-control">
+                        <option ng-repeat="x in verifyoperatornameList" ng-selected="$index==0"  value="{{x.code}}">{{x.label}}</option>
                         <!--<option value="邱金光">邱金光</option>-->
                         <!--<option value="扬平">扬平</option>-->
                         <!--<option value="刘全义">刘全义</option>-->
