@@ -190,6 +190,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
     //添加数据
     $scope.save = function () {
         $scope.outinEntry.cardno = $("#smart_card").val();
+        $scope.outinEntry.varietyname = $("#varietyname").val();
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.outinEntry.iotypename = $scope.iotypename;
         if ($scope.outinVehicle == null) {
