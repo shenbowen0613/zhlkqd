@@ -149,8 +149,8 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">收获年份</label>
                                         <div class="col-lg-4">
-                                            <select ng-model="outinEntry.grainyear" class="form-control" id="yearSel">
-                                                <option ng-repeat="item in yearList" ng-selected="$index==0" value="{{item.key}}">{{item.key}}年度</option>
+                                            <select id="yearSel" ng-model="outinEntry.grainyear" class="form-control" >
+                                                <option ng-repeat="item in yearList" ng-selected="$index==0" value="{{item.key}}">{{item.key}}</option>
                                             </select>
                                         </div>
                                         <label class="col-lg-2 control-label">智能卡号</label>

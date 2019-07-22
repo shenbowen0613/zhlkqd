@@ -191,6 +191,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         $("#prodplace1").val($(".chosen-single").find('span').text());
         $scope.outinEntry.cardno = $("#smart_card").val();
         $scope.outinEntry.varietyname = $("#varietyname").val();
+        $scope.outinEntry.grainyear = $("#yearSel").val();
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.outinEntry.iotypename = $scope.iotypename;
         if ($scope.outinVehicle == null) {
