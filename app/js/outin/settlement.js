@@ -418,7 +418,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"Bold",1);
         LODOP.ADD_PRINT_TEXT("4.23mm","70.99mm","69.53mm","8.2mm",dyYear);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
-        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","61.12mm","5.29mm","填写单位：信阳山信恒盛粮油储备有限公司");
+        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","70.12mm","5.29mm","填写单位：信阳山信恒盛粮油储备有限公司");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("15.08mm","105.83mm","3.18mm","3.97mm",currDate.getFullYear());
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
