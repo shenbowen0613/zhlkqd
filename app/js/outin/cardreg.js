@@ -32,6 +32,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         if (response.success) {
             var optionHtmls="";
             $scope.varietynameList = response.data;
+
             // angular.forEach($scope.varietynameList, function (data) {
             //     console.log(data);
             //     optionHtmls += "<option value=\""+data.code+"\">"+data.label+"</option>";
@@ -48,6 +49,9 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
         if (response.success) {
             var optionHtmls="";
             $scope.prodplaceList = response.data;
+            if(response.data==''){
+                optionHtmls="<option value=''></option>";
+            }
             console.log($scope.prodplaceList);
             angular.forEach($scope.prodplaceList, function (data) {
                 optionHtmls += "<option value=\""+data.prodplace+"\">"+data.prodplace+"</option>";
