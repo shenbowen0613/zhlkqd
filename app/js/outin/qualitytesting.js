@@ -321,7 +321,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
             adds = addsz * 1;
             huhunlvValCut = adds;
         }
-        $("#huhunlvValCutRemove").val(huhunlvValCut);
+        $("#huhunlvValRemove").val(huhunlvValCut);
         this.calcRemoveFood();
     }
 
