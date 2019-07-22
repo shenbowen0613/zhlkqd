@@ -407,13 +407,16 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         var lldetail = eval("(" + $scope.outinAll.outinQualityResult.memo + ")");
         var lvDetail=lldetail.qualitys;
         LODOP = getLodop();
-
+        var dyYear=$("#dydtt").val();
+        if(dyYear==''){
+            dyYear=currDate.getFullYear()+"年小麦最低收购价收购结算凭证";
+        }
         LODOP.PRINT_INITA(10,9,800,600,"结算打印");
         LODOP.ADD_PRINT_RECT("20.37mm","5.29mm","200mm","120.99mm",0,1);
-        LODOP.ADD_PRINT_TEXT("4.23mm","75.14mm","12.17mm","5.29mm",currDate.getFullYear());
+        // LODOP.ADD_PRINT_TEXT("","75.14mm","12.17mm","5.29mm",currDate.getFullYear());
         LODOP.SET_PRINT_STYLEA(0,"FontSize",12);
         LODOP.SET_PRINT_STYLEA(0,"Bold",1);
-        LODOP.ADD_PRINT_TEXT("5.03mm","85.99mm","59.53mm","8.2mm","年小麦最低收购价收购结算凭证");
+        LODOP.ADD_PRINT_TEXT("4.23mm","70.99mm","69.53mm","8.2mm",dyYear);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
         LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","61.12mm","5.29mm","填写单位：信阳山信恒盛粮油储备有限公司");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);

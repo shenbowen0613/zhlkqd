@@ -52,7 +52,6 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
             if(response.data==''){
                 optionHtmls="<option value=''></option>";
             }
-            console.log($scope.prodplaceList);
             angular.forEach($scope.prodplaceList, function (data) {
                 optionHtmls += "<option value=\""+data.prodplace+"\">"+data.prodplace+"</option>";
             });
@@ -189,6 +188,7 @@ App.controller('cardregController', ['$scope', '$http', "ngDialog", function ($s
     // $scope.iotypename = "入库";
     //添加数据
     $scope.save = function () {
+        $("#prodplace1").val($(".chosen-single").find('span').text());
         $scope.outinEntry.cardno = $("#smart_card").val();
         $scope.outinEntry.varietyname = $("#varietyname").val();
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
