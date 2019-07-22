@@ -45,12 +45,18 @@
                 </iframe>
                 <!--仓外-->
                 <div align="center" id="mpg4Ocx" style="display: none;">
-                    <OBJECT ID="Player" WIDTH={{divWidth}} HEIGHT={{divHeight}} CLASSID="CLSID:BF55C34E-FB1B-4FAF-8C1D-82C5265D87D9" name="Player">
+                    <OBJECT id="Player" type="application/x-itst-activex" width="5" height="5" border="0" clsid="{BF55C34E-FB1B-4FAF-8C1D-82C5265D87D9}">
                         <PARAM NAME="_Version" VALUE="65536">
-                        <PARAM NAME="_ExtentX" VALUE="6703">
-                        <PARAM NAME="_ExtentY" VALUE="4092">
+                       <PARAM NAME="_ExtentX" VALUE="19050">
+                        <PARAM NAME="_ExtentY" VALUE="12700">
                         <PARAM NAME="_StockProps" VALUE="0">
-                    </OBJECT>
+                        </OBJECT>
+                    <!--<OBJECT ID="Player" WIDTH={{divWidth}} HEIGHT={{divHeight}} CLASSID="CLSID:BF55C34E-FB1B-4FAF-8C1D-82C5265D87D9" name="Player">-->
+                        <!--<PARAM NAME="_Version" VALUE="65536">-->
+                        <!--<PARAM NAME="_ExtentX" VALUE="6703">-->
+                        <!--<PARAM NAME="_ExtentY" VALUE="4092">-->
+                        <!--<PARAM NAME="_StockProps" VALUE="0">-->
+                    <!--</OBJECT>-->
                 </div>
                 <!--仓内-->
                 <div id="divPlugin" align="center" style="display: none;"></div>
