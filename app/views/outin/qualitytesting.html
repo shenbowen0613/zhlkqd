@@ -234,7 +234,11 @@
                                         <span class="fa fa-circle"></span>五等</label>
                                 </div>
                             </div>
-
+                            <label class="col-sm-1 control-label">单价：</label>
+                            <div class="col-sm-3">
+                                <span id="priceVal">{{price}}</span>
+                                <input name="price" id="price" ng-model="price" style="display: none"/>
+                            </div>
 <!--                            <label class="col-sm-1 control-label">仓库：</label>-->
 <!--                            <div class="col-sm-3">-->
 <!--                                <select id="housecode" name="housecode" ng-model="housecode" class="form-control">-->
@@ -262,6 +266,13 @@
 <!--                                    <input type="radio" name="isPass" ng-model="isPass" required value="不合格"/>-->
 <!--                                    <span class="fa fa-circle"></span>不合格</label>-->
 <!--                            </div>-->
+                            <label class="col-sm-1 control-label">质检人：</label>
+                            <div class="col-sm-3">
+                                <select id="zjoperator" name="zjoperator" ng-model="zjoperator" class="form-control">
+                                    <option value="">{{zjoperatorList[0].label}}</option>
+                                    <option  ng-repeat="tree in zjoperatorList" value="{{tree.code}}">{{tree.label}}</option>
+                                </select>
+                            </div>
                             <label class="col-sm-1 control-label">扣量：</label>
                             <div class="col-sm-3">
                                 <div class="input-group">
@@ -275,22 +286,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-horizontal ">
-                        <div class="form-group " >
-                            <label class="col-lg-1"></label>
-                            <label class="col-sm-1 control-label">质检人：</label>
-                            <div class="col-sm-3">
-                                <select id="zjoperator" name="zjoperator" ng-model="zjoperator" class="form-control">
-                                <option value="">{{zjoperatorList[0].label}}</option>
-                                <option  ng-repeat="tree in zjoperatorList" value="{{tree.code}}">{{tree.label}}</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="row">-->
+                <!--<div class="col-sm-12">-->
+                    <!--<div class="form-horizontal ">-->
+                        <!--<div class="form-group " >-->
+                            <!--<label class="col-lg-1"></label>-->
+                            <!--<label class="col-sm-1 control-label">质检人：</label>-->
+                            <!--<div class="col-sm-3">-->
+                                <!--<select id="zjoperator" name="zjoperator" ng-model="zjoperator" class="form-control">-->
+                                <!--<option value="">{{zjoperatorList[0].label}}</option>-->
+                                <!--<option  ng-repeat="tree in zjoperatorList" value="{{tree.code}}">{{tree.label}}</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <hr/>
         <div style="text-align: center">

@@ -142,8 +142,7 @@
                                         <label class="col-lg-2 control-label">粮食品种</label>
                                         <div class="col-lg-4">
                                             <select  class="form-control" id="varietyname" ng-model="outinEntry.varietyname">
-                                                <option  value="">请选择...</option>
-                                                <option ng-repeat="item in varietynameList" value="{{item.code}}">{{item.label}}</option>
+                                                <option ng-repeat="item in varietynameList" ng-selected="$index==0" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -151,8 +150,7 @@
                                         <label class="col-lg-2 control-label">收获年份</label>
                                         <div class="col-lg-4">
                                             <select ng-model="outinEntry.grainyear" class="form-control" id="yearSel">
-                                                <option value="">请选择...</option>
-                                                <option ng-repeat="item in yearList" value="{{item.key}}">{{item.key}}年度</option>
+                                                <option ng-repeat="item in yearList" ng-selected="$index==0" value="{{item.key}}">{{item.key}}年度</option>
                                             </select>
                                         </div>
                                         <label class="col-lg-2 control-label">智能卡号</label>
@@ -181,8 +179,7 @@
                                         <label class="col-lg-2 control-label">登记人</label>
                                         <div class="col-lg-4">
                                             <select ng-model="outinEntry.dtoperator" id="dtoperator" class="form-control">
-                                                <option value="">{{cardregDtoperatorList[0].code}}</option>
-                                                <option ng-repeat="item in cardregDtoperatorList" value="{{item.code}}">{{item.label}}</option>
+                                                <option ng-repeat="item in cardregDtoperatorList" ng-selected="$index==0" value="{{item.code}}">{{item.label}}</option>
                                             </select>
                                         </div>
                                     </div>

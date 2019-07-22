@@ -57,22 +57,26 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
             if (response.success) {
                 $scope.settlementDetailVO = response.data;
                 var grossweight = $scope.settlementDetailVO.grossweight;
+                var price = $scope.settlementDetailVO.price;
                 var tareweight = $scope.settlementDetailVO.tareweight;
                 var jsweight = $scope.settlementDetailVO.netweight;
                 $scope.jsweight = jsweight;
+                $scope.price = price;
                 $scope.grossweight = grossweight;
                 $scope.tareweight = tareweight;
                 $scope.busno = $scope.settlementDetailVO.busno;
                 $("#jsweight").val($scope.jsweight);
+                $("#jsprice").val($scope.price);
+                $scope.sumJsMoney();
             }
         });
 
 
     }
 
-    $scope.sumJsMoney = function (obj) {
+    $scope.sumJsMoney = function () {
         var jsweight = $("#jsweight").val();
-        var jsprice = obj.outinSettlement.jsprice;
+        var jsprice = $("#jsprice").val();
         var sumNum = 0;
         if (jsweight != null && jsprice != "") {
             sumNum = jsweight * jsprice;

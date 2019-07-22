@@ -5,10 +5,10 @@
  *      代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担.
  *      本代码仅用于智慧粮库项目.
  */
-App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",function ($scope, $http, ngDialog) {
+App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", function ($scope, $http, ngDialog) {
 
     $.ajax({
-        url: GserverURL+"/sys/dict/list?typecode=zjoperator_list",
+        url: GserverURL + "/sys/dict/list?typecode=zjoperator_list",
         method: 'POST',
         async: false
     }).success(function (response) {
@@ -62,6 +62,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
     //添加数据
     $scope.save = function () {
         $scope.cardno = $("#smart_card").val();
+        $scope.price = $("#price").val();
         $scope.removeWater = $("#removeWater").val();
         $scope.removeFood = $("#removeFood").val();
         $scope.assayNames = "";
@@ -88,10 +89,10 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
             }
         });
         $("#housename").val($scope.housename);
-        if ($scope.zjoperator!=null || $scope.zjoperator!=undefined) {
+        if ($scope.zjoperator != null || $scope.zjoperator != undefined) {
             $scope.zjoperator = $scope.zjoperator;
-        }else {
-            $scope.zjoperator =$scope.zjoperatorList [0].code;
+        } else {
+            $scope.zjoperator = $scope.zjoperatorList [0].code;
         }
         var pData = {
             cardno: $scope.cardno,
@@ -102,6 +103,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
             removeWater: $scope.removeWater,
             removeFood: $scope.removeFood,
             level: $scope.level,
+            price: $scope.price,
             housecode: $scope.housecode,
             housename: $scope.housename,
             zjoperator: $scope.zjoperator
@@ -182,7 +184,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
     $scope.shuifenCheck = function () {
         var shuifenValDeal = $("#shuifenVal").val();
         var shuifenVal = $("#shuifenVal").val() * 10;
-        if(shuifenValDeal>14.5){
+        if (shuifenValDeal > 14.5) {
             rzhdialog(ngDialog, "水分含量超过标准值", "error");
         }
         var shuifenValcut = 0;
@@ -190,7 +192,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
         var kouliang = shuifenVal - biaozhunshuifen;
         var adds = 0;
         if (kouliang <= 0) {
-            kouliang = kouliang *(-1);
+            kouliang = kouliang * (-1);
             var addsz = Math.floor(kouliang / 5);
             if (addsz >= 5) {
                 adds = 3.75;
@@ -216,7 +218,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
         var kouliang = zazhiVal - biaozhunzazhi;
         var adds = 0;
         if (kouliang <= 0) {
-            kouliang = kouliang *(-1);
+            kouliang = kouliang * (-1);
             var addsz = Math.floor(kouliang / 5);
             adds = addsz * 0.75;
             adds = adds * (-1);
@@ -240,7 +242,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
         if (kouliang > 0) {
             var addsz = Math.floor(kouliang / 1);
             zhengjingmilvValCut = addsz * 0.75;
-        }else{
+        } else {
             zhengjingmilvValCut = 0;
         }
         $("#zhengjingmilvValRemove").val(zhengjingmilvValCut);
@@ -251,38 +253,47 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
     $scope.zhengjingmilvPk = function () {
         var zhengjingmilvVal = $("#zhengjingmilvVal").val();
         var chucaolvVal = $("#chucaolvVal").val()
-        if (zhengjingmilvVal>=50){
-            if(chucaolvVal>=79){
-               $scope.level='一等';
-            }else{
-                rzhdialog(ngDialog, "不合格", "error");
+        if (chucaolvVal >= 79) {
+            if (zhengjingmilvVal >= 50) {
+                $scope.level = '一等';
+                $scope.price = "1.30";
+            } else {
+                rzhdialog(ngDialog, "整精米率不合格", "error");
+                $scope.price = "0.0";
             }
-        }else if (zhengjingmilvVal>=47 && zhengjingmilvVal<50){
-            if(chucaolvVal>=77){
-                $scope.level='二等';
-            }else{
-                rzhdialog(ngDialog, "不合格", "error");
+        } else if (chucaolvVal >= 77 && chucaolvVal < 79) {
+            if (zhengjingmilvVal >= 47) {
+                $scope.level = '二等';
+                $scope.price = "1.28";
+            } else {
+                rzhdialog(ngDialog, "整精米率不合格", "error");
+                $scope.price = "0.0";
             }
-        }else if (zhengjingmilvVal>=44 && zhengjingmilvVal<47){
-            if(chucaolvVal>=75){
-                $scope.level='三等';
-            }else{
-                rzhdialog(ngDialog, "不合格", "error");
+        } else if (chucaolvVal >= 75 && chucaolvVal < 77) {
+            if (zhengjingmilvVal >= 44) {
+                $scope.level = '三等';
+                $scope.price = "1.26";
+            } else {
+                rzhdialog(ngDialog, "整精米率不合格", "error");
+                $scope.price = "0.0";
             }
-        }  else if (zhengjingmilvVal>=41 && zhengjingmilvVal<44){
-            if(chucaolvVal>=73){
-                $scope.level='四等';
-            }else{
-                rzhdialog(ngDialog, "不合格", "error");
+        } else if (chucaolvVal >= 73 && chucaolvVal < 75) {
+            if (zhengjingmilvVal >= 41) {
+                $scope.level = '四等';
+                $scope.price = "1.24";
+            } else {
+                rzhdialog(ngDialog, "整精米率不合格", "error");
+                $scope.price = "0.0";
             }
-        }else if (zhengjingmilvVal>=38&& zhengjingmilvVal<41){
-            if(chucaolvVal>=71){
-                $scope.level='五等';
-            }else{
-                rzhdialog(ngDialog, "不合格", "error");
+        } else if (chucaolvVal >= 71 && chucaolvVal < 73) {
+            if (zhengjingmilvVal >= 38) {
+                $scope.level = '五等';
+                $scope.price = "1.22";
+            } else {
+                rzhdialog(ngDialog, "整精米率不合格", "error");
+                $scope.price = "0.0";
             }
         }
-
     }
 
     //黄粒米
@@ -314,9 +325,9 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
         if (kouliang <= 0) {
             huhunlvValCut = 0;
         } else {
-            var addsz = Math.floor(kouliang /5 );
-            if ($scope.varietyname == '糯米'){//品种是糯米
-                addsz = Math.floor(kouliang /2 );
+            var addsz = Math.floor(kouliang / 5);
+            if ($scope.varietyname == '糯米') {//品种是糯米
+                addsz = Math.floor(kouliang / 2);
             }
             adds = addsz * 1;
             huhunlvValCut = adds;
@@ -355,7 +366,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog",functi
         //色泽气味扣量
         var sezeqiwei = Number($("#sezeqiweiRemove").val());
 
-        $("#removeFood").val(rongzhong +chucaolv + zhengjingmilv+ guwaicaomi+ hanglimi+ zhongjinshuege + huhunlv +  shuifen + zazhi + sezeqiwei);
+        $("#removeFood").val(rongzhong + chucaolv + zhengjingmilv + guwaicaomi + hanglimi + zhongjinshuege + huhunlv + shuifen + zazhi + sezeqiwei);
     }
 
     //根据智能卡号获取出入库信息
