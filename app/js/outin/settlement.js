@@ -89,17 +89,23 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
 
     //添加数据
     $scope.settlement = function () {
-        $scope.outinSettlement.jsmoney = $scope.jsmoney;
-        $scope.outinSettlement.jsweight = $scope.jsweight;
-        angularParamString($http); //解决post提交接收问题，json方式改为string方式
-        $scope.outinSettlement.busno = $scope.busno;
-        if ($scope.outinSettlement.jsoperatorname!=null || $scope.outinSettlement.jsoperatorname!=undefined) {
-            $scope.outinSettlement.jsoperatorname = $scope.outinSettlement.jsoperatorname;
-        }else {
-            $scope.outinSettlement.jsoperatorname =$scope.jsoperatornameList[0].code;
+        $scope.jsmoney= $("#jsmoney").val();
+        $scope.jsprice= $("#jsprice").val();
+        $scope.jsweight= $("#jsweight").val();
+        $scope.jsoperatorname= $("#jsoperatorname").val();
+        var addData={
+            jsmoney:$scope.jsmoney,
+            jsprice:$scope.jsprice,
+            jsweight:$scope.jsmoney,
+            jsoperatorname:$scope.jsoperatorname,
+            busno:$scope.busno,
         }
+        // $scope.outinSettlement.jsmoney = $scope.jsmoney;
+        // $scope.outinSettlement.jsweight = $scope.jsweight;
+        angularParamString($http); //解决post提交接收问题，json方式改为string方式
+        // $scope.outinSettlement.busno = $scope.busno;
         var pData = {
-            outinSettlementStr: JSON.stringify($scope.outinSettlement)
+            outinSettlementStr: JSON.stringify(addData)
         };
         $http({
             url: GserverURL + '/outin/settlement/settlement',
