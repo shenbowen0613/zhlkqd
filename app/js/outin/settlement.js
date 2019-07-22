@@ -410,6 +410,8 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         var dyYear=$("#dydtt").val();
         if(dyYear==''){
             dyYear=currDate.getFullYear()+"年小麦最低收购价收购结算凭证";
+        }else{
+            dyYear=currDate.getFullYear()+"年"+dyYear;
         }
         LODOP.PRINT_INITA(10,9,800,600,"结算打印");
         LODOP.ADD_PRINT_RECT("20.37mm","5.29mm","200mm","120.99mm",0,1);
