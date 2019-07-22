@@ -396,11 +396,10 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
     //添加数据
     $scope.save = function () {
-        console.log("cehshi");
         angularParamString($http); //解决post提交接收问题，json方式改为string方式
         $scope.cardno = $("#smart_card").val();
+        $scope.housecode = $("#housecode").val();
         $scope.outinEntry.cardno = $scope.cardno;
-
         $scope.clzp = $("#clzpval").val();
         $scope.zp1 = $("#zp1val").val();
         $scope.zp2 = $("#zp2val").val();

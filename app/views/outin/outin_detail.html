@@ -235,8 +235,8 @@
                         </div>
                     </div>
                 </form>
-                <p class="lead bb">结算信息</p>
-                <form class="form-horizontal p-20">
+                <p class="lead bb" ng-if="outinEnty.iotypename=='入库'" >结算信息</p>
+                <form class="form-horizontal p-20" ng-if="outinEnty.iotypename=='入库'">
                     <div class="form-group">
                         <div class="col-sm-2 control-label">净重(千克)：</div>
                         <div class="col-sm-4 mt">
