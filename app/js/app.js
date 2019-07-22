@@ -1544,7 +1544,7 @@ App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteH
                 // templateUrl: helper.basepath('camera/index.html'),
                 // resolve: helper.resolveFor('datatables',"ngDialog",'CameraJs','ngWig')
                 templateUrl: helper.basepath('camera/videomonitoring.html'),
-                resolve: helper.resolveFor('datatables', "ngDialog", 'webVideoCtrlJS','bsdWebVideoCtrlJS', 'ngWig')
+                resolve: helper.resolveFor('datatables', "ngDialog", 'MonitoringJs','webVideoCtrlJS','bsdWebVideoCtrlJS', 'ngWig')
             })
             .state('camera.videomonitoring', {
                 url: '/videomonitoring',
@@ -2340,7 +2340,6 @@ App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', 
         };
 
         $scope.toggleCollapse = function ($index, isParentItem, modId, sonSize) { //modId为立坤扩展属性
-            console.log(11);
             // 侧边框崩溃时，禁止切换
             if (Utils.isSidebarCollapsed() || $rootScope.app.layout.asideHover) return true;
             // make sure the item index exists
