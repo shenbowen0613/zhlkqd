@@ -138,7 +138,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"Bold",1);
         LODOP.ADD_PRINT_TEXT("5.03mm","85.99mm","59.53mm","8.2mm","年小麦最低收购价收购结算凭证");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
-        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","61.12mm","5.29mm","填写单位：河南省粮食局浚县直属粮库");
+        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","70.12mm","5.29mm","填写单位：河南省粮食局浚县直属粮库");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("15.08mm","105.83mm","3.18mm","3.97mm","y");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
