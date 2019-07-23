@@ -124,7 +124,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             var hhl_num=parseInt(Math.floor(netweight * removeMap.互混率 / 100));
             var zjsg_num=parseInt(Math.floor(netweight * removeMap.重金属镉 / 100));
             var szqw_value=removeMap.色泽气味;
-
+            debugger
             var  cutweight =  sf_num + zz_num +  zjml_num + gwcm_num + hlm_num + hhl_num + zjsg_num;
             $("#cutweight").val(cutweight);
             $scope.outinTare.cutweight=cutweight;
@@ -132,7 +132,6 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
             realnetweight = parseInt(realnetweight);
             $("#netweight").val(realnetweight);
             $scope.outinTare.netweight = realnetweight;
-
             var dapingData = {
                 hphm: $scope.outinEntry.vehicleno,//车牌号码
                 dj: $scope.outinEntry.outinQualityResult.gradename,//等级，一级，二级
@@ -261,9 +260,16 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
 
     $scope.ifTaiGan= function(){
         if ($scope.vehicleno == $scope.outinEntry.vehicleno){
+            var  urlOpen = '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag=' + Math.random();
+            var  urlClose = '/gb/closeGB?ip=192.168.1.202&username=admin&password=admin&flag=' + Math.random();
+            if ($scope.iotypename == "出库") {
+                urlOpen = '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag=' + Math.random();
+                urlClose = '/gb/closeGB?ip=192.168.1.183&username=admin&password=admin12345&flag=' + Math.random();
+            }
+
             $.ajax({
                 //出库 摄像头 ip 192.168.1.202 admin admin
-                url: '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
+                url: urlOpen,
                 method: 'GET'
             }).success(function (){
                 var timer=false
@@ -277,7 +283,7 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                     if(i==j){
                         $.ajax({
                             //出库 摄像头 ip 192.168.1.202 admin admin
-                            url: '/gb/closeGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
+                            url:urlClose,
                             method: 'GET'
                         })
                         clearInterval(timer);
@@ -314,10 +320,15 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
     $scope.xiabangtaigan = function () {
         $scope.doding = true;
         $scope.iotypename=$("input:radio[name='iotypename']:checked").val();
-        if ($scope.iotypename == "入库") {
+        var urlOpen = '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag=' + Math.random();
+        var urlClose = '/gb/closeGB?ip=192.168.1.183&username=admin&password=admin12345&flag=' + Math.random();
+        if ($scope.iotypename == "出库") {
+            urlOpen = '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag=' + Math.random();
+            urlClose = '/gb/closeGB?ip=192.168.1.202&username=admin&password=admin&flag=' + Math.random();
+        }
             $.ajax({
                 //入库 摄像头 ip 192.168.1.183 admin admin12345
-                url: '/gb/openGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                url:urlOpen,
                 method: 'GET'
             }).success(function (){
                 var timer=false
@@ -331,41 +342,13 @@ App.controller('tareweightController', ['$scope', '$http', "ngDialog", function 
                     if(i==j){
                         $.ajax({
                             //出库 摄像头 ip 192.168.1.202 admin admin
-                            url: '/gb/closeGB?ip=192.168.1.183&username=admin&password=admin12345&flag='+Math.random(),
+                            url: urlClose,
                             method: 'GET'
                         })
                         clearInterval(timer);
                     }
                 },1000);
             });
-        } else if ($scope.iotypename == "出库") {
-            $.ajax({
-                //出库 摄像头 ip 192.168.1.202 admin admin
-                url: '/gb/openGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
-                method: 'GET'
-            }).success(function (){
-                var timer=false
-                var i=0;
-                var j=3;//延迟几秒
-                if(timer){
-                    clearInterval(timer);
-                }
-                timer=setInterval(function(){
-                    ++i;
-                    if(i==j){
-                        $.ajax({
-                            //出库 摄像头 ip 192.168.1.202 admin admin
-                            url: '/gb/closeGB?ip=192.168.1.202&username=admin&password=admin&flag='+Math.random(),
-                            method: 'GET'
-                        })
-                        clearInterval(timer);
-                    }
-                },1000);
-            });
-        } else {
-            $scope.doding = false;
-            rzhdialog(ngDialog, "请选择出入库类型", "error");
-        }
         if ($scope.doding) {
             $.ajax({
                 url: $scope.url,
