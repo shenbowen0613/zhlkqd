@@ -138,17 +138,17 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"Bold",1);
         LODOP.ADD_PRINT_TEXT("5.03mm","85.99mm","59.53mm","8.2mm","年小麦最低收购价收购结算凭证");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
-        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","61.12mm","5.29mm","填写单位：河南省粮食局浚县直属粮库");
+        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","70.12mm","5.29mm","填写单位：河南省粮食局浚县直属粮库");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("15.08mm","105.83mm","3.18mm","3.97mm","y");
+        LODOP.ADD_PRINT_TEXT("15.08mm","95.83mm","13.18mm","3.97mm","yyyy");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("16.14mm","109.01mm","5.56mm","2.65mm","年");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("15.61mm","114.56mm","3.18mm","3.97mm","m");
-        LODOP.ADD_PRINT_TEXT("16.14mm","118.53mm","5.82mm","3.18mm","月");
+        LODOP.ADD_PRINT_TEXT("15.61mm","114.56mm","8.18mm","3.97mm","MM");
+        LODOP.ADD_PRINT_TEXT("16.14mm","123.53mm","5.82mm","3.18mm","月");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("16.14mm","123.03mm","5.03mm","2.65mm","d");
-        LODOP.ADD_PRINT_TEXT("16.14mm","126.21mm","4.5mm","3.97mm","日");
+        LODOP.ADD_PRINT_TEXT("16.14mm","128.03mm","10.03mm","2.65mm","dd");
+        LODOP.ADD_PRINT_TEXT("16.14mm","136.21mm","4.5mm","3.97mm","日");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("15.61mm","169.86mm","14.29mm","3.97mm","编号：");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -207,7 +207,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("29.37mm","153.19mm","18.26mm","2.65mm","车（船）号");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("35.19mm","43.39mm","26.46mm","3.97mm","到库时间Date");
+        LODOP.ADD_PRINT_TEXT("35.19mm","33.39mm","46.46mm","3.97mm","到库时间Date");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("35.19mm","112.45mm","14.55mm","2.65mm","汽车");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -410,6 +410,8 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         var dyYear=$("#dydtt").val();
         if(dyYear==''){
             dyYear=currDate.getFullYear()+"年小麦最低收购价收购结算凭证";
+        }else{
+            dyYear=currDate.getFullYear()+"年"+dyYear;
         }
         LODOP.PRINT_INITA(10,9,800,600,"结算打印");
         LODOP.ADD_PRINT_RECT("20.37mm","5.29mm","200mm","120.99mm",0,1);
@@ -418,17 +420,18 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"Bold",1);
         LODOP.ADD_PRINT_TEXT("4.23mm","70.99mm","69.53mm","8.2mm",dyYear);
         LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
-        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","61.12mm","5.29mm","填写单位：信阳山信恒盛粮油储备有限公司");
+        LODOP.ADD_PRINT_TEXT("14.82mm","6.88mm","70.12mm","5.29mm","填写单位：信阳山信恒盛粮油储备有限公司");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("15.08mm","105.83mm","3.18mm","3.97mm",currDate.getFullYear());
+        // top,left,width,height,strText
+        LODOP.ADD_PRINT_TEXT("15.08mm","95.83mm","13.18mm","3.97mm",currDate.getFullYear());
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("16.14mm","109.01mm","5.56mm","2.65mm","年");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("15.61mm","114.56mm","3.18mm","3.97mm",currDate.getMonth() + 1);
-        LODOP.ADD_PRINT_TEXT("16.14mm","118.53mm","5.82mm","3.18mm","月");
+        LODOP.ADD_PRINT_TEXT("15.61mm","114.56mm","8.18mm","3.97mm",currDate.getMonth() + 1);
+        LODOP.ADD_PRINT_TEXT("16.14mm","123.53mm","5.82mm","3.18mm","月");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("16.14mm","123.03mm","5.03mm","2.65mm",currDate.getDate());
-        LODOP.ADD_PRINT_TEXT("16.14mm","126.21mm","4.5mm","3.97mm","日");
+        LODOP.ADD_PRINT_TEXT("16.14mm","128.03mm","10.03mm","2.65mm",currDate.getDate());
+        LODOP.ADD_PRINT_TEXT("16.14mm","136.21mm","4.5mm","3.97mm","日");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("15.61mm","169.86mm","14.29mm","3.97mm","编号：");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
@@ -487,7 +490,7 @@ App.controller('settlementController', ['$scope', '$http', "ngDialog", function 
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("29.37mm","153.19mm","18.26mm","2.65mm","车（船）号");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
-        LODOP.ADD_PRINT_TEXT("35.19mm","43.39mm","26.46mm","3.97mm",toYMD($scope.outinAll.entrytime));
+        LODOP.ADD_PRINT_TEXT("35.19mm","33.39mm","46.46mm","3.97mm",toYMD($scope.outinAll.entrytime));
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);
         LODOP.ADD_PRINT_TEXT("35.19mm","112.45mm","14.55mm","2.65mm","汽车");
         LODOP.SET_PRINT_STYLEA(0,"FontSize",10);

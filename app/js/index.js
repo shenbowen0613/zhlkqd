@@ -93,6 +93,9 @@
         //响应成功
         if(data!=""&&data!=null&&data!=[]){
             $scope.weather = data;
+			if(Number(data.yg)==0){
+				$scope.weather.yg="无";
+			}
             $scope.weather.typea = true;
         }else{
             $scope.weather = {};
@@ -178,7 +181,7 @@
     }
 
     $scope.show=function(obj, id, i) {
-         var houname = Number(i)+ "号仓";
+         var houname = Number(i)+ "仓";
          var cnf={avgt:"",hight:"",innert:"",lowt:"",outt:"",avgh:"",highh:"",inh:"",lowh:"",outh:"",statuscode:"012",statusname:"无数据"};
          angular.forEach($scope.itemscangfang,function (d,i) {
              if(d.housename == houname){

@@ -258,7 +258,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
                 $scope.level = '一等';
                 $scope.price = "1.30";
             } else {
-                rzhdialog(ngDialog, "整精米率不合格", "error");
+                rzhdialog(ngDialog, "检验不合格", "error");
                 $scope.price = "0.0";
             }
         } else if (chucaolvVal >= 77 && chucaolvVal < 79) {
@@ -266,7 +266,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
                 $scope.level = '二等';
                 $scope.price = "1.28";
             } else {
-                rzhdialog(ngDialog, "整精米率不合格", "error");
+                rzhdialog(ngDialog, "检验不合格", "error");
                 $scope.price = "0.0";
             }
         } else if (chucaolvVal >= 75 && chucaolvVal < 77) {
@@ -274,7 +274,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
                 $scope.level = '三等';
                 $scope.price = "1.26";
             } else {
-                rzhdialog(ngDialog, "整精米率不合格", "error");
+                rzhdialog(ngDialog, "检验不合格", "error");
                 $scope.price = "0.0";
             }
         } else if (chucaolvVal >= 73 && chucaolvVal < 75) {
@@ -282,7 +282,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
                 $scope.level = '四等';
                 $scope.price = "1.24";
             } else {
-                rzhdialog(ngDialog, "整精米率不合格", "error");
+                rzhdialog(ngDialog, "检验不合格", "error");
                 $scope.price = "0.0";
             }
         } else if (chucaolvVal >= 71 && chucaolvVal < 73) {
@@ -290,7 +290,7 @@ App.controller('qualitytestingController', ['$scope', '$http', "ngDialog", funct
                 $scope.level = '五等';
                 $scope.price = "1.22";
             } else {
-                rzhdialog(ngDialog, "整精米率不合格", "error");
+                rzhdialog(ngDialog, "检验不合格", "error");
                 $scope.price = "0.0";
             }
         }

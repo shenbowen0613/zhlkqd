@@ -1,4 +1,4 @@
-<script type="text/javascript">
+﻿<script type="text/javascript">
     function resizeHit(){
         $("#bg_img").height($(window).height());
     }
@@ -125,33 +125,72 @@
                         onMouseOut="hide(this,'mydiv2')" id="green44"/>
             </div>
         </div>
-        <div id="mydiv2"
+       <div id="mydiv2"
              style="position: absolute; display: none; border: 2px solid silver; background:#62c462; width: 180px;font-family:arial; border-radius: 10px;">
             <ul class="list-unstyled">
-                <li style="padding-top:4px;"><strong>
-                    &nbsp;&nbsp;编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;：<span
-                        id="ch"></span> </strong></li>
-                <li style="padding-top:4px;"><strong>&nbsp;&nbsp;仓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容&nbsp;&nbsp;：<span
-                        id="cr"></span></strong>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;：
+                        <span id="ch"></span>
+                    </strong>
                 </li>
-                <li style="padding-top:4px;"><strong>
-                    &nbsp;&nbsp;仓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;温&nbsp;&nbsp;：<span
-                        id="wendu"></span>° </strong>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;平&nbsp;&nbsp;均&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="avgt"></span>
+                    </strong>
                 </li>
-                <li id="tishi" style="padding-top:4px"><strong>
-                    &nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示&nbsp;&nbsp;：<span
-                        id="wendutishi"></span></strong>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;平&nbsp;&nbsp;均&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="avgh"></span>
+                    </strong>
                 </li>
-                <li style="padding-top:4px;"><strong>
-                    &nbsp;&nbsp;仓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湿&nbsp;&nbsp;：<span
-                        id="cs"></span></strong></li>
-                <li style="padding-top:4px;"><strong>&nbsp;&nbsp;负&nbsp;&nbsp;责&nbsp;&nbsp;人&nbsp;：<span
-                        id="mz"></span></strong></li>
-                <li style="padding-top:4px;"><strong>&nbsp;&nbsp;联系电话&nbsp;：<span
-                        id="dh"></span></strong></li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;高&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="hight"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;高&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="highh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;内&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="innert"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;内&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="inh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;低&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="lowt"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;最&nbsp;&nbsp;低&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="lowh"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;外&nbsp;&nbsp;温&nbsp;&nbsp;：
+                        <span id="outt"></span>
+                    </strong>
+                </li>
+                <li style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;仓&nbsp;&nbsp;外&nbsp;&nbsp;湿&nbsp;&nbsp;：
+                        <span id="outh"></span>
+                    </strong>
+                </li>
+                <li id="tishi" style="padding-top:4px;">
+                    <strong>&nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;示&nbsp;&nbsp;：
+                        <span id="wendutishi"></span>
+                    </strong>
+                </li>
             </ul>
         </div>
-    </div>
+   </div>
     <!-- Page footer-->
     <footer style="margin-left: 0;z-index: 111;" ng-include="'app/views/partials/footer.html'"></footer>
 </div>
